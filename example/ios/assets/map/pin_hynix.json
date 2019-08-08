@@ -1,0 +1,48 @@
+{"frames": [
+
+{
+	"filename": "pin_goal.png",
+	"frame": {"x":0,"y":0,"w":186,"h":256},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":186,"h":256},
+	"sourceSize": {"w":186,"h":256},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "pin_goal_middle.png",
+	"frame": {"x":186,"y":0,"w":186,"h":256},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":186,"h":256},
+	"sourceSize": {"w":186,"h":256},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "pin_point.png",
+	"frame": {"x":0,"y":256,"w":186,"h":256},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":186,"h":256},
+	"sourceSize": {"w":186,"h":256},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "pin_start.png",
+	"frame": {"x":186,"y":256,"w":186,"h":256},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":186,"h":256},
+	"sourceSize": {"w":186,"h":256},
+	"pivot": {"x":0.5,"y":0.5}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "pin.png",
+	"format": "RGBA8888",
+	"size": {"w":372,"h":512},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:e9d7520d80b2706c45a98812012b4140:5ad6bcb8899580215cfc60b76b3e7605:e5b2433fd0b80c346384d78638235fe6$"
+}
+}

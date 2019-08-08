@@ -1,0 +1,68 @@
+//
+//  FatosMapView.h
+//  FatosRNApp
+//
+//  Created by 유춘성 on 13/03/2019.
+//  Copyright © 2019 Facebook. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+#import <GLKit/GLKit.h>
+#import <QuartzCore/QuartzCore.h>
+#import <OpenGLES/ES2/gl.h>
+#import <OpenGLES/ES2/glext.h>
+
+NS_ASSUME_NONNULL_BEGIN
+
+//@class TouchState;
+
+@protocol FatosMapViewDelegate <NSObject>
+- (void) MapLevelUpdateListener:(int)nLevel;
+- (void) PosWorldLocationUpdateListener:(NSString *)strLocation;
+- (void) TouchMoveModeListener:(int)nMode;
+@end
+
+@interface FatosMapView : GLKView {
+  
+};
+
+- (void) viewSizeUpdate;
+- (void) panGesture:(UIPanGestureRecognizer *)gestureRecognizer inView:(UIView*)view;
+- (void) setViewMode:(NSNumber *)mode;
+- (void) setAirlineMode:(NSDictionary *) baseLayerType bVisible:(NSDictionary *)bVisible;
+- (void) setMapLevelIn;
+- (void) setMapLevelOut;
+- (float) getMapLevel;
+- (void) setMapAuto;
+- (float) GetViewAngle;
+- (int) getTouchState;
+- (BOOL) IsFling;
+- (void) SummaryMapSetting:(NSDictionary *)lineColor xScale:(float)xScale yScale:(float)yScale
+                     hCenter:(float)hCenter vCenter:(float)vCenter;
+- (void) DefaultMapSetting;
+- (BOOL) isSummaryMode;
+
+
+- (void) onAutoScale:(float)tilt level:(float)level;
+
+- (void) MapSelectRouteLine:(int)nSelected;
+- (void) ApplySelectRouteLine:(int)nSelected;
+- (void) SetFlagName:(int)ObjType pszName:(const char *)pszName viaIndex:(int)viaIndex;
+- (void) SetFlagPosWorld:(int)ObjType wpX:(int)wpX wpY:(int)wpY viaIndex:(int)viaIndex;
+- (void) SetPosWGS84:(double)xlon ylat:(double)ylat;
+
+- (void) onStartGoalSet:(int)sx sy:(int)sy sname:(const char*)sname gx:(int)gx gy:(int)gy gname:(const char*)gname;
+- (void) SetEnvRouteLineColor:(int)nIndex;
+- (void) SetRouteLineColor:(int)nContextIndex strActive:(NSString *)strActive strDeactive:(NSString *)strDeactive;
+- (void) SetCarvata:(int)nIndex;
+- (void) SetDem:(bool)val;
+
+@property(strong, nonatomic) CADisplayLink* displayLink;
+@property(strong, nonatomic) id<FatosMapViewDelegate> delegate;
+@property(nonatomic, assign) BOOL isRender;
+
++ (FatosMapView *)sharedMapView;
+
+@end
+
+NS_ASSUME_NONNULL_END
