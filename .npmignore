@@ -5,6 +5,7 @@ Makefile
 
 example/android/app/build/
 example/node_modules/
+example/ios/build/
 
 # Xcode
 #
