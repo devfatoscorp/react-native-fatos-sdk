@@ -1,4 +1,5 @@
 ﻿
+
 # react-native-fatos-sdk
 
 This is "react native fatos sdk". For more details example, please check the project in the example folder.
@@ -10,7 +11,7 @@ To use "react-native-fatos-sdk", you must request a SDK key and then apply that 
 
 **Install command**
 
-```npm i --save react-native-fatos-sdk```  
+```npm i react-native-fatos-sdk```  
 
 ***
 
@@ -20,11 +21,20 @@ Register key value in item sdk_key of [string.xml] file
 ***
 
 
-**How to register iOS sdk_key (will be supported later)**
+**How to register iOS sdk_key**
 
 Register key value in item sdk_key of [info.plist] file
 ***
-
+**How to run example project**
+Go to the example folder on the terminal
+```
+npm install 
+yarn install
+npm i react-native-fatos-sdk (Install sdk in project example)
+```
+Execute the three command above.
+Then Android, ios project can be run. 
+***
 
 
 
@@ -379,6 +389,7 @@ FatosNaviBridgeModule.HideIndicatorListener()
 Passes whether or not to acquire the privilege so that the UI can be seen after acquiring the app right.
 FatosNaviBridgeModule.PermissionCompleteListene()
 ```
+
 
 
 

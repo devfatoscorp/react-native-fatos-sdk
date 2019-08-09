@@ -97,7 +97,7 @@ public class FatosWebViewManager extends SimpleViewManager<View>
             m_WebView.clearCache(true);
             m_WebView.clearHistory();
             m_WebView.clearSslPreferences();
-            m_WebView.loadUrl("http://gis.fatos.biz:38900");
+            m_WebView.loadUrl("http://example");
             m_WebView.addJavascriptInterface(FatosJSInterface.GetInstance(reactContext), "FatosJSInterface");
 
             WebSettings webSettings = m_WebView.getSettings();

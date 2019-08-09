@@ -12,7 +12,7 @@
 #import <FatosNaviModule.h>
 
 static NSString *strAutologKey = @"autolog";
-static NSString *strFleetUrl = @"http://gis.fatos.biz:38900";
+static NSString *strFleetUrl = @"http://example";
 
 @implementation FatosWebViewManager
 
