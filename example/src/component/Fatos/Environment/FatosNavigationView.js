@@ -31,6 +31,7 @@ import COMMON from '../../common/common'
 import Toast from 'react-native-root-toast';
 import FatosLanguageManager from '../../Manager/FatosLanguageManager';
 import FatosUtil from '../../common/FatosUtil';
+import FatosUIManager from '../../Manager/FatosUIManager';
 
 const routeImg = [
     require('../../../../res/drawable/m_s_setting_map_route_01.png')
@@ -282,11 +283,6 @@ export default class FatosNavigationView extends Component {
                 this.state.dem = (result === 'true');
             }
         });
-    }
-
-    componentDidMount()
-    {
-
     }
 
     preloadImages()
@@ -583,6 +579,10 @@ export default class FatosNavigationView extends Component {
         var strRouteColor = languageManager.getCodeName("map_themes");;
 
         var dialog = <Dialog
+            onHardwareBackPress={() => {
+                this.setState({ pathLineColorDialogShow: false });
+                return true;
+            }}
             onDismiss={() => {
                 this.setState({ pathLineColorDialogShow: false });
             }}
@@ -636,6 +636,10 @@ export default class FatosNavigationView extends Component {
         var strRouteOption = languageManager.getCodeName("route_option");
 
         var dialog = <Dialog
+            onHardwareBackPress={() => {
+                this.setState({ routeOptionDialogShow: false });
+                return true;
+            }}
             onDismiss={() => {
                 this.setState({ routeOptionDialogShow: false });
             }}
@@ -701,6 +705,10 @@ export default class FatosNavigationView extends Component {
         var strMapthemes = languageManager.getCodeName("map_themes");
 
         var dialog = <Dialog
+            onHardwareBackPress={() => {
+                this.setState({ mapColorDialogShow: false });
+                return true;
+            }}
             onDismiss={() => {
                 this.setState({ mapColorDialogShow: false });
             }}
@@ -755,6 +763,10 @@ export default class FatosNavigationView extends Component {
         var strSpeedAlert = languageManager.getCodeName("speed_alert");;
 
         var dialog = <Dialog
+            onHardwareBackPress={() => {
+                this.setState({ cameraOptionDialogShow: false });
+                return true;
+            }}
             onDismiss={() => {
                 this.setState({ cameraOptionDialogShow: false });
             }}
@@ -825,6 +837,10 @@ export default class FatosNavigationView extends Component {
         var strDriveCatefully = languageManager.getCodeName("drive_catefully");
 
         var dialog = <Dialog
+            onHardwareBackPress={() => {
+                this.setState({ operationStateDialogShow: false });
+                return true;
+            }}
             onDismiss={() => {
                 this.setState({ operationStateDialogShow: false });
             }}
@@ -878,6 +894,10 @@ export default class FatosNavigationView extends Component {
         var strFacilty = languageManager.getCodeName("facilty");
 
         var dialog = <Dialog
+            onHardwareBackPress={() => {
+                this.setState({ facilityDialogShow: false });
+                return true;
+            }}
             onDismiss={() => {
                 this.setState({ facilityDialogShow: false });
             }}
@@ -920,6 +940,10 @@ export default class FatosNavigationView extends Component {
         var strGuideType = languageManager.getCodeName("guide_type");
 
         var dialog = <Dialog
+            onHardwareBackPress={() => {
+                this.setState({ guidevoiceDialogShow: false });
+                return true;
+            }}
             onDismiss={() => {
                 this.setState({ guidevoiceDialogShow: false });
             }}
@@ -972,6 +996,10 @@ export default class FatosNavigationView extends Component {
         var strAutoReRoute = languageManager.getCodeName("auto_reroute");
 
         var dialog = <Dialog
+            onHardwareBackPress={() => {
+                this.setState({ rediscoverDialogShow: false });
+                return true;
+            }}
             onDismiss={() => {
                 this.setState({ rediscoverDialogShow: false });
             }}
@@ -1024,6 +1052,10 @@ export default class FatosNavigationView extends Component {
         var strWatpoint = languageManager.getCodeName("way_point");
 
         var dialog = <Dialog
+            onHardwareBackPress={() => {
+                this.setState({ wayPointDialogShow: false });
+                return true;
+            }}
             onDismiss={() => {
                 this.setState({ wayPointDialogShow: false });
             }}
@@ -1076,6 +1108,10 @@ export default class FatosNavigationView extends Component {
         var strVehicleType = languageManager.getCodeName("vehicle_type");
 
         var dialog = <Dialog
+            onHardwareBackPress={() => {
+                this.setState({ carTypeDialogShow: false });
+                return true;
+            }}
             onDismiss={() => {
                 this.setState({ carTypeDialogShow: false });
             }}
@@ -1148,6 +1184,10 @@ export default class FatosNavigationView extends Component {
         var strFuel = languageManager.getCodeName("fuel");
 
         var dialog = <Dialog
+            onHardwareBackPress={() => {
+                this.setState({ fuelDialogShow: false });
+                return true;
+            }}
             onDismiss={() => {
                 this.setState({ fuelDialogShow: false });
             }}
@@ -1207,6 +1247,10 @@ export default class FatosNavigationView extends Component {
         var strDriverPos = languageManager.getCodeName("DriverPos");
 
         var dialog = <Dialog
+            onHardwareBackPress={() => {
+                this.setState({ seatPositionDialogShow: false });
+                return true;
+            }}
             onDismiss={() => {
                 this.setState({ seatPositionDialogShow: false });
             }}
@@ -1259,6 +1303,10 @@ export default class FatosNavigationView extends Component {
         var strCarIconStyle = languageManager.getCodeName("car_icon_style");
 
         var dialog = <Dialog
+            onHardwareBackPress={() => {
+                this.setState({ carvataDialogShow: false });
+                return true;
+            }}
             onDismiss={() => {
                 this.setState({ carvataDialogShow: false });
             }}

@@ -147,10 +147,7 @@ export default class FirstTbT extends React.Component {
 
     setVisible(val)
     {
-        if(val !== this.state.visible)
-        {
-            this.setState({visible : val});
-        }
+        this.setState({visible : val});
 
         if(val === false)
         {

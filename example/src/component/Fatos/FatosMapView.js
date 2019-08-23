@@ -18,37 +18,25 @@ class FatosMapView extends Component {
         super(props);
     }
 
-    componentWillMount () {
-
-    }
-
-    componentWillUnmount () {
-
-    }
-
-
-    handleStartShouldSetResponder(evt)
-    {
-        Keyboard.dismiss();
-        this.props.bottomViewRef.current.showMenu(false);
-    }
-
-    handleMoveShouldSetResponder(evt)
-    {
-
-    }
-
-    handleResponderRelease(evt)
-    {
-        // 터치 앤드 인것 같은데 호출이 안된다
-    }
+    // handleStartShouldSetResponder(evt)
+    // {
+    //     Keyboard.dismiss();
+    //     this.props.bottomViewRef.current.showMenu(false);
+    // }
+    //
+    // handleMoveShouldSetResponder(evt)
+    // {
+    //
+    // }
+    //
+    // handleResponderRelease(evt)
+    // {
+    //     // 터치 앤드 인것 같은데 호출이 안된다
+    // }
 
     render () {
 
-        return <FatosMapViewNative  style={styles.mapViewStyle}
-                                    onStartShouldSetResponder={(evt) => this.handleStartShouldSetResponder(evt)}
-                                    onMoveShouldSetResponder={(evt) => this.handleMoveShouldSetResponder(evt)}
-                                    onResponderRelease={ (evt) => this.handleResponderRelease(evt) }/>
+        return <FatosMapViewNative  style={styles.mapViewStyle}/>
     }
 }
 

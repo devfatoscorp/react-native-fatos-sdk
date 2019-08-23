@@ -31,11 +31,6 @@ export default class FatosCopyRightView extends Component {
         //     m_WebView.loadUrl("file:///android_asset/setting_maphi/copyright_fatos_eng.html");
     }
 
-    componentDidMount()
-    {
-
-    }
-
     preloadImages()
     {
         var uris = backImg.map(image => ({

@@ -1,3 +1,4 @@
+import React from 'react';
 
 export default class FatosUIManager {
 
@@ -10,6 +11,33 @@ export default class FatosUIManager {
     };
 
     mViewVisibleList = [ true, false, false ];
+
+    mDriveMode = 0;
+
+
+    // ui 에서 사용되는 view
+    bottomView = null;
+    searchListView = null;
+    summarySearchListView = null;
+    summarySearchView = null;
+    firstTbTView = null;
+    secondTbTView = null;
+    speedoMeterView = null;
+    SDIView = null;
+    searchView = null;
+    routeSummaryView = null;
+    laneView = null;
+    RGView = null;
+    Dialog = null;
+
+    // 키보드 상태
+    keyboardShow = false;
+
+    // 검색 화면 Visible;
+    searchViewVisible
+
+    // 화면 갱신 함수 포인터
+    refreshRenderRef = null;
 
     static GetInstance()
     {
@@ -27,6 +55,7 @@ export default class FatosUIManager {
 
     }
 
+    /* ui Visible */
     showView(index)
     {
         for(var i = 0; i < this.mViewVisibleList.length; ++ i)
@@ -75,5 +104,191 @@ export default class FatosUIManager {
     isSummaryViewVisible()
     {
         return this.isViewVisible(this.eViewMode.eSummaryView);
+    }
+
+    setDriveMode(val)
+    {
+        this.mDriveMode = val;
+    }
+
+    getDriveMode()
+    {
+        return this.mDriveMode;
+    }
+
+    /* ui view get/set */
+
+    setBottomView(view)
+    {
+        this.bottomView = view;
+    }
+
+    getBottomView()
+    {
+        return this.bottomView;
+    }
+
+    setSearchListView(view)
+    {
+        this.searchListView = view;
+    }
+
+    getSearchListView()
+    {
+        return this.searchListView;
+    }
+
+    setSummarySearchListView(view)
+    {
+        this.summarySearchListView = view;
+    }
+
+    getSummarySearchListView()
+    {
+        return this.summarySearchListView;
+    }
+
+    setSummarySearchView(view)
+    {
+        this.summarySearchView = view;
+    }
+
+    getSummarySearchView()
+    {
+        return this.summarySearchView;
+    }
+
+    setFirstTbTView(view)
+    {
+        this.firstTbTView = view;
+    }
+
+    getFirstTbTView()
+    {
+        return this.firstTbTView;
+    }
+
+    setSecondTbTView(view)
+    {
+        this.secondTbTView = view;
+    }
+
+    getSecondTbTView()
+    {
+        return this.secondTbTView;
+    }
+
+    setSpeedoMeterView(view)
+    {
+        this.speedoMeterView = view;
+    }
+
+    getSpeedoMeterView()
+    {
+        return this.speedoMeterView;
+    }
+
+    setSDIView(view)
+    {
+        this.SDIView = view;
+    }
+
+    getSDIView()
+    {
+        return this.SDIView;
+    }
+
+    setSearchView(view)
+    {
+        this.searchView = view;
+    }
+
+    getSearchView()
+    {
+        return this.searchView;
+    }
+
+    setRouteSummaryView(view)
+    {
+        this.routeSummaryView = view;
+    }
+
+    getRouteSummaryView()
+    {
+        return this.routeSummaryView;
+    }
+
+    setLaneView(view)
+    {
+        this.laneView = view;
+    }
+
+    getLaneView()
+    {
+        return this.laneView;
+    }
+
+    setRGView(view)
+    {
+        this.RGView = view;
+    }
+
+    getRGView()
+    {
+        return this.RGView;
+    }
+
+    setDialog(view)
+    {
+        this.Dialog = view;
+    }
+
+    getDialog()
+    {
+        this.Dialog;
+    }
+
+    /* event */
+
+    onSearchClose()
+    {
+        // if(this.searchListView !== null)
+        {
+            console.log("simsimsim onSearchClose");
+            this.searchListView.clearSearchData();
+        }
+    }
+
+    getkeyboardShow(val)
+    {
+        this.keyboardShow = val;
+    }
+
+    iskeyboardShow()
+    {
+        return this.keyboardShow;
+    }
+
+    setRefreshRenderRef(ref)
+    {
+        this.refreshRenderRef = ref;
+    }
+
+    onRefreshRender()
+    {
+        if(this.refreshRenderRef !== null)
+        {
+            this.refreshRenderRef();
+        }
+    }
+
+    setSearchViewVisible(val)
+    {
+        this.searchViewVisible = val;
+    }
+
+    isSearchViewVisible()
+    {
+        return this.searchViewVisible;
     }
 }

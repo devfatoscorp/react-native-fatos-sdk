@@ -9,14 +9,6 @@ class FatosWebView extends Component {
         super(props);
     }
 
-    componentWillMount () {
-
-    }
-
-    componentWillUnmount () {
-
-    }
-
     render () {
 
         return <FatosWebViewNative style={styles.webViewStyle} />;

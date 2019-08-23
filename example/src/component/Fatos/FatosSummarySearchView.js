@@ -30,7 +30,7 @@ const images = [
     ,require('../../../res/drawable/btn_change_n.png')
 ];
 
-export default class FatosSummarySearchView extends React.Component {
+export default class isSummaryViewVisible extends React.Component {
 
     state = {
         searchStartText : '',

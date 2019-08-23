@@ -1,0 +1,402 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8440C5C822FD71A80047A287 /* FatosMapViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8440C5B522FD71A80047A287 /* FatosMapViewManager.m */; };
+		8440C5C922FD71A80047A287 /* FatosWebViewManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8440C5B622FD71A80047A287 /* FatosWebViewManager.mm */; };
+		8440C5CA22FD71A80047A287 /* FatosNaviBridgeModule.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8440C5B922FD71A80047A287 /* FatosNaviBridgeModule.mm */; };
+		8440C5CB22FD71A80047A287 /* FatosEnvBridgeModule.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8440C5BA22FD71A80047A287 /* FatosEnvBridgeModule.mm */; };
+		8440C5CC22FD71A80047A287 /* FatosMapViewBridgeModule.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8440C5BD22FD71A80047A287 /* FatosMapViewBridgeModule.mm */; };
+		8440C5CD22FD71A80047A287 /* FatosRootView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8440C5C122FD71A80047A287 /* FatosRootView.mm */; };
+		8440C5CE22FD71A80047A287 /* FatoseSettingManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8440C5C222FD71A80047A287 /* FatoseSettingManager.mm */; };
+		8440C5CF22FD71A80047A287 /* FatosWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8440C5C522FD71A80047A287 /* FatosWebView.m */; };
+		8440C5D022FD71A80047A287 /* FatosAppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8440C5C722FD71A80047A287 /* FatosAppDelegate.mm */; };
+		C693909223068C9A0069A76F /* libFatos.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C693909123068C9A0069A76F /* libFatos.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		8440C54522FD70550047A287 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		8440C54722FD70550047A287 /* libRCTFatos.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRCTFatos.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		8440C5B422FD71A80047A287 /* FatosWebViewManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FatosWebViewManager.h; sourceTree = "<group>"; };
+		8440C5B522FD71A80047A287 /* FatosMapViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FatosMapViewManager.m; sourceTree = "<group>"; };
+		8440C5B622FD71A80047A287 /* FatosWebViewManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = FatosWebViewManager.mm; sourceTree = "<group>"; };
+		8440C5B822FD71A80047A287 /* FatosNaviBridgeModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FatosNaviBridgeModule.h; sourceTree = "<group>"; };
+		8440C5B922FD71A80047A287 /* FatosNaviBridgeModule.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = FatosNaviBridgeModule.mm; sourceTree = "<group>"; };
+		8440C5BA22FD71A80047A287 /* FatosEnvBridgeModule.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = FatosEnvBridgeModule.mm; sourceTree = "<group>"; };
+		8440C5BB22FD71A80047A287 /* FatosMapViewBridgeModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FatosMapViewBridgeModule.h; sourceTree = "<group>"; };
+		8440C5BC22FD71A80047A287 /* FatosEnvBridgeModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FatosEnvBridgeModule.h; sourceTree = "<group>"; };
+		8440C5BD22FD71A80047A287 /* FatosMapViewBridgeModule.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = FatosMapViewBridgeModule.mm; sourceTree = "<group>"; };
+		8440C5BE22FD71A80047A287 /* FatosMapViewManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FatosMapViewManager.h; sourceTree = "<group>"; };
+		8440C5C022FD71A80047A287 /* FatosWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FatosWebView.h; sourceTree = "<group>"; };
+		8440C5C122FD71A80047A287 /* FatosRootView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = FatosRootView.mm; sourceTree = "<group>"; };
+		8440C5C222FD71A80047A287 /* FatoseSettingManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = FatoseSettingManager.mm; sourceTree = "<group>"; };
+		8440C5C322FD71A80047A287 /* FatoseSettingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FatoseSettingManager.h; sourceTree = "<group>"; };
+		8440C5C422FD71A80047A287 /* FatosRootView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FatosRootView.h; sourceTree = "<group>"; };
+		8440C5C522FD71A80047A287 /* FatosWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FatosWebView.m; sourceTree = "<group>"; };
+		8440C5C622FD71A80047A287 /* FatosAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FatosAppDelegate.h; sourceTree = "<group>"; };
+		8440C5C722FD71A80047A287 /* FatosAppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = FatosAppDelegate.mm; sourceTree = "<group>"; };
+		C693909123068C9A0069A76F /* libFatos.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libFatos.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		C6DD05BD23066941005031CF /* libReact.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libReact.a; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8440C54422FD70550047A287 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C693909223068C9A0069A76F /* libFatos.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8440C53E22FD70550047A287 = {
+			isa = PBXGroup;
+			children = (
+				8440C54922FD70550047A287 /* RCTFatos */,
+				8440C54822FD70550047A287 /* Products */,
+				8440C55A22FD70BF0047A287 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		8440C54822FD70550047A287 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8440C54722FD70550047A287 /* libRCTFatos.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8440C54922FD70550047A287 /* RCTFatos */ = {
+			isa = PBXGroup;
+			children = (
+				8440C5C622FD71A80047A287 /* FatosAppDelegate.h */,
+				8440C5C722FD71A80047A287 /* FatosAppDelegate.mm */,
+				8440C5B322FD71A80047A287 /* FatosRNSDK */,
+				8440C5BF22FD71A80047A287 /* FatosSDK */,
+			);
+			path = RCTFatos;
+			sourceTree = "<group>";
+		};
+		8440C55A22FD70BF0047A287 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C693909123068C9A0069A76F /* libFatos.a */,
+				C6DD05BD23066941005031CF /* libReact.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8440C5B322FD71A80047A287 /* FatosRNSDK */ = {
+			isa = PBXGroup;
+			children = (
+				8440C5BE22FD71A80047A287 /* FatosMapViewManager.h */,
+				8440C5B522FD71A80047A287 /* FatosMapViewManager.m */,
+				8440C5B422FD71A80047A287 /* FatosWebViewManager.h */,
+				8440C5B622FD71A80047A287 /* FatosWebViewManager.mm */,
+				8440C5B722FD71A80047A287 /* NativeModules */,
+			);
+			path = FatosRNSDK;
+			sourceTree = "<group>";
+		};
+		8440C5B722FD71A80047A287 /* NativeModules */ = {
+			isa = PBXGroup;
+			children = (
+				8440C5B822FD71A80047A287 /* FatosNaviBridgeModule.h */,
+				8440C5B922FD71A80047A287 /* FatosNaviBridgeModule.mm */,
+				8440C5BB22FD71A80047A287 /* FatosMapViewBridgeModule.h */,
+				8440C5BA22FD71A80047A287 /* FatosEnvBridgeModule.mm */,
+				8440C5BC22FD71A80047A287 /* FatosEnvBridgeModule.h */,
+				8440C5BD22FD71A80047A287 /* FatosMapViewBridgeModule.mm */,
+			);
+			path = NativeModules;
+			sourceTree = "<group>";
+		};
+		8440C5BF22FD71A80047A287 /* FatosSDK */ = {
+			isa = PBXGroup;
+			children = (
+				8440C5C022FD71A80047A287 /* FatosWebView.h */,
+				8440C5C122FD71A80047A287 /* FatosRootView.mm */,
+				8440C5C322FD71A80047A287 /* FatoseSettingManager.h */,
+				8440C5C222FD71A80047A287 /* FatoseSettingManager.mm */,
+				8440C5C422FD71A80047A287 /* FatosRootView.h */,
+				8440C5C522FD71A80047A287 /* FatosWebView.m */,
+			);
+			path = FatosSDK;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8440C54622FD70550047A287 /* RCTFatos */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8440C55022FD70550047A287 /* Build configuration list for PBXNativeTarget "RCTFatos" */;
+			buildPhases = (
+				8440C54322FD70550047A287 /* Sources */,
+				8440C54422FD70550047A287 /* Frameworks */,
+				8440C54522FD70550047A287 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RCTFatos;
+			productName = RCTFatos;
+			productReference = 8440C54722FD70550047A287 /* libRCTFatos.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8440C53F22FD70550047A287 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1030;
+				ORGANIZATIONNAME = fatos;
+				TargetAttributes = {
+					8440C54622FD70550047A287 = {
+						CreatedOnToolsVersion = 10.3;
+					};
+				};
+			};
+			buildConfigurationList = 8440C54222FD70550047A287 /* Build configuration list for PBXProject "RCTFatos" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 8440C53E22FD70550047A287;
+			productRefGroup = 8440C54822FD70550047A287 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8440C54622FD70550047A287 /* RCTFatos */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8440C54322FD70550047A287 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8440C5CD22FD71A80047A287 /* FatosRootView.mm in Sources */,
+				8440C5CB22FD71A80047A287 /* FatosEnvBridgeModule.mm in Sources */,
+				8440C5C822FD71A80047A287 /* FatosMapViewManager.m in Sources */,
+				8440C5C922FD71A80047A287 /* FatosWebViewManager.mm in Sources */,
+				8440C5D022FD71A80047A287 /* FatosAppDelegate.mm in Sources */,
+				8440C5CE22FD71A80047A287 /* FatoseSettingManager.mm in Sources */,
+				8440C5CA22FD71A80047A287 /* FatosNaviBridgeModule.mm in Sources */,
+				8440C5CC22FD71A80047A287 /* FatosMapViewBridgeModule.mm in Sources */,
+				8440C5CF22FD71A80047A287 /* FatosWebView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		8440C54E22FD70550047A287 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		8440C54F22FD70550047A287 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		8440C55122FD70550047A287 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = H5PZ4W68LT;
+				HEADER_SEARCH_PATHS = (
+					"\"$(SRCROOT)/../../FatosHi/ios/Pods/Headers/Public\"",
+					"\"$(SRCROOT)/../../FatosHi/ios/Pods/Headers/Public/React-Core\"",
+					"$(SRCROOT)/../example/node_modules/react-native",
+					"\"$(SRCROOT)/../../Fatos_iOS/common\"",
+					"\"$(SRCROOT)/../../Fatos_iOS/config\"",
+					"\"$(SRCROOT)/../../Fatos_iOS/nativeMap\"",
+					"\"$(SRCROOT)/../../Fatos_iOS/nativeNavi\"",
+					"\"$(SRCROOT)/../../Fatos_iOS/openAPI\"",
+					"\"$(SRCROOT)/../../Fatos_iOS/service\"",
+					"$(SRCROOT)/include",
+				);
+				LIBRARY_SEARCH_PATHS = "$(SRCROOT)";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		8440C55222FD70550047A287 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = H5PZ4W68LT;
+				HEADER_SEARCH_PATHS = (
+					"\"$(SRCROOT)/../../FatosHi/ios/Pods/Headers/Public\"",
+					"\"$(SRCROOT)/../../FatosHi/ios/Pods/Headers/Public/React-Core\"",
+					"$(SRCROOT)/../example/node_modules/react-native",
+					"\"$(SRCROOT)/../../Fatos_iOS/common\"",
+					"\"$(SRCROOT)/../../Fatos_iOS/config\"",
+					"\"$(SRCROOT)/../../Fatos_iOS/nativeMap\"",
+					"\"$(SRCROOT)/../../Fatos_iOS/nativeNavi\"",
+					"\"$(SRCROOT)/../../Fatos_iOS/openAPI\"",
+					"\"$(SRCROOT)/../../Fatos_iOS/service\"",
+					"$(SRCROOT)/include",
+				);
+				LIBRARY_SEARCH_PATHS = "$(SRCROOT)";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8440C54222FD70550047A287 /* Build configuration list for PBXProject "RCTFatos" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8440C54E22FD70550047A287 /* Debug */,
+				8440C54F22FD70550047A287 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8440C55022FD70550047A287 /* Build configuration list for PBXNativeTarget "RCTFatos" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8440C55122FD70550047A287 /* Debug */,
+				8440C55222FD70550047A287 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 8440C53F22FD70550047A287 /* Project object */;
+}

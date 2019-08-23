@@ -1,0 +1,43 @@
+{
+  "language": 1,
+  "distance": 0,
+  "speed": 0,
+  "keyboard_type" : 0,
+  "mapcolor" : 2, 
+  "pathlinecolor" : 0,
+  "smart_driving_mode" : true,
+  "carvata" : 0,
+   "camera": [
+    true,
+    true,
+    true,
+    false,
+    false,
+    false
+  ],
+   "operation_state": [
+       
+    false,
+    false,
+    false
+  ],
+  "facility" : [
+    true
+  ],
+  "guidevoice" : 0,
+   "navigation_options": [
+    true,
+    true,
+    true,
+    false,
+    false
+  ],
+  "rediscover" : 0,
+  "way_point" : 1,
+  "cartype" : 1,
+  "hipass" : false,
+  "fuel" : 0,
+  "seat_position" : 0,
+  "dem" : false,
+  "simul_gps" : false
+}

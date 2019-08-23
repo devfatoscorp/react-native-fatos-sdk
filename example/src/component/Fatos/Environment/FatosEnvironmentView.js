@@ -5,8 +5,8 @@ import {
     TouchableOpacity,
     View,
     Image,
-    Dimensions
-} from 'react-native'
+    Dimensions, BackHandler,
+} from 'react-native';
 
 import FastImage from 'react-native-fast-image'
 import {
@@ -17,9 +17,12 @@ import {
     SceneRendererProps,
 } from 'react-native-tab-view';
 
+
+
 import GeneralView from './FatosGeneralView';
 import NavigationView from  './FatosNavigationView';
 import FatosLanguageManager from '../../Manager/FatosLanguageManager';
+import FatosUIManager from '../../Manager/FatosUIManager';
 
 const backImg = [
     require('../../../../res/drawable/btn_1_4_1.png')
@@ -63,13 +66,22 @@ export default class FatosEnvironmentView extends Component {
         this.languageManager.addCalback(this.changeLanguage.bind(this),this.constructor.name);
     }
 
-    componentDidMount()
-    {
+    componentDidMount() {
 
+        this.backHandler = BackHandler.addEventListener('hardwareBackPress', this.handleBackPress.bind(this));
     }
+
 
     componentWillUnmount(){
         this.languageManager.removeCallback(this.constructor.name);
+        this.backHandler.remove();
+    }
+
+
+    handleBackPress()
+    {
+        this.onPressBack();
+        return true;
     }
 
     changeLanguage()

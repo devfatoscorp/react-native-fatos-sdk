@@ -22,11 +22,6 @@ export default class FatosVersionInfoView extends Component {
         this.preloadImages();
     }
 
-    componentDidMount()
-    {
-
-    }
-
     preloadImages()
     {
         var uris = backImg.map(image => ({

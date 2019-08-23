@@ -9,10 +9,6 @@ import {
 
 export default class FatosIndicator extends Component {
 
-    componentDidMount() {
-
-    }
-
     render() {
 
         return  <View style={StyleSheet.absoluteFill}>

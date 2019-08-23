@@ -90,6 +90,10 @@ export default class FatosBottomView extends Component {
         this.languageManager = FatosLanguageManager.GetInstance();
 
         this.preloadImages();
+    }
+
+    componentDidMount()
+    {
         // 현재 시간 갱신
         setInterval( () => {
 
@@ -116,8 +120,6 @@ export default class FatosBottomView extends Component {
             })
 
         }, 1000);
-
-
     }
 
     preloadImages()
@@ -516,10 +518,7 @@ export default class FatosBottomView extends Component {
 
     setVisible(val)
     {
-        if(val !== this.state.visible)
-        {
-            this.setState({visible : val});
-        }
+        this.setState({visible : val});
     }
 
     render () {

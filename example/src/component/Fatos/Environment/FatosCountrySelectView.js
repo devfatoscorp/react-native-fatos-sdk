@@ -14,6 +14,9 @@ import {
 import COMMON from "../../common/common";
 import FastImage from 'react-native-fast-image';
 import FatosLanguageManager from "../../Manager/FatosLanguageManager";
+import FatosUIManager from '../../Manager/FatosUIManager';
+import Toast from 'react-native-root-toast';
+
 const Images = [
     require('../../../../res/drawable/btn_1_4_1.png'),
     require('../../../../res/drawable/icon_check.png')
@@ -31,16 +34,12 @@ export default class FatosCountrySelectView extends Component {
         };
 
         this.languageManager = FatosLanguageManager.GetInstance();
+        this.toast = null;
     }
 
     componentDidMount()
     {
         this.getlanguage();
-    }
-
-    componentWillUnmount()
-    {
-
     }
 
     getlanguage()
@@ -105,6 +104,34 @@ export default class FatosCountrySelectView extends Component {
         this.setState({ language : index });
         this.setListData();
         this.onPressBack();
+
+        var nDriveMode = FatosUIManager.GetInstance().getDriveMode();
+
+        if(nDriveMode === COMMON.eDriveMode.eDrive_RG || nDriveMode === COMMON.eDriveMode.eDrive_Simulation)
+        {
+            this.showToast();
+        }
+    }
+
+    showToast()
+    {
+        if(this.toast != null)
+            return;
+
+        var languageManager = FatosLanguageManager.GetInstance();
+        var message = languageManager.getCodeName("language_change_error");
+        this.toast = Toast.show(message, {
+            duration: 3000,
+            position: -50,
+            shadow: true,
+            animation: true,
+            hideOnPress: false,
+
+            onHidden: () => {
+                this.toast.destroy();
+                this.toast = null;
+            }
+        });
     }
 
     showAlert(index)

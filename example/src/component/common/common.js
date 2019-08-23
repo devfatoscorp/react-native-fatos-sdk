@@ -120,12 +120,6 @@ export default {
     MAX_ROUTE_OPTION : 4,
     TEST_BUTTON : false,
 
-    // 검색 서버 분기 값
-    SEARCH_TYPE : {
-        SEARCH_KR : 0,
-        SEARCH_FATOS : 1,
-    },
-
-    SEARCH_FLAG : 1,
+    SEARCH_VIEW_HIDE_TIME : 7000 // 7초
 
 };

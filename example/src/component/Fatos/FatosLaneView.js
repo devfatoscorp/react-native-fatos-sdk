@@ -338,6 +338,7 @@ export default class FatosLaneView extends Component {
         if(this.state.visible === false)
             return null;
 
+
         if(FatosUtil.checkData(this.state.laneInfo) === false)
             return null;
 

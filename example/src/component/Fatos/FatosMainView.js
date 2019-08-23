@@ -3,11 +3,11 @@ import {
     View,
     NativeModules, NativeEventEmitter,
     Platform,
-    Dimensions
-} from 'react-native'
+    Dimensions, Keyboard,
+    BackHandler,
+} from 'react-native';
 import React, { Component ,findNodeHandle } from 'react'
 
-import PopupWindow from '../PopupWindow'
 import FatosMapView from './FatosMapView'
 import FirstTbT from "./FirstTbT";
 import SecondTbT from "./SecondTbT";
@@ -39,7 +39,9 @@ export default class FatosMainView extends Component {
         summaryData : null,
         startName : '',
         goalName : '',
-        languageIndex : 0
+        languageIndex : 0,
+        searchViewVisible : false,
+        render : true
     };
 
     constructor(props) {
@@ -117,9 +119,12 @@ export default class FatosMainView extends Component {
         }
 
         FatosUIManager.GetInstance().showDefaultView();
+        FatosUIManager.GetInstance().setRefreshRenderRef(this.onRefreshRender.bind(this));
 
         this.languageManager = FatosLanguageManager.GetInstance();
         this.languageManager.addCalback(this.changeLanguage.bind(this),this.constructor.name);
+
+        this.searchViewTimeout = null;
     }
 
     componentDidMount() {
@@ -144,12 +149,58 @@ export default class FatosMainView extends Component {
             })
 
         }, 1000);
+
+        // 키보드 올라올때
+        Keyboard.addListener("keyboardWillShow",()=>{
+            FatosUIManager.GetInstance().getkeyboardShow(true);
+
+        });
+
+        // 키보드 내려갈때
+        Keyboard.addListener("keyboardWillHide",()=>{
+            FatosUIManager.GetInstance().getkeyboardShow(false);
+        });
+
+        this.backHandler = BackHandler.addEventListener('hardwareBackPress', this.handleBackPress.bind(this));
     }
 
     componentWillUnmount(){
         this.languageManager.removeCallback(this.constructor.name);
+        this.backHandler.remove();
+    }
 
-        this.bind();
+    handleBackPress()
+    {
+        // 로딩중일때
+        if(this.state.indicatorVisible === true)
+        {
+            return true;
+        }
+
+        // 검색 리스트
+        if(FatosUIManager.GetInstance().getSearchListView() !== null)
+        {
+            if(FatosUIManager.GetInstance().getSearchListView().getIsData() === true)
+            {
+                FatosUIManager.GetInstance().onSearchClose();
+                FatosUIManager.GetInstance().setSearchViewVisible(false);
+                FatosUIManager.GetInstance().onRefreshRender();
+                return true;
+            }
+        }
+
+        // 경로 요약 화면
+        if(FatosUIManager.GetInstance().isSummaryViewVisible() === true)
+        {
+            if(FatosUIManager.GetInstance().getSummarySearchView() !== null)
+            {
+                FatosUIManager.GetInstance().getSummarySearchView().onPressClose();
+                return true;
+            }
+        }
+
+        this.native.AndroidBackPress();
+        return true;
     }
 
     changeLanguage()
@@ -165,9 +216,12 @@ export default class FatosMainView extends Component {
                 // this.setState({ rgData : JSON.parse(data) });
                 this.rgData = JSON.parse(data);
 
+                FatosUIManager.GetInstance().setDriveMode(this.rgData.DriveMode);
+
                 this.firstTbTViewRef.current.setRgData(this.rgData);
                 this.secondTbTViewRef.current.setRgData(this.rgData);
                 this.speedoMeterViewRef.current.setRgData(this.rgData);
+                this.SDIViewRef.current.setRgData(this.rgData);
                 this.bottomViewRef.current.setRgData(this.rgData);
                 this.laneViewRef.current.setRgData(this.rgData);
                 this.searchViewRef.current.setRgData(this.rgData);
@@ -179,7 +233,6 @@ export default class FatosMainView extends Component {
                 console.log("simsimsim UpdateRGListener error: " + error);
                 this.rgData = null;
             }
-
         }
     }
 
@@ -365,6 +418,87 @@ export default class FatosMainView extends Component {
         this.setState({ goalName : goalName });
     }
 
+    handleStartShouldSetResponder(evt)
+    {
+        // TouchBegin
+        // 키보드 내리기
+        Keyboard.dismiss();
+
+        // 메뉴ui 숨기기
+        this.bottomViewRef.current.showMenu(false);
+
+        // 검색창 show/hide
+        this.onSearchViewVisible();
+
+        return true;
+    }
+
+    handleMoveShouldSetResponder(evt)
+    {
+        // TouchMoved
+    }
+
+    handleResponderRelease(evt)
+    {
+        // TouchEnded
+    }
+
+    onSearchViewVisible()
+    {
+        FatosUIManager.GetInstance().setSearchViewVisible(true);
+        this.onRefreshRender();
+
+        if(this.searchViewTimeout !== null)
+        {
+            clearTimeout(this.searchViewTimeout);
+            this.searchViewTimeout = null;
+        }
+
+        this.searchViewTimeout = setTimeout(() => {
+
+            if(FatosUIManager.GetInstance().iskeyboardShow() === true)
+            {
+                // 키보드가 올라 왔을떄
+                return;
+            }
+            else
+            {
+                // 키보드가 내려 갔을떄
+
+                if(this.searchListViewRef.current.getIsData() === true)
+                {
+                    // 검색리스트가 있을떄
+                    return;
+                }
+            }
+
+            // 검색중일떄
+            if(this.state.indicatorVisible === true)
+            {
+                return;
+            }
+
+            FatosUIManager.GetInstance().setSearchViewVisible(false);
+            this.onRefreshRender();
+
+
+
+        }, COMMON.SEARCH_VIEW_HIDE_TIME);
+    }
+
+    // 화면 갱신 함수
+    onRefreshRender()
+    {
+        var refresh = true;
+
+        if(this.state.render === true)
+        {
+            refresh = false;
+        }
+
+        this.setState( {rander : refresh});
+    }
+
     render() {
 
         var indicator = null;
@@ -383,14 +517,14 @@ export default class FatosMainView extends Component {
         var summarySearchListView = null;
         var laneView = null;
 
-        if(this.state.indicatorVisible == true)
+        if(this.state.indicatorVisible === true)
         {
             indicator = <FatosIndicator />;
         }
 
         if(this.state.permissionComplete == true)
         {
-            mapView = <FatosMapView bottomViewRef={this.bottomViewRef} />;
+            mapView = <FatosMapView />;
             firstTbTView = <FirstTbT ref={this.firstTbTViewRef} />;
             secondTbTView = <SecondTbT ref={this.secondTbTViewRef} />;
             speedoMeterView = <SpeedoMeter ref={this.speedoMeterViewRef} />;
@@ -432,8 +566,25 @@ export default class FatosMainView extends Component {
             }
         }
 
+        // UIManager view Ref set
+        FatosUIManager.GetInstance().setBottomView(this.bottomViewRef.current);
+        FatosUIManager.GetInstance().setSearchListView(this.searchListViewRef.current);
+        FatosUIManager.GetInstance().setSummarySearchListView(this.searchListViewRef.current);
+        FatosUIManager.GetInstance().setSummarySearchView(this.summarySearchViewRef.current);
+        FatosUIManager.GetInstance().setFirstTbTView(this.firstTbTViewRef.current);
+        FatosUIManager.GetInstance().setSecondTbTView(this.secondTbTViewRef.current);
+        FatosUIManager.GetInstance().setSDIView(this.SDIViewRef.current);
+        FatosUIManager.GetInstance().setSearchView(this.searchViewRef.current);
+        FatosUIManager.GetInstance().setRouteSummaryView(this.routeSummaryViewRef.current);
+        FatosUIManager.GetInstance().setLaneView(this.laneViewRef.current);
+        FatosUIManager.GetInstance().setRGView(this.RGViewRef.current);
+
         return (
-            <View style={styles.container}>
+            <View style={styles.container}
+                  onStartShouldSetResponder={(evt) => this.handleStartShouldSetResponder(evt)}
+                  onMoveShouldSetResponder={(evt) => this.handleMoveShouldSetResponder(evt)}
+                  onResponderRelease={ (evt) => this.handleResponderRelease(evt) }>
+
                 {mapView}
                 {firstTbTView}
                 {secondTbTView}

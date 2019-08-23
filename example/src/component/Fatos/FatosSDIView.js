@@ -152,9 +152,6 @@ export default class FatosSDIView extends React.Component {
     setRgData(data)
     {
         this.rgData = data;
-
-        if(this.isShow() === false)
-            return;
     }
 
     update()
@@ -164,10 +161,7 @@ export default class FatosSDIView extends React.Component {
 
     setVisible(val)
     {
-        if(val !== this.state.visible)
-        {
-            this.setState({visible : val});
-        }
+        this.setState({visible : val});
     }
 
     render () {

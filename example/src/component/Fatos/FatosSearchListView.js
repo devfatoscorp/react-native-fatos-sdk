@@ -8,7 +8,7 @@ import {
     NativeEventEmitter,
 } from 'react-native'
 
-import COMMON from '../common/common';
+import FatosUtil from '../common/FatosUtil';
 import FatosUIManager from '../Manager/FatosUIManager';
 
 export default class FatosSearchListView extends React.Component {
@@ -22,6 +22,7 @@ export default class FatosSearchListView extends React.Component {
         seed: 1,
         error: null,
         refreshing: false,
+        visible : false
     };
 
     constructor(props) {
@@ -62,10 +63,21 @@ export default class FatosSearchListView extends React.Component {
                     var enty = items[i].enty;
                     var dist = items[i].id;
 
+                    var fullAddName;
+
+                    if(FatosUtil.isStringEmpty(addr2) === true)
+                    {
+                        fullAddName = addr1;
+                    }
+                    else
+                    {
+                        fullAddName = addr2;
+                    }
+
                     data.push({
                         id: id,
                         name: name,
-                        fullAddName: addr2,
+                        fullAddName: fullAddName,
                         key: i,
                         frontLat: posy.toString(),
                         frontLon : posx.toString(),
@@ -110,10 +122,17 @@ export default class FatosSearchListView extends React.Component {
 
     setVisible(val)
     {
-        if(val !== this.state.visible)
+        this.setState({visible : val});
+    }
+
+    getIsData()
+    {
+        if(this.state.data.length === 0)
         {
-            this.setState({visible : val});
+            return false;
         }
+
+        return true;
     }
 
     render () {

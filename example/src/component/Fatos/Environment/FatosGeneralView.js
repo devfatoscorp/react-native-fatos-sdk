@@ -18,6 +18,8 @@ import Dialog, {
     ScaleAnimation,
 } from 'react-native-popup-dialog';
 import SwitchSelector from "react-native-switch-selector";
+import FatosUIManager from '../../Manager/FatosUIManager';
+import Toast from 'react-native-root-toast';
 
 
 export default class FatosGeneralView extends Component {
@@ -31,6 +33,7 @@ export default class FatosGeneralView extends Component {
 
     constructor(props) {
         super(props);
+
 
         this.languageManager = FatosLanguageManager.GetInstance();
         this.state.languageIndex = this.languageManager.getLanguageIndex();
@@ -53,11 +56,6 @@ export default class FatosGeneralView extends Component {
                 this.state.simulGps = (result === 'true');
             }
         });
-    }
-
-    componentDidMount()
-    {
-
     }
 
     componentWillUnmount(){
@@ -178,7 +176,6 @@ export default class FatosGeneralView extends Component {
 
         return dialogContent;
     }
-
 
     render() {
 

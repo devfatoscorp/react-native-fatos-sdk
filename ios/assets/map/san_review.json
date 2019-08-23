@@ -1,0 +1,48 @@
+{"frames": [
+
+{
+	"filename": "map_point_ing_nor.png",
+	"frame": {"x":0,"y":0,"w":88,"h":108},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":88,"h":108},
+	"sourceSize": {"w":88,"h":108},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "map_point_ing_sel.png",
+	"frame": {"x":88,"y":0,"w":88,"h":108},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":88,"h":108},
+	"sourceSize": {"w":88,"h":108},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "map_point_ok_nor.png",
+	"frame": {"x":176,"y":0,"w":88,"h":108},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":88,"h":108},
+	"sourceSize": {"w":88,"h":108},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "map_point_ok_sel.png",
+	"frame": {"x":264,"y":0,"w":88,"h":108},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":88,"h":108},
+	"sourceSize": {"w":88,"h":108},
+	"pivot": {"x":0.5,"y":0.5}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "san_review.png",
+	"format": "RGBA8888",
+	"size": {"w":352,"h":108},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:539d435420d55b79366de6c38b5beb64:e1a8d59a6a65ad769d11559e6421cf93:1154268dd7ebd63250952efd0889e5fa$"
+}
+}
