@@ -213,6 +213,8 @@ export default class FatosMainView extends Component {
         if(this.state.permissionComplete == true)
         {
             try {
+
+
                 // this.setState({ rgData : JSON.parse(data) });
                 this.rgData = JSON.parse(data);
 
@@ -325,11 +327,12 @@ export default class FatosMainView extends Component {
 
             if (error)
             {
+                console.log("simsimsim summaryData error : " + error);
                 console.error(error);
             }
             else
             {
-                // console.log("simsimsim summaryData : " + result);
+                console.log("simsimsim summaryData : " + result);
 
                 if(FatosUtil.isStringEmpty(result) === true)
                 {
@@ -378,6 +381,12 @@ export default class FatosMainView extends Component {
                 }
 
                 this.routeSummaryViewRef.current.setSummaryData(this.state.summaryData);
+
+                // 이전 선택된 인덱스 셋팅
+                var index = FatosUIManager.GetInstance().getSelectRouteLine();
+                var mapViewBridgeModule = NativeModules.FatosMapViewBridgeModule;
+                mapViewBridgeModule.SelectRouteLine(index);
+                this.routeSummaryViewRef.current.onScrollEnd(index);
             }
         })
     }

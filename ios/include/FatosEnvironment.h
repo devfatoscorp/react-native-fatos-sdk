@@ -65,13 +65,21 @@ namespace sdk {
         SDI_CODE_COUNT          // SDI 코드 개수
     };
     
-    static const int ROUTE_OPTION1 = 1; // 추천1
-    static const int ROUTE_OPTION2 = 2; // 추천2
-    static const int ROUTE_OPTION3 = 4; // 고속도로 우선
-    static const int ROUTE_OPTION4 = 8; // 일반도로 우선
-    static const int ROUTE_OPTION5 = 16; // 최단거리
-    static const int ROUTE_OPTION6 = 32; // 무료도로
+    static const int ROUTE_OPTION1 = 0x01; // 추천1
+    static const int ROUTE_OPTION2 = 0x02; // 추천2
+    static const int ROUTE_OPTION3 = 0x04; // 고속도로 우선
+    static const int ROUTE_OPTION4 = 0x08; // 일반도로 우선
+    static const int ROUTE_OPTION5 = 0x0F; // 최단거리
+    static const int ROUTE_OPTION6 = 0x20; // 무료도로
+    
+    static const int MAX_ROUTE_OPTION = 3;
+    static const int ROUTE_OPTION[MAX_ROUTE_OPTION] = {
+        ROUTE_OPTION1,
+        ROUTE_OPTION4,
+        ROUTE_OPTION6
+    };
 }
+
 @interface FatosEnvironment : NSObject {
   NSMutableDictionary *jsonDic;
 }

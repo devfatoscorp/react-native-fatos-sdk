@@ -20,8 +20,6 @@
 
 - (void)setHidden:(BOOL)hidden
 {
-  // react 에서 화면 전환시 강제로 hidden YES 값 셋팅
-  // setWebViewVisible 사용할것
   return;
 }
 

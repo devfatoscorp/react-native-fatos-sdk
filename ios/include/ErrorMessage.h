@@ -14,9 +14,6 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSString* const) getErrMsg:(int)errorCode;
 @end
 
-/**
- * addr search 성공 Intent Extra 값
- */
 extern int const ADDR_SEARCH_ERROR;
 extern int const ADDR_SEARCH_SUCCESS;
 
@@ -25,42 +22,23 @@ extern NSString* const ADDR_SEARCH_SUCCESS_RESULT;
 extern NSString* const ADDR_FIX_CURPOS_SEARCH_SUCCESS;
 extern NSString* const ADDR_SEARCH_ERROR_RESULT;
 
-/**
- * 결과값 전송을 위한 Intent Extra 키
- */
 extern NSString* const HTTP_RESULT;
 extern NSString* const HTTP_CODE;
 extern NSString* const COMM_TYPE;
-/**
- * 성공 Intent Extra 값
- */
+
 extern NSString* const POI_SUCCESS_RESULT;
-/**
- * 성공 Intent Extra 값
- */
+
 extern NSString* const RP_SUCCESS_RESULT;
 extern NSString* const RP_REROUTE_SUCCESS_RESULT;
-/**
- * 시간 지연 Intent Extra 값
- */
+
 extern NSString* const TIMEOUT_RESULT;
-/**
- * 맵 검색이 실패했을 경우 Intent Extra 값
- */
+
 extern NSString* const FAIL_MAP_RESULT;
-/**
- * 맵 검색이 실패했을 경우 Intent Extra 값
- */
+
 extern NSString* const FAIL_RP_RESULT;
 
-/**
- * 결과값 전송을 위한 Intent Extra 키
- */
 extern NSString* const RESULT;
 
-/**
- * 에러 Intent Extra 값
- */
 extern NSString* const ERROR_INFOSEED_RESULT;
 extern NSString* const ERROR_GOOGLE_RESULT;
 extern NSString* const ERROR_NAVER_RESULT;
@@ -68,9 +46,6 @@ extern NSString* const ERROR_EVWARE_RESULT;
 extern NSString* const ERROR_AUTH_RESULT;
 extern NSString* const ERROR_ADDR_RESULT;
 
-/**
- * 성공 Intent Extra 값
- */
 extern NSString* const SUCCESS_INFOSEED_RESULT;
 extern NSString* const SUCCESS_GOOGLE_RESULT;
 extern NSString* const SUCCESS_NAVER_RESULT;

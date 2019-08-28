@@ -331,15 +331,9 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = H5PZ4W68LT;
 				HEADER_SEARCH_PATHS = (
-					"\"$(SRCROOT)/../../FatosHi/ios/Pods/Headers/Public\"",
-					"\"$(SRCROOT)/../../FatosHi/ios/Pods/Headers/Public/React-Core\"",
+					"\"$(SRCROOT)/../example/ios/Pods/Headers/Public\"",
+					"\"$(SRCROOT)/../example/ios/Pods/Headers/Public/React-Core\"",
 					"$(SRCROOT)/../example/node_modules/react-native",
-					"\"$(SRCROOT)/../../Fatos_iOS/common\"",
-					"\"$(SRCROOT)/../../Fatos_iOS/config\"",
-					"\"$(SRCROOT)/../../Fatos_iOS/nativeMap\"",
-					"\"$(SRCROOT)/../../Fatos_iOS/nativeNavi\"",
-					"\"$(SRCROOT)/../../Fatos_iOS/openAPI\"",
-					"\"$(SRCROOT)/../../Fatos_iOS/service\"",
 					"$(SRCROOT)/include",
 				);
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)";
@@ -356,15 +350,9 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = H5PZ4W68LT;
 				HEADER_SEARCH_PATHS = (
-					"\"$(SRCROOT)/../../FatosHi/ios/Pods/Headers/Public\"",
-					"\"$(SRCROOT)/../../FatosHi/ios/Pods/Headers/Public/React-Core\"",
+					"\"$(SRCROOT)/../example/ios/Pods/Headers/Public\"",
+					"\"$(SRCROOT)/../example/ios/Pods/Headers/Public/React-Core\"",
 					"$(SRCROOT)/../example/node_modules/react-native",
-					"\"$(SRCROOT)/../../Fatos_iOS/common\"",
-					"\"$(SRCROOT)/../../Fatos_iOS/config\"",
-					"\"$(SRCROOT)/../../Fatos_iOS/nativeMap\"",
-					"\"$(SRCROOT)/../../Fatos_iOS/nativeNavi\"",
-					"\"$(SRCROOT)/../../Fatos_iOS/openAPI\"",
-					"\"$(SRCROOT)/../../Fatos_iOS/service\"",
 					"$(SRCROOT)/include",
 				);
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)";

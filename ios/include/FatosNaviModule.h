@@ -59,6 +59,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void) SetSDIFilter:(int *)pcodes pbuses:(bool*)pbuses nArray:(int)nArray;
 - (void) SetEnableFATOSGuideWDB:(bool)val;
 - (void) SetRouteAutoTime:(int)val;
+- (void) SetLanguage:(int)index;
 - (NSString *)RequestTmapSearchService:(NSString *)keywordName;
 - (NSString *)RequestFtsSearchService:(NSString *)keywordName;
 

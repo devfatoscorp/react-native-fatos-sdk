@@ -44,11 +44,11 @@ static eCommercialMode const build_RouteServerType  = Commercial;
 static eOnOffLineMode const build_OnOffLineMode     = ON_LINE_MODE;
 static eCommercialMode const buildRouteServerType   = build_AppType;
 
-static bool const build_SimulationGPSMode      = false; // 파일 GPS 사용여부
+static bool const build_SimulationGPSMode      = false;
 static bool const build_NewCertification       = true;
 static bool const build_mgl_location_update    = true;
-static bool const build_release_path           = false; // 릴리즈시 경로 분기처리
-static bool const build_documents_map_data     = false; // 도큐먼트 맵 데이터 저장
+static bool const build_release_path           = false;
+static bool const build_documents_map_data     = false;
 
 static int const FATOS_SITE_IS_FATOS           = 1;
 static int const FATOS_SITE_IS_NAVER           = 5;
@@ -77,11 +77,11 @@ static int const FATOS_SITE_IS_TNAVI           = 38;
 static int const FATOS_SITE_IS_TRUCK           = 39;
 static int const FATOS_SITE_IS_INFINITY        = 40;
 static int const FATOS_SITE_IS_MAPFLEET        = 41;
-static int const FATOS_SITE_IS_CDG             = 42; // CDG
-static int const FATOS_SITE_IS_SLA             = 43; // SLA
+static int const FATOS_SITE_IS_CDG             = 42;
+static int const FATOS_SITE_IS_SLA             = 43;
 static int const FATOS_SITE_IS_DEMO            = 999;
 
-//static int const build_Site = FATOS_SITE_IS_FATOS;   // 사이트 설정
+
 static bool const bbuild_NewTile                = true;
 static bool const build_TwoBeOneDemo           = false;
 static bool const build_ApplyIntroSnd          = false;
@@ -104,10 +104,6 @@ static bool const build_FATOSAuto              = false;
 static bool const build_ContinueRoute          = true;
 static bool const build_LaneView               = true;
 
-/**
- * 단말 특성멸 build option
- */
-
 static bool const build_LohimHybridMode        = false;
 static bool const build_Lohim                  = false;
 static bool const build_Ex                     = false;
@@ -124,11 +120,9 @@ static bool const build_FixGoVol2              = true;
 
 static bool const build_SmartTabMode           = false;
 static bool const build_FatosCenter            = true;
-static int const build_RoutePath               = 1;    // 0:naver, 1:tmap, 2:fatos, 3:google, 4:tmap(Fatos다국어버전)
+static int const build_RoutePath               = 1;
 
-/**
- * 외국 언어 빌드
- */
+
 
 static bool buildChina = false;
 static bool buildVietnam = false;
@@ -137,7 +131,7 @@ static const bool buildFixGoVol2 = true;
 
 static bool buildSmartTabMode = false;
 static const bool buildFatosCenter = true;
-static const int buildRoutePath = 1; // 0: naver 1: tmap 2: Fatos 3:Google 4: tmap(Fatos 다국어버전)
-static const int defaultLanguage = 0;   // 0 한국 , 1 영어, 2 Deutsch, 3 Français, 4 Nederlands, 5 简体中文, 6 日本語, 7 Tiếng Việt, 8 태국,
+static const int buildRoutePath = 1;
+static const int defaultLanguage = 0;   
 
 #endif /* FatosBuildConfig_h */

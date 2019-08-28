@@ -22,7 +22,6 @@ public:
   bool init(const char* pszFilePath);
   bool isAble();
   
-  // $GPRMC, $GNRMC 나올때 까지 읽어서 바로 Native로 전송 까지 한다.
   void NextSendGPS();
   
 protected:

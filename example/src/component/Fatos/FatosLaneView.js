@@ -13,7 +13,7 @@ import FatosUIManager from '../Manager/FatosUIManager';
 
 const Drawables = [
     ["laneguid_1_0"      , require('../../../res/drawable/laneguid_1_0.png')], //유턴 비활성화
-    ["laneguid_1_0"      , require('../../../res/drawable/laneguid_1_1.png')], //유턴 활성화
+    ["laneguid_1_1"      , require('../../../res/drawable/laneguid_1_1.png')], //유턴 활성화
     ["laneguid_2_0"      , require('../../../res/drawable/laneguid_2_0.png')], //좌회전 비활성화
     ["laneguid_2_1"      , require('../../../res/drawable/laneguid_2_1.png')], //좌회전 활성화
     ["laneguid_12_00"    , require('../../../res/drawable/laneguid_12_00.png')], //좌회전+유턴 : 비활성화
@@ -246,7 +246,7 @@ export default class FatosLaneView extends Component {
 
         for (var i = 0; i < nCount; ++i)
         {
-            var node = Drawables[i];
+            var node = CoverDrawables[i];
 
             if(node[0] === key)
             {
@@ -268,12 +268,14 @@ export default class FatosLaneView extends Component {
 
             if(FatosUtil.isStringEmpty(coverDrawable) === false)
             {
-                var img = this.getCoverDrawable(coverDrawable);
+                // var img = this.getCoverDrawable(coverDrawable);
+                //
+                // if(img != null)
+                // {
+                //     view = <FastImage style={ styles.laneImage } source={ img } key={index}/>;
+                // }
 
-                if(img != null)
-                {
-                    view = <FastImage style={ styles.laneImage } source={ img } key={index}/>;
-                }
+                view = this.getCoverlaneImage(drawable, coverDrawable);
             }
             else if(FatosUtil.isStringEmpty(drawable) === false)
             {
@@ -290,6 +292,32 @@ export default class FatosLaneView extends Component {
         })
     }
 
+    getCoverlaneImage(drawable, coverDrawable)
+    {
+        var cover = null;
+        var lane = null;
+        var view = null;
+        var img1 = this.getCoverDrawable(coverDrawable);
+        var img2 = this.getDrawable(drawable);
+
+        if(img1 != null)
+        {
+            cover = <FastImage style={ styles.coverlaneImage1 } source={ img1 } />;
+        }
+
+        if(img2 != null)
+        {
+            lane = <FastImage style={ styles.coverlaneImage2 } source={ img2 } />;
+        }
+
+        view = <View style={styles.coverlaneImage}>
+            {cover}
+            {lane}
+        </View>;
+
+        return view;
+    }
+
     setRgData(data)
     {
         this.rgData = data;
@@ -301,11 +329,7 @@ export default class FatosLaneView extends Component {
 
         var laneInfo = this.rgData.LaneInfo;
 
-        if(this.state.laneInfo !== laneInfo)
-        {
-            this.setState({laneInfo : laneInfo});
-        }
-
+        this.setState({laneInfo : laneInfo});
         this.setVisible(FatosUtil.checkData(laneInfo));
     }
 
@@ -316,10 +340,7 @@ export default class FatosLaneView extends Component {
 
     setVisible(val)
     {
-        if(val !== this.state.visible)
-        {
-            this.setState({visible : val});
-        }
+        this.setState({visible : val});
 
         if(val === false)
         {
@@ -337,7 +358,6 @@ export default class FatosLaneView extends Component {
 
         if(this.state.visible === false)
             return null;
-
 
         if(FatosUtil.checkData(this.state.laneInfo) === false)
             return null;
@@ -380,9 +400,31 @@ const styles = StyleSheet.create({
         color: 'rgba(143, 197, 220, 1.0)',
         textAlign: 'center',
         fontSize: 20,
+        paddingLeft: 5,
     },
 
     laneImage : {
+        width: 30,
+        height : 30,
+    },
+
+    coverlaneImage : {
+        width: 30,
+        height : 30,
+    },
+
+    coverlaneImage1: {
+        position: 'absolute',
+        bottom : 0,
+        left : 0,
+        width: 30,
+        height : 30,
+    },
+
+    coverlaneImage2: {
+        position: 'absolute',
+        bottom : 0,
+        left : 0,
         width: 30,
         height : 30,
     },

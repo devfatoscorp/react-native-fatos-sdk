@@ -36,14 +36,11 @@ RCT_EXPORT_MODULE()
 
 - (NSDictionary *)constantsToExport
 {
-  // RCTBridgeModule 오버라이드 함수
   return @{@"greeting": @"Welcome to the DevDactic\n React Native (iOS) Tutorial, right?!"};
 }
 
 - (NSArray<NSString *> *)supportedEvents
 {
-  //RCTEventEmitter 오버라이드 함수
-  //RCTEventEmitter 사용하는 이벤트 명을 등록해줘야 한다
   return @[@"UpdateRGListener", @"RouteResultListener", @"ShowIndicatorListener", @"HideIndicatorListener",
            @"PermissionCompleteListener", @"ShowWebViewListener", @"HideWebViewListener", @"SearchResultListener"];
 }
@@ -71,17 +68,8 @@ RCT_EXPORT_METHOD(Rescan)
     {
       [module ReRoute];
     }
-    
-//    if(FatosNavi::IsRoute())
-//    {
-//      FatosNavi::StartSimulation(0);      // 0 번째 경로 모의주행 시작
-//      //       FatosNavi::RepeatSimulation(true);  // 모의주행 반복
-//    }
-    
   });
 }
-
-
 
 RCT_EXPORT_METHOD(Route:(NSString *)startLat startLon:(NSString *)startLon
                   goalLat:(NSString *)goalLat goalLon:(NSString *)goalLon)
@@ -92,8 +80,6 @@ RCT_EXPORT_METHOD(Route:(NSString *)startLat startLon:(NSString *)startLon
     
     if(module)
     {
-      
-      // 기본경로 탐색 셋팅
       NSArray *arr = [[FatosEnvironment sharedObject] getNavigationOptions];
       std::string strFeeOption;
       for(int i = 0; i < [arr count]; ++i)
@@ -110,8 +96,6 @@ RCT_EXPORT_METHOD(Route:(NSString *)startLat startLon:(NSString *)startLon
     
   });
 }
-
-/************** 테스트 버튼 처리 ******************/
 
 RCT_EXPORT_METHOD(RouteTest1)
 {

@@ -14,8 +14,6 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-//@class TouchState;
-
 @protocol FatosMapViewDelegate <NSObject>
 - (void) MapLevelUpdateListener:(int)nLevel;
 - (void) PosWorldLocationUpdateListener:(NSString *)strLocation;

@@ -205,16 +205,6 @@ static const char* m_arFeeOption[] = {
   m_arSDIEnable[19] = false;
   m_arSDIEnable[20] = false;
   
-  // 트럭은 안쓰니 일단 주석
-  //        // 위험물 추가
-  //        if(ANaviApplication.getRoutePathInfo().m_nServiceType == FatosBuildConfig.FATOS_SITE_IS_TRUCK ||
-  //                ANaviApplication.getRoutePathInfo().m_nServiceType == FatosBuildConfig.FATOS_SITE_IS_TMSDG)
-  //        {
-  //            m_arSDIEnable[18] = true;
-  //            m_arSDIEnable[19] = true;
-  //            m_arSDIEnable[20] = true;
-  //        }
-  
   int size1 = sizeof_array(m_arSDIType);
   int size2 = sizeof_array(m_arSDIEnable);
   

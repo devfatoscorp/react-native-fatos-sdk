@@ -39,6 +39,9 @@ export default class FatosUIManager {
     // 화면 갱신 함수 포인터
     refreshRenderRef = null;
 
+    // 선택된 경로
+    selectRouteLine = 0;
+
     static GetInstance()
     {
         if (FatosUIManager.m_pInstance === null)
@@ -291,4 +294,15 @@ export default class FatosUIManager {
     {
         return this.searchViewVisible;
     }
+
+    setSelectRouteLine(index)
+    {
+        this.selectRouteLine = index;
+    }
+
+    getSelectRouteLine()
+    {
+        return this.selectRouteLine;
+    }
+
 }

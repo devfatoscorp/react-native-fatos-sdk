@@ -26,7 +26,6 @@ RCT_EXPORT_MODULE(FatosWebView);
     
     [FatosAppDelegate sharedAppDelegate].webViewManager = self;
     
-    // 구조체 초기화
     memset(&mUserInfo, 0, sizeof(UserInfo));
     mbln_BarcodeEnable = false;
     memset(&mBarcodeInfo, 0, sizeof(BarcodeInfo));
@@ -45,7 +44,6 @@ RCT_EXPORT_MODULE(FatosWebView);
   config = [[WKWebViewConfiguration alloc] init];
   jsctrl = [[WKUserContentController alloc] init];
   
-  // 메세지 등록해줘야함
   [jsctrl addScriptMessageHandler:self name:@"OnFatosJSSetUserInfo"];
   [jsctrl addScriptMessageHandler:self name:@"OnFatosJSRoute"];
   [jsctrl addScriptMessageHandler:self name:@"OnFatosJSBarcodeEnable"];
@@ -66,7 +64,6 @@ RCT_EXPORT_MODULE(FatosWebView);
   
   [fatosWebView setWebviewZoomDisable];
   
-  // 웹뷰 바인딩 될동안 로딩 처리
   FatosNaviBridgeModule *module = [FatosAppDelegate sharedAppDelegate].fatosNaviBridgeModule;
   
   if(module)
@@ -106,10 +103,8 @@ RCT_EXPORT_MODULE(FatosWebView);
 
 - (void)webView:(WKWebView *)webView didFinishNavigation:(null_unspecified WKNavigation *)navigation {
   
-  // 오토 로그인 체크
   [self taskAutoLogin];
   
-  // 바인딩 종료후 인디게이터 삭제 
   FatosNaviBridgeModule *module = [FatosAppDelegate sharedAppDelegate].fatosNaviBridgeModule;
   
   if(module)
@@ -150,12 +145,6 @@ RCT_EXPORT_MODULE(FatosWebView);
 
 - (void) OnFatosJSSetUserInfo:(NSDictionary *)dic
 {
-  /**
-   * userID : 사용자 아이디
-   * tID : 트립 아이디
-   * companyID : 사용자 회사 아이디
-   */
-  
   mUserInfo.userID = [[FatosUtil getStringValue:[dic objectForKey:@"userID"]] UTF8String];
   mUserInfo.tID = [[FatosUtil getStringValue:[dic objectForKey:@"tID"]] UTF8String];
   mUserInfo.companyID = [[FatosUtil getStringValue:[dic objectForKey:@"companyID"]] UTF8String];
@@ -170,27 +159,17 @@ RCT_EXPORT_MODULE(FatosWebView);
   
   [fatosNaviModule routeExternal:jsonDic strFeeOption:nil];
   
-  // 웹뷰 숨김
   [self setWebViewVisible:NO];
 }
 
 #pragma mark - javascript -> ios
 - (void) OnFatosJSBarcodeEnable:(NSString *)value
 {
-  /**
-   * web page에서 barcode 활성 여부에 대한 정보
-   * @param bEnable true : 활성화 , false : 비활성화
-   */
-  
   mbln_BarcodeEnable = (bool)[[FatosUtil getStringValue:value] boolValue];;
 }
 
 - (void) OnFatosJSGetBarcodeList:(NSDictionary *)jsonDic
 {
-  /**
-   * barcode 정보 리스트를 받는다.
-   * @param strBarcodeJson
-   */
   if(jsonDic)
   {
     mBarcodeInfo.updatetime = [[FatosUtil getStringValue:[jsonDic objectForKey:@"updatetime"]] UTF8String];
@@ -219,11 +198,6 @@ RCT_EXPORT_MODULE(FatosWebView);
 
 - (void) OnFatosJSAutoLogin:(NSDictionary *)dic
 {
-  /**
-   * key : 쿠키 키 (autolog)
-   * value : 쿠키 값
-   */
-  
   NSString *strKey = [FatosUtil getStringValue:[dic objectForKey:@"key"]];
   NSString *strValue = [FatosUtil getStringValue:[dic objectForKey:@"value"]];
   
@@ -245,15 +219,13 @@ RCT_EXPORT_MODULE(FatosWebView);
   [fatosWebView evaluateJavaScript:js completionHandler:^(id result, NSError *error) {
     if (error == nil)
     {
-      // 호출 성공
-//      if (result != nil)
+      if (result != nil)
       {
-        // 리턴값이 있을시
+        
       }
     }
     else
     {
-      // 통신 실패
       NSLog(@"evaluateJavaScript error : %@", error.localizedDescription);
     }
   }];
@@ -268,15 +240,13 @@ RCT_EXPORT_MODULE(FatosWebView);
   [fatosWebView evaluateJavaScript:js completionHandler:^(id result, NSError *error) {
     if (error == nil)
     {
-      // 호출 성공
       if (result != nil)
       {
-        // 리턴값이 있을시
+        
       }
     }
     else
     {
-      // 통신 실패
       NSLog(@"evaluateJavaScript error : %@", error.localizedDescription);
     }
   }];
@@ -293,15 +263,13 @@ RCT_EXPORT_MODULE(FatosWebView);
     [fatosWebView evaluateJavaScript:js completionHandler:^(id result, NSError *error) {
       if (error == nil)
       {
-        // 호출 성공
         if (result != nil)
         {
-          // 리턴값이 있을시
+          
         }
       }
       else
       {
-        // 통신 실패
         NSLog(@"evaluateJavaScript error : %@", error.localizedDescription);
       }
     }];

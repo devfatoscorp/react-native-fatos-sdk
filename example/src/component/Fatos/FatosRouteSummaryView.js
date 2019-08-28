@@ -167,6 +167,8 @@ export default class FatosRouteSummaryView extends React.Component {
 
         var mapViewBridgeModule = NativeModules.FatosMapViewBridgeModule;
         mapViewBridgeModule.SelectRouteLine(index);
+
+        FatosUIManager.GetInstance().setSelectRouteLine(index);
     }
 
     onPressSimulation(index)
@@ -184,7 +186,12 @@ export default class FatosRouteSummaryView extends React.Component {
 
         this.native.StartRouteGuidance(index);
 
+        this.props.bottomViewRef.current.showSimulatedDrivingView();
+
         this.props.clearSummaryData(true);
+
+        // 안내시작 하면 0으로 초기화
+        FatosUIManager.GetInstance().setSelectRouteLine(0);
     }
 
     getSummaryItem(key, context)
@@ -382,6 +389,8 @@ export default class FatosRouteSummaryView extends React.Component {
         var strSimulation = this.languageManager.getCodeName('simulation');
         var strGo = this.languageManager.getCodeName('go');
 
+        var selectIndex = key;
+
         if(FatosUtil.checkData(this.rgData.DriveMode))
         {
             if(this.rgData.DriveMode !== COMMON.eDriveMode.eDrive_RG)
@@ -412,7 +421,7 @@ export default class FatosRouteSummaryView extends React.Component {
             {simulatedButton}
 
             <View style={pageStyles.button}>
-                <TouchableOpacity onPress={() => { this.onPressStart(index) }}>
+                <TouchableOpacity onPress={() => { this.onPressStart(selectIndex) }}>
                     {/*<FastImage style={ pageStyles.ImageStyle } source={ goImg[0] } />*/}
                     <ImageSequence style={ pageStyles.ImageStyle2 }
                         images={images}

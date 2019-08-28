@@ -150,9 +150,9 @@ android {
 
         fatosmap_pnd {
             storeFile file("config/release.jks")
-            storePassword "_FATOSReleaseKey!@#_"
-            keyAlias "FatosReleaseKey"
-            keyPassword "_FATOSReleaseKey!@#_"
+            storePassword ""
+            keyAlias ""
+            keyPassword ""
         }
 
     }
@@ -260,7 +260,7 @@ dependencies {
         transitive = true;
     }
     implementation project(':react-native-fatos-sdk')
-    implementation 'biz.fatossdk.anavi:fatos-sdk:1.1.6@aar'
+    implementation 'biz.fatossdk.anavi:fatos-sdk:1.1.7@aar'
 
     if (enableHermes) {
         def hermesPath = "../../node_modules/hermesvm/android/";

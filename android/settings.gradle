@@ -1,2 +1,0 @@
-//include ':fatos_sdk'
-//project(':fatos_sdk').projectDir=new File(settingsDir,'../../Fatos/app')

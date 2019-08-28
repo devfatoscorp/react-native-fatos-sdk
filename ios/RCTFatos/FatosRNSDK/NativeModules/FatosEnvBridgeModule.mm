@@ -35,14 +35,11 @@ RCT_EXPORT_MODULE()
 
 - (NSDictionary *)constantsToExport
 {
-  // RCTBridgeModule 오버라이드 함수
   return @{@"greeting": @"Welcome to the DevDactic\n React Native (iOS) Tutorial, right?!"};
 }
 
 - (NSArray<NSString *> *)supportedEvents
 {
-  //RCTEventEmitter 오버라이드 함수
-  //RCTEventEmitter 사용하는 이벤트 명을 등록해줘야 한다
   return @[];
 }
 

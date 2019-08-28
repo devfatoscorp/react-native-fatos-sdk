@@ -61,7 +61,7 @@ export default class FatosBottomView extends Component {
         strCurTime : '',
         strAmFm : '',
         strDistance : '0m',
-        isTime : true,
+        isTime : false,
         posWorldLocation : '',
         touchMoveMode : '0',
         visible : false,
@@ -97,9 +97,29 @@ export default class FatosBottomView extends Component {
         // 현재 시간 갱신
         setInterval( () => {
 
-            var hours = new Date().getHours(); //Current Hours
-            var min = new Date().getMinutes(); //Current Minutes
+            var date = new Date();
+            var hours = date.getHours(); //Current Hours
+            var min = date.getMinutes(); //Current Minutes
             var str = '';
+
+            var strCurTime;
+
+            //목적지 도착 예정 시간을 만들어 준다
+            if(this.rgData != null)
+            {
+                if (FatosUtil.checkData(this.rgData.RemainTime))
+                {
+                    strCurTime = this.rgData.RemainTime;
+
+                    var remainTime = strCurTime.split(':');
+
+                    date.setHours(hours + parseInt(remainTime[0]));
+                    date.setMinutes(min + parseInt(remainTime[1]));
+
+                    hours = date.getHours();
+                    min = date.getMinutes();
+                }
+            }
 
             if(hours > 12)
             {
@@ -253,6 +273,8 @@ export default class FatosBottomView extends Component {
         this.setState({driveSpeed : ENUM_DRIVESPEED_1X});
         this.showMenu(false);
     }
+
+
 
     onSimulatedDriving()
     {
@@ -672,7 +694,9 @@ export default class FatosBottomView extends Component {
 
         this.preLocation = location;
 
-        if(this.state.driveSimulatedViewShow === false)
+        var nDriveMode = FatosUIManager.GetInstance().getDriveMode();
+
+        if(nDriveMode === COMMON.eDriveMode.eDrive_RG)
         {
             rescanButton = <TouchableOpacity activeOpacity={ 0.7 } onPress={() => { this.onPressRescan() }}>
                 <FastImage source={ rescanImg[0] } style={ styles.rescan }>

@@ -15,13 +15,13 @@
 		841AD2132306AAE6003CA062 /* assets in Resources */ = {isa = PBXBuildFile; fileRef = 841AD2122306AAE6003CA062 /* assets */; };
 		841AD2662306AEEE003CA062 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 841AD2642306AEEE003CA062 /* Localizable.strings */; };
 		841AD2C22306BD7A003CA062 /* hi_splash.png in Resources */ = {isa = PBXBuildFile; fileRef = 841AD2A12306BD7A003CA062 /* hi_splash.png */; };
-		8422EAF1230FEC5000B476B4 /* libRCTFatos.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8422EAF0230FEC3A00B476B4 /* libRCTFatos.a */; };
+		8483EAD5231675380001846E /* libRCTFatos.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8483EAD42316751F0001846E /* libRCTFatos.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		8422EAEF230FEC3A00B476B4 /* PBXContainerItemProxy */ = {
+		8483EAD32316751F0001846E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 8422EAEB230FEC3A00B476B4 /* RCTFatos.xcodeproj */;
+			containerPortal = 8483EACF2316751F0001846E /* RCTFatos.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 8440C54722FD70550047A287;
 			remoteInfo = RCTFatos;
@@ -256,7 +256,7 @@
 		841AD2682306AF0F003CA062 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = assets/values/vi.lproj/Localizable.strings; sourceTree = "<group>"; };
 		841AD2692306AF1B003CA062 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "assets/values/zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		841AD2A12306BD7A003CA062 /* hi_splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = hi_splash.png; path = FatosHi/hi_splash.png; sourceTree = "<group>"; };
-		8422EAEB230FEC3A00B476B4 /* RCTFatos.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTFatos.xcodeproj; path = ../../ios/RCTFatos.xcodeproj; sourceTree = "<group>"; };
+		8483EACF2316751F0001846E /* RCTFatos.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTFatos.xcodeproj; path = ../../ios/RCTFatos.xcodeproj; sourceTree = "<group>"; };
 		B3892C7CC33DD11F3A5AA8E1 /* libPods-FatosHi.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FatosHi.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C65362D923069FD2004C2656 /* Pods.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Pods.xcodeproj; path = Pods/Pods.xcodeproj; sourceTree = "<group>"; };
 		DBF5B7104963E4B6FAE358BC /* Pods-FatosHi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FatosHi.debug.xcconfig"; path = "Target Support Files/Pods-FatosHi/Pods-FatosHi.debug.xcconfig"; sourceTree = "<group>"; };
@@ -269,7 +269,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8422EAF1230FEC5000B476B4 /* libRCTFatos.a in Frameworks */,
+				8483EAD5231675380001846E /* libRCTFatos.a in Frameworks */,
 				3FBC269DB7AB8CE6A3022A52 /* libPods-FatosHi.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -322,7 +322,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				8422EAEB230FEC3A00B476B4 /* RCTFatos.xcodeproj */,
+				8483EACF2316751F0001846E /* RCTFatos.xcodeproj */,
 				C65362D923069FD2004C2656 /* Pods.xcodeproj */,
 			);
 			name = Libraries;
@@ -353,10 +353,10 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		8422EAEC230FEC3A00B476B4 /* Products */ = {
+		8483EAD02316751F0001846E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8422EAF0230FEC3A00B476B4 /* libRCTFatos.a */,
+				8483EAD42316751F0001846E /* libRCTFatos.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -466,8 +466,8 @@
 					ProjectRef = C65362D923069FD2004C2656 /* Pods.xcodeproj */;
 				},
 				{
-					ProductGroup = 8422EAEC230FEC3A00B476B4 /* Products */;
-					ProjectRef = 8422EAEB230FEC3A00B476B4 /* RCTFatos.xcodeproj */;
+					ProductGroup = 8483EAD02316751F0001846E /* Products */;
+					ProjectRef = 8483EACF2316751F0001846E /* RCTFatos.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -478,11 +478,11 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		8422EAF0230FEC3A00B476B4 /* libRCTFatos.a */ = {
+		8483EAD42316751F0001846E /* libRCTFatos.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libRCTFatos.a;
-			remoteRef = 8422EAEF230FEC3A00B476B4 /* PBXContainerItemProxy */;
+			remoteRef = 8483EAD32316751F0001846E /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		C65362FC23069FD3004C2656 /* libDoubleConversion.a */ = {
