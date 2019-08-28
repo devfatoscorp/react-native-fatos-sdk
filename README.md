@@ -70,6 +70,7 @@ yarn install
 with project name/node_modules/react-native-fatos-sdk/example path 
 
 **2. How to set up android example project**
+
 Go to project name/node_modules/react-native-fatos-sdk/example  path and open android project in example name folder with android studio
 Press the 'Refactor'(top of android studio menu) -> 'Migrate to AndroidX'. Then, Migrate the UI library used in the project to AndroidX-based 
 If build error occurs after migration, AndroidX must be manually applied 
