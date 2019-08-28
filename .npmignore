@@ -52,3 +52,4 @@ local.properties
 /example/android/.idea/navEditor.xml
 
 /example/node_modules
+/assets
