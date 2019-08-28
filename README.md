@@ -1,6 +1,29 @@
 ﻿
 
+
+
+
+<div align="center">
+
 # react-native-fatos-sdk
+
+[![Version][version-badge]][package] [![Downloads][downloads-badge]][npmtrends]
+<!--[![Build Status][build-badge]][build]-->
+<!--[![Code Coverage][coverage-badge]][coverage]-->
+
+</div>
+
+<p align="center" >
+  <kbd>
+    <img src="https://github.com/devfatoscorp/react-native-fatos-sdk/raw/master/assets/img1.gif" title="Scroll Demo" float="left">
+  </kbd>
+  <kbd>
+    <img src="https://github.com/devfatoscorp/react-native-fatos-sdk/raw/master/assets/img2.gif" title="Priority Demo" float="left">
+  </kbd>
+  <br>
+  <em>react-native-fatos-sdk example app.</em>
+</p>
+
 
 This is "react native fatos sdk". For more details example, please check the project in the example folder.
 This is multi platform map SDK based on react native. The function of the SDK are largely composed of map, search, and route planning. The map function can control the map layer setting and the map operation function. As you type your search terms and navigation the route, the summary information will appear on the map.
@@ -26,16 +49,54 @@ Register key value in item sdk_key of [string.xml] file
 Register key value in item sdk_key of [info.plist] file
 ***
 **How to run example project**
-Go to the example folder on the terminal
+
+**1. Create react-native project**
+Move to the path where you want to create the project in the terminal 
+```
+react-native init "project name"
+```
+Create project by executing command 
+Go to project path from terminal  
+
+```
+npm i react-native-fatos-sdk (Install sdk in project example)"
+```
+Install react-native-fatos-sdk with command
+Execute two commands 
 ```
 npm install 
 yarn install
-npm i react-native-fatos-sdk (Install sdk in project example)
 ```
-Execute the three command above.
-Then Android, ios project can be run. 
-***
+with project name/node_modules/react-native-fatos-sdk/example path 
 
+**2. How to set up android example project**
+Go to project name/node_modules/react-native-fatos-sdk/example  path and open android project in example name folder with android studio
+Press the 'Refactor'(top of android studio menu) -> 'Migrate to AndroidX'. Then, Migrate the UI library used in the project to AndroidX-based 
+If build error occurs after migration, AndroidX must be manually applied 
+
+<p align="center" >
+  <kbd>
+    <img src="https://github.com/devfatoscorp/react-native-fatos-sdk/raw/master/assets/img3.png" title="Scroll Demo" float="left">
+  </kbd>
+</p>
+
+**3. How to set up and ios example project**
+
+In terminal, go to the path where the ios project is installed in the project name/node_modules/react-native-fatos-sdk/example folder
+```
+rm -rf "${HOME}/Library/Caches/CocoaPods"
+rm -rf "pwd/Pods/"
+pod update
+```
+Enter commands in order 
+***
+**4. How to set up a terminal project execution command**
+Go to example from the terminal  
+```
+react-native run-ios
+react-native run-android
+```
+Each is a platform-specific project execution command
 
 
 
@@ -389,6 +450,19 @@ FatosNaviBridgeModule.HideIndicatorListener()
 Passes whether or not to acquire the privilege so that the UI can be seen after acquiring the app right.
 FatosNaviBridgeModule.PermissionCompleteListene()
 ```
+
+
+[version-badge]: https://img.shields.io/npm/v/react-native-fatos-sdk.svg?color=blue&logoColor=blue&style=flat-square
+[downloads-badge]: https://img.shields.io/npm/dm/react-native-fatos-sdk.svg?style=flat-square
+<!--[build-badge]: https://img.shields.io/cirrus/github/devfatoscorp/react-native-fatos-sdk.svg?style=flat-square-->
+<!--[coverage-badge]: https://img.shields.io/codecov/c/github/dylanvann/react-native-fast-image.svg?style=flat-square-->
+
+[package]: https://www.npmjs.com/package/react-native-fatos-sdk
+[npmtrends]: https://www.npmjs.com/package/react-native-fatos-sdk
+[build]: https://www.npmjs.com/package/react-native-fatos-sdk
+[coverage]: https://www.npmjs.com/package/react-native-fatos-sdk
+
+
 
 
 
