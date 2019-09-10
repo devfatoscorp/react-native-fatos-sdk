@@ -42,7 +42,7 @@ RCT_EXPORT_MODULE()
 - (NSArray<NSString *> *)supportedEvents
 {
   return @[@"UpdateRGListener", @"RouteResultListener", @"ShowIndicatorListener", @"HideIndicatorListener",
-           @"PermissionCompleteListener", @"ShowWebViewListener", @"HideWebViewListener", @"SearchResultListener"];
+           @"PermissionCompleteListener", @"ShowWebViewListener", @"HideWebViewListener", @"SearchResultListener", @"RouteCompleteListener"];
 }
 
 /** js -> ios **/
@@ -185,20 +185,6 @@ RCT_EXPORT_METHOD(GoTask)
   });
 }
 
-RCT_EXPORT_METHOD(StartSimulation)
-{
-  dispatch_async(dispatch_get_main_queue(), ^{
-    
-    FatosNaviModule *module = [FatosAppDelegate sharedAppDelegate].fatosNaviModule;
-    
-    if(module)
-    {
-      [module StartSimulation:0];
-    }
-    
-  });
-}
-
 RCT_EXPORT_METHOD(DriveControl:(int)value)
 {
   dispatch_async(dispatch_get_main_queue(), ^{
@@ -292,6 +278,20 @@ RCT_EXPORT_METHOD(StartSimulation:(int)index)
   });
 }
 
+RCT_EXPORT_METHOD(SpeakUtterance:(NSString *)strSpeech)
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        FatosNaviModule *module = [FatosAppDelegate sharedAppDelegate].fatosNaviModule;
+        
+        if(module)
+        {
+            [module SpeakUtterance:strSpeech];
+        }
+        
+    });
+}
+
 /** callback **/
 
 RCT_EXPORT_METHOD(GetRouteSummaryJson:(RCTResponseSenderBlock)callback)
@@ -379,6 +379,14 @@ RCT_EXPORT_METHOD(GetRouteSummaryJson:(RCTResponseSenderBlock)callback)
   {
     [self sendEventWithName:@"SearchResultListener" body:[NSString stringWithUTF8String:strResult]];
   }
+}
+
+- (void) RouteCompleteListener
+{
+    if(isListener)
+    {
+        [self sendEventWithName:@"RouteCompleteListener" body:@""];
+    }
 }
 
 @end

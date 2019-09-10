@@ -108,7 +108,7 @@ public class FatosMapViewBridgeModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void MapLevelIn()
+    public void MapLevelIn(int nType)
     {
         FatosMapViewManager mapViewManager = FatosMapViewManager.GetInstance();
         if(mapViewManager != null)
@@ -118,7 +118,15 @@ public class FatosMapViewBridgeModule extends ReactContextBaseJavaModule {
             if(mapView != null)
             {
                 float fLevel = m_gApp.getViewLevel(m_gApp.m_MapHandle);
-                mapView.onMapLevelInOut(fLevel + 1);
+
+                int nAni = MapAnimation.MAP_ANI_TYPE_CUSTOM_ZOOMINOUT;
+
+                if(nType == 1)
+                {
+                    nAni = MapAnimation.MAP_ANI_TYPE_DIRECT;
+                }
+
+                mapView.onMapLevelInOut(fLevel + 1, nAni);
             }
 
             mapViewManager.setAutoScalePassTime(FatosMapViewManager.AUTO_SCALE_PASS_TIME);
@@ -126,7 +134,7 @@ public class FatosMapViewBridgeModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void MapLevelOut()
+    public void MapLevelOut(int nType)
     {
         FatosMapViewManager mapViewManager = FatosMapViewManager.GetInstance();
         if(mapViewManager != null)
@@ -136,7 +144,15 @@ public class FatosMapViewBridgeModule extends ReactContextBaseJavaModule {
             if(mapView != null)
             {
                 float fLevel = m_gApp.getViewLevel(m_gApp.m_MapHandle);
-                mapView.onMapLevelInOut(fLevel - 1);
+
+                int nAni = MapAnimation.MAP_ANI_TYPE_CUSTOM_ZOOMINOUT;
+
+                if(nType == 1)
+                {
+                    nAni = MapAnimation.MAP_ANI_TYPE_DIRECT;
+                }
+
+                mapView.onMapLevelInOut(fLevel - 1, nAni);
             }
 
             mapViewManager.setAutoScalePassTime(FatosMapViewManager.AUTO_SCALE_PASS_TIME);
@@ -157,7 +173,7 @@ public class FatosMapViewBridgeModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void SummaryMapSetting(ReadableMap lineColor, float xScale, float yScale, float hCenter, float vCenter)
+    public void SummaryMapSetting(ReadableMap lineColor, float xScale, float yScale, float hCenter, float vCenter, boolean blnViewMode)
     {
         mbln_SummaryMode = true;
 
@@ -199,11 +215,14 @@ public class FatosMapViewBridgeModule extends ReactContextBaseJavaModule {
             FatosMainMapView mapView = mapViewManager.mFatosMainMapView;
 
             if(mapView != null) {
-                // 뷰모드 변경
-                m_PreViewLevel = NativeNavi.nativeMapGetViewLevel(ANaviApplication.m_MapHandle);
-                m_PreViewMdoe = NativeNavi.nativeMapGetViewMode(ANaviApplication.m_MapHandle);
-                m_gApp.m_nCurMapMode = NativeNavi.MAP_VIEW_MODE_NORTHUP;
-                NativeNavi.nativeMapSetViewMode(ANaviApplication.m_MapHandle, NativeNavi.MAP_VIEW_MODE_NORTHUP);
+
+                if(blnViewMode == true) {
+                    // 뷰모드 변경
+                    m_PreViewLevel = NativeNavi.nativeMapGetViewLevel(ANaviApplication.m_MapHandle);
+                    m_PreViewMdoe = NativeNavi.nativeMapGetViewMode(ANaviApplication.m_MapHandle);
+                    m_gApp.m_nCurMapMode = NativeNavi.MAP_VIEW_MODE_NORTHUP;
+                    NativeNavi.nativeMapSetViewMode(ANaviApplication.m_MapHandle, NativeNavi.MAP_VIEW_MODE_NORTHUP);
+                }
 
                 // 맵위치 보정
                 NativeNavi.nativeMapRefreshServiceRouteLine(ANaviApplication.m_MapHandle);
@@ -246,17 +265,13 @@ public class FatosMapViewBridgeModule extends ReactContextBaseJavaModule {
     {
         mbln_SummaryMode = false;
 
-        // 요약 경로 라인 off
         setMapRoutelineOnlySelected(true);
 
-        // 경로 컬러 셋팅
         int nIndex = FatosEnvironment.sharedObject().getPathLineColor();
         NativeNavi.SetEnvRouteLineColor(ANaviApplication.m_MapHandle, nIndex);
 
-        // 뷰 모드 변경
-        setViewMode(m_PreViewMdoe);
+        m_gApp.m_nCurMapMode = m_PreViewMdoe;
 
-        // 뷰 레벨 변경
         FatosMapViewManager mapViewManager = FatosMapViewManager.GetInstance();
         if(mapViewManager != null)
         {
@@ -281,7 +296,6 @@ public class FatosMapViewBridgeModule extends ReactContextBaseJavaModule {
 
         NativeNavi.nativeMapSetVisible(ANaviApplication.m_MapHandle, MapObjType, bMapObjVisible);
 
-        // 현위치로 이동
         MapAuto();
     }
 

@@ -18,7 +18,6 @@ import java.util.ArrayList;
 
 import biz.fatos.RCTFatos.FatosMapViewManager;
 import biz.fatos.RCTFatos.FatosActivity;
-import biz.fatossdk.config.FatosBuildConfig;
 import biz.fatossdk.config.FatosEnvironment;
 import biz.fatossdk.navi.NativeNavi;
 import biz.fatossdk.navi.NaviInterface;
@@ -27,6 +26,7 @@ import biz.fatossdk.navi.RoutePosition;
 import biz.fatossdk.newanavi.ANaviApplication;
 import biz.fatossdk.newanavi.manager.AMapPositionManager;
 import biz.fatossdk.openapi.Route;
+import biz.fatossdk.tts.TTSEngine;
 
 import static com.facebook.react.bridge.UiThreadUtil.runOnUiThread;
 
@@ -314,11 +314,11 @@ public class FatosNaviBridgeModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void StartSimulation() {
+    public void StartSimulation(int value) {
 
         if (NativeNavi.nativeIsRoute())
         {
-            NativeNavi.nativeStartSimulation();
+            NativeNavi.nativeStartSimulationIndex(value);
         }
     }
 
@@ -388,17 +388,21 @@ public class FatosNaviBridgeModule extends ReactContextBaseJavaModule {
         NativeNavi.nativeStartRouteGuidanceIndex(index);
     }
 
-    @ReactMethod
-    public void StartSimulation(int index)
-    {
-        NativeNavi.nativeStartSimulationIndex(index);
-    }
-
 
     @ReactMethod
     public void AndroidBackPress()
     {
         runOnUiThread(runnableHardwareBackPress);
+    }
+
+
+    @ReactMethod
+    public void SpeakUtterance(String strSpeech)
+    {
+        if(TTSEngine.getInstance()!= null && !TTSEngine.getInstance().isSpeaking())
+        {
+            TTSEngine.getInstance().NativeSpeak(strSpeech);
+        }
     }
 
     /** callback **/
@@ -473,6 +477,13 @@ public class FatosNaviBridgeModule extends ReactContextBaseJavaModule {
 
         if(isListener) {
             sendEvent(getReactApplicationContext(), "SearchResultListener", strResult);
+        }
+    }
+
+    public void RouteCompleteListener()
+    {
+        if(isListener) {
+            sendEvent(getReactApplicationContext(), "RouteCompleteListener", "");
         }
     }
 

@@ -29,7 +29,8 @@ public class FatosJSInterface {
         return m_FatosJSListener;
     }
 
-    public void setM_FatosJSListener(FatosJSListener m_FatosJSListener) {
+    public void setM_FatosJSListener(FatosJSListener m_FatosJSListener)
+    {
         this.m_FatosJSListener = m_FatosJSListener;
     }
 
@@ -52,9 +53,12 @@ public class FatosJSInterface {
         CreateInstance(m_Context);
         return m_JSInterface;
     }
-    public FatosJSInterface() {
+
+    public FatosJSInterface()
+    {
+
     }
-    // Instantiate the interface and set the context
+
     public FatosJSInterface(Context c) {
         m_Context = c;
     }
@@ -69,53 +73,30 @@ public class FatosJSInterface {
         return this.m_WebView;
     }
 
-    /**
-     *
-     * @param strRouteJson : Fatos JS Interface 규격의 경로탐색 json
-     */
     @JavascriptInterface
     public void OnFatosJSRoute(String strRouteJson) {
         if(m_FatosJSListener != null)
             m_FatosJSListener.OnFatosJSRoute(strRouteJson);
     }
 
-
-    /**
-     * userID : 사용자 아이디
-     * tID : 트립 아이디
-     * companyID : 사용자 회사 아이디
-     */
     @JavascriptInterface
     public void OnFatosJSSetUserInfo(String userID, String tID, String companyID) {
         if(m_FatosJSListener != null)
             m_FatosJSListener.OnFatosJSSetUserInfo(userID, tID, companyID);
     }
 
-
-    /**
-     * 첫 페이지 loading 되었을 때 호출.
-     */
     @JavascriptInterface
     public void OnFatosJSPageLoadFinish() {
         if(m_FatosJSListener != null)
             m_FatosJSListener.OnFatosJSPageLoadFinish();
     }
 
-
-    /**
-     * web page에서 barcode 활성 여부에 대한 정보
-     * @param bEnable true : 활성화 , false : 비활성화
-     */
     @JavascriptInterface
     public void OnFatosJSBarcodeEnable(boolean bEnable) {
         if(m_FatosJSListener != null)
             m_FatosJSListener.OnFatosJSBarcodeEnable(bEnable);
     }
 
-    /**
-     * barcode 정보 리스트를 받는다.
-     * @param strBarcodeJson
-     */
     @JavascriptInterface
     public void OnFatosJSGetBarcodeList(String strBarcodeJson) {
         if(m_FatosJSListener != null)

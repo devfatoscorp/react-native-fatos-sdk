@@ -20,13 +20,13 @@ NS_ASSUME_NONNULL_BEGIN
 - (void) onRouteComplete;
 - (void) onRouteViaComplete;
 - (BOOL) isIndicator;
+- (void) onMapAuto;
 
 @end
 
 @interface FatosNaviModule : NSObject {
 
   NSDictionary *routeDic;
-  int mn_MapMoveCurrentTimer;
   bool mbln_MapMoveCurrentEvent;
   int mn_Site;
 }
@@ -62,6 +62,13 @@ NS_ASSUME_NONNULL_BEGIN
 - (void) SetLanguage:(int)index;
 - (NSString *)RequestTmapSearchService:(NSString *)keywordName;
 - (NSString *)RequestFtsSearchService:(NSString *)keywordName;
+- (void) SpeakUtterance:(NSString *)strSpeech;
+- (NSString *)GetVersion;
+- (void) StartDrawGpsLog:(bool)bAddNmea bAddMatched:(bool)bAddMatched;
+- (void) StopDrawGpsLog;
++ (void) OnMapMoveCurrentTimer;
++ (double) getCurrentLonX;
++ (double) getCurrentLatY;
 
 @property(strong, nonatomic) id<FatosNaviModuleDelegate> delegate;
 

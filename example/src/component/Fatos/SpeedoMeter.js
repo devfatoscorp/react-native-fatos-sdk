@@ -1,201 +1,187 @@
-import React from 'react'
-import {
-    Text,
-    View,
-    StyleSheet,
-} from 'react-native'
+import React from "react";
+import { Text, View, StyleSheet } from "react-native";
 
-import FatosUIManager from '../Manager/FatosUIManager';
+import FatosUIManager from "../Manager/FatosUIManager";
 
 export default class SpeedoMeter extends React.Component {
+  state = {
+    speed: 0,
+    visible: false
+  };
 
-    state = {
-        speed : 0,
-        visible : false,
-    };
+  constructor(props) {
+    super(props);
+    this.rgData = null;
+  }
 
-    constructor(props) {
-        super(props);
-        this.rgData = null;
+  setRgData(data) {
+    this.rgData = data;
+
+    var speed = this.rgData.CarSpeed;
+
+    this.setState({ speed: speed });
+  }
+
+  update() {
+    var blnVisible = false;
+
+    if (
+      FatosUIManager.GetInstance().isDefaultViewVisible() ||
+      FatosUIManager.GetInstance().isDrivingViewVisible()
+    ) {
+      blnVisible = true;
     }
 
-    setRgData(data)
-    {
-        this.rgData = data;
+    this.setVisible(blnVisible);
+  }
 
-        var speed = this.rgData.CarSpeed;
+  setVisible(val) {
+      this.setState({ visible: val });
+  }
 
-        if(speed !== this.state.speed)
-        {
-            this.setState({speed : speed});
-        }
+  render() {
+    if (this.state.visible === false) {
+      return null;
     }
 
-    update()
-    {
-        var blnVisible = false;
+    this.rgData = this.props.rgData;
 
-        if(FatosUIManager.GetInstance().isDefaultViewVisible() || FatosUIManager.GetInstance().isDrivingViewVisible())
-        {
-            blnVisible = true;
-        }
+    var speed = this.state.speed;
 
-        this.setVisible(blnVisible);
-    }
-
-    setVisible(val)
-    {
-        if(val !== this.state.visible)
-        {
-            this.setState({visible : val});
-        }
-    }
-
-    render () {
-
-        if(this.state.visible === false)
-            return null;
-
-        this.rgData = this.props.rgData;
-
-        var speed = this.state.speed;
-
-        return <View style={styles.container}>
-
-            <Text style={styles.textL }>{speed}</Text>
-            <Text style={styles.textLT}>{speed}</Text>
-            <Text style={styles.textT }>{speed}</Text>
-            <Text style={styles.textTR}>{speed}</Text>
-            <Text style={styles.textR }>{speed}</Text>
-            <Text style={styles.textRB}>{speed}</Text>
-            <Text style={styles.textB }>{speed}</Text>
-            <Text style={styles.textLB}>{speed}</Text>
-
-        </View>
-    }
+    return (
+      <View style={styles.container}>
+        <Text style={styles.textL}>{speed}</Text>
+        <Text style={styles.textLT}>{speed}</Text>
+        <Text style={styles.textT}>{speed}</Text>
+        <Text style={styles.textTR}>{speed}</Text>
+        <Text style={styles.textR}>{speed}</Text>
+        <Text style={styles.textRB}>{speed}</Text>
+        <Text style={styles.textB}>{speed}</Text>
+        <Text style={styles.textLB}>{speed}</Text>
+      </View>
+    );
+  }
 }
 
 var SpeedoMeterView = {
-    width : 110,
-    height : 60,
+  width: 110,
+  height: 60
 };
 
 const styles = StyleSheet.create({
+  container: {
+    position: "absolute",
+    top: "25%",
+    left: 10,
+    width: SpeedoMeterView.width,
+    height: SpeedoMeterView.height,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center"
+  },
 
-
-    container: {
-        position: 'absolute',
-        top : '25%',
-        left : 10,
-        width : SpeedoMeterView.width,
-        height : SpeedoMeterView.height,
-        flexDirection : 'row',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-
-    textL:{
-        textAlign: 'center',
-        position: 'absolute',
-        width : SpeedoMeterView.width,
-        top : 0,
-        left : 0,
-        color : 'black',
-        fontSize : 60,
-        fontWeight: '400',
-        textShadowColor: '#ffffff',
-        textShadowOffset: { width: -2, height: 0.1 },
-        textShadowRadius: 1
-    },
-    textLT:{
-        textAlign: 'center',
-        position: 'absolute',
-        width : SpeedoMeterView.width,
-        top : 0,
-        left : 0,
-        color : 'black',
-        fontSize : 60,
-        fontWeight: '400',
-        textShadowColor: '#ffffff',
-        textShadowOffset: { width: -2, height: -1 },
-        textShadowRadius: 1
-    },
-    textT:{
-        textAlign: 'center',
-        position: 'absolute',
-        width : SpeedoMeterView.width,
-        top : 0,
-        left : 0,
-        color : 'black',
-        fontSize : 60,
-        fontWeight: '400',
-        textShadowColor: '#ffffff',
-        textShadowOffset: { width: 0.1, height: -2 },
-        textShadowRadius: 1
-    },
-    textTR:{
-        textAlign: 'center',
-        position: 'absolute',
-        width : SpeedoMeterView.width,
-        top : 0,
-        left : 0,
-        color : 'black',
-        fontSize : 60,
-        fontWeight: '400',
-        textShadowColor: '#ffffff',
-        textShadowOffset: { width: 2, height: -2 },
-        textShadowRadius: 1
-    },
-    textR:{
-        textAlign: 'center',
-        position: 'absolute',
-        width : SpeedoMeterView.width,
-        top : 0,
-        left : 0,
-        color : 'black',
-        fontSize : 60,
-        fontWeight: '400',
-        textShadowColor: '#ffffff',
-        textShadowOffset: { width: 2, height: 0.1 },
-        textShadowRadius: 1
-    },
-    textRB:{
-        textAlign: 'center',
-        position: 'absolute',
-        width : SpeedoMeterView.width,
-        top : 0,
-        left : 0,
-        color : 'black',
-        fontSize : 60,
-        fontWeight: '400',
-        textShadowColor: '#ffffff',
-        textShadowOffset: { width: 2, height: 2 },
-        textShadowRadius: 1
-    },
-    textB:{
-        textAlign: 'center',
-        position: 'absolute',
-        width : SpeedoMeterView.width,
-        top : 0,
-        left : 0,
-        color : 'black',
-        fontSize : 60,
-        fontWeight: '400',
-        textShadowColor: '#ffffff',
-        textShadowOffset: { width: 0.1, height: 2 },
-        textShadowRadius: 1
-    },
-    textLB:{
-        textAlign: 'center',
-        position: 'absolute',
-        width : SpeedoMeterView.width,
-        top : 0,
-        left : 0,
-        color : 'black',
-        fontSize : 60,
-        fontWeight: '400',
-        textShadowColor: '#ffffff',
-        textShadowOffset: { width: -2, height: 2 },
-        textShadowRadius: 1
-    },
+  textL: {
+    textAlign: "center",
+    position: "absolute",
+    width: SpeedoMeterView.width,
+    top: 0,
+    left: 0,
+    color: "black",
+    fontSize: 60,
+    fontWeight: "400",
+    textShadowColor: "#ffffff",
+    textShadowOffset: { width: -2, height: 0.1 },
+    textShadowRadius: 1
+  },
+  textLT: {
+    textAlign: "center",
+    position: "absolute",
+    width: SpeedoMeterView.width,
+    top: 0,
+    left: 0,
+    color: "black",
+    fontSize: 60,
+    fontWeight: "400",
+    textShadowColor: "#ffffff",
+    textShadowOffset: { width: -2, height: -1 },
+    textShadowRadius: 1
+  },
+  textT: {
+    textAlign: "center",
+    position: "absolute",
+    width: SpeedoMeterView.width,
+    top: 0,
+    left: 0,
+    color: "black",
+    fontSize: 60,
+    fontWeight: "400",
+    textShadowColor: "#ffffff",
+    textShadowOffset: { width: 0.1, height: -2 },
+    textShadowRadius: 1
+  },
+  textTR: {
+    textAlign: "center",
+    position: "absolute",
+    width: SpeedoMeterView.width,
+    top: 0,
+    left: 0,
+    color: "black",
+    fontSize: 60,
+    fontWeight: "400",
+    textShadowColor: "#ffffff",
+    textShadowOffset: { width: 2, height: -2 },
+    textShadowRadius: 1
+  },
+  textR: {
+    textAlign: "center",
+    position: "absolute",
+    width: SpeedoMeterView.width,
+    top: 0,
+    left: 0,
+    color: "black",
+    fontSize: 60,
+    fontWeight: "400",
+    textShadowColor: "#ffffff",
+    textShadowOffset: { width: 2, height: 0.1 },
+    textShadowRadius: 1
+  },
+  textRB: {
+    textAlign: "center",
+    position: "absolute",
+    width: SpeedoMeterView.width,
+    top: 0,
+    left: 0,
+    color: "black",
+    fontSize: 60,
+    fontWeight: "400",
+    textShadowColor: "#ffffff",
+    textShadowOffset: { width: 2, height: 2 },
+    textShadowRadius: 1
+  },
+  textB: {
+    textAlign: "center",
+    position: "absolute",
+    width: SpeedoMeterView.width,
+    top: 0,
+    left: 0,
+    color: "black",
+    fontSize: 60,
+    fontWeight: "400",
+    textShadowColor: "#ffffff",
+    textShadowOffset: { width: 0.1, height: 2 },
+    textShadowRadius: 1
+  },
+  textLB: {
+    textAlign: "center",
+    position: "absolute",
+    width: SpeedoMeterView.width,
+    top: 0,
+    left: 0,
+    color: "black",
+    fontSize: 60,
+    fontWeight: "400",
+    textShadowColor: "#ffffff",
+    textShadowOffset: { width: -2, height: 2 },
+    textShadowRadius: 1
+  }
 });

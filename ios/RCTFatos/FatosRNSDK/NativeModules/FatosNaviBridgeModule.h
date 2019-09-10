@@ -25,6 +25,7 @@
 - (void) HideIndicatorListener;
 - (BOOL) IsIndicator;
 - (void) SearchResultListener:(const char *)strResult;
+- (void) RouteCompleteListener;
 
 @end
 

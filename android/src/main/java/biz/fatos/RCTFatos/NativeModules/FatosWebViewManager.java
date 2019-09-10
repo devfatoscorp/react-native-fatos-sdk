@@ -80,9 +80,6 @@ public class FatosWebViewManager extends SimpleViewManager<View>
         _FatosWebViewManager = this;
         m_Context = reactContext;
 
-        // 웹뷰를 재생성 하지 않고 Visible 처리시에서
-        // 이전 페이지를 유지할수 있도록
-        // static 변수로 관리
         if(m_WebView == null)
         {
             m_WebView = new WebView(reactContext);
@@ -111,7 +108,6 @@ public class FatosWebViewManager extends SimpleViewManager<View>
 
                 public void onPageFinished(WebView view, String url) {
 
-                    // 웹뷰 생성후 로딩창 제거
                     FatosNaviBridgeModule module = FatosNaviBridgeModule.GetInstance();
 
                     if(module != null)

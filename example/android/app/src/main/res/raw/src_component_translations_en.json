@@ -78,5 +78,10 @@
   "go" : "Go",
   "recommend" : "Recommend",
   "free" : "Free",
-  "language_change_error" : "The current route guide reflects the changed language after rescanning."
+  "language_change_error" : "The current route guide reflects the changed language after rescanning.",
+  "search_error" : "No results were found for your search.",
+  "average_speed" : "AVGSpeed",
+  "arrived_destination" : "You\\'ve arrived at your destination.",
+  "reroute_status" : "Redirection is complete.",
+  "lab" : "Lab"
 }

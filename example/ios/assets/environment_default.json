@@ -39,5 +39,6 @@
   "fuel" : 0,
   "seat_position" : 0,
   "dem" : false,
-  "simul_gps" : false
+  "simul_gps" : false,
+  "draw_gps_point" : false
 }

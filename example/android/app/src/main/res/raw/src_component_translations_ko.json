@@ -78,5 +78,10 @@
   "go" : "안내시작",
   "recommend" : "추천",
   "free" : "무료",
-  "language_change_error" : "현재 경로안내는 재탐색 후 변경된 언어가 반영됩니다."
+  "language_change_error" : "현재 경로안내는 재탐색 후 변경된 언어가 반영됩니다.",
+  "search_error" : "검색 결과가 없습니다.",
+  "average_speed" : "평균속도",
+  "arrived_destination" : "목적지에 도착했습니다.",
+  "reroute_status" : "경로가 재탐색되었습니다.",
+  "lab" : "연구실"
 }

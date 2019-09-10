@@ -8,6 +8,7 @@
 
 #import "FatosMapViewBridgeModule.h"
 #import "FatosAppDelegate.h"
+#import <FatosNaviModule.h>
 #import <FatosMapView.h>
 
 @implementation FatosMapViewBridgeModule
@@ -84,7 +85,7 @@ RCT_EXPORT_METHOD(setLayer:(NSDictionary *) baseLayerType bVisible:(NSDictionary
   });
 }
 
-RCT_EXPORT_METHOD(MapLevelIn)
+RCT_EXPORT_METHOD(MapLevelIn:(NSString *)type)
 {
   dispatch_async(dispatch_get_main_queue(), ^{
     
@@ -92,13 +93,13 @@ RCT_EXPORT_METHOD(MapLevelIn)
     
     if(fatosMapView != nil)
     {
-      [fatosMapView setMapLevelIn];
+        [fatosMapView setMapLevelIn:[type intValue]];
     }
     
   });
 }
 
-RCT_EXPORT_METHOD(MapLevelOut)
+RCT_EXPORT_METHOD(MapLevelOut:(NSString *)type)
 {
   dispatch_async(dispatch_get_main_queue(), ^{
     
@@ -106,7 +107,7 @@ RCT_EXPORT_METHOD(MapLevelOut)
     
     if(fatosMapView != nil)
     {
-      [fatosMapView setMapLevelOut];
+        [fatosMapView setMapLevelOut:[type intValue]];
     }
     
   });
@@ -120,7 +121,10 @@ RCT_EXPORT_METHOD(MapAuto)
     
     if(fatosMapView != nil)
     {
-      [fatosMapView setMapAuto];
+        double fLonX = [FatosNaviModule getCurrentLonX];
+        double fLatY = [FatosNaviModule getCurrentLatY];
+        
+        [fatosMapView setMapAuto:fLonX fLatY:fLatY];
     }
     
     // 터치 이동 모드 초기화 전송
@@ -186,7 +190,10 @@ RCT_EXPORT_METHOD(OnMapSetRoutelineColor:(int)index color_active:(NSString *)col
     
     if(fatosMapView != nil)
     {
-      [fatosMapView setMapAuto];
+        double fLonX = [FatosNaviModule getCurrentLonX];
+        double fLatY = [FatosNaviModule getCurrentLatY];
+        
+        [fatosMapView setMapAuto:fLonX fLatY:fLatY];
     }
     
     // 터치 이동 모드 초기화 전송
@@ -197,7 +204,7 @@ RCT_EXPORT_METHOD(OnMapSetRoutelineColor:(int)index color_active:(NSString *)col
 
 RCT_EXPORT_METHOD(SummaryMapSetting:(NSDictionary *)lineColor
                   xScale:(float)xScale yScale:(float)yScale
-                  hCenter:(float)hCenter vCenter:(float)vCenter)
+                  hCenter:(float)hCenter vCenter:(float)vCenter blnViewMode:(BOOL)blnViewMode)
 {
 
   dispatch_async(dispatch_get_main_queue(), ^{
@@ -206,7 +213,7 @@ RCT_EXPORT_METHOD(SummaryMapSetting:(NSDictionary *)lineColor
     
     if(fatosMapView != nil)
     {
-      [fatosMapView SummaryMapSetting:lineColor xScale:xScale yScale:yScale hCenter:hCenter vCenter:vCenter];
+        [fatosMapView SummaryMapSetting:lineColor xScale:xScale yScale:yScale hCenter:hCenter vCenter:vCenter blnViewMode:blnViewMode];
     }
     
   });

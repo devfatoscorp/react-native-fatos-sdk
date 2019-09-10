@@ -28,15 +28,15 @@ NS_ASSUME_NONNULL_BEGIN
 - (void) panGesture:(UIPanGestureRecognizer *)gestureRecognizer inView:(UIView*)view;
 - (void) setViewMode:(NSNumber *)mode;
 - (void) setAirlineMode:(NSDictionary *) baseLayerType bVisible:(NSDictionary *)bVisible;
-- (void) setMapLevelIn;
-- (void) setMapLevelOut;
+- (void) setMapLevelIn:(int)nType;
+- (void) setMapLevelOut:(int)nType;
 - (float) getMapLevel;
-- (void) setMapAuto;
+- (void) setMapAuto:(double)fLonX fLatY:(double)fLatY;
 - (float) GetViewAngle;
 - (int) getTouchState;
 - (BOOL) IsFling;
 - (void) SummaryMapSetting:(NSDictionary *)lineColor xScale:(float)xScale yScale:(float)yScale
-                     hCenter:(float)hCenter vCenter:(float)vCenter;
+                   hCenter:(float)hCenter vCenter:(float)vCenter blnViewMode:(BOOL)blnViewMode;
 - (void) DefaultMapSetting;
 - (BOOL) isSummaryMode;
 

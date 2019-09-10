@@ -149,6 +149,9 @@ namespace sdk {
 // SimulGps
 - (void)setSimulGps:(bool)var;
 - (bool)getSimulGps;
+// Draw GPS Point
+- (void)setDrawGpsPoint:(bool)var;
+- (bool)getDrawGpsPoint;
 @end
 
 #endif /* FatosEnvironment_h */

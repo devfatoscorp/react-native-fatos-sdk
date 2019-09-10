@@ -17,6 +17,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import "FatosNaviBridgeModule.h"
 #import "FatosEnvBridgeModule.h"
+#import "FatosMapViewBridgeModule.h"
 #import <FatosNaviModule.h>
 #import <GPSService.h>
 
@@ -251,7 +252,17 @@
 
 - (void) onRouteComplete
 {
-  
+    if(self.fatosNaviModule != nil)
+    {
+        [self.fatosNaviModule CancelRoute];
+    }
+    
+    FatosNaviBridgeModule *module = self.fatosNaviBridgeModule;
+    
+    if(module != nil)
+    {
+        [module RouteCompleteListener];
+    }
 }
 
 - (void) onRouteViaComplete
@@ -269,6 +280,17 @@
   }
   
   return NO;
+}
+
+- (void) onMapAuto
+{
+    FatosMapViewBridgeModule *module = self.fatosMapViewBridgeModule;
+    
+    if(module != nil)
+    {
+        // 터치 이동 모드 초기화 전송
+        [module TouchMoveModeListener:0];
+    }
 }
 
 @end

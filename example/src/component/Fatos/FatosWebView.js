@@ -1,26 +1,27 @@
-import React, {Component} from "react";
-import {requireNativeComponent, findNodeHandle, processColor, StyleSheet} from "react-native";
+import React, { Component } from "react";
+import {
+  requireNativeComponent,
+  findNodeHandle,
+  processColor,
+  StyleSheet
+} from "react-native";
 
-var FatosWebViewNative = requireNativeComponent('FatosWebView', FatosWebView);
+var FatosWebViewNative = requireNativeComponent("FatosWebView", FatosWebView);
 
 class FatosWebView extends Component {
+  constructor(props) {
+    super(props);
+  }
 
-    constructor(props) {
-        super(props);
-    }
-
-    render () {
-
-        return <FatosWebViewNative style={styles.webViewStyle} />;
-    }
+  render() {
+    return <FatosWebViewNative style={styles.webViewStyle} />;
+  }
 }
 
 const styles = StyleSheet.create({
-
-    webViewStyle: {
-        ...StyleSheet.absoluteFill,
-    },
-
+  webViewStyle: {
+    ...StyleSheet.absoluteFill
+  }
 });
 
 module.exports = FatosWebView;

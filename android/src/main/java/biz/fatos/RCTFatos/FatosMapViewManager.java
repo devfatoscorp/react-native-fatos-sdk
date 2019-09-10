@@ -3,6 +3,7 @@ package biz.fatos.RCTFatos;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
+import android.util.Log;
 import android.view.View;
 
 import com.facebook.react.bridge.ReactContext;
@@ -28,11 +29,14 @@ import static biz.fatossdk.navi.NativeNavi.ETOUCH_STATE_AUTO;
 public class FatosMapViewManager extends SimpleViewManager<View> implements  FatosMainMapView.OnFatosMapStateUpdateListener, FatosMainMapView.OnFatosMapListener {
 
     public static final float AUTO_SCALE_PASS_TIME = 90.0f;
+    public static final int MAP_MOVE_CURRENT_TIME = 7;
     static private ANaviApplication m_gApp = null;
     public FatosMainMapView mFatosMainMapView = null;
     private float autoScalePassTime = 0.0f;
-    private int mn_MapMoveCurrentTimer = 0;
+    private float fPreAutoScaleLevel = 0.0f;
+    private static int mn_MapMoveCurrentTimer = 0;
     private boolean mbln_MapMoveCurrentEvent = false;
+
     FatosMainMapView.TouchInfo mTouchInfo = null;
 
     private static FatosMapViewManager _FatosMapViewManager = null;
@@ -120,9 +124,7 @@ public class FatosMapViewManager extends SimpleViewManager<View> implements  Fat
     @Nonnull
     @Override
     protected View createViewInstance(@Nonnull ThemedReactContext reactContext) {
-        // return null;
-        // 여기서 만들 View를 넘겨야 한다.
-        //reactContext.getJSModule(DeviceEventManageModule.RCTDeviceEventEmitter.class).emit("CallbackTest", "Android is Ready");
+
         mFatosMainMapView = new FatosMainMapView(reactContext);
         mFatosMainMapView.setOnFatosMapStateUpdateListenerr(this);
         mFatosMainMapView.setOnFatosMapListener(this);
@@ -155,18 +157,14 @@ public class FatosMapViewManager extends SimpleViewManager<View> implements  Fat
 
         ///////////////////
 
-        // 안내설정 셋팅
         FatosEnvBridgeModule.setEnvironmentSDIInfo();
 
-        // 음성안내 셋팅
         nIndex = FatosEnvironment.sharedObject().getGuidevoice();
         FatosEnvBridgeModule.UseGuideDB(nIndex);
 
-        // 주기적 재탐색 셋팅
         nIndex = FatosEnvironment.sharedObject().getRediscover();
         FatosEnvBridgeModule.setRouteAutoTime(nIndex);
 
-        // 기본 버드뷰 셋팅
         m_gApp.m_nCurMapMode = NativeNavi.MAP_VIEW_MODE_BIRD;
         mFatosMainMapView.setMapMode();
     }
@@ -267,6 +265,8 @@ public class FatosMapViewManager extends SimpleViewManager<View> implements  Fat
         {
             module.TouchMoveModeListener(1);
         }
+
+        OnMapMoveCurrentTimer();
     }
 
     @Override
@@ -308,7 +308,7 @@ public class FatosMapViewManager extends SimpleViewManager<View> implements  Fat
             return;
 
         if(mTouchInfo.getState() != ETOUCH_STATE_AUTO)
-            return;;
+            return;
 
         if(mTouchInfo.isFling == true)
             return;
@@ -320,13 +320,20 @@ public class FatosMapViewManager extends SimpleViewManager<View> implements  Fat
 
             int nMode = NativeNavi.nativeMapGetViewMode(ANaviApplication.m_MapHandle);
 
-            // 버드뷰일떄만 틸트 적용
             if(nMode != NativeNavi.MAP_VIEW_MODE_BIRD)
             {
                 fTilt = NativeNavi.nativeMapGetViewTilt(ANaviApplication.m_MapHandle);
             }
 
+            if(fLevel <= 0)
+            {
+                fLevel = fPreAutoScaleLevel;
+            }
+
+            fPreAutoScaleLevel = fLevel;
+
             mFatosMainMapView.onMapLevelInOut(fLevel, fTilt);
+
         }
     }
 
@@ -348,8 +355,39 @@ public class FatosMapViewManager extends SimpleViewManager<View> implements  Fat
 
         if(mTouchInfo.isFling == true)
         {
-            mn_MapMoveCurrentTimer = 5;
+            mn_MapMoveCurrentTimer = MAP_MOVE_CURRENT_TIME;
             return;
+        }
+
+        if(mbln_MapMoveCurrentEvent == true && mn_MapMoveCurrentTimer == 0)
+        {
+            mbln_MapMoveCurrentEvent = false;
+            module.MapAuto();
+            return;
+        }
+
+        if(mbln_MapMoveCurrentEvent == false)
+        {
+            if (nMMStatus <= RouteGuidanceInfo.MATCH_NOT_BAD)
+                return;
+
+            if (NativeNavi.nativeIsRoute())
+            {
+                mbln_MapMoveCurrentEvent = true;
+                mn_MapMoveCurrentTimer = MAP_MOVE_CURRENT_TIME;
+                return;
+
+            }
+            else
+            {
+
+                if (nCarSpeed > 5)
+                {
+                    mbln_MapMoveCurrentEvent = true;
+                    mn_MapMoveCurrentTimer = MAP_MOVE_CURRENT_TIME;
+                    return;
+                }
+            }
         }
 
         if(mn_MapMoveCurrentTimer > 0)
@@ -367,38 +405,26 @@ public class FatosMapViewManager extends SimpleViewManager<View> implements  Fat
                 --mn_MapMoveCurrentTimer;
             }
         }
-
-        if(mbln_MapMoveCurrentEvent == true && mn_MapMoveCurrentTimer == 0)
-        {
-            mbln_MapMoveCurrentEvent = false;
-            module.MapAuto();
-            return;
-        }
-
-        if(mbln_MapMoveCurrentEvent == false)
-        {
-            /* 드라이브인포 지피에스 상태가 배드이면 패스 */
-            if (nMMStatus <= RouteGuidanceInfo.MATCH_NOT_BAD)
-                return;
-
-            if (NativeNavi.nativeIsRoute()) {
-                /* 경로가 있고 액션이 없을떼 5초뒤에 현위치 */
-                mbln_MapMoveCurrentEvent = true;
-                mn_MapMoveCurrentTimer = 5;
-
-            } else {
-                /* 경로가 없을떄  액션이 없을때 속도가 5키로 이상일떄 현위치 이동 */
-                if (nCarSpeed > 5) {
-                    mbln_MapMoveCurrentEvent = true;
-                    mn_MapMoveCurrentTimer = 5;
-                }
-            }
-        }
     }
 
     public void setAutoScalePassTime(float fVal)
     {
         autoScalePassTime = fVal;
+    }
+
+    public int getTouchState()
+    {
+        if(mTouchInfo != null)
+        {
+            return mTouchInfo.getState();
+        }
+
+        return -1;
+    }
+
+    public static void OnMapMoveCurrentTimer()
+    {
+        mn_MapMoveCurrentTimer = MAP_MOVE_CURRENT_TIME;
     }
 
 }

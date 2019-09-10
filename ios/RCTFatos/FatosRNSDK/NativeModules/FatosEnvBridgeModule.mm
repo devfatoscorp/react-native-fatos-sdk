@@ -12,7 +12,6 @@
 #import <FatosMapView.h>
 #import <FatosNaviModule.h>
 #import "../../FatosSDK/FatoseSettingManager.h"
-#import <FatosNaviModule.h>
 
 @implementation FatosEnvBridgeModule
 
@@ -289,6 +288,31 @@ RCT_EXPORT_METHOD(SetSimulGps:(NSString *) value)
   });
 }
 
+RCT_EXPORT_METHOD(SetDrawGpsPoint:(NSString *) value)
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        bool val = [value boolValue] == YES ? true : false;
+        [[FatosEnvironment sharedObject] setDrawGpsPoint:val];
+        [[FatosEnvironment sharedObject] saveEnvironment];
+        
+        
+        FatosNaviModule *fatosNaviModule = [FatosAppDelegate sharedAppDelegate].fatosNaviModule;
+        
+        if(fatosNaviModule != nil)
+        {
+            if(val)
+            {
+                [fatosNaviModule StartDrawGpsLog:true bAddMatched:true];
+            }
+            else
+            {
+                [fatosNaviModule StopDrawGpsLog];
+            }
+        }
+    });
+}
+
 /** callback **/
 
 RCT_EXPORT_METHOD(GetPathLineColor:(RCTResponseSenderBlock)callback)
@@ -443,6 +467,51 @@ RCT_EXPORT_METHOD(GetSimulGps:(RCTResponseSenderBlock)callback)
   callback(@[[NSNull null], strResult]);
 }
 
+RCT_EXPORT_METHOD(GetDrawGpsPoint:(RCTResponseSenderBlock)callback)
+{
+    bool val = [[FatosEnvironment sharedObject] getDrawGpsPoint];
+    NSString *strResult = val == true ? @"true" : @"false";
+    callback(@[[NSNull null], strResult]);
+}
+
+RCT_EXPORT_METHOD(GetVersionJson:(RCTResponseSenderBlock)callback)
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        FatosNaviModule *module = [FatosAppDelegate sharedAppDelegate].fatosNaviModule;
+        
+        if(module)
+        {
+            NSString *strResult = [module GetVersion];
+            callback(@[[NSNull null], strResult]);
+        }
+    });
+}
+
+RCT_EXPORT_METHOD(GetVersionName:(RCTResponseSenderBlock)callback)
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        FatosNaviModule *module = [FatosAppDelegate sharedAppDelegate].fatosNaviModule;
+        
+        if(module)
+        {
+            NSString *strResult = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+            callback(@[[NSNull null], strResult]);
+        }
+    });
+}
+
+RCT_EXPORT_METHOD(GetVersionCode:(RCTResponseSenderBlock)callback)
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        FatosNaviModule *module = [FatosAppDelegate sharedAppDelegate].fatosNaviModule;
+        
+        if(module)
+        {
+            NSString *strResult = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
+            callback(@[[NSNull null], strResult]);
+        }
+    });
+}
 
 /** native api call **/
 

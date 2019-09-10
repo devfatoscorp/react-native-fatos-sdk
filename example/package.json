@@ -21,7 +21,7 @@
     "react-native-root-toast": "^3.1.1",
     "react-native-switch-selector": "^1.1.14",
     "react-native-tab-view": "^2.6.1",
-    "react-native-webview": "^6.9.0",
+    "react-native-webview": "^7.0.4",
     "react-native-webview-android": "^1.1.17",
     "react-navigation": "^3.11.0",
     "react-native-fatos-sdk": "file:.."

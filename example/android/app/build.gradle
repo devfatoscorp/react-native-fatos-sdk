@@ -260,7 +260,7 @@ dependencies {
         transitive = true;
     }
     implementation project(':react-native-fatos-sdk')
-    implementation 'biz.fatossdk.anavi:fatos-sdk:1.1.7@aar'
+    implementation 'biz.fatossdk.anavi:fatos-sdk:1.2.2@aar'
 
     if (enableHermes) {
         def hermesPath = "../../node_modules/hermesvm/android/";

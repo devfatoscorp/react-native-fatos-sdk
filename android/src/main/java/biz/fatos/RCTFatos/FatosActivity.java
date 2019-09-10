@@ -14,6 +14,7 @@ import android.os.Message;
 import android.os.Process;
 import androidx.annotation.NonNull;
 
+import android.util.Log;
 import android.view.WindowManager;
 import android.widget.Toast;
 
@@ -49,23 +50,17 @@ public class FatosActivity extends ReactActivity implements NaviCallback.OnRoute
     private Intent gpsServiceIntent = null;
 
     private NaviMassgeHandler m_NaviHandler = null;
-    private NaviCallback m_NaviCallback = null; // 내비게이션 콜백
-
+    private NaviCallback m_NaviCallback = null;
     private int m_iEngineInit = 0;
 
     private final long FINSH_INTERVAL_TIME = 2000;
     private long backPressedTime = 0;
     protected String sdk_key = "";
 
-    /**
-     * Returns the name of the main component registered from JavaScript.
-     * This is used to schedule rendering of the component.
-     */
     @Override
     protected String getMainComponentName() {
         return "FatosRNApp";
     }
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -111,12 +106,10 @@ public class FatosActivity extends ReactActivity implements NaviCallback.OnRoute
                 }
             }
         }
-        /* 사용자의 OS 버전이 마시멜로우 이하일 떄 */
         else {
             try {
                 m_iEngineInit = initFatosNaviEngine();
 
-                // 권한 획득후 react 통신후 맵뷰를 생성한다
                 FatosNaviBridgeModule module = FatosNaviBridgeModule.GetInstance();
 
                 if(module != null)
@@ -125,7 +118,6 @@ public class FatosActivity extends ReactActivity implements NaviCallback.OnRoute
                 }
                 else
                 {
-                    // 모둘이 생성이 안되어 있을경우 예외처리
                     FatosNaviBridgeModule.mbln_PermissionCompleteCall = true;
                 }
 
@@ -134,13 +126,6 @@ public class FatosActivity extends ReactActivity implements NaviCallback.OnRoute
             }
         }
     }
-
-    /**
-     * 사용자가 권한을 허용했는지 거부했는지 체크
-     * @param requestCode   1000번
-     * @param permissions   개발자가 요청한 권한들
-     * @param grantResults  권한에 대한 응답들
-     *                    permissions와 grantResults는 인덱스 별로 매칭된다.     */
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -160,7 +145,6 @@ public class FatosActivity extends ReactActivity implements NaviCallback.OnRoute
                 try {
                     m_iEngineInit = initFatosNaviEngine();
 
-                    // 권한 획득후 react 통신후 맵뷰를 생성한다
                     FatosNaviBridgeModule module = FatosNaviBridgeModule.GetInstance();
 
                     if(module != null)
@@ -169,7 +153,6 @@ public class FatosActivity extends ReactActivity implements NaviCallback.OnRoute
                     }
                     else
                     {
-                        // 모둘이 생성이 안되어 있을경우 예외처리
                         FatosNaviBridgeModule.mbln_PermissionCompleteCall = true;
                     }
 
@@ -179,13 +162,7 @@ public class FatosActivity extends ReactActivity implements NaviCallback.OnRoute
             }
         }
     }
-    /**
-     * -2 : 재시작 필요
-     * -1: 초기화 실패
-     * 1: success
-     *
-     * @return
-     */
+
     protected int initFatosNaviEngine() throws IOException {
 
         HashMap<String, String> strings = new HashMap<String, String>();
@@ -203,14 +180,12 @@ public class FatosActivity extends ReactActivity implements NaviCallback.OnRoute
         String strIMEI = AMapUtil.getDeviceIMEI(m_Context);
         ReactManager.sharedObject().Init(this, m_Context, m_gApp, strings, sdk_key, -1, strIMEI);
 
-        // 콜백 등록
         m_NaviHandler = new NaviMassgeHandler();
         m_NaviCallback = new NaviCallback(m_NaviHandler);
 
         m_NaviCallback.setOnRouteListener(this);
         NaviInterface.SetCallback(m_NaviCallback);
 
-        // gps
         gpsServiceIntent = new Intent(this, GPSService.class);
         startService(gpsServiceIntent);
 
@@ -247,10 +222,7 @@ public class FatosActivity extends ReactActivity implements NaviCallback.OnRoute
                 if(module.IsIndicator() == true)
                     return;
 
-
                 String strJson = NativeNavi.GetRouteGuidanceJson(isSimulation);
-
-                module.UpdateRGListener(strJson);
 
                 FatosMapViewManager mapViewManager = FatosMapViewManager.GetInstance();
 
@@ -260,6 +232,10 @@ public class FatosActivity extends ReactActivity implements NaviCallback.OnRoute
                     float fLevel = 0;
                     int nMMStatus = 0;
                     int nCarSpeed = 0;
+
+                    double fLatY = 0;
+                    double fLonX = 0;
+                    int nAngle = 0;
 
                     JSONObject object = null;
 
@@ -271,8 +247,18 @@ public class FatosActivity extends ReactActivity implements NaviCallback.OnRoute
                         nCarSpeed = object.getInt("CarSpeed");
 
                         // 현위치 정보 갱신
-                        AMapPositionManager.m_nWSaveLatY = object.getInt("Y");
-                        AMapPositionManager.m_nWSaveLonX = object.getInt("X");
+                        fLatY = object.getDouble("Y");
+                        fLonX = object.getDouble("X");
+                        nAngle = object.getInt("Angle");
+
+                        AMapPositionManager.m_nWSaveLonX = (int)fLonX;
+                        AMapPositionManager.m_nWSaveLatY = (int)fLatY;
+
+                        AMapPositionManager.setCurrentLocation(fLonX, fLatY, nAngle);
+                        AMapPositionManager.setSimulLocation(fLonX, fLatY, nAngle);
+
+                        object.put("TouchState", mapViewManager.getTouchState());
+                        strJson = object.toString();
                     }
                     catch (JSONException e) {
                         e.printStackTrace();
@@ -286,6 +272,8 @@ public class FatosActivity extends ReactActivity implements NaviCallback.OnRoute
 
                     mapViewManager.checkMapMoveCurrentPos(nMMStatus, nCarSpeed);
                 }
+
+                module.UpdateRGListener(strJson);
             }
         }
     }
@@ -309,8 +297,6 @@ public class FatosActivity extends ReactActivity implements NaviCallback.OnRoute
         super.onPause();
     }
 
-
-    // 리액트에서 이벤트 받아서 처리
     public void hardwareBackPress() {
 
         long tempTime = System.currentTimeMillis();
@@ -401,7 +387,7 @@ public class FatosActivity extends ReactActivity implements NaviCallback.OnRoute
 
             if(rgDataContext == null)
             {
-                //경탐 실패
+
             }
             else
             {
@@ -419,14 +405,12 @@ public class FatosActivity extends ReactActivity implements NaviCallback.OnRoute
 
                     case NaviCallback.NAVI_ROUTE_TYPE_REROUTE:
                     {
-                        // 재탐 요청
                         NativeNavi.nativeStartRouteGuidance();
                     }
                     break;
 
                     case NaviCallback.NAVI_ROUTE_TYPE_PERIODIC:
                     {
-                        // 주탐 요청
                         NativeNavi.nativeStartRouteGuidance();
                     }
                     break;
@@ -446,7 +430,13 @@ public class FatosActivity extends ReactActivity implements NaviCallback.OnRoute
     @Override
     public void OnRouteComplete()
     {
+        FatosNaviBridgeModule module = FatosNaviBridgeModule.GetInstance();
 
+        if(module != null)
+        {
+            module.CancelRoute();
+            module.RouteCompleteListener();
+        }
     }
 
     @Override
