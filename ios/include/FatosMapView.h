@@ -18,6 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void) MapLevelUpdateListener:(int)nLevel;
 - (void) PosWorldLocationUpdateListener:(NSString *)strLocation;
 - (void) TouchMoveModeListener:(int)nMode;
+- (void) MapLongTouchListener:(int)x y:(int)y;
 @end
 
 @interface FatosMapView : GLKView {
@@ -48,12 +49,23 @@ NS_ASSUME_NONNULL_BEGIN
 - (void) SetFlagName:(int)ObjType pszName:(const char *)pszName viaIndex:(int)viaIndex;
 - (void) SetFlagPosWorld:(int)ObjType wpX:(int)wpX wpY:(int)wpY viaIndex:(int)viaIndex;
 - (void) SetPosWGS84:(double)xlon ylat:(double)ylat;
+- (void) GetPosWorldFromScreen:(float)fCenterX fCenterY:(float)fCenterY nMapCurPosX:(int*)nMapCurPosX nMapCurPosY:(int*)nMapCurPosY;
+- (void) ConvWorldtoWGS84:(int)x y:(int)y xlon:(double*)xlon ylat:(double*)ylat;
 
 - (void) onStartGoalSet:(int)sx sy:(int)sy sname:(const char*)sname gx:(int)gx gy:(int)gy gname:(const char*)gname;
 - (void) SetEnvRouteLineColor:(int)nIndex;
 - (void) SetRouteLineColor:(int)nContextIndex strActive:(NSString *)strActive strDeactive:(NSString *)strDeactive;
 - (void) SetCarvata:(int)nIndex;
 - (void) SetDem:(bool)val;
+
+- (int) InitMarkerImage:(NSString *)strJsonFileName strFilaPath:(NSString *)strFileName;
+- (BOOL) SetVisibleMarkerGroup:(NSString *)strJsonFileName;
+- (BOOL) AddMarker:(NSString *)strJsonFileName;
+- (BOOL) SetMarker:(NSString *)strJsonFileName;
+- (BOOL) DelMarker:(NSString *)strJsonFileName;
+- (BOOL) DelMarkerGroup:(NSString *)strJsonFileName;
+- (void) ClearMarker;
+
 
 @property(strong, nonatomic) CADisplayLink* displayLink;
 @property(strong, nonatomic) id<FatosMapViewDelegate> delegate;

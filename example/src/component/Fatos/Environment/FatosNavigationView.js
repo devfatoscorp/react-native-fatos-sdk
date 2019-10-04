@@ -73,6 +73,7 @@ export default class FatosNavigationView extends Component {
       seatPosition: 0,
       carvataDialogShow: false,
       carvata: 0,
+      dem: false
     };
     var native = NativeModules.FatosEnvBridgeModule;
 
@@ -249,6 +250,15 @@ export default class FatosNavigationView extends Component {
         this.state.carvata = Number(result);
       }
     });
+
+    // DEM
+    native.GetDem((error, result) => {
+      if (error) {
+        console.error(error);
+      } else {
+        this.state.dem = result === "true";
+      }
+    });
   }
 
   preloadImages() {
@@ -334,6 +344,17 @@ export default class FatosNavigationView extends Component {
 
     var native = NativeModules.FatosEnvBridgeModule;
     native.SetSmartDrivingMode(smart);
+  }
+
+  setDem() {
+    var dem = true;
+    if (this.state.dem === true) {
+      dem = false;
+    }
+    this.setState({ dem: dem });
+
+    var native = NativeModules.FatosEnvBridgeModule;
+    native.SetDem(dem);
   }
 
   onPressPathLineColor(tag) {
@@ -1485,6 +1506,7 @@ export default class FatosNavigationView extends Component {
     var varvatga = this.state.carvata;
     var smart = this.state.smart === true ? "On" : "Off";
     var hiPass = this.state.hiPass === true ? "On" : "Off";
+    var dem = this.state.dem === true ? "On" : "Off";
 
     var strMapthemes = languageManager.getCodeName("map_themes");
     var strRouteColor = languageManager.getCodeName("route_color");
@@ -1565,6 +1587,20 @@ export default class FatosNavigationView extends Component {
             </View>
             <View style={styles.tabViewItemRight}>
               <Text style={styles.tabViewItemText1}>{">"}</Text>
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.tabViewItem}
+            activeOpacity={0.7}
+            onPress={() => {
+              this.setDem();
+            }}
+          >
+            <View style={styles.tabViewItemLeft}>
+              <Text style={styles.tabViewItemText1}>{"DEM"}</Text>
+            </View>
+            <View style={styles.tabViewItemRight}>
+              <Text style={styles.tabViewItemText1}>{dem}</Text>
             </View>
           </TouchableOpacity>
           <TouchableOpacity

@@ -253,7 +253,12 @@ public class FatosMapViewManager extends SimpleViewManager<View> implements  Fat
     @Override
     public void onUpdateMapLongTouch(float fX, float fY)
     {
+        FatosMapViewBridgeModule module = FatosMapViewBridgeModule.GetInstance();
 
+        if(module != null)
+        {
+            module.MapLongTouchListener((int)fX, (int)fY);
+        }
     }
 
     @Override

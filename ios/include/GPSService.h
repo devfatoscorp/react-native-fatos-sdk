@@ -26,6 +26,7 @@ NS_ASSUME_NONNULL_BEGIN
   bool m_bSimulGps;
   
   NMEALog m_logFile;
+  NSTimer *m_UpdateLocationTimer;
 }
 
 @property (nonatomic, retain) CLLocationManager *m_locationManager;
@@ -33,6 +34,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (int)getLat;
 - (int)getlon;
 - (void)saveUserDefaultsLocation;
+- (void)onSimulGps:(BOOL)val;
 
 
 @end

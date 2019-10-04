@@ -1,20 +1,36 @@
 package biz.fatos.RCTFatos.NativeModules;
 
+import android.app.Application;
+import android.content.res.AssetFileDescriptor;
 import android.graphics.Color;
 import android.util.Log;
 
+import com.facebook.react.bridge.Callback;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.ReadableMap;
+import com.facebook.react.bridge.WritableMap;
+import com.facebook.react.bridge.WritableNativeMap;
 import com.facebook.react.modules.core.DeviceEventManagerModule;
+import com.facebook.react.uimanager.PixelUtil;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.FileDescriptor;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
 import biz.fatos.RCTFatos.FatosMapViewManager;
 import biz.fatossdk.config.FatosEnvironment;
+import biz.fatossdk.config.PreferencesUtil;
 import biz.fatossdk.map.FMPMapConst;
 import biz.fatossdk.nativeMap.FatosMainMapView;
 import biz.fatossdk.nativeMap.MapAnimation;
@@ -312,6 +328,103 @@ public class FatosMapViewBridgeModule extends ReactContextBaseJavaModule {
         NativeNavi.nativeMapApplySelectRouteLine(m_gApp.m_MapHandle,index);
     }
 
+
+    @ReactMethod
+    public void InitMarkerImage(String strJsonFileName, String strFileName)
+    {
+        AssetFileDescriptor afd = getMarkerFileDescriptor(strFileName);
+        FileDescriptor fd = afd.getFileDescriptor();
+        int off = (int) afd.getStartOffset();
+        int len = (int) afd.getLength();
+        String strJson = loadJSONFromAsset(strJsonFileName);
+
+        NativeNavi.nativeInitMarkerImage(strJson, fd, off, len);
+    }
+
+    @ReactMethod
+    public void SetVisibleMarkerGroup(String strJsonFileName)
+    {
+        String strJson = loadJSONFromAsset(strJsonFileName);
+        NativeNavi.nativeSetVisibleMarkerGroup(m_gApp.m_MapHandle, strJson);
+    }
+
+    @ReactMethod
+    public void AddMarker(String strJsonFileName)
+    {
+        String strJson = loadJSONFromAsset(strJsonFileName);
+        NativeNavi.nativeAddMarker(m_gApp.m_MapHandle, strJson);
+    }
+
+
+    @ReactMethod
+    public void SetMarker(String strJsonFileName)
+    {
+        String strJson = loadJSONFromAsset(strJsonFileName);
+        NativeNavi.nativeSetMarker(m_gApp.m_MapHandle, strJson);
+    }
+
+    @ReactMethod
+    public void DelMarker(String strJsonFileName)
+    {
+        String strJson = loadJSONFromAsset(strJsonFileName);
+        NativeNavi.nativeDelMarker(m_gApp.m_MapHandle, strJson);
+    }
+
+    @ReactMethod
+    public void DelMarkerGroup(String strJsonFileName)
+    {
+        String strJson = loadJSONFromAsset(strJsonFileName);
+        NativeNavi.nativeDelMarkerGroup(m_gApp.m_MapHandle, strJson);
+    }
+
+    @ReactMethod
+    public void ClearMarker(String strJsonFileName)
+    {
+        NativeNavi.nativeClearMarker(m_gApp.m_MapHandle);
+    }
+
+    /** callback **/
+
+    @ReactMethod
+    public void GetPosWorldFromScreen(float fCenterX, float fCenterY, Callback callback) {
+
+        int[] nMapTouchScreen = new int[2];
+        NativeNavi.nativeMapGetPosWorldFromScreen(m_gApp.m_MapHandle, fCenterX, fCenterY , nMapTouchScreen);
+
+        String strResult = "";
+
+        JSONObject object = new JSONObject();
+        try {
+            object.put("x", nMapTouchScreen[0]);
+            object.put("y", nMapTouchScreen[1]);
+            strResult = object.toString();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        callback.invoke(null, strResult);
+    }
+
+
+    @ReactMethod
+    public void ConvWorldtoWGS84(int x, int y, Callback callback) {
+
+        double[] lonlat = new double[2];
+        NativeNavi.nativeConvWorldtoWGS84(x, y, lonlat);
+        String strResult = "";
+
+        JSONObject object = new JSONObject();
+        try {
+            object.put("xlon", lonlat[0]);
+            object.put("ylat", lonlat[1]);
+            strResult = object.toString();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        callback.invoke(null, strResult);
+    }
+
     public void MapLevelUpdateListener(int nLevel) {
 
         if(isListener)
@@ -339,7 +452,18 @@ public class FatosMapViewBridgeModule extends ReactContextBaseJavaModule {
         }
     }
 
-    private void sendEvent(ReactContext reactContext, String eventName, String content) {
+    public void MapLongTouchListener(int x, int y)
+    {
+        if(isListener)
+        {
+            WritableMap eventData = new WritableNativeMap();
+            eventData.putInt("x", x);
+            eventData.putInt("y", y);
+            sendEvent(getReactApplicationContext(), "MapLongTouchListener", eventData);
+        }
+    }
+
+    private void sendEvent(ReactContext reactContext, String eventName, Object content) {
         mContext
                 .getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)
                 .emit(eventName, content);
@@ -362,5 +486,38 @@ public class FatosMapViewBridgeModule extends ReactContextBaseJavaModule {
         return mbln_SummaryMode;
     }
 
+    public AssetFileDescriptor getMarkerFileDescriptor(String strFileName)
+    {
+        AssetFileDescriptor afd = null;
 
+        try {
+            afd = mContext.getResources().getAssets().openFd("marker/" + strFileName);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return afd;
+    }
+
+    public String loadJSONFromAsset(String strJsonFileName) {
+
+        String strJson = null;
+
+        try {
+            BufferedInputStream bis = new BufferedInputStream(mContext.getResources().getAssets().open("marker/" + strJsonFileName));
+            ByteArrayOutputStream buf = new ByteArrayOutputStream();
+            int result = bis.read();
+            while(result != -1) {
+                buf.write((byte) result);
+                result = bis.read();
+            }
+
+            strJson = buf.toString();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return strJson;
+    }
 }

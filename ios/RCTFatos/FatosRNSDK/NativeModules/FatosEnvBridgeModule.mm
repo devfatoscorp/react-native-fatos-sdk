@@ -11,6 +11,8 @@
 #import "FatosAppDelegate.h"
 #import <FatosMapView.h>
 #import <FatosNaviModule.h>
+#import <GPSService.h>
+#import "../../FatosSDK/FatosRootView.h"
 #import "../../FatosSDK/FatoseSettingManager.h"
 
 @implementation FatosEnvBridgeModule
@@ -285,6 +287,14 @@ RCT_EXPORT_METHOD(SetSimulGps:(NSString *) value)
     bool val = [value boolValue] == YES ? true : false;
     [[FatosEnvironment sharedObject] setSimulGps:val];
     [[FatosEnvironment sharedObject] saveEnvironment];
+      
+    FatosRootView *rootView = [FatosAppDelegate sharedAppDelegate].rootView;
+      
+    if(rootView)
+    {
+       [[rootView gpsService] onSimulGps:val == true ? YES : NO];
+    }
+     
   });
 }
 

@@ -33,6 +33,8 @@ import FatosUIManager from "../Manager/FatosUIManager";
 import FatosLanguageManager from "../Manager/FatosLanguageManager";
 import FatosEnvManager from "../Manager/FatosEnvManager";
 
+import { FatosEnvMng, FatosNativeMap, FatosNativeNavi } from "react-native-fatos-sdk"
+
 export default class FatosMainView extends Component {
   state = {
     indicatorVisible: false,
@@ -49,7 +51,7 @@ export default class FatosMainView extends Component {
 
   constructor(props) {
     super(props);
-
+    
     this.rgData = null;
     this.native = NativeModules.FatosNaviBridgeModule;
     this.naviEmitter = new NativeEventEmitter(

@@ -1,6 +1,6 @@
 {
   "name": "react-native-fatos-sdk",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "react library",
   "repository": {
     "type": "git",
@@ -16,9 +16,15 @@
   ],
   "author": "Project September <dev@fatoscorp.com>",
   "license": "MIT",
-  "directories": {
-    "example": "example"
+  "main": "index.js",
+  "peerDependencies": {
+    "react": "*",
+    "react-native": "*"
   },
+  "files": [
+    "src/components/*.js",
+    "index.js"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   }

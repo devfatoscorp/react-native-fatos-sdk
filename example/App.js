@@ -11,6 +11,7 @@ import copyRight from "./src/component/Fatos/Environment/FatosCopyRightView";
 import versionInfo from "./src/component/Fatos/Environment/FatosVersionInfoView";
 import countrySelectView from "./src/component/Fatos/Environment/FatosCountrySelectView";
 import categoryView from "./src/component/Fatos/Environment/FatosCategoryView";
+import labView from "./src/component/Fatos/Environment/FatosLabView";
 
 const App = createStackNavigator(
   {
@@ -21,6 +22,7 @@ const App = createStackNavigator(
     VersionInfo: { screen: versionInfo },
     CountrySelectView: { screen: countrySelectView },
     CategoryView: { screen: categoryView },
+    LabView: { screen: labView },
   },
   { initialRouteName: "Main", headerMode: "none" }
 );

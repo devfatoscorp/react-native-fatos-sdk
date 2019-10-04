@@ -28,7 +28,6 @@ NS_ASSUME_NONNULL_BEGIN
 
   NSDictionary *routeDic;
   bool mbln_MapMoveCurrentEvent;
-  int mn_Site;
 }
 - (id)initNaviModule:(NSString *)sdkKey;
 
@@ -56,7 +55,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (void) DriveClose;
 - (void) SetNightMode:(int)value;
 - (NSString *)GetRouteSummaryJson;
-- (void) SetSDIFilter:(int *)pcodes pbuses:(bool*)pbuses nArray:(int)nArray;
 - (void) SetEnableFATOSGuideWDB:(bool)val;
 - (void) SetRouteAutoTime:(int)val;
 - (void) SetLanguage:(int)index;
@@ -66,9 +64,11 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSString *)GetVersion;
 - (void) StartDrawGpsLog:(bool)bAddNmea bAddMatched:(bool)bAddMatched;
 - (void) StopDrawGpsLog;
++ (void) SetSDIFilter:(int *)pcodes pbuses:(bool*)pbuses nArray:(int)nArray;
 + (void) OnMapMoveCurrentTimer;
 + (double) getCurrentLonX;
 + (double) getCurrentLatY;
++ (int) getClientSite;
 
 @property(strong, nonatomic) id<FatosNaviModuleDelegate> delegate;
 

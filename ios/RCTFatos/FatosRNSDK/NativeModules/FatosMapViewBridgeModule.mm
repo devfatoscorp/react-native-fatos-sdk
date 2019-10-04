@@ -41,7 +41,8 @@ RCT_EXPORT_MODULE()
 {
   //RCTEventEmitter 오버라이드 함수
   //RCTEventEmitter 사용하는 이벤트 명을 등록해줘야 한다
-  return @[@"MapLevelUpdateListener", @"PosWorldLocationUpdateListener", @"TouchMoveModeListener"];
+  return @[@"MapLevelUpdateListener", @"PosWorldLocationUpdateListener",
+    @"TouchMoveModeListener", @"MapLongTouchListener"];
 }
 
 // js -> Native
@@ -133,55 +134,6 @@ RCT_EXPORT_METHOD(MapAuto)
   });
 }
 
-/** callback **/
-RCT_EXPORT_METHOD(nativeJsViewModeCallBack:(RCTResponseSenderBlock)callback)
-{
-  FatosMapView *fatosMapView = [FatosMapView sharedMapView];
-  
-  if(fatosMapView != nil)
-  {
-    NSString *strResult = [NSString stringWithFormat:@"%d", 1];
-    callback(@[[NSNull null], strResult]);
-  }
-  else
-  {
-    callback(@[[NSNull null], @"-1"]);
-  }
-}
-
-RCT_EXPORT_METHOD(nativeJsAirlineModeCallBack:(RCTResponseSenderBlock)callback)
-{
-  FatosMapView *fatosMapView = [FatosMapView sharedMapView];
-  
-  if(fatosMapView != nil)
-  {
-    NSString *strResult = [NSString stringWithFormat:@"%d", 1];
-    callback(@[[NSNull null], strResult]);
-  }
-  else
-  {
-    callback(@[[NSNull null], @"-1"]);
-  }
-}
-
-RCT_EXPORT_METHOD(nativeJsMapLevelCallBack:(RCTResponseSenderBlock)callback)
-{
-  FatosMapView *fatosMapView = [FatosMapView sharedMapView];
-  
-  if(fatosMapView != nil)
-  {
-    float fLevel = [fatosMapView getMapLevel];
-    int nUIViewLevel = (int)ceil((double) fLevel);
-    
-    NSString *strResult = [NSString stringWithFormat:@"%d", (nUIViewLevel - 1)];
-    callback(@[[NSNull null], strResult]);
-  }
-  else
-  {
-    callback(@[[NSNull null], @"17"]);
-  }
-}
-
 RCT_EXPORT_METHOD(OnMapSetRoutelineColor:(int)index color_active:(NSString *)color_active color_deactive:(NSString *)color_deactive)
 {
   dispatch_async(dispatch_get_main_queue(), ^{
@@ -260,6 +212,162 @@ RCT_EXPORT_METHOD(ApplySelectRouteLine:(int)index)
     
   });
 }
+
+RCT_EXPORT_METHOD(InitMarkerImage:(NSString*)strJsonFileName strFileName:(NSString*)strFileName)
+{
+    dispatch_sync(dispatch_get_main_queue(), ^{
+      
+      FatosMapView *fatosMapView = [FatosMapView sharedMapView];
+      
+      if(fatosMapView != nil)
+      {
+        [fatosMapView InitMarkerImage:strJsonFileName strFilaPath:strFileName];
+      }
+      
+    });
+}
+
+RCT_EXPORT_METHOD(SetVisibleMarkerGroup:(NSString*)strJsonFileName)
+{
+    dispatch_sync(dispatch_get_main_queue(), ^{
+      
+      FatosMapView *fatosMapView = [FatosMapView sharedMapView];
+      
+      if(fatosMapView != nil)
+      {
+        [fatosMapView SetVisibleMarkerGroup:strJsonFileName];
+      }
+      
+    });
+}
+
+RCT_EXPORT_METHOD(AddMarker:(NSString*)strJsonFileName)
+{
+    dispatch_sync(dispatch_get_main_queue(), ^{
+      
+      FatosMapView *fatosMapView = [FatosMapView sharedMapView];
+      
+      if(fatosMapView != nil)
+      {
+        [fatosMapView AddMarker:strJsonFileName];
+      }
+      
+    });
+}
+
+RCT_EXPORT_METHOD(SetMarker:(NSString*)strJsonFileName)
+{
+    dispatch_sync(dispatch_get_main_queue(), ^{
+      
+      FatosMapView *fatosMapView = [FatosMapView sharedMapView];
+      
+      if(fatosMapView != nil)
+      {
+        [fatosMapView SetMarker:strJsonFileName];
+      }
+      
+    });
+}
+
+RCT_EXPORT_METHOD(DelMarker:(NSString*)strJsonFileName)
+{
+    dispatch_sync(dispatch_get_main_queue(), ^{
+      
+      FatosMapView *fatosMapView = [FatosMapView sharedMapView];
+      
+      if(fatosMapView != nil)
+      {
+        [fatosMapView DelMarker:strJsonFileName];
+      }
+      
+    });
+}
+
+RCT_EXPORT_METHOD(DelMarkerGroup:(NSString*)strJsonFileName)
+{
+    dispatch_sync(dispatch_get_main_queue(), ^{
+      
+      FatosMapView *fatosMapView = [FatosMapView sharedMapView];
+      
+      if(fatosMapView != nil)
+      {
+        [fatosMapView DelMarkerGroup:strJsonFileName];
+      }
+      
+    });
+}
+
+RCT_EXPORT_METHOD(ClearMarker)
+{
+    dispatch_sync(dispatch_get_main_queue(), ^{
+      
+      FatosMapView *fatosMapView = [FatosMapView sharedMapView];
+      
+      if(fatosMapView != nil)
+      {
+        [fatosMapView ClearMarker];
+      }
+      
+    });
+}
+/** callback **/
+
+RCT_EXPORT_METHOD(GetPosWorldFromScreen:(float)fCenterX fCenterY:(float)fCenterY callback:(RCTResponseSenderBlock)callback)
+{
+  dispatch_async(dispatch_get_main_queue(), ^{
+    FatosMapView *fatosMapView = [FatosMapView sharedMapView];
+    
+    if(fatosMapView != nil)
+    {
+        int nMapCurPosX = 0;
+        int nMapCurPosY = 0;
+        
+        [fatosMapView GetPosWorldFromScreen:fCenterX fCenterY:fCenterY nMapCurPosX:&nMapCurPosX nMapCurPosY:&nMapCurPosY];
+        
+        NSNumber *numberX = [NSNumber numberWithInt:nMapCurPosX];
+        NSNumber *numberY = [NSNumber numberWithInt:nMapCurPosY];
+
+        NSMutableDictionary *jsonDic = [NSMutableDictionary new];
+        [jsonDic setValue:numberX forKey:@"x"];
+        [jsonDic setValue:numberY forKey:@"y"];
+        
+        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:jsonDic options:NSJSONWritingPrettyPrinted error:nil];
+        NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    
+        NSString *strResult = jsonString;
+        callback(@[[NSNull null], strResult]);
+    }
+  });
+}
+
+RCT_EXPORT_METHOD(ConvWorldtoWGS84:(int)x y:(int)y callback:(RCTResponseSenderBlock)callback)
+{
+  dispatch_async(dispatch_get_main_queue(), ^{
+    FatosMapView *fatosMapView = [FatosMapView sharedMapView];
+    
+    if(fatosMapView != nil)
+    {
+        double xlon = 0;
+        double ylat = 0;
+        
+        [fatosMapView ConvWorldtoWGS84:x y:y xlon:&xlon ylat:&ylat];
+        
+        NSNumber *numberX = [NSNumber numberWithDouble:xlon];
+        NSNumber *numberY = [NSNumber numberWithDouble:ylat];
+
+        NSMutableDictionary *jsonDic = [NSMutableDictionary new];
+        [jsonDic setValue:numberX forKey:@"xlon"];
+        [jsonDic setValue:numberY forKey:@"ylat"];
+        
+        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:jsonDic options:NSJSONWritingPrettyPrinted error:nil];
+        NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    
+        NSString *strResult = jsonString;
+        callback(@[[NSNull null], strResult]);
+    }
+  });
+}
+
 /** ios -> js **/
 - (void) MapLevelUpdateListener:(int)nLevel;
 {
@@ -284,6 +392,14 @@ RCT_EXPORT_METHOD(ApplySelectRouteLine:(int)index)
   {
     NSString *strResult = [NSString stringWithFormat:@"%d", nMode];
     [self sendEventWithName:@"TouchMoveModeListener" body:strResult];
+  }
+}
+
+-(void) MapLongTouchListener:(int)x y:(int)y
+{
+  if(isListener)
+  {
+    [self sendEventWithName:@"MapLongTouchListener" body:@{@"x": @(x), @"y": @(y)}];
   }
 }
 

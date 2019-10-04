@@ -23,6 +23,7 @@ public:
   bool isAble();
   
   void NextSendGPS();
+  void close();
   
 protected:
   bool m_bAble;

@@ -20,6 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSString*) getGPSLogPath;
 - (NSString*) getGPSLogPlayPath;
 + (NSString *)getAssetsPath;
++ (NSString *)getMarkerPath;
 + (NSMutableDictionary *) getJsonDictionary:(NSString *)jsonString;
 + (NSString *)getStringValue:(NSObject *)value;
 + (void) setKeepScreenOn:(BOOL)value;

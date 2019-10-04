@@ -88,6 +88,10 @@ export default class FatosGeneralView extends Component {
     native.SetSimulGps(val);
   }
 
+  showSimulGps() {
+    this.props.navigation.navigate("LabView");
+  }
+
   render() {
     var country = COMMON.wecountry_names[this.state.languageIndex];
     var category = "All Category";
@@ -173,6 +177,9 @@ export default class FatosGeneralView extends Component {
         <TouchableOpacity
           style={styles.tabViewItem}
           activeOpacity={0.7}
+          onLongPress={() => {
+            this.showSimulGps();
+          }}
         >
           <View style={styles.tabViewItemLeft}>
             <Text style={styles.tabViewItemText2}>{"UUID"}</Text>

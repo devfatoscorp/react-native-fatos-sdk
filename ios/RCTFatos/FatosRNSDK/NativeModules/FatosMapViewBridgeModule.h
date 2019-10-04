@@ -21,6 +21,7 @@
 - (void) MapLevelUpdateListener:(int)nLevel;
 - (void) PosWorldLocationUpdateListener:(NSString *)strLocation;
 - (void) TouchMoveModeListener:(int)nMode;
+- (void) MapLongTouchListener:(int)x y:(int)y;
 
 @end
 

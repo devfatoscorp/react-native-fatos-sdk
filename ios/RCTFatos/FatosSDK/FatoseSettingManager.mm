@@ -200,16 +200,28 @@ static const char* m_arFeeOption[] = {
   // 교통 정보
   m_arSDIEnable[17] = m_arAndoService[10];
   
+  int nSite = [FatosNaviModule getClientSite];
+    
   // 높이,중량 안내
-  m_arSDIEnable[18] = false;
-  m_arSDIEnable[19] = false;
-  m_arSDIEnable[20] = false;
-  
+  // 트럭일떄 예외처리 임시방편 임
+  if(nSite == 39)
+  {
+      m_arSDIEnable[18] = true;
+      m_arSDIEnable[19] = true;
+      m_arSDIEnable[20] = true;
+  }
+  else
+  {
+      m_arSDIEnable[18] = false;
+      m_arSDIEnable[19] = false;
+      m_arSDIEnable[20] = false;
+  }
+    
   int size1 = sizeof_array(m_arSDIType);
   int size2 = sizeof_array(m_arSDIEnable);
   
-  sdk::SDI_CODE   codes_arr[sdk::SDI_CODE_COUNT];
-  bool       buses_arr[sdk::SDI_CODE_COUNT];
+  sdk::SDI_CODE     codes_arr[sdk::SDI_CODE_COUNT];
+  bool              buses_arr[sdk::SDI_CODE_COUNT];
   
   if(size1 <= 0)
     return;
@@ -223,8 +235,8 @@ static const char* m_arFeeOption[] = {
     }
   }while(size1);
   
-//  FatosNavi::SetSDIFilter(codes_arr, buses_arr, size2);
 
+  [FatosNaviModule SetSDIFilter:(int*)codes_arr pbuses:buses_arr nArray:size2];
 }
 
 @end

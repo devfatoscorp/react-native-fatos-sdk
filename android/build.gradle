@@ -42,9 +42,8 @@ repositories {
 dependencies {
     compile "com.facebook.react:react-native:+"  // From node_modules
     implementation 'com.google.code.gson:gson:2.7'
-    implementation 'biz.fatossdk.anavi:fatos-sdk:1.2.2@aar'
+    implementation 'biz.fatossdk.anavi:fatos-sdk:1.2.3@aar'
 }
-
 
 ext {
     FATOS_SDK_VERSION_CODE = 435

@@ -146,7 +146,7 @@ public class FatosNaviBridgeModule extends ReactContextBaseJavaModule {
             String goalLat = jsonObject.getString("endY");
             String goalLon = jsonObject.getString("endX");
 
-            int nServiceType = NativeNavi.nativeClientSiteToServer(m_gApp.getRoutePathInfo().m_nServiceType);
+            int nServiceType = NativeNavi.nativeClientSiteToServer(m_gApp.getRoutePathInfo().m_nServiceType, false);
 
             param.ServiceType = nServiceType;
             param.DefaultLanguage = m_gApp.getAppSettingInfo().m_nDefaultLanguage;

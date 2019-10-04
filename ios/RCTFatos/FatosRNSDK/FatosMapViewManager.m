@@ -52,4 +52,14 @@ RCT_EXPORT_MODULE(FatosMapView);
   }
 }
 
+- (void) MapLongTouchListener:(int)x y:(int)y
+{
+    FatosMapViewBridgeModule *module = [FatosAppDelegate sharedAppDelegate].fatosMapViewBridgeModule;
+    
+    if(module)
+    {
+      [module MapLongTouchListener:x y:y];
+    }
+}
+
 @end
