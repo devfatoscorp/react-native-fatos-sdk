@@ -45,7 +45,7 @@ RCT_EXPORT_MODULE()
 }
 
 /** js -> ios **/
-RCT_EXPORT_METHOD(SetLanguage:(NSString *)value)
+RCT_EXPORT_METHOD(SetLanguage:(nonnull NSNumber *)value)
 {
   dispatch_async(dispatch_get_main_queue(), ^{
 
@@ -62,7 +62,7 @@ RCT_EXPORT_METHOD(SetLanguage:(NSString *)value)
   });
 }
 
-RCT_EXPORT_METHOD(SetPathLineColor:(NSString *)value)
+RCT_EXPORT_METHOD(SetPathLineColor:(nonnull NSNumber *)value)
 {
   dispatch_async(dispatch_get_main_queue(), ^{
     
@@ -88,7 +88,7 @@ RCT_EXPORT_METHOD(SetNavigationOptions:(NSArray *) array)
   });
 }
 
-RCT_EXPORT_METHOD(SetMapColor:(NSString *) value)
+RCT_EXPORT_METHOD(SetMapColor:(nonnull NSNumber *) value)
 {
   dispatch_async(dispatch_get_main_queue(), ^{
     
@@ -105,7 +105,7 @@ RCT_EXPORT_METHOD(SetMapColor:(NSString *) value)
   });
 }
 
-RCT_EXPORT_METHOD(SetSmartDrivingMode:(NSString *) value)
+RCT_EXPORT_METHOD(SetSmartDrivingMode:(nonnull NSNumber *) value)
 {
   dispatch_async(dispatch_get_main_queue(), ^{
     
@@ -169,7 +169,7 @@ RCT_EXPORT_METHOD(SetFacility:(NSArray *) array)
   });
 }
 
-RCT_EXPORT_METHOD(SetGuidevoice:(NSString *) value)
+RCT_EXPORT_METHOD(SetGuidevoice:(nonnull NSNumber *) value)
 {
   dispatch_async(dispatch_get_main_queue(), ^{
     
@@ -181,7 +181,7 @@ RCT_EXPORT_METHOD(SetGuidevoice:(NSString *) value)
   });
 }
 
-RCT_EXPORT_METHOD(SetRediscover:(NSString *) value)
+RCT_EXPORT_METHOD(SetRediscover:(nonnull NSNumber *) value)
 {
   dispatch_async(dispatch_get_main_queue(), ^{
     
@@ -189,13 +189,11 @@ RCT_EXPORT_METHOD(SetRediscover:(NSString *) value)
     [[FatosEnvironment sharedObject] setRediscover:val];
     [[FatosEnvironment sharedObject] saveEnvironment];
     
-    
-    
     [FatosEnvBridgeModule setRouteAutoTime:val];
   });
 }
 
-RCT_EXPORT_METHOD(SetWayPoint:(NSString *) value)
+RCT_EXPORT_METHOD(SetWayPoint:(nonnull NSNumber *) value)
 {
   dispatch_async(dispatch_get_main_queue(), ^{
     
@@ -205,17 +203,17 @@ RCT_EXPORT_METHOD(SetWayPoint:(NSString *) value)
   });
 }
 
-RCT_EXPORT_METHOD(SetHiPass:(NSString *) value)
+RCT_EXPORT_METHOD(SetHiPass:(BOOL) value)
 {
   dispatch_async(dispatch_get_main_queue(), ^{
     
-    bool val = [value boolValue] == YES ? true : false;
+    bool val = value == YES ? true : false;
     [[FatosEnvironment sharedObject] setHipass:val];
     [[FatosEnvironment sharedObject] saveEnvironment];
   });
 }
 
-RCT_EXPORT_METHOD(SetCarType:(NSString *) value)
+RCT_EXPORT_METHOD(SetCarType:(nonnull NSNumber *) value)
 {
   dispatch_async(dispatch_get_main_queue(), ^{
     
@@ -225,7 +223,7 @@ RCT_EXPORT_METHOD(SetCarType:(NSString *) value)
   });
 }
 
-RCT_EXPORT_METHOD(SetFuel:(NSString *) value)
+RCT_EXPORT_METHOD(SetFuel:(nonnull NSNumber *) value)
 {
   dispatch_async(dispatch_get_main_queue(), ^{
     
@@ -235,7 +233,7 @@ RCT_EXPORT_METHOD(SetFuel:(NSString *) value)
   });
 }
 
-RCT_EXPORT_METHOD(SetSeatPosition:(NSString *) value)
+RCT_EXPORT_METHOD(SetSeatPosition:(nonnull NSNumber *) value)
 {
   dispatch_async(dispatch_get_main_queue(), ^{
     
@@ -245,7 +243,7 @@ RCT_EXPORT_METHOD(SetSeatPosition:(NSString *) value)
   });
 }
 
-RCT_EXPORT_METHOD(SetCarvata:(NSString *) value)
+RCT_EXPORT_METHOD(SetCarvata:(nonnull NSNumber *) value)
 {
   dispatch_async(dispatch_get_main_queue(), ^{
     
@@ -262,11 +260,12 @@ RCT_EXPORT_METHOD(SetCarvata:(NSString *) value)
   });
 }
 
-RCT_EXPORT_METHOD(SetDem:(NSString *) value)
+RCT_EXPORT_METHOD(SetDem:(BOOL) value)
 {
   dispatch_async(dispatch_get_main_queue(), ^{
     
-    bool val = [value boolValue] == YES ? true : false;
+    bool val = value == YES ? true : false;
+      
     [[FatosEnvironment sharedObject] setDem:val];
     [[FatosEnvironment sharedObject] saveEnvironment];
     
@@ -280,11 +279,11 @@ RCT_EXPORT_METHOD(SetDem:(NSString *) value)
   });
 }
 
-RCT_EXPORT_METHOD(SetSimulGps:(NSString *) value)
+RCT_EXPORT_METHOD(SetSimulGps:(BOOL) value)
 {
   dispatch_async(dispatch_get_main_queue(), ^{
     
-    bool val = [value boolValue] == YES ? true : false;
+    bool val = value == YES ? true : false;
     [[FatosEnvironment sharedObject] setSimulGps:val];
     [[FatosEnvironment sharedObject] saveEnvironment];
       
@@ -298,14 +297,13 @@ RCT_EXPORT_METHOD(SetSimulGps:(NSString *) value)
   });
 }
 
-RCT_EXPORT_METHOD(SetDrawGpsPoint:(NSString *) value)
+RCT_EXPORT_METHOD(SetDrawGpsPoint:(BOOL) value)
 {
     dispatch_async(dispatch_get_main_queue(), ^{
         
-        bool val = [value boolValue] == YES ? true : false;
+        bool val = value == YES ? true : false;
         [[FatosEnvironment sharedObject] setDrawGpsPoint:val];
         [[FatosEnvironment sharedObject] saveEnvironment];
-        
         
         FatosNaviModule *fatosNaviModule = [FatosAppDelegate sharedAppDelegate].fatosNaviModule;
         

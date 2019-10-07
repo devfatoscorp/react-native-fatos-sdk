@@ -1506,7 +1506,6 @@ export default class FatosNavigationView extends Component {
     var varvatga = this.state.carvata;
     var smart = this.state.smart === true ? "On" : "Off";
     var hiPass = this.state.hiPass === true ? "On" : "Off";
-    var dem = this.state.dem === true ? "On" : "Off";
 
     var strMapthemes = languageManager.getCodeName("map_themes");
     var strRouteColor = languageManager.getCodeName("route_color");
@@ -1589,20 +1588,7 @@ export default class FatosNavigationView extends Component {
               <Text style={styles.tabViewItemText1}>{">"}</Text>
             </View>
           </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.tabViewItem}
-            activeOpacity={0.7}
-            onPress={() => {
-              this.setDem();
-            }}
-          >
-            <View style={styles.tabViewItemLeft}>
-              <Text style={styles.tabViewItemText1}>{"DEM"}</Text>
-            </View>
-            <View style={styles.tabViewItemRight}>
-              <Text style={styles.tabViewItemText1}>{dem}</Text>
-            </View>
-          </TouchableOpacity>
+
           <TouchableOpacity
             style={styles.tabViewItem}
             activeOpacity={0.7}

@@ -331,10 +331,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = H5PZ4W68LT;
 				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/include",
 					"\"$(SRCROOT)/../example/ios/Pods/Headers/Public\"",
 					"\"$(SRCROOT)/../example/ios/Pods/Headers/Public/React-Core\"",
-					"$(SRCROOT)/../example/node_modules/react-native",
-					"$(SRCROOT)/include",
+					"\"$(SRCROOT)/../example/ios/Pods/Headers/Public/Yoga\"",
+					"\"$(SRCROOT)/../../../ios/Pods/Headers/Public\"",
+					"\"$(SRCROOT)/../../../ios/Pods/Headers/Public/React-Core\"",
+					"\"$(SRCROOT)/../../../ios/Pods/Headers/Public/Yoga\"",
 				);
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)";
 				OTHER_LDFLAGS = "-ObjC";
@@ -350,10 +353,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = H5PZ4W68LT;
 				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/include",
 					"\"$(SRCROOT)/../example/ios/Pods/Headers/Public\"",
 					"\"$(SRCROOT)/../example/ios/Pods/Headers/Public/React-Core\"",
-					"$(SRCROOT)/../example/node_modules/react-native",
-					"$(SRCROOT)/include",
+					"\"$(SRCROOT)/../example/ios/Pods/Headers/Public/Yoga\"",
+					"\"$(SRCROOT)/../../../ios/Pods/Headers/Public\"",
+					"\"$(SRCROOT)/../../../ios/Pods/Headers/Public/React-Core\"",
+					"\"$(SRCROOT)/../../../ios/Pods/Headers/Public/Yoga\"",
 				);
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)";
 				OTHER_LDFLAGS = "-ObjC";

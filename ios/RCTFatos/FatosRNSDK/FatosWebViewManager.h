@@ -9,7 +9,7 @@
 #ifndef FatosWebViewManager_h
 #define FatosWebViewManager_h
 
-#import <React/Views/RCTViewManager.h>
+#import <React/RCTViewManager.h>
 #import <WebKit/WebKit.h>
 #import "FatosMapView.h"
 #import "FatosWebView.h"

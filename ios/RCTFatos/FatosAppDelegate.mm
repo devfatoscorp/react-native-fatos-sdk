@@ -6,8 +6,8 @@
  */
 
 #import "FatosAppDelegate.h"
-#import <React/Base/RCTBundleURLProvider.h>
-#import <React/Base/RCTRootView.h>
+#import <React/RCTBundleURLProvider.h>
+#import <React/RCTRootView.h>
 #import "FatosSDK/FatosRootView.h"
 #import <FatosUtil.h>
 #import <FatosEnvironment.h>
@@ -15,9 +15,9 @@
 #import <CoreTelephony/CTCall.h>
 #import <FatosMapView.h>
 #import <CoreLocation/CoreLocation.h>
-#import "FatosNaviBridgeModule.h"
-#import "FatosEnvBridgeModule.h"
-#import "FatosMapViewBridgeModule.h"
+#import "FatosRNSDK/NativeModules/FatosNaviBridgeModule.h"
+#import "FatosRNSDK/NativeModules/FatosEnvBridgeModule.h"
+#import "FatosRNSDK/NativeModules/FatosMapViewBridgeModule.h"
 #import <FatosNaviModule.h>
 #import <GPSService.h>
 
@@ -45,7 +45,14 @@
   
   [FatosEnvironment sharedObject];
   
-  self.fatosNaviModule = [[FatosNaviModule alloc] initNaviModule:[[[NSBundle mainBundle] infoDictionary] valueForKey:@"sdk_key"]];
+  NSString *sdk_key = [[[NSBundle mainBundle] infoDictionary] valueForKey:@"sdk_key"];
+
+  if(sdk_key == nil)
+  {
+      sdk_key = @"";
+  }
+    
+  self.fatosNaviModule = [[FatosNaviModule alloc] initNaviModule:sdk_key];
   self.fatosNaviModule.delegate = self;
   
   [self.fatosNaviModule InitFolder];
@@ -63,13 +70,25 @@
   jsCodeLocation = [[NSBundle mainBundle] URLForResource:@"main" withExtension:@"jsbundle"];
 #endif
   
+  NSString *module_name = [[[NSBundle mainBundle] infoDictionary] valueForKey:@"module_name"];
+    
+  if(module_name == nil)
+  {
+      module_name = @"";
+  }
+    
   _rootView = [[FatosRootView alloc] initWithBundleURL:jsCodeLocation
-                                                      moduleName:@"FatosHi"
+                                                      moduleName:module_name
                                                initialProperties:nil
                                                    launchOptions:launchOptions];
+    
+  UIImage *launchScreen = [self getLaunchScreen];
+    
+  if(launchScreen != nil)
+  {
+     _rootView.backgroundColor = [UIColor colorWithPatternImage:launchScreen];
+  }
   
-  
-  _rootView.backgroundColor = [UIColor colorWithPatternImage:[self getLaunchScreen]];
   _rootViewController.view = _rootView;
   
   [FatosUtil setKeepScreenOn:YES];
@@ -97,12 +116,17 @@
 
 - (UIImage *) getLaunchScreen
 {
+  UIImage *splash = [UIImage imageNamed:@"hi_splash.png"];
+      
+  if(splash == nil)
+    return nil;
+  
   UIImageView *view = [[UIImageView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
   UIColor *color = [UIColor colorWithRed:44.0f/255.0f green:187.0f/255.0f blue:182.0f/255.0f alpha:1.0f];
   view.backgroundColor = color;
 
-  view.image = [UIImage imageNamed:@"hi_splash.png"];
+  view.image = splash;
   [view setContentMode:UIViewContentModeScaleAspectFit];
  
   UIGraphicsBeginImageContextWithOptions(view.bounds.size, view.opaque, 0.0);

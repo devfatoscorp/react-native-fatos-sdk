@@ -6,7 +6,7 @@
 //  Copyright © 2019 Facebook. All rights reserved.
 //
 
-#import <React/Views/RCTViewManager.h>
+#import <React/RCTViewManager.h>
 //#import <React/RCTBridgeModule.h>
 //#import <React/RCTEventEmitter.h>
 //#import <React/RCTEventDispatcher.h>

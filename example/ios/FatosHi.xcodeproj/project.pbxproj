@@ -19,6 +19,41 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		84837AC5234B1C4800932D49 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C65362D923069FD2004C2656 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = ABFEEA82A6C346B22843FBE0B0582182;
+			remoteInfo = FBReactNativeSpec;
+		};
+		84837AC7234B1C4800932D49 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C65362D923069FD2004C2656 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F958876A082BF810B342435CE3FB5AF6;
+			remoteInfo = RCTTypeSafety;
+		};
+		84837AC9234B1C4800932D49 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C65362D923069FD2004C2656 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 6771D231F4C8C5976470A369C474B32E;
+			remoteInfo = "React-CoreModules";
+		};
+		84837ACB234B1C4800932D49 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C65362D923069FD2004C2656 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D5C775614AC76D44CECB6BE08B022F1F;
+			remoteInfo = ReactCommon;
+		};
+		84837ACD234B1C4800932D49 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C65362D923069FD2004C2656 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 65D0A19C165FA1126B1360680FE6DB12;
+			remoteInfo = Yoga;
+		};
 		8483EAD32316751F0001846E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 8483EACF2316751F0001846E /* RCTFatos.xcodeproj */;
@@ -67,13 +102,6 @@
 			proxyType = 2;
 			remoteGlobalIDString = 37592FDAD45752511010F4B06AC57355;
 			remoteInfo = "React-cxxreact";
-		};
-		C653630723069FD3004C2656 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C65362D923069FD2004C2656 /* Pods.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = F7167F978EC111B312737A6A072E1951;
-			remoteInfo = "React-DevSupport";
 		};
 		C653630923069FD3004C2656 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -173,13 +201,6 @@
 			remoteGlobalIDString = C1A919103EAC9813D236486C34FC0A21;
 			remoteInfo = "React-RCTVibration";
 		};
-		C653632723069FD3004C2656 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C65362D923069FD2004C2656 /* Pods.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 843C0BC30FDA629ACCCF52285F8AC849;
-			remoteInfo = "React-RCTWebSocket";
-		};
 		C653632923069FD3004C2656 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C65362D923069FD2004C2656 /* Pods.xcodeproj */;
@@ -207,13 +228,6 @@
 			proxyType = 2;
 			remoteGlobalIDString = B0B214D775196BA7CA8E17E53048A493;
 			remoteInfo = SDWebImage;
-		};
-		C653633123069FD3004C2656 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C65362D923069FD2004C2656 /* Pods.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 1FA65622A09E4E5504F80B3610AB78F1;
-			remoteInfo = yoga;
 		};
 		C6CCEE1E230BD1C2004FE700 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -374,13 +388,15 @@
 			isa = PBXGroup;
 			children = (
 				C65362FC23069FD3004C2656 /* libDoubleConversion.a */,
+				84837AC6234B1C4800932D49 /* libFBReactNativeSpec.a */,
 				C65362FE23069FD3004C2656 /* libFolly.a */,
 				C653630023069FD3004C2656 /* libglog.a */,
 				C6CCEE1F230BD1C2004FE700 /* liblibwebp.a */,
 				C653630223069FD3004C2656 /* libPods-FatosHi.a */,
+				84837AC8234B1C4800932D49 /* libRCTTypeSafety.a */,
 				C653630423069FD3004C2656 /* libReact-Core.a */,
+				84837ACA234B1C4800932D49 /* libReact-CoreModules.a */,
 				C653630623069FD3004C2656 /* libReact-cxxreact.a */,
-				C653630823069FD3004C2656 /* libReact-DevSupport.a */,
 				C653630A23069FD3004C2656 /* libReact-jsi.a */,
 				C653630C23069FD3004C2656 /* libReact-jsiexecutor.a */,
 				C653630E23069FD3004C2656 /* libReact-jsinspector.a */,
@@ -395,14 +411,14 @@
 				C653632223069FD3004C2656 /* libReact-RCTSettings.a */,
 				C653632423069FD3004C2656 /* libReact-RCTText.a */,
 				C653632623069FD3004C2656 /* libReact-RCTVibration.a */,
-				C653632823069FD3004C2656 /* libReact-RCTWebSocket.a */,
+				84837ACC234B1C4800932D49 /* libReactCommon.a */,
 				C6CCEE21230BD1C2004FE700 /* libRNFastImage.a */,
 				C653632A23069FD3004C2656 /* libRNGestureHandler.a */,
 				C653632C23069FD3004C2656 /* libRNI18n.a */,
 				C653632E23069FD3004C2656 /* libRNReanimated.a */,
 				C653633023069FD3004C2656 /* libSDWebImage.a */,
 				C6CCEE23230BD1C2004FE700 /* libSDWebImageWebPCoder.a */,
-				C653633223069FD3004C2656 /* libyoga.a */,
+				84837ACE234B1C4800932D49 /* libYoga.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -478,6 +494,41 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		84837AC6234B1C4800932D49 /* libFBReactNativeSpec.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libFBReactNativeSpec.a;
+			remoteRef = 84837AC5234B1C4800932D49 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		84837AC8234B1C4800932D49 /* libRCTTypeSafety.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRCTTypeSafety.a;
+			remoteRef = 84837AC7234B1C4800932D49 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		84837ACA234B1C4800932D49 /* libReact-CoreModules.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libReact-CoreModules.a";
+			remoteRef = 84837AC9234B1C4800932D49 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		84837ACC234B1C4800932D49 /* libReactCommon.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libReactCommon.a;
+			remoteRef = 84837ACB234B1C4800932D49 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		84837ACE234B1C4800932D49 /* libYoga.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libYoga.a;
+			remoteRef = 84837ACD234B1C4800932D49 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		8483EAD42316751F0001846E /* libRCTFatos.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -525,13 +576,6 @@
 			fileType = archive.ar;
 			path = "libReact-cxxreact.a";
 			remoteRef = C653630523069FD3004C2656 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		C653630823069FD3004C2656 /* libReact-DevSupport.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = "libReact-DevSupport.a";
-			remoteRef = C653630723069FD3004C2656 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		C653630A23069FD3004C2656 /* libReact-jsi.a */ = {
@@ -632,13 +676,6 @@
 			remoteRef = C653632523069FD3004C2656 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		C653632823069FD3004C2656 /* libReact-RCTWebSocket.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = "libReact-RCTWebSocket.a";
-			remoteRef = C653632723069FD3004C2656 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		C653632A23069FD3004C2656 /* libRNGestureHandler.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -665,13 +702,6 @@
 			fileType = archive.ar;
 			path = libSDWebImage.a;
 			remoteRef = C653632F23069FD3004C2656 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		C653633223069FD3004C2656 /* libyoga.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libyoga.a;
-			remoteRef = C653633123069FD3004C2656 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		C6CCEE1F230BD1C2004FE700 /* liblibwebp.a */ = {
@@ -845,6 +875,7 @@
 					"\"${PODS_ROOT}/Headers/Public/react-native-image-sequence\"",
 					"\"${PODS_ROOT}/Headers/Public/react-native-webview\"",
 					"\"${PODS_ROOT}/Headers/Public/yoga\"",
+					"\"$(SRCROOT)/../../ios/RCTFatos\"",
 					"\"$(SRCROOT)/../node_modules/react-native-fatos-sdk/ios/RCTFatos\"",
 				);
 				INFOPLIST_FILE = FatosHi/Info.plist;
@@ -900,6 +931,7 @@
 					"\"${PODS_ROOT}/Headers/Public/react-native-image-sequence\"",
 					"\"${PODS_ROOT}/Headers/Public/react-native-webview\"",
 					"\"${PODS_ROOT}/Headers/Public/yoga\"",
+					"\"$(SRCROOT)/../../ios/RCTFatos\"",
 					"\"$(SRCROOT)/../node_modules/react-native-fatos-sdk/ios/RCTFatos\"",
 				);
 				INFOPLIST_FILE = FatosHi/Info.plist;

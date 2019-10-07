@@ -6,7 +6,6 @@ import androidx.multidex.MultiDex;
 
 import com.AlexanderZaytsev.RNI18n.RNI18nPackage;
 import com.burnweb.rnwebview.RNWebViewPackage;
-import com.crashlytics.android.Crashlytics;
 import com.dylanvann.fastimage.FastImageViewPackage;
 import com.facebook.react.ReactApplication;
 import com.reactnativecommunity.webview.RNCWebViewPackage;
@@ -19,7 +18,6 @@ import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
 import com.facebook.soloader.SoLoader;
 
-import io.fabric.sdk.android.Fabric;
 import java.util.Arrays;
 import java.util.List;
 
@@ -64,7 +62,6 @@ public class MainApplication extends ANaviApplication implements ReactApplicatio
   @Override
   public void onCreate() {
     super.onCreate();
-    Fabric.with(this, new Crashlytics());
     SoLoader.init(this, /* native exopackage */ false);
   }
 

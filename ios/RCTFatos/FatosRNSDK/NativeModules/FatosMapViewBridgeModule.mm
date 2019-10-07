@@ -86,7 +86,7 @@ RCT_EXPORT_METHOD(setLayer:(NSDictionary *) baseLayerType bVisible:(NSDictionary
   });
 }
 
-RCT_EXPORT_METHOD(MapLevelIn:(NSString *)type)
+RCT_EXPORT_METHOD(MapLevelIn:(nonnull NSNumber *)type)
 {
   dispatch_async(dispatch_get_main_queue(), ^{
     
@@ -100,7 +100,7 @@ RCT_EXPORT_METHOD(MapLevelIn:(NSString *)type)
   });
 }
 
-RCT_EXPORT_METHOD(MapLevelOut:(NSString *)type)
+RCT_EXPORT_METHOD(MapLevelOut:(nonnull NSNumber *)type)
 {
   dispatch_async(dispatch_get_main_queue(), ^{
     

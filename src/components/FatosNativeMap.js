@@ -16,6 +16,7 @@ export default class FatosNativeMap {
 
   init() {
     this.nativeMAP = NativeModules.FatosMapViewBridgeModule;
+    this.nativeEmt = new NativeEventEmitter(NativeModules.FatosMapViewBridgeModule);
   }
 
   /**

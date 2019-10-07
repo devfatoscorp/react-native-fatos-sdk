@@ -178,7 +178,6 @@ export default class FatosGeneralView extends Component {
           style={styles.tabViewItem}
           activeOpacity={0.7}
           onLongPress={() => {
-            this.showSimulGps();
           }}
         >
           <View style={styles.tabViewItemLeft}>

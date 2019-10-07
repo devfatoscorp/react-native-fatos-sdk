@@ -18,7 +18,7 @@ export default class FatosNativeNavi {
   init() {
     this.nativeAPI = NativeModules.FatosNaviBridgeModule;
     // eslint-disable-next-line no-undef
-    this.nativeEmt = new NativeEventEmitter(NativeModules.FatosEnvBridgeModule);
+    this.nativeEmt = new NativeEventEmitter(NativeModules.FatosNaviBridgeModule);
   }
 
   /**

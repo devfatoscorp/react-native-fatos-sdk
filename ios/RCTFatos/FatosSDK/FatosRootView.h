@@ -9,7 +9,7 @@
 #ifndef FatosRootView_h
 #define FatosRootView_h
 
-#import <React/Base/RCTRootView.h>
+#import <React/RCTRootView.h>
 
 @class GPSService;
 
