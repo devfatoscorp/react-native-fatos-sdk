@@ -8,13 +8,6 @@
 
 #import "FatosRootView.h"
 #import <NMEAData.hpp>
-#import <GPSService.h>
-
-@interface FatosRootView () <CLLocationManagerDelegate>
-
-
-
-@end
 
 @implementation FatosRootView
 
@@ -23,8 +16,6 @@
                 initialProperties:(NSDictionary *)initialProperties
                     launchOptions:(NSDictionary *)launchOptions
 {
-  _gpsService = [[GPSService alloc] init];
-
   return [super initWithBundleURL:bundleURL moduleName:moduleName initialProperties:initialProperties launchOptions:launchOptions];
 }
 

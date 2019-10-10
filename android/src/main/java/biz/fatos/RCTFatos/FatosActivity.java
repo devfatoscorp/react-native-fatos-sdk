@@ -73,7 +73,10 @@ public class FatosActivity extends ReactActivity implements NaviCallback.OnRoute
         m_Context = this;
         ActivityHelper.setDismissKeyguard(m_Context);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+    }
 
+    public void initFatosNaviEngine()
+    {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             int permissionResultWRITE_EXTERNAL_STORAGE = checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE);
             int permissionResultACCESS_FINE_LOCATION = checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION);
@@ -86,7 +89,7 @@ public class FatosActivity extends ReactActivity implements NaviCallback.OnRoute
             }
             else {
                 try {
-                    m_iEngineInit = initFatosNaviEngine();
+                    m_iEngineInit = EngineInit();
 
                     // 권한 획득후 react 통신후 맵뷰를 생성한다
                     FatosNaviBridgeModule module = FatosNaviBridgeModule.GetInstance();
@@ -108,7 +111,7 @@ public class FatosActivity extends ReactActivity implements NaviCallback.OnRoute
         }
         else {
             try {
-                m_iEngineInit = initFatosNaviEngine();
+                m_iEngineInit = EngineInit();
 
                 FatosNaviBridgeModule module = FatosNaviBridgeModule.GetInstance();
 
@@ -143,7 +146,7 @@ public class FatosActivity extends ReactActivity implements NaviCallback.OnRoute
 
             if(bAllGranted) {
                 try {
-                    m_iEngineInit = initFatosNaviEngine();
+                    m_iEngineInit = EngineInit();
 
                     FatosNaviBridgeModule module = FatosNaviBridgeModule.GetInstance();
 
@@ -163,7 +166,7 @@ public class FatosActivity extends ReactActivity implements NaviCallback.OnRoute
         }
     }
 
-    protected int initFatosNaviEngine() throws IOException {
+    protected int EngineInit() throws IOException {
 
         HashMap<String, String> strings = new HashMap<String, String>();
         strings.put("engine_init_failed_expiration_inside", getResources().getString(R.string.engine_init_failed_expiration_inside));
@@ -443,6 +446,18 @@ public class FatosActivity extends ReactActivity implements NaviCallback.OnRoute
     public void OnRouteViaComplete()
     {
 
+    }
+
+
+    @Override
+    public void OnInitializeStatus(int status, String value)
+    {
+        FatosNaviBridgeModule module = FatosNaviBridgeModule.GetInstance();
+
+        if(module != null)
+        {
+            module.InitializeStatusListener(status, value);
+        }
     }
 
     public void doBack() {

@@ -21,8 +21,7 @@
 #import <FatosNaviModule.h>
 #import <GPSService.h>
 
-
-@interface FatosAppDelegate ()<FatosNaviModuleDelegate>
+@interface FatosAppDelegate ()<FatosNaviModuleDelegate, GPSServiceDelegate>
 @end
 
 @implementation FatosAppDelegate
@@ -43,25 +42,6 @@
   self.window.rootViewController = _rootViewController;
   [self.window makeKeyAndVisible];
   
-  [FatosEnvironment sharedObject];
-  
-  NSString *sdk_key = [[[NSBundle mainBundle] infoDictionary] valueForKey:@"sdk_key"];
-
-  if(sdk_key == nil)
-  {
-      sdk_key = @"";
-  }
-    
-  self.fatosNaviModule = [[FatosNaviModule alloc] initNaviModule:sdk_key];
-  self.fatosNaviModule.delegate = self;
-  
-  [self.fatosNaviModule InitFolder];
-  [self.fatosNaviModule InitServiceURL];
-  [self.fatosNaviModule InitResource];
-  [self.fatosNaviModule InitNavi];
-    
-  [FatosEnvBridgeModule setEnvironmentSDIInfo];
-  
   NSURL *jsCodeLocation;
   
 #if TARGET_IPHONE_SIMULATOR
@@ -71,10 +51,10 @@
 #endif
   
   NSString *module_name = [[[NSBundle mainBundle] infoDictionary] valueForKey:@"module_name"];
-    
+
   if(module_name == nil)
   {
-      module_name = @"";
+    module_name = @"";
   }
     
   _rootView = [[FatosRootView alloc] initWithBundleURL:jsCodeLocation
@@ -114,9 +94,53 @@
   return YES;
 }
 
+- (void) initFatosNaviEngine:(BOOL)blnGpsService;
+{
+    
+    [FatosEnvironment sharedObject];
+     
+    NSString *sdk_key = [[[NSBundle mainBundle] infoDictionary] valueForKey:@"sdk_key"];
+
+    if(sdk_key == nil)
+    {
+       sdk_key = @"";
+    }
+
+    self.fatosNaviModule = [[FatosNaviModule alloc] initNaviModule:sdk_key];
+    self.fatosNaviModule.delegate = self;
+
+    [self.fatosNaviModule InitFolder];
+    [self.fatosNaviModule InitServiceURL];
+    [self.fatosNaviModule InitResource];
+    [self.fatosNaviModule InitNavi];
+
+    [FatosEnvBridgeModule setEnvironmentSDIInfo];
+    
+    if(blnGpsService == YES)
+    {
+        [self initGpsService];
+        
+        if([self checkLocationStatus] == YES)
+        {
+            FatosNaviBridgeModule *module = self.fatosNaviBridgeModule;
+            
+            if(module != nil)
+            {
+                [module PermissionCompleteListener];
+            }
+        }
+    }
+}
+
+- (void) initGpsService
+{
+    _gpsService = [[GPSService alloc] init];
+    _gpsService.delegate = self;
+}
+
 - (UIImage *) getLaunchScreen
 {
-  UIImage *splash = [UIImage imageNamed:@"hi_splash.png"];
+  UIImage *splash = [UIImage imageNamed:@"splash_background.png"];
       
   if(splash == nil)
     return nil;
@@ -139,32 +163,42 @@
   return img;
 }
 
-- (void) checkLocationStatus
+- (BOOL) checkLocationStatus
 {
   CLAuthorizationStatus status = [CLLocationManager authorizationStatus];
   
   if(status == kCLAuthorizationStatusDenied)
   {
-    NSString *strTitle = NSLocalizedString(@"location_status_denied_title", @"");
-    NSString *strMessage = NSLocalizedString(@"location_status_denied_message", @"");
-    NSString *strOk = NSLocalizedString(@"location_status_denied_ok", @"");
-    
-    UIAlertController * alert = [UIAlertController
-                                 alertControllerWithTitle:strTitle
-                                 message:strMessage
-                                 preferredStyle:UIAlertControllerStyleAlert];
-    
-    UIAlertAction *ok = [UIAlertAction actionWithTitle:strOk style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-      
-      [alert dismissViewControllerAnimated:YES completion:nil];
-      
-      
-      [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
-    }];
-    
-    [alert addAction:ok];
-    [_rootViewController presentViewController:alert animated:YES completion:nil];
+    return NO;
   }
+    
+  return YES;
+}
+
+- (void) checkLocationStatusAlert
+{
+    if([self checkLocationStatus] == NO)
+    {
+        NSString *strTitle = NSLocalizedString(@"location_status_denied_title", @"");
+        NSString *strMessage = NSLocalizedString(@"location_status_denied_message", @"");
+        NSString *strOk = NSLocalizedString(@"location_status_denied_ok", @"");
+        
+        UIAlertController * alert = [UIAlertController
+                                     alertControllerWithTitle:strTitle
+                                     message:strMessage
+                                     preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *ok = [UIAlertAction actionWithTitle:strOk style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+          
+          [alert dismissViewControllerAnimated:YES completion:nil];
+          
+          
+          [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
+        }];
+        
+        [alert addAction:ok];
+        [_rootViewController presentViewController:alert animated:YES completion:nil];
+    }
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -186,7 +220,7 @@
     mapview.isRender = YES;
   }
   
-  [self checkLocationStatus];
+  [self checkLocationStatusAlert];
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
@@ -208,8 +242,7 @@
     mapview.isRender = YES;
   }
   
-  
-  [self checkLocationStatus];
+  [self checkLocationStatusAlert];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
@@ -217,7 +250,7 @@
   
   [self.fatosNaviModule ReleaseNavi];
 
-  [[_rootView gpsService] saveUserDefaultsLocation];
+  [_gpsService saveUserDefaultsLocation];
 }
 
 - (void)applicationDidReceiveMemoryWarning:(UIApplication *)application {
@@ -316,5 +349,35 @@
         [module TouchMoveModeListener:0];
     }
 }
+
+
+- (void) onInitializeStatus:(int)status value:(NSString *)value
+{
+    FatosNaviBridgeModule *module = self.fatosNaviBridgeModule;
+       
+    if(module != nil)
+    {
+       [module InitializeStatusListener:status value:value];
+    }
+}
+
+#pragma mark - GPSServiceDelegate
+
+- (void) didChangeAuthorizationStatus:(CLAuthorizationStatus)status
+{
+    [self checkLocationStatusAlert];
+    
+    // gps 권한 획득후
+    if([self checkLocationStatus] == YES)
+    {
+        FatosNaviBridgeModule *module = self.fatosNaviBridgeModule;
+        
+        if(module != nil)
+        {
+            [module PermissionCompleteListener];
+        }
+    }
+}
+
 
 @end

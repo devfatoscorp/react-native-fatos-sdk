@@ -7,8 +7,9 @@
 //
 
 #import "FatosNaviBridgeModule.h"
-#import "FatosAppDelegate.h"
-#import "FatosWebViewManager.h"
+#import "../../FatosAppDelegate.h"
+#import "../../FatosRNSDK/FatosWebViewManager.h"
+#import "../../FatosSDK/FatoseSettingManager.h"
 #import "FatosEnvironment.h"
 #import "FatoseSettingManager.h"
 #import <FatosNaviModule.h>
@@ -42,7 +43,7 @@ RCT_EXPORT_MODULE()
 - (NSArray<NSString *> *)supportedEvents
 {
   return @[@"UpdateRGListener", @"RouteResultListener", @"ShowIndicatorListener", @"HideIndicatorListener",
-           @"PermissionCompleteListener", @"ShowWebViewListener", @"HideWebViewListener", @"SearchResultListener", @"RouteCompleteListener"];
+           @"PermissionCompleteListener", @"ShowWebViewListener", @"HideWebViewListener", @"SearchResultListener", @"RouteCompleteListener", @"RequestPermissionsListener", @"InitializeStatusListener"];
 }
 
 /** js -> ios **/
@@ -138,9 +139,6 @@ RCT_EXPORT_METHOD(RouteTest3)
     
   });
 }
-
-/**************************************************/
-
 
 RCT_EXPORT_METHOD(CancelRoute)
 {
@@ -292,6 +290,15 @@ RCT_EXPORT_METHOD(SpeakUtterance:(NSString *)strSpeech)
     });
 }
 
+RCT_EXPORT_METHOD(RequestPermissionsListener)
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        [[FatosAppDelegate sharedAppDelegate] initGpsService];
+        
+    });
+}
+
 /** callback **/
 
 RCT_EXPORT_METHOD(GetRouteSummaryJson:(RCTResponseSenderBlock)callback)
@@ -386,6 +393,14 @@ RCT_EXPORT_METHOD(GetRouteSummaryJson:(RCTResponseSenderBlock)callback)
     if(isListener)
     {
         [self sendEventWithName:@"RouteCompleteListener" body:@""];
+    }
+}
+
+- (void) InitializeStatusListener:(int)status value:(NSString *)value
+{
+    if(isListener)
+    {
+        [self sendEventWithName:@"InitializeStatusListener" body:@{@"status": [NSNumber numberWithInt:status],@"value" : value}];
     }
 }
 

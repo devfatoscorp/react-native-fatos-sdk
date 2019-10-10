@@ -287,11 +287,11 @@ RCT_EXPORT_METHOD(SetSimulGps:(BOOL) value)
     [[FatosEnvironment sharedObject] setSimulGps:val];
     [[FatosEnvironment sharedObject] saveEnvironment];
       
-    FatosRootView *rootView = [FatosAppDelegate sharedAppDelegate].rootView;
+    GPSService *gpsService = [FatosAppDelegate sharedAppDelegate].gpsService;
       
-    if(rootView)
+    if(gpsService)
     {
-       [[rootView gpsService] onSimulGps:val == true ? YES : NO];
+       [gpsService onSimulGps:val == true ? YES : NO];
     }
      
   });

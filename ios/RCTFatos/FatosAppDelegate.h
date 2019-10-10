@@ -13,6 +13,7 @@
 @class FatosWebViewManager;
 @class FatosNaviModule;
 @class FatosRootView;
+@class GPSService;
 
 @interface FatosAppDelegate : UIResponder <UIApplicationDelegate> {
   
@@ -25,7 +26,10 @@
 @property (nonatomic, retain) FatosNaviBridgeModule *fatosNaviBridgeModule;
 @property (nonatomic, retain) UIViewController *rootViewController;
 @property (nonatomic, retain) FatosRootView *rootView;
+@property (nonatomic, strong) GPSService *gpsService;
 
 + (FatosAppDelegate *)sharedAppDelegate;
+- (void) initFatosNaviEngine:(BOOL)blnGpsService;
+- (void) initGpsService;
 
 @end

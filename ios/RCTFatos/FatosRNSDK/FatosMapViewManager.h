@@ -7,9 +7,6 @@
 //
 
 #import <React/RCTViewManager.h>
-//#import <React/RCTBridgeModule.h>
-//#import <React/RCTEventEmitter.h>
-//#import <React/RCTEventDispatcher.h>
 #import <React/RCTLog.h>
 #import <FatosMapView.h>
 

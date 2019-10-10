@@ -24,8 +24,10 @@
 - (void) ShowIndicatorListener;
 - (void) HideIndicatorListener;
 - (BOOL) IsIndicator;
+- (void) PermissionCompleteListener;
 - (void) SearchResultListener:(const char *)strResult;
 - (void) RouteCompleteListener;
+- (void) InitializeStatusListener:(int)status value:(NSString *)value;
 
 @end
 

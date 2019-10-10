@@ -17,8 +17,6 @@
   
 }
 
-@property (nonatomic, strong) GPSService *gpsService;
-
 @end
 
 #endif /* FatosRootView_h */

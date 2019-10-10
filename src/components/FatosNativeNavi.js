@@ -195,4 +195,13 @@ export default class FatosNativeNavi {
   addListener_RouteComplete(cb) {
     this.nativeEmt.addListener('RouteCompleteListener', cb);
   }
+
+  /**
+   * 엔진 초기화 상태
+   * @param cb
+   */
+  addListener_InitializeStatus(cb) {
+    this.nativeEmt.addListener('InitializeStatusListener', cb);
+  }
+
 }

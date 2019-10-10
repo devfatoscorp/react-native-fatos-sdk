@@ -3,10 +3,12 @@ package biz.fatos.RCTFatos.NativeModules;
 import android.os.Handler;
 import android.util.Log;
 
+import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
+import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.modules.core.DeviceEventManagerModule;
 import com.facebook.react.bridge.Callback;
 
@@ -405,6 +407,16 @@ public class FatosNaviBridgeModule extends ReactContextBaseJavaModule {
         }
     }
 
+    @ReactMethod
+    public void RequestPermissionsListener()
+    {
+
+        if(mFatosActivity != null)
+        {
+            mFatosActivity.initFatosNaviEngine();
+        }
+    }
+
     /** callback **/
     @ReactMethod
     public void GetRouteSummaryJson(Callback callback) {
@@ -487,7 +499,18 @@ public class FatosNaviBridgeModule extends ReactContextBaseJavaModule {
         }
     }
 
-    private void sendEvent(ReactContext reactContext, String eventName, String content) {
+    public void InitializeStatusListener(int status, String value)
+    {
+        if(isListener) {
+
+            WritableMap content = Arguments.createMap();
+            content.putInt("status", status);
+            content.putString("value", value);
+            sendEvent(getReactApplicationContext(), "InitializeStatusListener", content);
+        }
+    }
+
+    private void sendEvent(ReactContext reactContext, String eventName, Object content) {
         mContext.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)
                 .emit(eventName, content);
     }
