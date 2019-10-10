@@ -1,5 +1,8 @@
 package biz.fatos.RCTFatos.NativeModules;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Handler;
 import android.util.Log;
 
@@ -423,6 +426,35 @@ public class FatosNaviBridgeModule extends ReactContextBaseJavaModule {
 
         String summaryJson = NativeNavi.GetRouteSummaryJson();;
         callback.invoke(null, summaryJson);
+    }
+
+
+    @ReactMethod
+    public void GetIsPermission(Callback callback) {
+
+        String strResult = "0";
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+        {
+            int permissionResultWRITE_EXTERNAL_STORAGE = mContext.checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE);
+            int permissionResultACCESS_FINE_LOCATION = mContext.checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION);
+            int permissionResultACCESS_READ_PHONE= mContext.checkSelfPermission(Manifest.permission.READ_PHONE_STATE);
+
+            if (permissionResultWRITE_EXTERNAL_STORAGE == PackageManager.PERMISSION_DENIED
+                    || permissionResultACCESS_FINE_LOCATION == PackageManager.PERMISSION_DENIED
+                    || permissionResultACCESS_READ_PHONE == PackageManager.PERMISSION_DENIED) {
+
+                strResult = "0";
+            }
+            else {
+                strResult = "1";
+            }
+        }
+        else {
+            strResult = "1";
+        }
+
+        callback.invoke(null, strResult);
     }
 
     public void UpdateRGListener(String strJson) {

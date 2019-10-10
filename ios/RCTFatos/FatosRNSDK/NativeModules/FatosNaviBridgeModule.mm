@@ -314,6 +314,16 @@ RCT_EXPORT_METHOD(GetRouteSummaryJson:(RCTResponseSenderBlock)callback)
   });
 }
 
+RCT_EXPORT_METHOD(GetIsPermission:(RCTResponseSenderBlock)callback)
+{
+  dispatch_async(dispatch_get_main_queue(), ^{
+      
+    BOOL mbln_Permission = [[FatosAppDelegate sharedAppDelegate] checkLocationStatus];
+    NSString *strResult = (mbln_Permission == YES) ? @"1" : @"0";
+    callback(@[[NSNull null], strResult]);
+    
+  });
+}
 /** ios -> js **/
 
 - (void) UpdateRGListener:(NSString *)strJson

@@ -31,5 +31,6 @@
 + (FatosAppDelegate *)sharedAppDelegate;
 - (void) initFatosNaviEngine:(BOOL)blnGpsService;
 - (void) initGpsService;
+- (BOOL) checkLocationStatus;
 
 @end

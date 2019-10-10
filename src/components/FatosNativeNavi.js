@@ -119,12 +119,34 @@ export default class FatosNativeNavi {
   }
 
   /**
+   * 앱 권한 요청
+   */
+  RequestPermissionsListener()
+  {
+    this.nativeAPI.RequestPermissionsListener();
+  }
+
+  /**
    * 경로 요약 정보
    * @returns {json string}
    */
 
   addListener_GetRouteSummaryJson(cb) {
     this.nativeEmt.GetRouteSummaryJson((error, result) => {
+      if (error) {
+        console.error(error);
+      } else {
+        cb(result);
+      }
+    });
+  }
+
+  /**
+   * 권한 확득 여부
+   * @returns {string : 0 미획득, 1 획}
+   */
+  addListener_GetIsPermission(cb) {
+    this.nativeEmt.GetIsPermission((error, result) => {
       if (error) {
         console.error(error);
       } else {
@@ -203,5 +225,7 @@ export default class FatosNativeNavi {
   addListener_InitializeStatus(cb) {
     this.nativeEmt.addListener('InitializeStatusListener', cb);
   }
+
+
 
 }
