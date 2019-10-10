@@ -132,7 +132,7 @@ export default class FatosNativeNavi {
    */
 
   addListener_GetRouteSummaryJson(cb) {
-    this.nativeEmt.GetRouteSummaryJson((error, result) => {
+    this.nativeAPI.GetRouteSummaryJson((error, result) => {
       if (error) {
         console.error(error);
       } else {
@@ -146,7 +146,7 @@ export default class FatosNativeNavi {
    * @returns {string : 0 미획득, 1 획}
    */
   addListener_GetIsPermission(cb) {
-    this.nativeEmt.GetIsPermission((error, result) => {
+    this.nativeAPI.GetIsPermission((error, result) => {
       if (error) {
         console.error(error);
       } else {
