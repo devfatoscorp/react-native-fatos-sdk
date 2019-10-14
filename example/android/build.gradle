@@ -7,7 +7,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.4.2'
+        classpath 'com.android.tools.build:gradle:3.5.0'
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -32,8 +32,8 @@ allprojects {
 }
 
 ext {
-    FATOS_HI_VERSION_CODE = 372
-    FATOS_HI_VERSION_NAME = "2.1.4 (ReactNative)"
+    FATOS_HI_VERSION_CODE = 382
+    FATOS_HI_VERSION_NAME = "2.2.4 (ReactNative)"
 
     FATOS_SDK_VERSION_CODE = 435
     FATOS_SDK_VERSION_NAME = "v2.1.9"

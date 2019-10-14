@@ -12,7 +12,6 @@ import {
 
 import FastImage from "react-native-fast-image";
 import FatosUtil from "../common/FatosUtil";
-import FatosUIManager from "../Manager/FatosUIManager";
 import FatosLanguageManager from "../Manager/FatosLanguageManager";
 
 const SDI_TYPE_1 = 1; // 속도 : 중앙 , 거리 표출
@@ -251,128 +250,163 @@ export default class FatosSDIView extends React.Component {
             isRender = false;
             break;
           }
-        }
 
-        var sdiStyle = styles.ImageStyle;
+          var sdiStyle = styles.ImageStyle;
 
-        // sdi 가로가 큰타입 이미지 예외처리
-        if (sdi.Type === 5) {
-          sdiStyle = styles.ImageWidthStyle;
-          this.m_sdiTotalSpeed += nCurSpeed;
-          this.m_sdiCount++;
-          this.m_sdiAVGSpeed = Math.floor(
-            this.m_sdiTotalSpeed / this.m_sdiCount
-          );
-
-          //시간 = 거리/속도
-
-          if (this.m_sdiCount == 1) {
-            var fDistSection = (sdi.MaxSpeed * 1000) / 3600;
-            this.m_sdiTimeResult = Math.floor(
-              sdi.SectionDist / fDistSection + 1
+          // sdi 가로가 큰타입 이미지 예외처리
+          if (sdi.Type === 5) {
+            sdiStyle = styles.ImageWidthStyle;
+            this.m_sdiTotalSpeed += nCurSpeed;
+            this.m_sdiCount++;
+            this.m_sdiAVGSpeed = Math.floor(
+              this.m_sdiTotalSpeed / this.m_sdiCount
             );
-          }
 
-          this.m_sdiTimeResult -= 1;
+            //시간 = 거리/속도
 
-          if (this.m_sdiTimeResult < 0) {
+            if (this.m_sdiCount == 1) {
+              var fDistSection = (sdi.MaxSpeed * 1000) / 3600;
+              this.m_sdiTimeResult = Math.floor(
+                sdi.SectionDist / fDistSection + 1
+              );
+            }
+
+            this.m_sdiTimeResult -= 1;
+
+            if (this.m_sdiTimeResult < 0) {
+              this.m_sdiTimeResult = 0;
+            }
+          } else {
+            this.m_sdiTotalSpeed = 0;
+            this.m_sdiCount = 0;
             this.m_sdiTimeResult = 0;
           }
-        } else {
-          this.m_sdiTotalSpeed = 0;
-          this.m_sdiCount = 0;
-          this.m_sdiTimeResult = 0;
+
+          var nSDIType = sdi.Type;
+          var strHeight = sdi.Height;
+          var strWeight = sdi.Weight;
+
+          switch (SDI_ATTR_LIST[nSDIType]) {
+            case SDI_TYPE_1:
+              {
+                if (
+                  FatosUtil.isStringEmpty(strHeight) === false ||
+                  FatosUtil.isStringEmpty(strWeight) === false
+                ) {
+                  if (nSDIType == 39) {
+                    sdiBackgroundImg = SDI_IMG_LIST[Number(nSDIType)];
+                    var msg = FatosUtil.sprintf("%sm", Number(strHeight) / 10);
+                    sdiImg = this.getCameraSpeedTextView(
+                      msg,
+                      styles.CameraSpeedText1
+                    );
+
+                    sectionDistView = this.getSectionDistView(
+                      sdi.Type,
+                      sdi.RemainDist
+                    );
+                  } else if (nSDIType == 40) {
+                    sdiBackgroundImg = SDI_IMG_LIST[Number(nSDIType)];
+
+                    var msg = FatosUtil.sprintf("%st", Number(strWeight) / 10);
+                    sdiImg = this.getCameraSpeedTextView(
+                      msg,
+                      styles.CameraSpeedText4
+                    );
+                    sectionDistView = this.getSectionDistView(
+                      sdi.Type,
+                      sdi.RemainDist
+                    );
+                  }
+                } else {
+                  sdiBackgroundImg = SDI_IMG_LIST[Number(nSDIType)];
+                  sdiImg = this.getCameraSpeedTextView(
+                    sdi.MaxSpeed,
+                    styles.CameraSpeedText1
+                  );
+                  if (nCurSpeed > sdi.MaxSpeed && sdi.SectionDist < 600) {
+                  }
+
+                  sectionDistView = this.getSectionDistView(
+                    sdi.Type,
+                    sdi.RemainDist
+                  );
+                }
+              }
+              break;
+
+            case SDI_TYPE_2:
+              {
+                sdiBackgroundImg = SDI_IMG_LIST[Number(nSDIType)];
+                sdiImg = this.getCameraSpeedTextView(
+                  sdi.MaxSpeed,
+                  styles.CameraSpeedText2
+                );
+
+                if (nCurSpeed > sdi.MaxSpeed && sdi.SectionDist < 600) {
+                }
+
+                sectionDistView = this.getSectionDistView(
+                  sdi.Type,
+                  sdi.RemainDist
+                );
+              }
+              break;
+
+            case SDI_TYPE_3:
+              {
+                sdiBackgroundImg = SDI_IMG_LIST[Number(nSDIType)];
+
+                var minutes = 0;
+                var seconds = 0;
+
+                if (this.m_sdiTimeResult < 0) {
+                  minutes = Math.floor((this.m_sdiTimeResult % 3600) / 60);
+                  seconds = Math.floor((this.m_sdiTimeResult % 60) * -1);
+                } else {
+                  minutes = Math.floor((this.m_sdiTimeResult % 3600) / 60);
+                  seconds = Math.floor(this.m_sdiTimeResult % 60);
+                }
+
+                var strRemainTime =
+                  minutes + ":" + FatosUtil.leadingZeros(seconds, 2);
+
+                crackdown = this.getCrackdownView(
+                  sdi.MaxSpeed,
+                  this.m_sdiAVGSpeed,
+                  strRemainTime
+                );
+
+                sectionDistView = this.getSectionDistView(
+                  sdi.Type,
+                  sdi.RemainDist
+                );
+              }
+              break;
+
+            case SDI_TYPE_4:
+              {
+                sdiBackgroundImg = SDI_IMG_LIST[Number(nSDIType)];
+                sectionDistView = this.getSectionDistView(
+                  sdi.Type,
+                  sdi.RemainDist
+                );
+              }
+              break;
+
+            case SDI_TYPE_5:
+              {
+                sdiBackgroundImg = SDI_IMG_LIST[Number(nSDIType)];
+                sectionDistView = this.getSectionDistView(
+                  sdi.Type,
+                  sdi.RemainDist
+                );
+              }
+              break;
+          }
+
+          isRender = true;
         }
-
-        switch (SDI_ATTR_LIST[sdi.Type]) {
-          case SDI_TYPE_1:
-            {
-              sdiBackgroundImg = SDI_IMG_LIST[Number(sdi.Type)];
-              sdiImg = this.getCameraSpeedTextView(
-                sdi.MaxSpeed,
-                styles.CameraSpeedText1
-              );
-              if (nCurSpeed > sdi.MaxSpeed && sdi.SectionDist < 600) {
-              }
-
-              sectionDistView = this.getSectionDistView(
-                sdi.Type,
-                sdi.RemainDist
-              );
-            }
-            break;
-
-          case SDI_TYPE_2:
-            {
-              sdiBackgroundImg = SDI_IMG_LIST[Number(sdi.Type)];
-              sdiImg = this.getCameraSpeedTextView(
-                sdi.MaxSpeed,
-                styles.CameraSpeedText2
-              );
-
-              if (nCurSpeed > sdi.MaxSpeed && sdi.SectionDist < 600) {
-              }
-
-              sectionDistView = this.getSectionDistView(
-                sdi.Type,
-                sdi.RemainDist
-              );
-            }
-            break;
-
-          case SDI_TYPE_3:
-            {
-              sdiBackgroundImg = SDI_IMG_LIST[Number(sdi.Type)];
-
-              var minutes = 0;
-              var seconds = 0;
-
-              if (this.m_sdiTimeResult < 0) {
-                minutes = Math.floor((this.m_sdiTimeResult % 3600) / 60);
-                seconds = Math.floor((this.m_sdiTimeResult % 60) * -1);
-              } else {
-                minutes = Math.floor((this.m_sdiTimeResult % 3600) / 60);
-                seconds = Math.floor(this.m_sdiTimeResult % 60);
-              }
-
-              var strRemainTime =
-                minutes + ":" + FatosUtil.leadingZeros(seconds, 2);
-
-              crackdown = this.getCrackdownView(
-                sdi.MaxSpeed,
-                this.m_sdiAVGSpeed,
-                strRemainTime
-              );
-
-              sectionDistView = this.getSectionDistView(
-                sdi.Type,
-                sdi.RemainDist
-              );
-            }
-            break;
-
-          case SDI_TYPE_4:
-            {
-              sdiBackgroundImg = SDI_IMG_LIST[Number(sdi.Type)];
-              sectionDistView = this.getSectionDistView(
-                sdi.Type,
-                sdi.RemainDist
-              );
-            }
-            break;
-
-          case SDI_TYPE_5:
-            {
-              sdiBackgroundImg = SDI_IMG_LIST[Number(sdi.Type)];
-              sectionDistView = this.getSectionDistView(
-                sdi.Type,
-                sdi.RemainDist
-              );
-            }
-            break;
-        }
-
-        isRender = true;
       }
     } else {
       isRender = false;
@@ -493,6 +527,13 @@ const styles = StyleSheet.create({
     fontSize: 25,
     marginTop: 27,
     marginLeft: 27
+  },
+
+  CameraSpeedText4: {
+    color: "black",
+    fontWeight: "bold",
+    fontSize: 25,
+    marginTop: 25
   },
 
   crackdowText1: {

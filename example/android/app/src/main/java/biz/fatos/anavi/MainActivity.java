@@ -20,6 +20,7 @@ public class MainActivity extends FatosActivity {
     protected void onCreate(Bundle savedInstanceState) {
         sdk_key = getString(R.string.sdk_key);
         super.onCreate(savedInstanceState);
+        initFatosNaviEngine();
     }
 
     @Override

@@ -244,17 +244,17 @@ const Drawables = [
   [
     "laneguid_2456_1111",
     require("../../../res/drawable/laneguid_2456_1111.png")
-  ] //우회전 + 2시 방향 우회전 + 직진 + 좌회전 활성화
+  ], //우회전 + 2시 방향 우회전 + 직진 + 좌회전 활성화
+  ["under_a", require("../../../res/drawable/under_a.png")],
+  ["high_a", require("../../../res/drawable/high_a.png")],
+  ["under_b", require("../../../res/drawable/under_b.png")],
+  ["high_b", require("../../../res/drawable/high_b.png")],
+  ["bus_b", require("../../../res/drawable/bus_b.png")]
 ];
 
 const CoverDrawables = [
-  ["under_b", require("../../../res/drawable/under_b.png")],
-  ["under_a", require("../../../res/drawable/under_a.png")],
-  ["pocket_b", require("../../../res/drawable/pocket_b.png")],
   ["pocket_a", require("../../../res/drawable/pocket_a.png")],
-  ["high_b", require("../../../res/drawable/high_b.png")],
-  ["high_a", require("../../../res/drawable/high_a.png")],
-  ["bus_b", require("../../../res/drawable/bus_b.png")]
+  ["pocket_b", require("../../../res/drawable/pocket_b.png")]
 ];
 
 export default class FatosLaneView extends Component {

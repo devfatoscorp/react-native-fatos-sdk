@@ -26,6 +26,7 @@ export default class FatosUIManager {
   searchView = null;
   routeSummaryView = null;
   laneView = null;
+  hipassView = null;
   RGView = null;
   Dialog = null;
   toast = null;
@@ -188,6 +189,14 @@ export default class FatosUIManager {
 
   getLaneView() {
     return this.laneView;
+  }
+
+  setHipassView(view) {
+    this.hipassView = view;
+  }
+
+  getHipassView() {
+    return this.hipassView;
   }
 
   setRGView(view) {

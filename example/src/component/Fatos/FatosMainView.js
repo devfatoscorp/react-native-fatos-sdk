@@ -26,6 +26,7 @@ import FatosRouteSummaryView from "./FatosRouteSummaryView";
 import FatosSummarySearchView from "./FatosSummarySearchView";
 import FatosSummarySearchListView from "./FatosSummarySearchListView";
 import FatosLaneView from "./FatosLaneView";
+import FatosHiPassView from "./FatosHiPassView";
 
 import COMMON from "../common/common";
 import FatosUtil from "../common/FatosUtil";
@@ -77,7 +78,7 @@ export default class FatosMainView extends Component {
     );
 
     this.naviEmitter.addListener("PermissionCompleteListener", data =>
-      this.setState({ permissionComplete: true })
+      this.onPermissionComplete()
     );
 
     this.naviEmitter.addListener("RouteResultListener", data =>
@@ -90,6 +91,18 @@ export default class FatosMainView extends Component {
 
     this.naviEmitter.addListener("RouteCompleteListener", data =>
       this.RouteCompleteListener()
+    );
+
+    this.naviEmitter.addListener("InitializeStatusListener", data =>
+      this.InitializeStatusListener(data)
+    );
+
+    this.mapViewEmitter = new NativeEventEmitter(
+      NativeModules.FatosMapViewBridgeModule
+    );
+
+    this.mapViewEmitter.addListener("MapLongTouchListener", data =>
+      this.MapLongTouchListener(data)
     );
 
     // 네이티브로 리액트 쪽으로 호출이 가능하다는 셋팅을 해준다
@@ -107,6 +120,7 @@ export default class FatosMainView extends Component {
     this.routeSummaryViewRef = React.createRef();
     this.laneViewRef = React.createRef();
     this.RGViewRef = React.createRef();
+    this.hiPassViewRef = React.createRef();
 
     this.isCreateRef = false;
 
@@ -139,8 +153,8 @@ export default class FatosMainView extends Component {
     }, 1000);
 
     // android FatosEnvBridgeModule 모둘이 생성 안될경우가 있다 정확한 타이밍에 값을 가저오도록 수정 필요함
+
     setTimeout(() => {
-      // 언어 셋팅
       FatosEnvManager.GetInstance();
       NativeModules.FatosEnvBridgeModule.GetLanguage((error, result) => {
         if (error) {
@@ -150,7 +164,7 @@ export default class FatosMainView extends Component {
           this.setState({ languageIndex: result });
         }
       });
-    }, 1000);
+    }, 5000);
 
     // 키보드 올라올때
     Keyboard.addListener("keyboardWillShow", () => {
@@ -200,6 +214,10 @@ export default class FatosMainView extends Component {
     // 상태 바뀌면 다시 랜더링 시켜주자
     this.setState({ appState: nextAppState });
   };
+
+  onPermissionComplete() {
+    this.setState({ permissionComplete: true });
+  }
 
   handleBackPress() {
     // 로딩중일때
@@ -258,6 +276,7 @@ export default class FatosMainView extends Component {
           this.searchViewRef.current.setRgData(this.rgData);
           this.routeSummaryViewRef.current.setRgData(this.rgData);
           this.RGViewRef.current.setRgData(this.rgData);
+          this.hiPassViewRef.current.setRgData(this.rgData);
         } catch (error) {
           // 에러시 코드
           console.log("simsimsim UpdateRGListener error: " + error);
@@ -282,6 +301,7 @@ export default class FatosMainView extends Component {
         this.routeSummaryViewRef.current.update();
         this.laneViewRef.current.update();
         this.RGViewRef.current.update();
+        this.hiPassViewRef.current.update();
       }
     }
   }
@@ -309,12 +329,69 @@ export default class FatosMainView extends Component {
     }
   }
 
+  MapLongTouchListener(data) {
+    // var window = Dimensions.get("window");
+    // var scale = window.scale;
+    // var realwidth = window.width * scale;
+    // var realheight = window.height * scale;
+    //
+    // var x = data.x;
+    // var y = data.y;
+    //
+    // var fCenterX = x / realwidth;
+    // var fCenterY = (realheight - y) / realheight;
+    //
+    // var native = NativeModules.FatosMapViewBridgeModule;
+    //
+    // native.GetPosWorldFromScreen(fCenterX, fCenterY, (error, result) => {
+    //   if (error) {
+    //     console.error(error);
+    //   } else {
+    //     console.log("simsimsim result : " + result);
+    //     var data = JSON.parse(result);
+    //
+    //     var posx = data.x;
+    //     var posy = data.y;
+    //     console.log("simsimsim posx : " + posx);
+    //     console.log("simsimsim posy : " + posy);
+    //
+    //     this.onPosWorldToRoute(posx, posy);
+    //   }
+    // });
+  }
+
+  onPosWorldToRoute(x, y) {
+    var native = NativeModules.FatosMapViewBridgeModule;
+
+    native.ConvWorldtoWGS84(x, y, (error, result) => {
+      if (error) {
+        console.error(error);
+      } else {
+        console.log("simsimsim result : " + result);
+        var data = JSON.parse(result);
+
+        var xlon = data.xlon;
+        var ylat = data.ylat;
+        console.log("simsimsim xlon : " + xlon);
+        console.log("simsimsim ylat : " + ylat);
+
+        var navi = NativeModules.FatosNaviBridgeModule;
+        navi.Route("0", "0", ylat.toString(), xlon.toString());
+      }
+    });
+  }
+
   RouteCompleteListener() {
     var msg = FatosLanguageManager.GetInstance().getCodeName(
       "arrived_destination"
     );
     FatosUIManager.GetInstance().showToast(msg);
     this.native.SpeakUtterance(msg);
+  }
+
+  InitializeStatusListener(data) {
+    console.log("simsimsim InitializeStatusListener status : " + data.status);
+    console.log("simsimsim InitializeStatusListener value : " + data.value);
   }
 
   ShowIndicatorListener() {
@@ -361,9 +438,11 @@ export default class FatosMainView extends Component {
 
         if (FatosUtil.isStringEmpty(result) === true) {
           // 경로 요약 데이터가 없을때
+          console.log("simsimsim summaryData 1");
           return;
         }
 
+        console.log("simsimsim summaryData 2");
         this.setState({ summaryData: JSON.parse(result) });
 
         var blnViewMode = true;
@@ -558,6 +637,7 @@ export default class FatosMainView extends Component {
     var summarySearchView = null;
     var summarySearchListView = null;
     var laneView = null;
+    var hipassView = null;
 
     if (this.state.indicatorVisible === true) {
       indicator = <FatosIndicator />;
@@ -571,6 +651,7 @@ export default class FatosMainView extends Component {
       RGView = <FatosRGView ref={this.RGViewRef} />;
       SDIView = <FatosSDIView ref={this.SDIViewRef} />;
       laneView = <FatosLaneView ref={this.laneViewRef} />;
+      hipassView = <FatosHiPassView ref={this.hiPassViewRef} />;
       bottomView = (
         <FatosBottomView
           ref={this.bottomViewRef}
@@ -644,6 +725,7 @@ export default class FatosMainView extends Component {
       this.routeSummaryViewRef.current
     );
     FatosUIManager.GetInstance().setLaneView(this.laneViewRef.current);
+    FatosUIManager.GetInstance().setHipassView(this.hiPassViewRef.current);
     FatosUIManager.GetInstance().setRGView(this.RGViewRef.current);
 
     return (
@@ -663,6 +745,7 @@ export default class FatosMainView extends Component {
         {SDIView}
         {bottomView}
         {laneView}
+        {hipassView}
         {searchView}
         {searchListView}
         {routeSummaryView}
