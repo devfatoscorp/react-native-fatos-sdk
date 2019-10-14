@@ -21,6 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void) onRouteViaComplete;
 - (BOOL) isIndicator;
 - (void) onMapAuto;
+- (void) onInitializeStatus:(int)status value:(NSString *)value;
 
 @end
 

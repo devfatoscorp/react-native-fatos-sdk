@@ -12,6 +12,10 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol GPSServiceDelegate <NSObject>
+- (void) didChangeAuthorizationStatus:(CLAuthorizationStatus)status;
+@end
+
 @interface GPSService : NSObject <CLLocationManagerDelegate> {
   BOOL  m_isStartLocation;
   int m_status;
@@ -30,6 +34,7 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 @property (nonatomic, retain) CLLocationManager *m_locationManager;
+@property (strong, nonatomic) id<GPSServiceDelegate> delegate;
 
 - (int)getLat;
 - (int)getlon;
