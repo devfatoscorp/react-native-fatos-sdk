@@ -1,9 +1,5 @@
-/**
- * @format
- */
+import FatosEnvMng from './src/components/FatosEnvMng';
+import FatosNativeMap from './src/components/FatosNativeMap';
+import FatosNativeNavi from './src/components/FatosNativeNavi';
 
-import {AppRegistry} from 'react-native';
-import App from './App';
-import {name as appName} from './app.json';
-
-AppRegistry.registerComponent(appName, () => App);
+export { FatosEnvMng, FatosNativeMap, FatosNativeNavi };
