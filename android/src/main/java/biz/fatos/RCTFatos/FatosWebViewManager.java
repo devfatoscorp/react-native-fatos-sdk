@@ -1,4 +1,4 @@
-package biz.fatos.RCTFatos.NativeModules;
+package biz.fatos.RCTFatos;
 
 import android.content.Context;
 import android.view.View;
@@ -16,6 +16,7 @@ import org.json.JSONObject;
 
 import javax.annotation.Nonnull;
 
+import biz.fatos.RCTFatos.NativeModules.FatosNaviBridgeModule;
 import biz.fatossdk.newanavi.ANaviApplication;
 
 import static com.facebook.react.bridge.UiThreadUtil.runOnUiThread;

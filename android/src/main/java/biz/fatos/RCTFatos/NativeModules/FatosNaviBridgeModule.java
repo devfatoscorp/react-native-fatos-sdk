@@ -3,7 +3,6 @@ package biz.fatos.RCTFatos.NativeModules;
 import android.Manifest;
 import android.content.pm.PackageManager;
 import android.os.Build;
-import android.os.Handler;
 import android.util.Log;
 
 import com.facebook.react.bridge.Arguments;
@@ -23,6 +22,7 @@ import java.util.ArrayList;
 
 import biz.fatos.RCTFatos.FatosMapViewManager;
 import biz.fatos.RCTFatos.FatosActivity;
+import biz.fatos.RCTFatos.FatosWebViewManager;
 import biz.fatossdk.config.FatosEnvironment;
 import biz.fatossdk.navi.NativeNavi;
 import biz.fatossdk.navi.NaviInterface;
