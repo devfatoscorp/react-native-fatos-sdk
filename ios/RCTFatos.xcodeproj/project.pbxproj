@@ -52,8 +52,8 @@
 		8440C5C522FD71A80047A287 /* FatosWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FatosWebView.m; sourceTree = "<group>"; };
 		8440C5C622FD71A80047A287 /* FatosAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FatosAppDelegate.h; sourceTree = "<group>"; };
 		8440C5C722FD71A80047A287 /* FatosAppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = FatosAppDelegate.mm; sourceTree = "<group>"; };
-		84E886DB235566870096B870 /* FatosNativeBridgeModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FatosNativeBridgeModule.h; path = NativeModules/FatosNativeBridgeModule.h; sourceTree = "<group>"; };
-		84E886DC235566870096B870 /* FatosNativeBridgeModule.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = FatosNativeBridgeModule.mm; path = NativeModules/FatosNativeBridgeModule.mm; sourceTree = "<group>"; };
+		84E886DB235566870096B870 /* FatosNativeBridgeModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FatosNativeBridgeModule.h; sourceTree = "<group>"; };
+		84E886DC235566870096B870 /* FatosNativeBridgeModule.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = FatosNativeBridgeModule.mm; sourceTree = "<group>"; };
 		C693909123068C9A0069A76F /* libFatos.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libFatos.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6DD05BD23066941005031CF /* libReact.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libReact.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -110,8 +110,6 @@
 		8440C5B322FD71A80047A287 /* FatosRNSDK */ = {
 			isa = PBXGroup;
 			children = (
-				84E886DB235566870096B870 /* FatosNativeBridgeModule.h */,
-				84E886DC235566870096B870 /* FatosNativeBridgeModule.mm */,
 				8440C5BE22FD71A80047A287 /* FatosMapViewManager.h */,
 				8440C5B522FD71A80047A287 /* FatosMapViewManager.m */,
 				8440C5B422FD71A80047A287 /* FatosWebViewManager.h */,
@@ -124,6 +122,8 @@
 		8440C5B722FD71A80047A287 /* NativeModules */ = {
 			isa = PBXGroup;
 			children = (
+				84E886DB235566870096B870 /* FatosNativeBridgeModule.h */,
+				84E886DC235566870096B870 /* FatosNativeBridgeModule.mm */,
 				8440C5B822FD71A80047A287 /* FatosNaviBridgeModule.h */,
 				8440C5B922FD71A80047A287 /* FatosNaviBridgeModule.mm */,
 				8440C5BB22FD71A80047A287 /* FatosMapViewBridgeModule.h */,
