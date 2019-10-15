@@ -26,7 +26,7 @@ export default class FatosNativeMng {
 
     getUserDefaults(strKey, cb)
     {
-        this.nativeAPI.GetIsPermission(strKey, (error, result) => {
+        this.nativeAPI.GetUserDefaults(strKey, (error, result) => {
             if (error) {
                 console.error(error);
             } else {
