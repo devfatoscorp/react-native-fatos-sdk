@@ -32,5 +32,6 @@
 - (void) initFatosNaviEngine:(BOOL)blnGpsService;
 - (void) initGpsService;
 - (BOOL) checkLocationStatus;
+- (void) setLaunchScreen;
 
 @end

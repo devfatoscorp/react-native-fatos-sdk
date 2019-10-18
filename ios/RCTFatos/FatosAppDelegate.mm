@@ -62,13 +62,6 @@
                                                initialProperties:nil
                                                    launchOptions:launchOptions];
     
-  UIImage *launchScreen = [self getLaunchScreen];
-    
-  if(launchScreen != nil)
-  {
-     _rootView.backgroundColor = [UIColor colorWithPatternImage:launchScreen];
-  }
-  
   _rootViewController.view = _rootView;
   
   [FatosUtil setKeepScreenOn:YES];
@@ -92,6 +85,16 @@
 //    }
 //  };
   return YES;
+}
+
+- (void) setLaunchScreen;
+{
+    UIImage *launchScreen = [self getLaunchScreen];
+      
+    if(launchScreen != nil)
+    {
+       _rootView.backgroundColor = [UIColor colorWithPatternImage:launchScreen];
+    }
 }
 
 - (void) initFatosNaviEngine:(BOOL)blnGpsService;
@@ -167,7 +170,7 @@
 {
   CLAuthorizationStatus status = [CLLocationManager authorizationStatus];
   
-  if(status == kCLAuthorizationStatusDenied)
+  if(status == kCLAuthorizationStatusDenied || status == kCLAuthorizationStatusNotDetermined)
   {
     return NO;
   }
@@ -177,7 +180,9 @@
 
 - (void) checkLocationStatusAlert
 {
-    if([self checkLocationStatus] == NO)
+    CLAuthorizationStatus status = [CLLocationManager authorizationStatus];
+    
+    if(status == kCLAuthorizationStatusDenied)
     {
         NSString *strTitle = NSLocalizedString(@"location_status_denied_title", @"");
         NSString *strMessage = NSLocalizedString(@"location_status_denied_message", @"");

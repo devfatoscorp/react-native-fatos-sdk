@@ -310,6 +310,20 @@ RCT_EXPORT_METHOD(ClearMarker)
       
     });
 }
+
+RCT_EXPORT_METHOD(SetMapCenter:(float)hCenter vCenter:(float)vCenter)
+{
+    dispatch_sync(dispatch_get_main_queue(), ^{
+      
+      FatosMapView *fatosMapView = [FatosMapView sharedMapView];
+      
+      if(fatosMapView != nil)
+      {
+        [fatosMapView SetMapCenter:hCenter vCenter:vCenter];
+      }
+      
+    });
+}
 /** callback **/
 
 RCT_EXPORT_METHOD(GetPosWorldFromScreen:(float)fCenterX fCenterY:(float)fCenterY callback:(RCTResponseSenderBlock)callback)

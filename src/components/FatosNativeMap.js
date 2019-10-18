@@ -184,6 +184,14 @@ export default class FatosNativeMap {
   }
 
   /**
+   * SetMapCenter 함수
+   */
+
+  SetMapCenter(hCenter, vCenter) {
+    this.nativeMAP.SetMapCenter(hCenter, vCenter);
+  }
+
+  /**
    * 스크린 중심 값 좌표 변환 함수
    * @param {float, float, cb}
    */

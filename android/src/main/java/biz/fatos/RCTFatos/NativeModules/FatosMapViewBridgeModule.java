@@ -383,6 +383,12 @@ public class FatosMapViewBridgeModule extends ReactContextBaseJavaModule {
         NativeNavi.nativeClearMarker(m_gApp.m_MapHandle);
     }
 
+    @ReactMethod
+    public void SetMapCenter(float hCenter, float vCenter)
+    {
+        NativeNavi.nativeSetMapCenter(m_gApp.m_MapHandle, hCenter, vCenter);
+    }
+
     /** callback **/
 
     @ReactMethod

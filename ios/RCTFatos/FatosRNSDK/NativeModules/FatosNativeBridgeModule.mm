@@ -14,11 +14,11 @@
 RCT_EXPORT_MODULE()
 
 -(id)init{
-
+  
   self = [super init];
   if(self) {
-
-
+    
+    
   }
   return self;
 }
@@ -36,15 +36,15 @@ RCT_EXPORT_MODULE()
 
 - (NSArray<NSString *> *)supportedEvents
 {
- //RCTEventEmitter 오버라이드 함수
- //RCTEventEmitter 사용하는 이벤트 명을 등록해줘야 한다
- return nil;
+  //RCTEventEmitter 오버라이드 함수
+  //RCTEventEmitter 사용하는 이벤트 명을 등록해줘야 한다
+  return nil;
 }
 
 RCT_EXPORT_METHOD(SetUserDefaults:(NSString *)strKey value:(NSString *)strValue)
 {
   dispatch_async(dispatch_get_main_queue(), ^{
-
+    
     [[NSUserDefaults standardUserDefaults] setObject:strValue forKey:strKey];
 
   });
@@ -53,12 +53,12 @@ RCT_EXPORT_METHOD(SetUserDefaults:(NSString *)strKey value:(NSString *)strValue)
 RCT_EXPORT_METHOD(GetUserDefaults:(NSString *)strKey callback:(RCTResponseSenderBlock)callback)
 {
   NSString *strResult = [[NSUserDefaults standardUserDefaults] stringForKey:strKey];
-
+  
   if(strResult == nil)
   {
     strResult = @"";
   }
-
+  
   callback(@[[NSNull null], strResult]);
 }
 

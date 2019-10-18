@@ -294,7 +294,7 @@ RCT_EXPORT_METHOD(RequestPermissionsListener)
 {
     dispatch_async(dispatch_get_main_queue(), ^{
         
-        [[FatosAppDelegate sharedAppDelegate] initGpsService];
+        [[FatosAppDelegate sharedAppDelegate] initFatosNaviEngine:true];
         
     });
 }
