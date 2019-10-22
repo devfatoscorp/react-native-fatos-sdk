@@ -65,6 +65,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (BOOL) DelMarker:(NSString *)strJsonFileName;
 - (BOOL) DelMarkerGroup:(NSString *)strJsonFileName;
 - (void) ClearMarker;
+- (void) SetMapCenter:(float)hCenter vCenter:(float)vCenter;
 
 
 @property(strong, nonatomic) CADisplayLink* displayLink;
