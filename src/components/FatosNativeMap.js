@@ -307,4 +307,13 @@ export default class FatosNativeMap {
   addListener_MapLongTouch(cb) {
     this.nativeEmt.addListener('TouchMoveModeListener', cb);
   }
+
+  /**
+   * 맵 뷰 생성 완료
+   * @param cb
+   */
+
+  addListener_MapReady(cb) {
+    this.nativeEmt.addListener('MapReadyListener', cb);
+  }
 }
