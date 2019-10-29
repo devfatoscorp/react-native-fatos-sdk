@@ -220,7 +220,7 @@ export default class FatosNativeMap {
    */
 
   SetMapShiftCenter(hCenter, vCenter) {
-    this.nativeMAP.SetMapCenter(hCenter, vCenter);
+    this.nativeMAP.SetMapShiftCenter(hCenter, vCenter);
   }
 
   /**
