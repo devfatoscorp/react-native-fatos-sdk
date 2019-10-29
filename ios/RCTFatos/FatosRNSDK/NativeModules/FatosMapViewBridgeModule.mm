@@ -42,7 +42,7 @@ RCT_EXPORT_MODULE()
   //RCTEventEmitter 오버라이드 함수
   //RCTEventEmitter 사용하는 이벤트 명을 등록해줘야 한다
   return @[@"MapLevelUpdateListener", @"PosWorldLocationUpdateListener",
-    @"TouchMoveModeListener", @"MapLongTouchListener"];
+    @"TouchMoveModeListener", @"MapLongTouchListener", @"MapReadyListener"];
 }
 
 // js -> Native
@@ -324,6 +324,22 @@ RCT_EXPORT_METHOD(SetMapCenter:(float)hCenter vCenter:(float)vCenter)
       
     });
 }
+
+
+RCT_EXPORT_METHOD(SetMapShiftCenter:(float)hCenter vCenter:(float)vCenter)
+{
+    dispatch_sync(dispatch_get_main_queue(), ^{
+      
+      FatosMapView *fatosMapView = [FatosMapView sharedMapView];
+      
+      if(fatosMapView != nil)
+      {
+        [fatosMapView SetMapShiftCenter:hCenter vCenter:vCenter];
+      }
+      
+    });
+}
+
 /** callback **/
 
 RCT_EXPORT_METHOD(GetPosWorldFromScreen:(float)fCenterX fCenterY:(float)fCenterY callback:(RCTResponseSenderBlock)callback)
@@ -382,6 +398,62 @@ RCT_EXPORT_METHOD(ConvWorldtoWGS84:(int)x y:(int)y callback:(RCTResponseSenderBl
   });
 }
 
+RCT_EXPORT_METHOD(GetMapCenter:(RCTResponseSenderBlock)callback)
+{
+  dispatch_async(dispatch_get_main_queue(), ^{
+    FatosMapView *fatosMapView = [FatosMapView sharedMapView];
+    
+    if(fatosMapView != nil)
+    {
+        float hCenter;
+        float vCenter;
+        
+        [fatosMapView GetMapCenter:&hCenter vCenter:&vCenter];
+        
+        NSNumber *numberH = [NSNumber numberWithInt:hCenter];
+        NSNumber *numberV = [NSNumber numberWithInt:vCenter];
+
+        NSMutableDictionary *jsonDic = [NSMutableDictionary new];
+        [jsonDic setValue:numberH forKey:@"hCenter"];
+        [jsonDic setValue:numberV forKey:@"vCenter"];
+        
+        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:jsonDic options:NSJSONWritingPrettyPrinted error:nil];
+        NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    
+        NSString *strResult = jsonString;
+        callback(@[[NSNull null], strResult]);
+    }
+  });
+}
+
+RCT_EXPORT_METHOD(GetMapShiftCenter:(RCTResponseSenderBlock)callback)
+{
+  dispatch_async(dispatch_get_main_queue(), ^{
+    FatosMapView *fatosMapView = [FatosMapView sharedMapView];
+    
+    if(fatosMapView != nil)
+    {
+        float hCenter;
+        float vCenter;
+        
+        [fatosMapView GetMapShiftCenter:&hCenter vCenter:&vCenter];
+        
+        NSNumber *numberH = [NSNumber numberWithInt:hCenter];
+        NSNumber *numberV = [NSNumber numberWithInt:vCenter];
+
+        NSMutableDictionary *jsonDic = [NSMutableDictionary new];
+        [jsonDic setValue:numberH forKey:@"hCenter"];
+        [jsonDic setValue:numberV forKey:@"vCenter"];
+        
+        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:jsonDic options:NSJSONWritingPrettyPrinted error:nil];
+        NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    
+        NSString *strResult = jsonString;
+        callback(@[[NSNull null], strResult]);
+    }
+  });
+}
+
 /** ios -> js **/
 - (void) MapLevelUpdateListener:(int)nLevel;
 {
@@ -415,6 +487,11 @@ RCT_EXPORT_METHOD(ConvWorldtoWGS84:(int)x y:(int)y callback:(RCTResponseSenderBl
   {
     [self sendEventWithName:@"MapLongTouchListener" body:@{@"x": @(x), @"y": @(y)}];
   }
+}
+
+- (void) MapReadyListener
+{
+  [self sendEventWithName:@"MapReadyListener" body:@""];
 }
 
 @end

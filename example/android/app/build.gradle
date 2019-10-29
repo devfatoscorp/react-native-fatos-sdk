@@ -242,7 +242,7 @@ dependencies {
     implementation 'androidx.multidex:multidex:2.0.0'
     //api 'com.facebook.react:react-native:+'
     implementation 'com.facebook.react:react-native:+'
-    implementation 'biz.fatossdk.anavi:fatos-sdk:1.3.4@aar'
+    implementation 'biz.fatossdk.anavi:fatos-sdk:1.3.7@aar'
 
     if (enableHermes) {
         def hermesPath = "../../node_modules/hermesvm/android/";

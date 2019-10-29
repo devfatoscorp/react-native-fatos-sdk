@@ -66,7 +66,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (BOOL) DelMarkerGroup:(NSString *)strJsonFileName;
 - (void) ClearMarker;
 - (void) SetMapCenter:(float)hCenter vCenter:(float)vCenter;
-
+- (void) GetMapCenter:(float*)hCenter vCenter:(float*)vCenter;
+- (void) SetMapShiftCenter:(float)hCenter vCenter:(float)vCenter;
+- (void) GetMapShiftCenter:(float*)hCenter vCenter:(float*)vCenter;
 
 @property(strong, nonatomic) CADisplayLink* displayLink;
 @property(strong, nonatomic) id<FatosMapViewDelegate> delegate;

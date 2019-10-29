@@ -389,6 +389,23 @@ public class FatosMapViewBridgeModule extends ReactContextBaseJavaModule {
         NativeNavi.nativeSetMapCenter(m_gApp.m_MapHandle, hCenter, vCenter);
     }
 
+
+
+    @ReactMethod
+    public void SetMapShiftCenter(float hCenter, float vCenter)
+    {
+        FatosMapViewManager mapViewManager = FatosMapViewManager.GetInstance();
+        if(mapViewManager != null)
+        {
+            FatosMainMapView mapView = mapViewManager.mFatosMainMapView;
+
+            if(mapView != null)
+            {
+                mapView.setMapShiftCenter(hCenter, vCenter);
+            }
+        }
+    }
+
     /** callback **/
 
     @ReactMethod
@@ -423,6 +440,59 @@ public class FatosMapViewBridgeModule extends ReactContextBaseJavaModule {
         try {
             object.put("xlon", lonlat[0]);
             object.put("ylat", lonlat[1]);
+            strResult = object.toString();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        callback.invoke(null, strResult);
+    }
+
+    @ReactMethod
+    public void GetMapCenter(Callback callback)
+    {
+        float[] hCenter = new float[1];
+        float[] vCenter = new float[1];
+
+        NativeNavi.nativeGetMapCenter(m_gApp.m_MapHandle, hCenter, vCenter);
+
+        String strResult = "";
+
+        JSONObject object = new JSONObject();
+        try {
+            object.put("hCenter", hCenter[0]);
+            object.put("vCenter", vCenter[1]);
+            strResult = object.toString();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        callback.invoke(null, strResult);
+    }
+
+
+    @ReactMethod
+    public void GetMapShiftCenter(Callback callback)
+    {
+        float[] shiftCenter = new float[2];
+
+        String strResult = "";
+
+        FatosMapViewManager mapViewManager = FatosMapViewManager.GetInstance();
+        if(mapViewManager != null)
+        {
+            FatosMainMapView mapView = mapViewManager.mFatosMainMapView;
+
+            if(mapView != null)
+            {
+                mapView.getMapShiftCenter();
+            }
+        }
+
+        JSONObject object = new JSONObject();
+        try {
+            object.put("hCenter", shiftCenter[0]);
+            object.put("vCenter", shiftCenter[1]);
             strResult = object.toString();
         } catch (JSONException e) {
             e.printStackTrace();
@@ -503,6 +573,11 @@ public class FatosMapViewBridgeModule extends ReactContextBaseJavaModule {
         }
 
         return afd;
+    }
+
+    public void MapReadyListener()
+    {
+        sendEvent(getReactApplicationContext(), "MapReadyListener", "");
     }
 
     public String loadJSONFromAsset(String strJsonFileName) {

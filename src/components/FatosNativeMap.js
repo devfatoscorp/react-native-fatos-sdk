@@ -192,6 +192,62 @@ export default class FatosNativeMap {
   }
 
   /**
+   * GetMapCenter 함수
+   * @param {float, float, cb}
+   */
+
+  GetMapCenter(hCenter, vCenter) {
+    this.nativeMAP.GetMapCenter(
+        fCenterX,
+        fCenterY,
+        (error, result) => {
+          if (error) {
+            console.error(error);
+          } else {
+            var data = JSON.parse(result);
+
+            var hCenter = data.hCenter;
+            var vCenter = data.vCenter;
+
+            cb(hCenter, vCenter);
+          }
+        },
+    );
+  }
+
+  /**
+   * SetMapShiftCenter 함수
+   */
+
+  SetMapShiftCenter(hCenter, vCenter) {
+    this.nativeMAP.SetMapCenter(hCenter, vCenter);
+  }
+
+  /**
+   * GetMapShiftCenter 함수
+   * @param {float, float, cb}
+   */
+
+  GetMapShiftCenter(hCenter, vCenter) {
+    this.nativeMAP.GetMapShiftCenter(
+        fCenterX,
+        fCenterY,
+        (error, result) => {
+          if (error) {
+            console.error(error);
+          } else {
+            var data = JSON.parse(result);
+
+            var hCenter = data.hCenter;
+            var vCenter = data.vCenter;
+
+            cb(hCenter, vCenter);
+          }
+        },
+    );
+  }
+
+  /**
    * 스크린 중심 값 좌표 변환 함수
    * @param {float, float, cb}
    */

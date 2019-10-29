@@ -165,8 +165,8 @@ public class FatosMapViewManager extends SimpleViewManager<View> implements  Fat
         nIndex = FatosEnvironment.sharedObject().getRediscover();
         FatosEnvBridgeModule.setRouteAutoTime(nIndex);
 
-        m_gApp.m_nCurMapMode = NativeNavi.MAP_VIEW_MODE_BIRD;
-        mFatosMainMapView.setMapMode();
+//        m_gApp.m_nCurMapMode = NativeNavi.MAP_VIEW_MODE_BIRD;
+//        mFatosMainMapView.setMapMode();
     }
 
 
@@ -193,7 +193,12 @@ public class FatosMapViewManager extends SimpleViewManager<View> implements  Fat
     @Override
     public void onMapReady()
     {
+        FatosMapViewBridgeModule module = FatosMapViewBridgeModule.GetInstance();
 
+        if(module != null)
+        {
+            module.MapReadyListener();
+        }
     }
 
     @Override

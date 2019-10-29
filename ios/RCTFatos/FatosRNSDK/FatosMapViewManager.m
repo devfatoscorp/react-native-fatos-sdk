@@ -18,7 +18,7 @@ RCT_EXPORT_MODULE(FatosMapView);
 {
   fatosMapView = [[FatosMapView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
   fatosMapView.delegate = self;
-  
+  [self MapReadyListener];
   return fatosMapView;
 }
 
@@ -59,6 +59,16 @@ RCT_EXPORT_MODULE(FatosMapView);
     if(module)
     {
       [module MapLongTouchListener:x y:y];
+    }
+}
+
+- (void) MapReadyListener
+{
+    FatosMapViewBridgeModule *module = [FatosAppDelegate sharedAppDelegate].fatosMapViewBridgeModule;
+    
+    if(module)
+    {
+      [module MapReadyListener];
     }
 }
 
