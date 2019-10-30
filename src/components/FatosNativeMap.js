@@ -116,6 +116,16 @@ export default class FatosNativeMap {
   }
 
   /**
+   * ApplySelectRouteLine 함수
+   * @param {int}
+   */
+
+  ApplySelectRouteLine(index)
+  {
+    this.nativeMAP.ApplySelectRouteLine(index);
+  }
+
+  /**
    * marker init 함수
    * json 파일명, 리소스 파일명
    * @param {string, string}
