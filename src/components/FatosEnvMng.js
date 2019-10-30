@@ -222,7 +222,7 @@ export default class FatosEnvMng {
       }
     });
 
-    this.native.GetGpsSimulation((error, result) => {
+    this.native.GetSimulGps((error, result) => {
       if (error) {
         console.error(error);
       } else {
@@ -230,7 +230,7 @@ export default class FatosEnvMng {
       }
     });
 
-    this.native.GetGpsDrawPoint((error, result) => {
+    this.native.GetDrawGpsPoint((error, result) => {
       if (error) {
         console.error(error);
       } else {
