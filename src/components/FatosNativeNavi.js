@@ -49,6 +49,28 @@ export default class FatosNativeNavi {
   }
 
   /**
+   * 경유지 포함 경유 요청
+   * ex ) var json = {
+      startPosName: '인천공항T1(3층6번)',
+      startX: '126.452126',
+      startY: '37.44908',
+
+      viapoints: [
+        { viaName: '그린나래지하차도', viaX: '126.516106', viaY: '37.474594' }
+      ],
+
+      endPosName: '신명스카이뷰정문',
+      endX: '126.558205',
+      endY: '37.486195'
+    };
+   * @param {json string}
+   */
+
+  routeViapoints(strJson,) {
+    this.nativeAPI.RouteViapoints(strJson);
+  }
+
+  /**
    * 경로 취소
    */
 

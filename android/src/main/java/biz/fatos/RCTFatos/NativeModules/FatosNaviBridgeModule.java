@@ -137,6 +137,16 @@ public class FatosNaviBridgeModule extends ReactContextBaseJavaModule {
         }
     }
 
+    @ReactMethod
+    public void RouteViapoints(String strJson)
+    {
+        try {
+            JSONObject jsonObject = new JSONObject(strJson);
+            routeExternal(jsonObject);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
 
     public void routeExternal(JSONObject jsonObject)
     {

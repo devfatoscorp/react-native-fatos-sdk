@@ -98,6 +98,38 @@ RCT_EXPORT_METHOD(Route:(NSString *)startLat startLon:(NSString *)startLon
   });
 }
 
+RCT_EXPORT_METHOD(RouteViapoints:(NSString *)strJson)
+{
+  dispatch_async(dispatch_get_main_queue(), ^{
+    
+    FatosNaviModule *module = [FatosAppDelegate sharedAppDelegate].fatosNaviModule;
+    
+    if(module)
+    {
+      NSArray *arr = [[FatosEnvironment sharedObject] getNavigationOptions];
+      std::string strFeeOption;
+      for(int i = 0; i < [arr count]; ++i)
+      {
+        bool val = ([[arr objectAtIndex: i] boolValue] == YES) ? true : false;
+        if(val)
+        {
+          strFeeOption.append([[FatoseSettingManager sharedObject] getFeeOption:i]);
+        }
+      }
+      
+      NSError *error;
+      NSData *data = [strJson dataUsingEncoding:NSUTF8StringEncoding];
+      NSDictionary *jsonDictionary = [NSJSONSerialization JSONObjectWithData:data
+                                                                       options:NSJSONReadingMutableContainers
+                                                                         error:&error];
+        
+      [module routeExternal:jsonDictionary strFeeOption:[NSString stringWithUTF8String:strFeeOption.c_str()]];
+       
+    }
+    
+  });
+}
+
 RCT_EXPORT_METHOD(RouteTest1)
 {
   dispatch_async(dispatch_get_main_queue(), ^{
