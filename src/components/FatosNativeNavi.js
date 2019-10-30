@@ -66,7 +66,7 @@ export default class FatosNativeNavi {
    * @param {json string}
    */
 
-  routeViapoints(strJson,) {
+  routeViapoints(strJson) {
     this.nativeAPI.RouteViapoints(strJson);
   }
 
