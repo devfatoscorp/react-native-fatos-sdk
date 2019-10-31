@@ -134,6 +134,23 @@ RCT_EXPORT_METHOD(MapAuto)
   });
 }
 
+
+RCT_EXPORT_METHOD(MapMove:(float)fLonX fLatY:(float)fLatY)
+{
+  dispatch_async(dispatch_get_main_queue(), ^{
+    
+    FatosMapView *fatosMapView = [FatosMapView sharedMapView];
+    
+    if(fatosMapView != nil)
+    {
+        [fatosMapView setMapMove:fLonX fLatY:fLatY];
+    }
+    
+    // 터치 이동 모드 초기화 전송
+    [self TouchMoveModeListener:0];
+  });
+}
+
 RCT_EXPORT_METHOD(OnMapSetRoutelineColor:(int)index color_active:(NSString *)color_active color_deactive:(NSString *)color_deactive)
 {
   dispatch_async(dispatch_get_main_queue(), ^{

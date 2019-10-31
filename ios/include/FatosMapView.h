@@ -33,6 +33,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void) setMapLevelOut:(int)nType;
 - (float) getMapLevel;
 - (void) setMapAuto:(double)fLonX fLatY:(double)fLatY;
+- (void) setMapMove:(double)fLonX fLatY:(double)fLatY;
 - (float) GetViewAngle;
 - (int) getTouchState;
 - (BOOL) IsFling;

@@ -77,6 +77,14 @@ export default class FatosNativeMap {
   }
 
   /**
+   * 좌표로 위치 이동
+   * @param
+   */
+  MapMove(fLonX, fLatY) {
+    this.nativeMAP.MapMove(fLonX, fLatY);
+  }
+
+  /**
    * 경로 요약 화면 셋팅
    * lineColor 는 r,g,b,a 정보를 ,(컴마) 로 구분지어 array 타입으로 넘겨줘야함 ex)176, 106, 255, 1.0
    * xScale, yScale 화면 축소 값

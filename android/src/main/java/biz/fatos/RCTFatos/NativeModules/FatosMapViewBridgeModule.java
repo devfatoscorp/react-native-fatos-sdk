@@ -36,6 +36,7 @@ import biz.fatossdk.nativeMap.FatosMainMapView;
 import biz.fatossdk.nativeMap.MapAnimation;
 import biz.fatossdk.navi.NativeNavi;
 import biz.fatossdk.newanavi.ANaviApplication;
+import biz.fatossdk.newanavi.manager.AMapPositionManager;
 
 
 public class FatosMapViewBridgeModule extends ReactContextBaseJavaModule {
@@ -183,6 +184,21 @@ public class FatosMapViewBridgeModule extends ReactContextBaseJavaModule {
         if(mapView != null)
         {
             mapView.mapMoveCurPos();
+        }
+
+        TouchMoveModeListener(0);
+    }
+
+    @ReactMethod
+    public void MapMove(float fLonX, float fLatY)
+    {
+
+
+        FatosMainMapView mapView = FatosMapViewManager.getFatosMainMapView();
+
+        if(mapView != null)
+        {
+            mapView.mapMove(fLonX,fLatY);
         }
 
         TouchMoveModeListener(0);
