@@ -321,6 +321,23 @@ RCT_EXPORT_METHOD(SetDrawGpsPoint:(BOOL) value)
     });
 }
 
+RCT_EXPORT_METHOD(SetAutoCurrentPos:(BOOL) value)
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        bool val = value == YES ? true : false;
+        [[FatosEnvironment sharedObject] setAutoCurrentPos:val];
+        [[FatosEnvironment sharedObject] saveEnvironment];
+        
+        FatosNaviModule *fatosNaviModule = [FatosAppDelegate sharedAppDelegate].fatosNaviModule;
+        
+        if(fatosNaviModule != nil)
+        {
+            [fatosNaviModule SetAutoCurrentPos:val];
+        }
+    });
+}
+
 /** callback **/
 
 RCT_EXPORT_METHOD(GetPathLineColor:(RCTResponseSenderBlock)callback)
@@ -519,6 +536,13 @@ RCT_EXPORT_METHOD(GetVersionCode:(RCTResponseSenderBlock)callback)
             callback(@[[NSNull null], strResult]);
         }
     });
+}
+
+RCT_EXPORT_METHOD(GetAutoCurrentPos:(RCTResponseSenderBlock)callback)
+{
+    bool val = [[FatosEnvironment sharedObject] getAutoCurrentPos];
+    NSString *strResult = val == true ? @"true" : @"false";
+    callback(@[[NSNull null], strResult]);
 }
 
 /** native api call **/

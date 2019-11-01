@@ -152,6 +152,10 @@ namespace sdk {
 // Draw GPS Point
 - (void)setDrawGpsPoint:(bool)var;
 - (bool)getDrawGpsPoint;
+// Auto Current Pos
+- (void)setAutoCurrentPos:(bool)var;
+- (bool)getAutoCurrentPos;
+
 @end
 
 #endif /* FatosEnvironment_h */

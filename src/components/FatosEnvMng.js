@@ -26,6 +26,7 @@ export default class FatosEnvMng {
   versionCode = null;
   gpsSimulation = false;
   gpsDrawPoint = false;
+  autoCurrentPos = true;
   native = null;
 
   static GetInstance() {
@@ -263,6 +264,14 @@ export default class FatosEnvMng {
         console.error(error);
       } else {
         this.versionCode = result;
+      }
+    });
+
+    this.native.GetAutoCurrentPos((error, result) => {
+      if (error) {
+        console.error(error);
+      } else {
+        this.autoCurrentPos = result === 'true' ? true : false;;
       }
     });
   }
@@ -617,6 +626,28 @@ export default class FatosEnvMng {
   getDrawGpsPoint() {
     return this.gpsDrawPoint;
   }
+
+
+  /**
+   * Auto Current Pos
+   * @param bool
+   */
+
+  setAutoCurrentPos(value) {
+    this.native.SetAutoCurrentPos(value);
+    this.autoCurrentPos = value;
+  }
+
+  /**
+   * Auto Current Pos
+   * @returns {bool}
+   */
+
+  getAutoCurrentPos() {
+    return this.autoCurrentPos;
+  }
+
+
 
   /**
    * UUID

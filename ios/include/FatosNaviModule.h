@@ -63,6 +63,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSString *)RequestFtsSearchService:(NSString *)keywordName;
 - (void) SpeakUtterance:(NSString *)strSpeech;
 - (NSString *)GetVersion;
+- (void) SetAutoCurrentPos:(bool)val;
 - (void) StartDrawGpsLog:(bool)bAddNmea bAddMatched:(bool)bAddMatched;
 - (void) StopDrawGpsLog;
 + (void) SetSDIFilter:(int *)pcodes pbuses:(bool*)pbuses nArray:(int)nArray;

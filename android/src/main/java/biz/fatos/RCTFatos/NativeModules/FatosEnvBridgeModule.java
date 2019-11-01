@@ -14,8 +14,10 @@ import com.google.gson.Gson;
 
 import java.util.ArrayList;
 
+import biz.fatos.RCTFatos.FatosMapViewManager;
 import biz.fatossdk.config.FatosBuildConfig;
 import biz.fatossdk.config.FatosEnvironment;
+import biz.fatossdk.nativeMap.FatosMainMapView;
 import biz.fatossdk.navi.NativeNavi;
 import biz.fatossdk.navi.NaviDto.DtoBasicReq;
 import biz.fatossdk.navi.NaviDto.FuncType;
@@ -300,6 +302,20 @@ public class FatosEnvBridgeModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
+    public void SetAutoCurrentPos(boolean value) {
+
+        FatosEnvironment.sharedObject().setAutoCurrentPos(value);
+        FatosEnvironment.sharedObject().saveEnvironment();
+
+
+        FatosMapViewManager mapViewManager = FatosMapViewManager.GetInstance();
+        if(mapViewManager != null)
+        {
+            mapViewManager.setAutoCurrentPos(value);
+        }
+    }
+
+    @ReactMethod
     public void SetDrawGpsPoint(boolean value) {
 
         FatosEnvironment.sharedObject().setDrawGpsPoint(value);
@@ -503,6 +519,14 @@ public class FatosEnvBridgeModule extends ReactContextBaseJavaModule {
         }
 
         callback.invoke(null, versionCode);
+    }
+
+    @ReactMethod
+    public void GetAutoCurrentPos(Callback callback) {
+
+        Boolean val = FatosEnvironment.sharedObject().getAutoCurrentPos();
+        String str = val == true ? "true" : "false";
+        callback.invoke(null, str);
     }
 
     /** native api call **/

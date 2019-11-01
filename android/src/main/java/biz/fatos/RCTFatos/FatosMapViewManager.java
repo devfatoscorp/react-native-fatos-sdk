@@ -36,6 +36,7 @@ public class FatosMapViewManager extends SimpleViewManager<View> implements  Fat
     private float fPreAutoScaleLevel = 0.0f;
     private static int mn_MapMoveCurrentTimer = 0;
     private boolean mbln_MapMoveCurrentEvent = false;
+    private boolean mbln_AutoCurrentPos = false;
 
     FatosMainMapView.TouchInfo mTouchInfo = null;
 
@@ -130,7 +131,7 @@ public class FatosMapViewManager extends SimpleViewManager<View> implements  Fat
         mFatosMainMapView.setOnFatosMapListener(this);
 
         m_gApp = (ANaviApplication) reactContext.getApplicationContext();
-
+        mbln_AutoCurrentPos = FatosEnvironment.sharedObject().getAutoCurrentPos();
         setEnvironmentMapSetting();
 
         _FatosMapViewManager = this;
@@ -349,6 +350,9 @@ public class FatosMapViewManager extends SimpleViewManager<View> implements  Fat
 
     public void checkMapMoveCurrentPos(int nMMStatus, int nCarSpeed)
     {
+        if(mbln_AutoCurrentPos == false)
+            return;
+
         if(mTouchInfo == null)
             return;
 
@@ -430,6 +434,11 @@ public class FatosMapViewManager extends SimpleViewManager<View> implements  Fat
         }
 
         return -1;
+    }
+
+    public void setAutoCurrentPos(boolean val)
+    {
+        mbln_AutoCurrentPos = val;
     }
 
     public static void OnMapMoveCurrentTimer()
