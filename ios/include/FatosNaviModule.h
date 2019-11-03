@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void) onRouteResult:(int)nType;
 - (void) onRouteCancel;
 - (void) onRouteComplete;
-- (void) onRouteViaComplete;
+- (void) onRouteViaComplete:(NSString *)viaJson;
 - (BOOL) isIndicator;
 - (void) onMapAuto;
 - (void) onInitializeStatus:(int)status value:(NSString *)value;

@@ -443,9 +443,13 @@ public class FatosActivity extends ReactActivity implements NaviCallback.OnRoute
     }
 
     @Override
-    public void OnRouteViaComplete()
+    public void OnRouteViaComplete(String strJson)
     {
-
+        FatosNaviBridgeModule module = FatosNaviBridgeModule.GetInstance();
+        if(module != null)
+        {
+            module.ViaCompleteListener(strJson);
+        }
     }
 
 

@@ -541,6 +541,13 @@ public class FatosNaviBridgeModule extends ReactContextBaseJavaModule {
         }
     }
 
+    public void ViaCompleteListener(String strResult)
+    {
+        if(isListener) {
+            sendEvent(getReactApplicationContext(), "ViaCompleteListener", strResult);
+        }
+    }
+
     public void InitializeStatusListener(int status, String value)
     {
         if(isListener) {

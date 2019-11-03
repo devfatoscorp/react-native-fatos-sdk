@@ -248,6 +248,14 @@ export default class FatosNativeNavi {
     this.nativeEmt.addListener('InitializeStatusListener', cb);
   }
 
+  /**
+   * 경유지 도착 안내 입벤트
+   * @param cb
+   */
+  addListener_ViaCompleteListener(cb) {
+    this.nativeEmt.addListener('ViaCompleteListener', cb);
+  }
+
 
 
 }

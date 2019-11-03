@@ -327,9 +327,14 @@
     }
 }
 
-- (void) onRouteViaComplete
+- (void) onRouteViaComplete:(NSString *)viaJson
 {
+  FatosNaviBridgeModule *module = self.fatosNaviBridgeModule;
   
+  if(module != nil)
+  {
+      [module ViaCompleteListener:viaJson];
+  }
 }
 
 - (BOOL) isIndicator

@@ -27,6 +27,7 @@
 - (void) PermissionCompleteListener;
 - (void) SearchResultListener:(const char *)strResult;
 - (void) RouteCompleteListener;
+- (void) ViaCompleteListener:(NSString *)strResult;
 - (void) InitializeStatusListener:(int)status value:(NSString *)value;
 
 @end

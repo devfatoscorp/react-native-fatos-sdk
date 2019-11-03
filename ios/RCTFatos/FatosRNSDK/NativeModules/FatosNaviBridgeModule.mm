@@ -43,7 +43,7 @@ RCT_EXPORT_MODULE()
 - (NSArray<NSString *> *)supportedEvents
 {
   return @[@"UpdateRGListener", @"RouteResultListener", @"ShowIndicatorListener", @"HideIndicatorListener",
-           @"PermissionCompleteListener", @"ShowWebViewListener", @"HideWebViewListener", @"SearchResultListener", @"RouteCompleteListener", @"RequestPermissionsListener", @"InitializeStatusListener"];
+           @"PermissionCompleteListener", @"ShowWebViewListener", @"HideWebViewListener", @"SearchResultListener", @"RouteCompleteListener", @"RequestPermissionsListener", @"InitializeStatusListener", @"ViaCompleteListener"];
 }
 
 /** js -> ios **/
@@ -435,6 +435,14 @@ RCT_EXPORT_METHOD(GetIsPermission:(RCTResponseSenderBlock)callback)
     if(isListener)
     {
         [self sendEventWithName:@"RouteCompleteListener" body:@""];
+    }
+}
+
+- (void) ViaCompleteListener:(NSString *)strJson
+{
+    if(isListener)
+    {
+        [self sendEventWithName:@"ViaCompleteListener" body:strJson];
     }
 }
 
