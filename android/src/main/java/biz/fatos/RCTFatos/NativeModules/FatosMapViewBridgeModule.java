@@ -477,8 +477,10 @@ public class FatosMapViewBridgeModule extends ReactContextBaseJavaModule {
         JSONObject object = new JSONObject();
         try {
             object.put("hCenter", hCenter[0]);
-            object.put("vCenter", vCenter[1]);
+            object.put("vCenter", vCenter[0]);
             strResult = object.toString();
+
+            Log.d("simsimsim", "strResult : " + strResult);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -508,7 +510,29 @@ public class FatosMapViewBridgeModule extends ReactContextBaseJavaModule {
         JSONObject object = new JSONObject();
         try {
             object.put("hCenter", shiftCenter[0]);
-            object.put("vCenter", shiftCenter[1]);
+            object.put("vCenter", shiftCenter[0]);
+            strResult = object.toString();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        callback.invoke(null, strResult);
+    }
+
+    @ReactMethod
+    public void GetPosWorldtoWGS84FromScreen(float fCenterX, float fCenterY, Callback callback)
+    {
+        int[] nMapTouchScreen = new int[2];
+        double[] lonlat = new double[2];
+        NativeNavi.nativeMapGetPosWorldFromScreen(m_gApp.m_MapHandle, fCenterX, fCenterY , nMapTouchScreen);
+        NativeNavi.nativeConvWorldtoWGS84(nMapTouchScreen[0], nMapTouchScreen[1], lonlat);
+
+        String strResult = "";
+
+        JSONObject object = new JSONObject();
+        try {
+            object.put("xlon", lonlat[0]);
+            object.put("ylat", lonlat[1]);
             strResult = object.toString();
         } catch (JSONException e) {
             e.printStackTrace();

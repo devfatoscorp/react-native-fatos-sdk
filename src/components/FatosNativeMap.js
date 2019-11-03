@@ -211,14 +211,11 @@ export default class FatosNativeMap {
 
   /**
    * GetMapCenter 함수
-   * @param {float, float, cb}
+   * @param {cb}
    */
 
-  GetMapCenter(hCenter, vCenter) {
-    this.nativeMAP.GetMapCenter(
-        fCenterX,
-        fCenterY,
-        (error, result) => {
+  GetMapCenter(cb) {
+    this.nativeMAP.GetMapCenter((error, result) => {
           if (error) {
             console.error(error);
           } else {
@@ -243,14 +240,11 @@ export default class FatosNativeMap {
 
   /**
    * GetMapShiftCenter 함수
-   * @param {float, float, cb}
+   * @param {cb}
    */
 
-  GetMapShiftCenter(hCenter, vCenter) {
-    this.nativeMAP.GetMapShiftCenter(
-        fCenterX,
-        fCenterY,
-        (error, result) => {
+  GetMapShiftCenter(cb) {
+    this.nativeMAP.GetMapShiftCenter((error, result) => {
           if (error) {
             console.error(error);
           } else {
@@ -270,11 +264,8 @@ export default class FatosNativeMap {
    * @param {float, float, cb}
    */
 
-  GetPosWorldFromScreen(fCenterX, fCenterY, cb) {
-    this.nativeMAP.GetPosWorldFromScreen(
-      fCenterX,
-      fCenterY,
-      (error, result) => {
+  GetPosWorldFromScreen(hCenter, vCenter, cb) {
+    this.nativeMAP.GetPosWorldFromScreen(hCenter, vCenter, (error, result) => {
         if (error) {
           console.error(error);
         } else {
@@ -286,6 +277,48 @@ export default class FatosNativeMap {
           cb(posx, posy);
         }
       },
+    );
+  }
+
+  /**
+   * 좌표 변환 함수
+   * @param {int, int, cb}
+   */
+
+  ConvWorldtoWGS84(x, y, cb) {
+    this.nativeMAP.ConvWorldtoWGS84(x, y, (error, result) => {
+          if (error) {
+            console.error(error);
+          } else {
+            var data = JSON.parse(result);
+
+            var xlon = data.xlon;
+            var ylat = data.ylat;
+
+            cb(xlon, ylat);
+          }
+        },
+    );
+  }
+
+  /**
+   * 스크린 중심 값 좌표 변환 함수
+   * @param {float, float, cb}
+   */
+
+  GetPosWorldtoWGS84FromScreen(hCenter, vCenter, cb) {
+    this.nativeMAP.GetPosWorldtoWGS84FromScreen(hCenter, vCenter, (error, result) => {
+          if (error) {
+            console.error(error);
+          } else {
+            var data = JSON.parse(result);
+
+            var xlon = data.xlon;
+            var ylat = data.ylat;
+
+            cb(xlon, ylat);
+          }
+        },
     );
   }
 

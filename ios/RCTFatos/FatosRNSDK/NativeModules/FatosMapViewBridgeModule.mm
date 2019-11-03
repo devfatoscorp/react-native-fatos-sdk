@@ -399,12 +399,9 @@ RCT_EXPORT_METHOD(ConvWorldtoWGS84:(int)x y:(int)y callback:(RCTResponseSenderBl
         
         [fatosMapView ConvWorldtoWGS84:x y:y xlon:&xlon ylat:&ylat];
         
-        NSNumber *numberX = [NSNumber numberWithDouble:xlon];
-        NSNumber *numberY = [NSNumber numberWithDouble:ylat];
-
         NSMutableDictionary *jsonDic = [NSMutableDictionary new];
-        [jsonDic setValue:numberX forKey:@"xlon"];
-        [jsonDic setValue:numberY forKey:@"ylat"];
+        [jsonDic setValue:[NSString stringWithFormat:@"%f", xlon] forKey:@"xlon"];
+        [jsonDic setValue:[NSString stringWithFormat:@"%f", ylat] forKey:@"ylat"];
         
         NSData *jsonData = [NSJSONSerialization dataWithJSONObject:jsonDic options:NSJSONWritingPrettyPrinted error:nil];
         NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
@@ -427,12 +424,9 @@ RCT_EXPORT_METHOD(GetMapCenter:(RCTResponseSenderBlock)callback)
         
         [fatosMapView GetMapCenter:&hCenter vCenter:&vCenter];
         
-        NSNumber *numberH = [NSNumber numberWithInt:hCenter];
-        NSNumber *numberV = [NSNumber numberWithInt:vCenter];
-
         NSMutableDictionary *jsonDic = [NSMutableDictionary new];
-        [jsonDic setValue:numberH forKey:@"hCenter"];
-        [jsonDic setValue:numberV forKey:@"vCenter"];
+        [jsonDic setValue:[NSString stringWithFormat:@"%f", hCenter] forKey:@"hCenter"];
+        [jsonDic setValue:[NSString stringWithFormat:@"%f", vCenter] forKey:@"vCenter"];
         
         NSData *jsonData = [NSJSONSerialization dataWithJSONObject:jsonDic options:NSJSONWritingPrettyPrinted error:nil];
         NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
@@ -450,17 +444,47 @@ RCT_EXPORT_METHOD(GetMapShiftCenter:(RCTResponseSenderBlock)callback)
     
     if(fatosMapView != nil)
     {
-        float hCenter;
-        float vCenter;
+        float hCenter = 0;
+        float vCenter = 0;
+        double xlon = 0;
+        double ylat = 0;
         
         [fatosMapView GetMapShiftCenter:&hCenter vCenter:&vCenter];
+        [fatosMapView ConvWorldtoWGS84:hCenter y:vCenter xlon:&xlon ylat:&ylat];
         
-        NSNumber *numberH = [NSNumber numberWithInt:hCenter];
-        NSNumber *numberV = [NSNumber numberWithInt:vCenter];
+        NSMutableDictionary *jsonDic = [NSMutableDictionary new];
+        [jsonDic setValue:[NSString stringWithFormat:@"%f", xlon] forKey:@"xlon"];
+        [jsonDic setValue:[NSString stringWithFormat:@"%f", ylat] forKey:@"ylat"];
+        
+        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:jsonDic options:NSJSONWritingPrettyPrinted error:nil];
+        NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    
+        NSString *strResult = jsonString;
+        callback(@[[NSNull null], strResult]);
+    }
+  });
+}
+
+RCT_EXPORT_METHOD(GetPosWorldtoWGS84FromScreen:(float)fCenterX fCenterY:(float)fCenterY callback:(RCTResponseSenderBlock)callback)
+{
+  dispatch_async(dispatch_get_main_queue(), ^{
+    FatosMapView *fatosMapView = [FatosMapView sharedMapView];
+    
+    if(fatosMapView != nil)
+    {
+        int nMapCurPosX = 0;
+        int nMapCurPosY = 0;
+        
+        [fatosMapView GetPosWorldFromScreen:fCenterX fCenterY:fCenterY nMapCurPosX:&nMapCurPosX nMapCurPosY:&nMapCurPosY];
+        
+    
+        
+        NSNumber *numberX = [NSNumber numberWithInt:nMapCurPosX];
+        NSNumber *numberY = [NSNumber numberWithInt:nMapCurPosY];
 
         NSMutableDictionary *jsonDic = [NSMutableDictionary new];
-        [jsonDic setValue:numberH forKey:@"hCenter"];
-        [jsonDic setValue:numberV forKey:@"vCenter"];
+        [jsonDic setValue:numberX forKey:@"x"];
+        [jsonDic setValue:numberY forKey:@"y"];
         
         NSData *jsonData = [NSJSONSerialization dataWithJSONObject:jsonDic options:NSJSONWritingPrettyPrinted error:nil];
         NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
