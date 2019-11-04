@@ -75,6 +75,11 @@ public class FatosActivity extends ReactActivity implements NaviCallback.OnRoute
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
     }
 
+    public void setDevServerMode(boolean val)
+    {
+        m_gApp.getAppSettingInfo().m_bDevServerMode = val;
+    }
+
     public void initFatosNaviEngine()
     {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {

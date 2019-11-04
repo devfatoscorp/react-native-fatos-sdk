@@ -244,7 +244,7 @@ RCT_EXPORT_METHOD(InitMarkerImage:(NSString*)strJsonFileName strFileName:(NSStri
     });
 }
 
-RCT_EXPORT_METHOD(SetVisibleMarkerGroup:(NSString*)strJsonFileName)
+RCT_EXPORT_METHOD(SetVisibleMarkerGroup:(NSString*)strJson)
 {
     dispatch_sync(dispatch_get_main_queue(), ^{
       
@@ -252,13 +252,13 @@ RCT_EXPORT_METHOD(SetVisibleMarkerGroup:(NSString*)strJsonFileName)
       
       if(fatosMapView != nil)
       {
-        [fatosMapView SetVisibleMarkerGroup:strJsonFileName];
+        [fatosMapView SetVisibleMarkerGroup:strJson];
       }
       
     });
 }
 
-RCT_EXPORT_METHOD(AddMarker:(NSString*)strJsonFileName)
+RCT_EXPORT_METHOD(AddMarker:(NSString*)strJson)
 {
     dispatch_sync(dispatch_get_main_queue(), ^{
       
@@ -266,13 +266,13 @@ RCT_EXPORT_METHOD(AddMarker:(NSString*)strJsonFileName)
       
       if(fatosMapView != nil)
       {
-        [fatosMapView AddMarker:strJsonFileName];
+        [fatosMapView AddMarker:strJson];
       }
       
     });
 }
 
-RCT_EXPORT_METHOD(SetMarker:(NSString*)strJsonFileName)
+RCT_EXPORT_METHOD(SetMarker:(NSString*)strJson)
 {
     dispatch_sync(dispatch_get_main_queue(), ^{
       
@@ -280,13 +280,13 @@ RCT_EXPORT_METHOD(SetMarker:(NSString*)strJsonFileName)
       
       if(fatosMapView != nil)
       {
-        [fatosMapView SetMarker:strJsonFileName];
+        [fatosMapView SetMarker:strJson];
       }
       
     });
 }
 
-RCT_EXPORT_METHOD(DelMarker:(NSString*)strJsonFileName)
+RCT_EXPORT_METHOD(DelMarker:(NSString*)strJson)
 {
     dispatch_sync(dispatch_get_main_queue(), ^{
       
@@ -294,13 +294,13 @@ RCT_EXPORT_METHOD(DelMarker:(NSString*)strJsonFileName)
       
       if(fatosMapView != nil)
       {
-        [fatosMapView DelMarker:strJsonFileName];
+        [fatosMapView DelMarker:strJson];
       }
       
     });
 }
 
-RCT_EXPORT_METHOD(DelMarkerGroup:(NSString*)strJsonFileName)
+RCT_EXPORT_METHOD(DelMarkerGroup:(NSString*)strJson)
 {
     dispatch_sync(dispatch_get_main_queue(), ^{
       
@@ -308,7 +308,7 @@ RCT_EXPORT_METHOD(DelMarkerGroup:(NSString*)strJsonFileName)
       
       if(fatosMapView != nil)
       {
-        [fatosMapView DelMarkerGroup:strJsonFileName];
+        [fatosMapView DelMarkerGroup:strJson];
       }
       
     });

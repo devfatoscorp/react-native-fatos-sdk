@@ -358,38 +358,33 @@ public class FatosMapViewBridgeModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void SetVisibleMarkerGroup(String strJsonFileName)
+    public void SetVisibleMarkerGroup(String strJson)
     {
-        String strJson = loadJSONFromAsset(strJsonFileName);
         NativeNavi.nativeSetVisibleMarkerGroup(m_gApp.m_MapHandle, strJson);
     }
 
     @ReactMethod
-    public void AddMarker(String strJsonFileName)
+    public void AddMarker(String strJson)
     {
-        String strJson = loadJSONFromAsset(strJsonFileName);
         NativeNavi.nativeAddMarker(m_gApp.m_MapHandle, strJson);
     }
 
 
     @ReactMethod
-    public void SetMarker(String strJsonFileName)
+    public void SetMarker(String strJson)
     {
-        String strJson = loadJSONFromAsset(strJsonFileName);
         NativeNavi.nativeSetMarker(m_gApp.m_MapHandle, strJson);
     }
 
     @ReactMethod
-    public void DelMarker(String strJsonFileName)
+    public void DelMarker(String strJson)
     {
-        String strJson = loadJSONFromAsset(strJsonFileName);
         NativeNavi.nativeDelMarker(m_gApp.m_MapHandle, strJson);
     }
 
     @ReactMethod
-    public void DelMarkerGroup(String strJsonFileName)
+    public void DelMarkerGroup(String strJson)
     {
-        String strJson = loadJSONFromAsset(strJsonFileName);
         NativeNavi.nativeDelMarkerGroup(m_gApp.m_MapHandle, strJson);
     }
 
