@@ -155,42 +155,42 @@ export default class FatosNativeMap {
 
   /**
    * AddMarker 함수
-   * json 파일명
+   * json string
    * @param string
    */
 
-  AddMarker(strJsonFileName) {
-    this.nativeMAP.AddMarker(strJsonFileName);
+  AddMarker(strJson) {
+    this.nativeMAP.AddMarker(strJson);
   }
 
   /**
    * SetMarker 함수
-   * json 파일명
+   * json string
    * @param string
    */
 
-  SetMarker(strJsonFileName) {
-    this.nativeMAP.SetMarker(strJsonFileName);
+  SetMarker(strJson) {
+    this.nativeMAP.SetMarker(strJson);
   }
 
   /**
    * DelMarker 함수
-   * json 파일명
+   * json string
    * @param string
    */
 
-  DelMarker(strJsonFileName) {
-    this.nativeMAP.DelMarker(strJsonFileName);
+  DelMarker(strJson) {
+    this.nativeMAP.DelMarker(strJson);
   }
 
   /**
    * DelMarkerGroup 함수
-   * json 파일명
+   * json string
    * @param string
    */
 
-  DelMarkerGroup(strJsonFileName) {
-    this.nativeMAP.DelMarkerGroup(strJsonFileName);
+  DelMarkerGroup(strJson) {
+    this.nativeMAP.DelMarkerGroup(strJson);
   }
 
   /**

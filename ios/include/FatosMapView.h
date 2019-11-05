@@ -60,11 +60,11 @@ NS_ASSUME_NONNULL_BEGIN
 - (void) SetDem:(bool)val;
 
 - (int) InitMarkerImage:(NSString *)strJsonFileName strFilaPath:(NSString *)strFileName;
-- (BOOL) SetVisibleMarkerGroup:(NSString *)strJsonFileName;
-- (BOOL) AddMarker:(NSString *)strJsonFileName;
-- (BOOL) SetMarker:(NSString *)strJsonFileName;
-- (BOOL) DelMarker:(NSString *)strJsonFileName;
-- (BOOL) DelMarkerGroup:(NSString *)strJsonFileName;
+- (BOOL) SetVisibleMarkerGroup:(NSString *)strJson;
+- (BOOL) AddMarker:(NSString *)strJson;
+- (BOOL) SetMarker:(NSString *)strJson;
+- (BOOL) DelMarker:(NSString *)strJson;
+- (BOOL) DelMarkerGroup:(NSString *)strJson;
 - (void) ClearMarker;
 - (void) SetMapCenter:(float)hCenter vCenter:(float)vCenter;
 - (void) GetMapCenter:(float*)hCenter vCenter:(float*)vCenter;

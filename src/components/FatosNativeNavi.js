@@ -148,6 +148,16 @@ export default class FatosNativeNavi {
     this.nativeAPI.RequestPermissionsListener();
   }
 
+
+  /**
+   * TTS
+   *  @param string
+   */
+  SpeakUtterance(strSpeech)
+  {
+    this.nativeAPI.SpeakUtterance(strSpeech);
+  }
+
   /**
    * 경로 요약 정보
    * @returns {json string}
