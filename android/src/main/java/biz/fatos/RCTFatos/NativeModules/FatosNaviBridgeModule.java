@@ -151,7 +151,7 @@ public class FatosNaviBridgeModule extends ReactContextBaseJavaModule {
     public void routeExternal(JSONObject jsonObject)
     {
         try {
-
+            
             Route routeApi = m_gApp.getRouteApiInstance();
 
             RouteParam param = new RouteParam();
@@ -239,6 +239,11 @@ public class FatosNaviBridgeModule extends ReactContextBaseJavaModule {
 
                     JSONObject node = jsonArr.getJSONObject(i);
                     String viaName = node.getString("viaName");
+                    int nPoiID = node.optInt("nPoiID", -1);
+                    int nFloor = node.optInt("nFloor", -1);
+                    String poiFlag = node.optString("poiFlag","");
+
+                    String bPassingPoint = node.optString("bPassingPoint","");
 
                     if(viaName == null || viaName.length() == 0)
                     {
@@ -252,8 +257,32 @@ public class FatosNaviBridgeModule extends ReactContextBaseJavaModule {
                     // 방향성 셋팅
                     pos.bDir = bDir;
 
+                    // POI ID
+                    if(nPoiID != -1)
+                    {
+                        pos.nPoiID = nPoiID;
+                    }
+
+                    // 층수(1=1층, -2=지하2층, ...)
+                    if(nFloor != -1)
+                    {
+                        pos.nFloor = nFloor;
+                    }
+
+                    // POI RPFlag
+                    if(poiFlag.length() > 0)
+                    {
+                        pos.poiFlag = poiFlag;
+                    }
+
+                    if(bPassingPoint.compareTo("true") == 0){
+                        pos.bPassingPoint = true;
+                    } else {
+                        pos.bPassingPoint = false;
+                    }
+
                     if(pos.x == 0 || pos.y == 0)
-                        break;;
+                        break;
 
                     param.posList.add(pos);
                 }

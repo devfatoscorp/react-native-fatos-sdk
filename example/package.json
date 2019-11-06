@@ -16,6 +16,7 @@
     "react-native-fast-image": "^7.0.2",
     "react-native-fatos-sdk": "file:..",
     "react-native-gesture-handler": "^1.3.0",
+    "react-native-switch-selector": "^1.1.14",
     "react-native-image-sequence": "^0.7.0",
     "react-native-pages": "^0.7.0",
     "react-native-popup-dialog": "^0.18.2",
