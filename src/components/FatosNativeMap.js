@@ -209,6 +209,15 @@ export default class FatosNativeMap {
     this.nativeMAP.SetMapCenter(hCenter, vCenter);
   }
 
+
+  /**
+   * SetUserLine 함수
+   */
+
+  SetUserLine(strJson) {
+    this.nativeMAP.SetUserLine(strJson);
+  }
+
   /**
    * GetMapCenter 함수
    * @param {cb}
