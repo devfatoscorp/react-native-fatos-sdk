@@ -177,6 +177,30 @@ public class FatosMapViewBridgeModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
+    public void setMapLevel(float fLevel, int nType)
+    {
+        FatosMapViewManager mapViewManager = FatosMapViewManager.GetInstance();
+        if(mapViewManager != null)
+        {
+            FatosMainMapView mapView = mapViewManager.mFatosMainMapView;
+
+            if(mapView != null)
+            {
+                int nAni = MapAnimation.MAP_ANI_TYPE_CUSTOM_ZOOMINOUT;
+
+                if(nType == 1)
+                {
+                    nAni = MapAnimation.MAP_ANI_TYPE_DIRECT;
+                }
+
+                mapView.setMapLevel(fLevel, nAni);
+            }
+
+            mapViewManager.setAutoScalePassTime(FatosMapViewManager.AUTO_SCALE_PASS_TIME);
+        }
+    }
+
+    @ReactMethod
     public void MapAuto()
     {
         FatosMainMapView mapView = FatosMapViewManager.getFatosMainMapView();
@@ -389,9 +413,15 @@ public class FatosMapViewBridgeModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void ClearMarker(String strJsonFileName)
+    public void ClearMarker()
     {
         NativeNavi.nativeClearMarker(m_gApp.m_MapHandle);
+    }
+
+    @ReactMethod
+    public void SetUserLine(String strJson)
+    {
+        NativeNavi.nativeSetLine(m_gApp.m_MapHandle, strJson);
     }
 
     @ReactMethod

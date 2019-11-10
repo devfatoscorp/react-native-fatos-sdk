@@ -212,10 +212,20 @@ export default class FatosNativeMap {
 
   /**
    * SetUserLine 함수
+   * json string
    */
 
   SetUserLine(strJson) {
     this.nativeMAP.SetUserLine(strJson);
+  }
+
+  /**
+   * setMapLevel 함수
+   * @param 맵 레벨, 애니매이션 타입 (0 애니매이션, 1 바로이동)
+   */
+  setMapLevel(fLevel, aniType)
+  {
+    this.nativeMAP.setMapLevel(fLevel, aniType);
   }
 
   /**

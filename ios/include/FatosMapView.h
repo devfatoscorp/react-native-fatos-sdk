@@ -31,6 +31,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void) setAirlineMode:(NSDictionary *) baseLayerType bVisible:(NSDictionary *)bVisible;
 - (void) setMapLevelIn:(int)nType;
 - (void) setMapLevelOut:(int)nType;
+- (void) setMapLevel:(float)fLevel nType:(int)nType;
 - (float) getMapLevel;
 - (void) setMapAuto:(double)fLonX fLatY:(double)fLatY;
 - (void) setMapMove:(double)fLonX fLatY:(double)fLatY;
@@ -66,6 +67,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (BOOL) DelMarker:(NSString *)strJson;
 - (BOOL) DelMarkerGroup:(NSString *)strJson;
 - (void) ClearMarker;
+- (void) SetUserLine:(NSString *)strJson;
 - (void) SetMapCenter:(float)hCenter vCenter:(float)vCenter;
 - (void) GetMapCenter:(float*)hCenter vCenter:(float*)vCenter;
 - (void) SetMapShiftCenter:(float)hCenter vCenter:(float)vCenter;
