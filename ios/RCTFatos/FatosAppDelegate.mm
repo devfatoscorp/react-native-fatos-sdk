@@ -275,7 +275,7 @@
   }
 }
 
-- (void) onRouteStart:(int)nType
+- (void) onRouteStart:(int)nType ierror:(int)ierror;
 {
   FatosNaviBridgeModule *module = self.fatosNaviBridgeModule;
   
@@ -296,14 +296,14 @@
   }
 }
 
-- (void) onRouteResult:(int)nType
+- (void) onRouteResult:(int)nType ierror:(int)ierror;
 {
   FatosNaviBridgeModule *module = self.fatosNaviBridgeModule;
   
   if(module != nil)
   {
     [module HideIndicatorListener];
-    [module RouteResultListener:nType];
+    [module RouteResultListener:nType ierror:ierror];
   }
 }
 

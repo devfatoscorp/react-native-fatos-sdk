@@ -391,7 +391,7 @@ public class FatosNaviBridgeModule extends ReactContextBaseJavaModule {
         NativeNavi.nativeStopSimulation();
         NativeNavi.nativeStartAndoGuidance();
         // 0번이 초기 재탐색
-        RouteResultListener(0);
+        RouteResultListener(0, 0);
     }
 
     @ReactMethod
@@ -503,11 +503,13 @@ public class FatosNaviBridgeModule extends ReactContextBaseJavaModule {
         }
     }
 
-    public void RouteResultListener(int routeType)
+    public void RouteResultListener(int routeType, int ierror)
     {
         if(isListener) {
-            String strResult = Integer.toString(routeType);
-            sendEvent(getReactApplicationContext(), "RouteResultListener", strResult);
+            WritableMap content = Arguments.createMap();
+            content.putInt("type", routeType);
+            content.putInt("error", ierror);
+            sendEvent(getReactApplicationContext(), "RouteResultListener", content);
         }
     }
 

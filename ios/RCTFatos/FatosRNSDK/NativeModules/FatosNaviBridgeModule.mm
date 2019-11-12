@@ -255,7 +255,7 @@ RCT_EXPORT_METHOD(DriveClose)
     }
     
     // 0번이 초기재탐색
-    [self RouteResultListener:0];
+    [self RouteResultListener:0 ierror:0];
   });
 }
 
@@ -366,12 +366,11 @@ RCT_EXPORT_METHOD(GetIsPermission:(RCTResponseSenderBlock)callback)
   }
 }
 
-- (void) RouteResultListener:(int)nTypeRoute
+- (void) RouteResultListener:(int)nTypeRoute ierror:(int)ierror
 {
   if(isListener)
   {
-    NSString *strResult = [NSString stringWithFormat:@"%d", nTypeRoute];
-    [self sendEventWithName:@"RouteResultListener" body:strResult];
+    [self sendEventWithName:@"RouteResultListener" body:@{@"type": [NSString stringWithFormat:@"%d", nTypeRoute],@"error" : [NSString stringWithFormat:@"%d", ierror]}];
   }
 }
 

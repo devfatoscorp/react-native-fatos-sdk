@@ -114,6 +114,20 @@ RCT_EXPORT_METHOD(MapLevelOut:(nonnull NSNumber *)type)
   });
 }
 
+RCT_EXPORT_METHOD(setMapLevel:(float)fLevel type:(nonnull NSNumber *)type)
+{
+  dispatch_async(dispatch_get_main_queue(), ^{
+    
+    FatosMapView *fatosMapView = [FatosMapView sharedMapView];
+    
+    if(fatosMapView != nil)
+    {
+        [fatosMapView setMapLevel:fLevel nType:[type intValue]];
+    }
+    
+  });
+}
+
 RCT_EXPORT_METHOD(MapAuto)
 {
   dispatch_async(dispatch_get_main_queue(), ^{
@@ -323,6 +337,20 @@ RCT_EXPORT_METHOD(ClearMarker)
       if(fatosMapView != nil)
       {
         [fatosMapView ClearMarker];
+      }
+      
+    });
+}
+
+RCT_EXPORT_METHOD(SetUserLine:(NSString*)strJson)
+{
+    dispatch_sync(dispatch_get_main_queue(), ^{
+      
+      FatosMapView *fatosMapView = [FatosMapView sharedMapView];
+      
+      if(fatosMapView != nil)
+      {
+        [fatosMapView SetUserLine:strJson];
       }
       
     });

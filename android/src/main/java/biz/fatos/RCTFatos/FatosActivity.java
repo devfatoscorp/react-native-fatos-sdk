@@ -425,7 +425,7 @@ public class FatosActivity extends ReactActivity implements NaviCallback.OnRoute
                 }
             }
 
-            module.RouteResultListener(routeType);
+            module.RouteResultListener(routeType, ierror);
         }
     }
 

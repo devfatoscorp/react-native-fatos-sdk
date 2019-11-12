@@ -14,8 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol FatosNaviModuleDelegate <NSObject>
 
 - (void) onUpdateRG:(NSString *)rgJson;
-- (void) onRouteStart:(int)nType;
-- (void) onRouteResult:(int)nType;
+- (void) onRouteStart:(int)nType ierror:(int)ierror;
+- (void) onRouteResult:(int)nType ierror:(int)ierror;
 - (void) onRouteCancel;
 - (void) onRouteComplete;
 - (void) onRouteViaComplete:(NSString *)viaJson;

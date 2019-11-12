@@ -20,7 +20,7 @@
 }
 
 - (void) UpdateRGListener:(NSString *)strJson;
-- (void) RouteResultListener:(int)nTypeRoute;
+- (void) RouteResultListener:(int)nTypeRoute ierror:(int)ierror;
 - (void) ShowIndicatorListener;
 - (void) HideIndicatorListener;
 - (BOOL) IsIndicator;
