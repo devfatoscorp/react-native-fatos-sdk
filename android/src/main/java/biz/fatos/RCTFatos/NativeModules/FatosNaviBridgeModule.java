@@ -156,8 +156,10 @@ public class FatosNaviBridgeModule extends ReactContextBaseJavaModule {
 
             RouteParam param = new RouteParam();
 
+            String startPosName = jsonObject.optString("startPosName","");
             String startLat = jsonObject.getString("startY");
             String startLon = jsonObject.getString("startX");
+            String endPosName = jsonObject.optString("endPosName","");
             String goalLat = jsonObject.getString("endY");
             String goalLon = jsonObject.getString("endX");
 
@@ -209,6 +211,9 @@ public class FatosNaviBridgeModule extends ReactContextBaseJavaModule {
 
             RoutePosition st = new RoutePosition();
             RoutePosition ed = new RoutePosition();
+
+            st.name = startPosName;
+            ed.name = endPosName;
 
             if(startLat.compareTo("0") == 0 || startLon.compareTo("0") == 0)
             {
@@ -506,9 +511,17 @@ public class FatosNaviBridgeModule extends ReactContextBaseJavaModule {
     public void RouteResultListener(int routeType, int ierror)
     {
         if(isListener) {
+
+            String msg = "";
+
+            if(ierror != 0) {
+                msg = NativeNavi.nativeRouteErrorCodeString(ierror, 0);
+            }
+
             WritableMap content = Arguments.createMap();
             content.putInt("type", routeType);
             content.putInt("error", ierror);
+            content.putString("msg", msg);
             sendEvent(getReactApplicationContext(), "RouteResultListener", content);
         }
     }

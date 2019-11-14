@@ -370,7 +370,18 @@ RCT_EXPORT_METHOD(GetIsPermission:(RCTResponseSenderBlock)callback)
 {
   if(isListener)
   {
-    [self sendEventWithName:@"RouteResultListener" body:@{@"type": [NSString stringWithFormat:@"%d", nTypeRoute],@"error" : [NSString stringWithFormat:@"%d", ierror]}];
+      NSString *msg = @"";
+      if(ierror != 0)
+      {
+          FatosNaviModule *module = [FatosAppDelegate sharedAppDelegate].fatosNaviModule;
+          
+          if(module)
+          {
+            msg = [module GetErrorString:ierror];
+          }
+      }
+      
+    [self sendEventWithName:@"RouteResultListener" body:@{@"type": [NSString stringWithFormat:@"%d", nTypeRoute],@"error" : [NSString stringWithFormat:@"%d", ierror], @"msg" : msg}];
   }
 }
 

@@ -66,6 +66,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void) SetAutoCurrentPos:(bool)val;
 - (void) StartDrawGpsLog:(bool)bAddNmea bAddMatched:(bool)bAddMatched;
 - (void) StopDrawGpsLog;
+- (NSString *) GetErrorString:(int)err_code;
 + (void) SetSDIFilter:(int *)pcodes pbuses:(bool*)pbuses nArray:(int)nArray;
 + (void) OnMapMoveCurrentTimer;
 + (double) getCurrentLonX;
