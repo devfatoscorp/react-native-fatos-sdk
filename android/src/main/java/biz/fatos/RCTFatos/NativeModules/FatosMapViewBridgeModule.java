@@ -10,6 +10,7 @@ import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
+import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.bridge.WritableNativeMap;
@@ -564,6 +565,88 @@ public class FatosMapViewBridgeModule extends ReactContextBaseJavaModule {
         }
 
         callback.invoke(null, strResult);
+    }
+
+    @ReactMethod
+    public void GetFitLevelMBR_wgs84(ReadableMap dmin, ReadableMap dmax, Callback callback)
+    {
+        double[] minLonLat  = new double[2];
+        double[] maxLonLat  = new double[2];
+
+        minLonLat[0]= dmin.getDouble("x");
+        minLonLat[1]= dmin.getDouble("y");
+        maxLonLat[0]= dmax.getDouble("x");
+        maxLonLat[1]= dmax.getDouble("y");
+
+        float nGoalLevel = NativeNavi.ForestShrinkMBR(m_gApp.m_MapHandle,minLonLat,maxLonLat);
+
+        String strResult = "";
+
+        JSONObject object = new JSONObject();
+        try {
+            object.put("level", nGoalLevel);
+            strResult = object.toString();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        callback.invoke(null, strResult);
+    }
+
+    @ReactMethod
+    public void GetFitLevelPosArray(ReadableMap vscaleScreen, ReadableArray wgs84Array, Callback callback)
+    {
+        int nCount = wgs84Array.size();
+
+        float[] vscale  = new float[2];
+        double[] xyArray = new double[nCount * 2];
+        float[] retLevel = new float[2];
+        double[] retCenter  = new double[2];
+        vscale[0] = (float)vscaleScreen.getDouble("x");
+        vscale[1] = (float)vscaleScreen.getDouble("y");
+
+        int nIndex = 0;
+        for(int i = 0; i < nCount; ++i)
+        {
+            ReadableMap map = wgs84Array.getMap(i);
+            xyArray[nIndex] = map.getDouble("x");
+            ++nIndex;
+            xyArray[nIndex] = map.getDouble("y");
+            ++nIndex;
+        }
+
+        NativeNavi.nativeMapFitLevelPosArray(m_gApp.m_MapHandle, vscale, retLevel, retCenter, xyArray);
+
+
+        String strResult = "";
+
+        JSONObject object = new JSONObject();
+        try {
+            object.put("level", retLevel[0]);
+            object.put("x", retCenter[0]);
+            object.put("y", retCenter[1]);
+            strResult = object.toString();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        callback.invoke(null, strResult);
+    }
+
+
+    @ReactMethod
+    public void SetTouchState(int state)
+    {
+        FatosMapViewManager mapViewManager = FatosMapViewManager.GetInstance();
+        if(mapViewManager != null)
+        {
+            FatosMainMapView mapView = mapViewManager.mFatosMainMapView;
+
+            if(mapView != null) {
+
+                mapView.setTouchState(state);
+            }
+        }
     }
 
     public void MapLevelUpdateListener(int nLevel) {

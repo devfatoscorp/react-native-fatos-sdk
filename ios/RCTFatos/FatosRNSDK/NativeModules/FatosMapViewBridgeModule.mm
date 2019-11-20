@@ -385,6 +385,20 @@ RCT_EXPORT_METHOD(SetMapShiftCenter:(float)hCenter vCenter:(float)vCenter)
     });
 }
 
+RCT_EXPORT_METHOD(SetTouchState:(int)state)
+{
+    dispatch_sync(dispatch_get_main_queue(), ^{
+      
+      FatosMapView *fatosMapView = [FatosMapView sharedMapView];
+      
+      if(fatosMapView != nil)
+      {
+        [fatosMapView SetTouchState:state];
+      }
+      
+    });
+}
+
 /** callback **/
 
 RCT_EXPORT_METHOD(GetPosWorldFromScreen:(float)fCenterX fCenterY:(float)fCenterY callback:(RCTResponseSenderBlock)callback)
@@ -522,6 +536,71 @@ RCT_EXPORT_METHOD(GetPosWorldtoWGS84FromScreen:(float)fCenterX fCenterY:(float)f
     }
   });
 }
+
+RCT_EXPORT_METHOD(GetFitLevelMBR_wgs84:(NSDictionary *)dmin dmax:(NSDictionary *)dmax callback:(RCTResponseSenderBlock)callback)
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+      FatosMapView *fatosMapView = [FatosMapView sharedMapView];
+      
+      if(fatosMapView != nil)
+      {
+          CGPoint min;
+          CGPoint max;
+          
+          min.x = [[dmin objectForKey:@"x"] floatValue];
+          min.y = [[dmin objectForKey:@"y"] floatValue];
+          max.x = [[dmax objectForKey:@"x"] floatValue];
+          max.y = [[dmax objectForKey:@"y"] floatValue];
+          
+          float fLevel = 0.0f;
+          [fatosMapView GetFitLevelMBR_wgs84:min dmax:max fLevel:&fLevel];
+          NSNumber *number = [NSNumber numberWithFloat:fLevel];
+          
+          NSMutableDictionary *jsonDic = [NSMutableDictionary new];
+          [jsonDic setValue:number forKey:@"level"];
+          NSData *jsonData = [NSJSONSerialization dataWithJSONObject:jsonDic options:NSJSONWritingPrettyPrinted error:nil];
+          NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+      
+          NSString *strResult = jsonString;
+          callback(@[[NSNull null], strResult]);
+      }
+    });
+}
+
+RCT_EXPORT_METHOD(GetFitLevelPosArray:(NSDictionary *)vscaleScreen wgs84Array:(NSArray *)wgs84Array callback:(RCTResponseSenderBlock)callback)
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        FatosMapView *fatosMapView = [FatosMapView sharedMapView];
+
+        if(fatosMapView != nil)
+        {
+            CGPoint vscale;
+
+            vscale.x = [[vscaleScreen objectForKey:@"x"] floatValue];
+            vscale.y = [[vscaleScreen objectForKey:@"y"] floatValue];
+
+            float fLevel = 0.0f;
+            CGPoint wgs84Center;
+            [fatosMapView GetFitLevelPosArray:vscale fLevel:&fLevel wgs84Center:&wgs84Center wgs84Array:wgs84Array];
+
+            NSNumber *level = [NSNumber numberWithFloat:fLevel];
+            NSNumber *centerX = [NSNumber numberWithFloat:wgs84Center.x];
+            NSNumber *centerY = [NSNumber numberWithFloat:wgs84Center.y];
+
+            NSMutableDictionary *jsonDic = [NSMutableDictionary new];
+            [jsonDic setValue:level forKey:@"level"];
+            [jsonDic setValue:centerX forKey:@"x"];
+            [jsonDic setValue:centerY forKey:@"y"];
+            NSData *jsonData = [NSJSONSerialization dataWithJSONObject:jsonDic options:NSJSONWritingPrettyPrinted error:nil];
+            NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+
+            NSString *strResult = jsonString;
+            callback(@[[NSNull null], strResult]);
+        }
+    });
+}
+
+
 
 /** ios -> js **/
 - (void) MapLevelUpdateListener:(int)nLevel;

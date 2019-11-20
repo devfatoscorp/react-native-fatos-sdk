@@ -72,6 +72,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (void) GetMapCenter:(float*)hCenter vCenter:(float*)vCenter;
 - (void) SetMapShiftCenter:(float)hCenter vCenter:(float)vCenter;
 - (void) GetMapShiftCenter:(float*)hCenter vCenter:(float*)vCenter;
+- (void) SetTouchState:(int)state;
+- (BOOL) GetFitLevelMBR_wgs84:(CGPoint)dmin dmax:(CGPoint)dmax fLevel:(float*) fLevel;
+- (BOOL) GetFitLevelPosArray:(CGPoint)vscaleScreen fLevel:(float*)fLevel wgs84Center:(CGPoint*)wgs84Center wgs84Array:(NSArray*)wgs84Array;
 
 @property(strong, nonatomic) CADisplayLink* displayLink;
 @property(strong, nonatomic) id<FatosMapViewDelegate> delegate;

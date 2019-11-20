@@ -257,6 +257,15 @@ export default class FatosNativeMap {
     this.nativeMAP.SetMapShiftCenter(hCenter, vCenter);
   }
 
+
+  /**
+   * SetTouchState 함수
+   */
+
+  SetTouchState(state) {
+    this.nativeMAP.SetTouchState(state);
+  }
+
   /**
    * GetMapShiftCenter 함수
    * @param {cb}
@@ -336,6 +345,59 @@ export default class FatosNativeMap {
             var ylat = data.ylat;
 
             cb(xlon, ylat);
+          }
+        },
+    );
+  }
+
+  /**
+   * 좌표 중심 레벨값
+   * @param {map, map, cb}
+   * param ex : var dmin = {
+      y: 37.489147,
+      x: 126.579605,
+    };
+   var dmax = {
+      y: 37.489147,
+      x: 126.50332,
+    };
+   */
+
+  GetFitLevelMBR_wgs84(dmin, dmax, cb) {
+    this.nativeMAP.GetFitLevelMBR_wgs84(dmin, dmax, (error, result) => {
+          if (error) {
+            console.error(error);
+          } else {
+            var data = JSON.parse(result);
+            var level = data.level;
+            cb(level);
+          }
+        },
+    );
+  }
+
+  /**
+   * 좌표배열 중심값, 레벨값
+   * @param {map, arr, cb}
+   * param ex : var vscaleScreen = {
+      x: 0.5,
+      y: 0.5,
+    };
+   * var arr = [{ y: 37.489147, x: 126.50332 }, { y: 37.489147, x: 126.579605 }];
+   */
+
+  GetFitLevelPosArray(vscaleScreen, arr, cb) {
+      this.nativeMAP.GetFitLevelPosArray(vscaleScreen, arr, (error, result) => {
+          if (error) {
+            console.error(error);
+          } else {
+            var data = JSON.parse(result);
+
+            var level = data.level;
+            var x = data.x;
+            var y = data.y;
+
+            cb(x, y, level);
           }
         },
     );

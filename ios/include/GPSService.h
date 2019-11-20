@@ -17,19 +17,19 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 @interface GPSService : NSObject <CLLocationManagerDelegate> {
-  BOOL  m_isStartLocation;
-  int m_status;
-  int m_lat;
-  int m_lon;
-  double m_alt;
-  double m_speed;
-  double m_hAccuracy;
-  double m_vAccuracy;
-  double m_angle;
-  
-  bool m_bSimulGps;
-  
-  NMEALog m_logFile;
+    BOOL  m_isStartLocation;
+    int m_status;
+    int m_lat;
+    int m_lon;
+    double m_alt;
+    double m_speed;
+    double m_hAccuracy;
+    double m_vAccuracy;
+    double m_angle;
+    
+    bool m_bSimulGps;
+    
+    NMEALog m_logFile;
 }
 
 @property (nonatomic, retain) CLLocationManager *m_locationManager;
