@@ -42,7 +42,8 @@ RCT_EXPORT_MODULE()
   //RCTEventEmitter 오버라이드 함수
   //RCTEventEmitter 사용하는 이벤트 명을 등록해줘야 한다
   return @[@"MapLevelUpdateListener", @"PosWorldLocationUpdateListener",
-    @"TouchMoveModeListener", @"MapLongTouchListener", @"MapReadyListener"];
+    @"TouchMoveModeListener", @"MapLongTouchListener", @"UpdatePickerInfoListener",
+    @"MapReadyListener"];
 }
 
 // js -> Native
@@ -635,6 +636,30 @@ RCT_EXPORT_METHOD(GetFitLevelPosArray:(NSDictionary *)vscaleScreen wgs84Array:(N
   {
     [self sendEventWithName:@"MapLongTouchListener" body:@{@"x": @(x), @"y": @(y)}];
   }
+}
+
+- (void) UpdatePickerInfo:(NSString *)strID nLong:(int)nLong nLat:(int)nLat
+{
+    if(isListener)
+    {        
+        NSMutableDictionary *pickerInfo = [FatosUtil getJsonDictionary:strID];
+        
+        NSString *nsID = [FatosUtil getStringValue:[pickerInfo objectForKey:@"id"]];
+        NSString *nsType = [FatosUtil getStringValue:[pickerInfo objectForKey:@"type"]];
+        NSString *nsName = [FatosUtil getStringValue:[pickerInfo objectForKey:@"name"]];
+      
+        NSNumber *nsLong = [NSNumber numberWithInt:nLong];
+        NSNumber *nsLat = [NSNumber numberWithInt:nLat];
+        
+        NSMutableDictionary *jsonDic = [NSMutableDictionary new];
+        [jsonDic setValue:nsID forKey:@"id"];
+        [jsonDic setValue:nsType forKey:@"type"];
+        [jsonDic setValue:nsName forKey:@"name"];
+        [jsonDic setValue:nsLong forKey:@"nLong"];
+        [jsonDic setValue:nsLat forKey:@"nLat"];
+      
+        [self sendEventWithName:@"UpdatePickerInfoListener" body:jsonDic];
+    }
 }
 
 - (void) MapReadyListener

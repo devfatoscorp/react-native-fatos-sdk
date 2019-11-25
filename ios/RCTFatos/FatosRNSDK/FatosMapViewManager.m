@@ -72,4 +72,15 @@ RCT_EXPORT_MODULE(FatosMapView);
     }
 }
 
+- (void) UpdatePickerInfo:(NSString *)strID nLong:(int)nLong nLat:(int)nLat
+{
+    FatosMapViewBridgeModule *module = [FatosAppDelegate sharedAppDelegate].fatosMapViewBridgeModule;
+    
+    if(module)
+    {
+      [module UpdatePickerInfo:strID nLong:nLong nLat:nLat];
+    }
+}
+
+
 @end

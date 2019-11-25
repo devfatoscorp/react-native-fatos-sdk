@@ -71,6 +71,14 @@ export default class FatosNativeNavi {
   }
 
   /**
+   * 경유지 업데이트 함수
+   * json 양식은 routeViapoints 와 동일
+   */
+  UpdateRouteParam(strJson) {
+    this.nativeAPI.UpdateRouteParam(strJson);
+  }
+
+  /**
    * 경로 취소
    */
 
@@ -121,6 +129,16 @@ export default class FatosNativeNavi {
 
   search(searchText) {
     this.nativeAPI.Search(searchText);
+  }
+
+  /**
+   * 검색
+   * option 0 기본, 1 검색어, 2 거리
+   * @param string
+   */
+
+  SearchSort(searchText, option) {
+    this.nativeAPI.SearchSort(searchText, option);
   }
 
   /**

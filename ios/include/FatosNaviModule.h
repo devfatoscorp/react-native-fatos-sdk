@@ -43,6 +43,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void) ReleaseNavi;
 
 - (void) routeExternal:(NSDictionary *)jsonDic strFeeOption:(NSString *)strFeeOption;
+- (void) updateRouteParam:(NSDictionary *)jsonDic strFeeOption:(NSString *)strFeeOption;
 - (void) ReRoute;
 - (void) Route:(NSString *)startLat startLon:(NSString *)startLon goalLat:(NSString *)goalLat goalLon:(NSString *)goalLon strFeeOption:(NSString *)strFeeOption;
 - (void) RouteTest1;
@@ -60,7 +61,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void) SetRouteAutoTime:(int)val;
 - (void) SetLanguage:(int)index;
 - (NSString *)RequestTmapSearchService:(NSString *)keywordName;
-- (NSString *)RequestFtsSearchService:(NSString *)keywordName;
+- (NSString *)RequestFtsSearchService:(NSString *)keywordName option:(int)option;
 - (void) SpeakUtterance:(NSString *)strSpeech;
 - (NSString *)GetVersion;
 - (void) SetAutoCurrentPos:(bool)val;

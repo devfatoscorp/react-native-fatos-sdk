@@ -22,6 +22,7 @@
 - (void) PosWorldLocationUpdateListener:(NSString *)strLocation;
 - (void) TouchMoveModeListener:(int)nMode;
 - (void) MapLongTouchListener:(int)x y:(int)y;
+- (void) UpdatePickerInfo:(NSString *)strID nLong:(int)nLong nLat:(int)nLat;
 - (void) MapReadyListener;
 
 @end

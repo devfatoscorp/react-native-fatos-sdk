@@ -130,7 +130,7 @@ public class FatosNaviBridgeModule extends ReactContextBaseJavaModule {
             jsonObject.put("endX", goalLon);
             jsonObject.put("endY", goalLat);
 
-            routeExternal(jsonObject);
+            routeExternal(jsonObject, true);
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -142,13 +142,26 @@ public class FatosNaviBridgeModule extends ReactContextBaseJavaModule {
     {
         try {
             JSONObject jsonObject = new JSONObject(strJson);
-            routeExternal(jsonObject);
+            routeExternal(jsonObject, true);
         } catch (JSONException e) {
             e.printStackTrace();
         }
     }
 
-    public void routeExternal(JSONObject jsonObject)
+    @ReactMethod
+    public void UpdateRouteParam(String strJson)
+    {
+        try {
+            JSONObject jsonObject = new JSONObject(strJson);
+            routeExternal(jsonObject, false);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
+    public void routeExternal(JSONObject jsonObject, boolean bRequest)
     {
         try {
             
@@ -303,7 +316,13 @@ public class FatosNaviBridgeModule extends ReactContextBaseJavaModule {
             AMapPositionManager.setStartFlagYX(Double.toString(st.x),Double.toString(st.y));
             AMapPositionManager.setGoalYX(Double.toString(ed.y),Double.toString(ed.x));
 
-            routeApi.RequestRoute(param);
+            if(bRequest){
+                routeApi.RequestRoute(param);
+            } else {
+                // 경탐 요청 하는 것이 아니라 경유지 목록 등을 업데이트 한다.
+                NativeNavi.nativeUpdateRouteParam(param);
+            }
+
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -430,6 +449,42 @@ public class FatosNaviBridgeModule extends ReactContextBaseJavaModule {
 
         th.start();
     }
+
+
+    @ReactMethod
+    public void SearchSort(final String searchText, final int option) {
+
+        ShowIndicatorListener();
+
+        Thread th = new Thread(new Runnable() {
+            @Override
+            public void run() {
+
+                HideIndicatorListener();
+
+                JSONObject obj = new JSONObject();
+
+                try {
+
+                    obj.put("kwd", searchText); // 1.28516, 103.84738
+                    obj.put("cx", AMapPositionManager.getCurrentLonX());
+                    obj.put("cy", AMapPositionManager.getCurrentLatY());
+                    obj.put("stype", 0);
+                    obj.put("sort", option);
+
+
+                    String strResult = NaviInterface.Search(obj.toString(), true);
+                    SearchResultListener(strResult);
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        th.start();
+    }
+
 
     @ReactMethod
     public void StartRouteGuidance(int index)

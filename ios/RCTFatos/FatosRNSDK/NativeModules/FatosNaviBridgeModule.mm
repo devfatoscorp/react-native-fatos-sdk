@@ -130,6 +130,39 @@ RCT_EXPORT_METHOD(RouteViapoints:(NSString *)strJson)
   });
 }
 
+RCT_EXPORT_METHOD(UpdateRouteParam:(NSString *)strJson)
+{
+  dispatch_async(dispatch_get_main_queue(), ^{
+    
+    FatosNaviModule *module = [FatosAppDelegate sharedAppDelegate].fatosNaviModule;
+    
+    if(module)
+    {
+      NSArray *arr = [[FatosEnvironment sharedObject] getNavigationOptions];
+      std::string strFeeOption;
+      for(int i = 0; i < [arr count]; ++i)
+      {
+        bool val = ([[arr objectAtIndex: i] boolValue] == YES) ? true : false;
+        if(val)
+        {
+          strFeeOption.append([[FatoseSettingManager sharedObject] getFeeOption:i]);
+        }
+      }
+      
+      NSError *error;
+      NSData *data = [strJson dataUsingEncoding:NSUTF8StringEncoding];
+      NSDictionary *jsonDictionary = [NSJSONSerialization JSONObjectWithData:data
+                                                                       options:NSJSONReadingMutableContainers
+                                                                         error:&error];
+        
+      [module updateRouteParam:jsonDictionary strFeeOption:[NSString stringWithUTF8String:strFeeOption.c_str()]];
+       
+    }
+    
+  });
+}
+
+
 RCT_EXPORT_METHOD(RouteTest1)
 {
   dispatch_async(dispatch_get_main_queue(), ^{
@@ -271,7 +304,7 @@ RCT_EXPORT_METHOD(Search:(NSString *)searchText)
      
       dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
       
-        NSString *strResult = [module RequestFtsSearchService:searchText];
+        NSString *strResult = [module RequestFtsSearchService:searchText option:0];
         [self SearchResultListener:[strResult UTF8String]];
         [self HideIndicatorListener];
       });
@@ -279,6 +312,29 @@ RCT_EXPORT_METHOD(Search:(NSString *)searchText)
 
   });
 }
+
+
+RCT_EXPORT_METHOD(SearchSort:(NSString *)searchText option:(int)option)
+{
+  dispatch_async(dispatch_get_main_queue(), ^{
+    
+    FatosNaviModule *module = [FatosAppDelegate sharedAppDelegate].fatosNaviModule;
+    
+    if(module)
+    {
+      [self ShowIndicatorListener];
+     
+      dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+      
+        NSString *strResult = [module RequestFtsSearchService:searchText option:option];
+        [self SearchResultListener:[strResult UTF8String]];
+        [self HideIndicatorListener];
+      });
+    }
+
+  });
+}
+
 
 RCT_EXPORT_METHOD(StartRouteGuidance:(int)index)
 {

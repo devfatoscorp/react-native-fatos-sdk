@@ -247,7 +247,12 @@ public class FatosMapViewManager extends SimpleViewManager<View> implements  Fat
     @Override
     public void onUpdatePickerInfo(String strID, int nLong, int nLat)
     {
+        FatosMapViewBridgeModule module = FatosMapViewBridgeModule.GetInstance();
 
+        if(module != null)
+        {
+            module.UpdatePickerInfoListener(strID,nLong,nLat);
+        }
     }
 
     @Override

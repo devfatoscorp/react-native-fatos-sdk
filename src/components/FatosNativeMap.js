@@ -437,7 +437,17 @@ export default class FatosNativeMap {
    */
 
   addListener_MapLongTouch(cb) {
-    this.nativeEmt.addListener('TouchMoveModeListener', cb);
+    this.nativeEmt.addListener('MapLongTouchListener', cb);
+  }
+
+  /**
+   * 마커 터치 콜백
+   * Json {id,type,name,nLong,nLat}
+   * @param cb
+   */
+
+  addListener_UpdatePickerInfoListener(cb) {
+    this.nativeEmt.addListener('UpdatePickerInfoListener', cb);
   }
 
   /**

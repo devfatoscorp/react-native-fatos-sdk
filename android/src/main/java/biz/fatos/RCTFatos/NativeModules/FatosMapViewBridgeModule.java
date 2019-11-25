@@ -687,6 +687,31 @@ public class FatosMapViewBridgeModule extends ReactContextBaseJavaModule {
         }
     }
 
+    public void UpdatePickerInfoListener(String strID, int nLong, int nLat)
+    {
+        if(isListener)
+        {
+            try {
+                JSONObject json = new JSONObject(strID);
+
+                String id = json.optString("id","");
+                String type = json.optString("type","");
+                String name = json.optString("name","");
+
+                WritableMap eventData = new WritableNativeMap();
+                eventData.putString("id", id);
+                eventData.putString("type", type);
+                eventData.putString("name", name);
+                eventData.putInt("nLong", nLong);
+                eventData.putInt("nLat", nLat);
+                sendEvent(getReactApplicationContext(), "UpdatePickerInfoListener", eventData);
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
     private void sendEvent(ReactContext reactContext, String eventName, Object content) {
         mContext
                 .getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)
