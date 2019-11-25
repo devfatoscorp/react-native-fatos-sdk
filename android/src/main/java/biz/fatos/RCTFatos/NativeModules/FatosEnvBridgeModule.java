@@ -284,20 +284,25 @@ public class FatosEnvBridgeModule extends ReactContextBaseJavaModule {
         FatosEnvironment.sharedObject().setSimulGps(value);
         FatosEnvironment.sharedObject().saveEnvironment();
 
+        // GPS 로그 저장.
+        m_gApp.setEnableSaveGPSLog(FatosBuildConfig.getSaveGPSLog());
+
         if (value) {
             // 모의위치 모드...
             m_gApp.setLocationMode(m_gApp.LOCATION_MOCK);
-
             NativeNavi.nativeSetLocationSimulGpsNSaveLog(false,true);
 
         } else {
             // GPS모드
             m_gApp.setLocationMode(m_gApp.LOCATION_GPS);
 
-            NativeNavi.nativeSetLocationSimulGpsNSaveLog(true,false);
-
-            // GPS 로그 저장.
-            m_gApp.setEnableSaveGPSLog(FatosBuildConfig.getSaveGPSLog());
+            if (m_gApp.getAppSettingInfo().m_bDevServerMode) {
+                NativeNavi.nativeSetLocationSimulGpsNSaveLog(true,false);
+                m_gApp.setEnableSaveGPSLog(FatosBuildConfig.getSaveGPSLog());
+            } else {
+                NativeNavi.nativeSetLocationSimulGpsNSaveLog(false,false);
+                m_gApp.setEnableSaveGPSLog(false);
+            }
         }
     }
 
