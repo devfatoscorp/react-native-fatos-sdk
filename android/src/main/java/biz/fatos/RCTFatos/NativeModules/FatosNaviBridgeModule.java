@@ -316,13 +316,21 @@ public class FatosNaviBridgeModule extends ReactContextBaseJavaModule {
             AMapPositionManager.setStartFlagYX(Double.toString(st.x),Double.toString(st.y));
             AMapPositionManager.setGoalYX(Double.toString(ed.y),Double.toString(ed.x));
 
+            int iret = 1;
             if(bRequest){
-                routeApi.RequestRoute(param);
-            } else {
+                iret = NativeNavi.nativeRequestRoute(false, param);
+             } else {
                 // 경탐 요청 하는 것이 아니라 경유지 목록 등을 업데이트 한다.
-                NativeNavi.nativeUpdateRouteParam(param);
+                iret = NativeNavi.nativeUpdateRouteParam(param);
             }
-
+            if( iret != 1 ){
+                RouteResultListener(0, iret);
+                // return -78; (인증실패 )
+                // return -10; (인스턴스 없음.)
+                // return -11; (라파메터 입력 오류)
+                // return -12; (이미 요청큐에 있음 : 로컬 모드일 경우 )
+                // return -13; (이미 요청큐에 있음 : 통신 모드일 경우 )
+            }
 
         } catch (JSONException e) {
             e.printStackTrace();
