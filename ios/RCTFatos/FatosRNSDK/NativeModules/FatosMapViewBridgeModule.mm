@@ -517,17 +517,18 @@ RCT_EXPORT_METHOD(GetPosWorldtoWGS84FromScreen:(float)fCenterX fCenterY:(float)f
     {
         int nMapCurPosX = 0;
         int nMapCurPosY = 0;
+        double xlon = 0;
+        double ylat = 0;
         
         [fatosMapView GetPosWorldFromScreen:fCenterX fCenterY:fCenterY nMapCurPosX:&nMapCurPosX nMapCurPosY:&nMapCurPosY];
-        
+        [fatosMapView ConvWorldtoWGS84:nMapCurPosX y:nMapCurPosY xlon:&xlon ylat:&ylat];
     
-        
-        NSNumber *numberX = [NSNumber numberWithInt:nMapCurPosX];
-        NSNumber *numberY = [NSNumber numberWithInt:nMapCurPosY];
+        NSNumber *numberX = [NSNumber numberWithInt:xlon];
+        NSNumber *numberY = [NSNumber numberWithInt:ylat];
 
         NSMutableDictionary *jsonDic = [NSMutableDictionary new];
-        [jsonDic setValue:numberX forKey:@"x"];
-        [jsonDic setValue:numberY forKey:@"y"];
+        [jsonDic setValue:numberX forKey:@"xlon"];
+        [jsonDic setValue:numberY forKey:@"ylat"];
         
         NSData *jsonData = [NSJSONSerialization dataWithJSONObject:jsonDic options:NSJSONWritingPrettyPrinted error:nil];
         NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];

@@ -192,7 +192,7 @@ public class FatosNaviBridgeModule extends ReactContextBaseJavaModule {
                 nSearchOption = nSearchOption | m_arRouteOption[i];
             }
 
-            param.searchOption = 41;
+            param.searchOption = nSearchOption;
 
             // 기본경로 탐색 셋팅
             String strFeeOption = "";
