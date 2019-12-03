@@ -24,6 +24,11 @@ export default class FatosNativeMng {
         this.nativeAPI.SetUserDefaults(strKey, strValue);
     }
 
+    goURL(strUrl)
+    {
+        this.nativeAPI.goURL(strUrl);
+    }
+
     getUserDefaults(strKey, cb)
     {
         this.nativeAPI.GetUserDefaults(strKey, (error, result) => {

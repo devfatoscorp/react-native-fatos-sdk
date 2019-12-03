@@ -157,7 +157,7 @@ RCT_EXPORT_MODULE(FatosWebView);
   if(fatosNaviModule == nil)
     return;
   
-  [fatosNaviModule routeExternal:jsonDic strFeeOption:nil];
+  [fatosNaviModule routeExternal:jsonDic strFeeOption:nil bRequest:YES];
   
   [self setWebViewVisible:NO];
 }

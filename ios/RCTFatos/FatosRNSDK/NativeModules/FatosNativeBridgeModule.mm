@@ -50,6 +50,19 @@ RCT_EXPORT_METHOD(SetUserDefaults:(NSString *)strKey value:(NSString *)strValue)
   });
 }
 
+RCT_EXPORT_METHOD(goURL:(NSString *)url)
+{
+  dispatch_async(dispatch_get_main_queue(), ^{
+    
+      [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url] options:@{} completionHandler:^(BOOL success) {
+          if (success) {
+               NSLog(@"Opened url");
+          }
+      }];
+
+  });
+}
+
 RCT_EXPORT_METHOD(GetUserDefaults:(NSString *)strKey callback:(RCTResponseSenderBlock)callback)
 {
   NSString *strResult = [[NSUserDefaults standardUserDefaults] stringForKey:strKey];
@@ -61,5 +74,7 @@ RCT_EXPORT_METHOD(GetUserDefaults:(NSString *)strKey callback:(RCTResponseSender
   
   callback(@[[NSNull null], strResult]);
 }
+
+
 
 @end

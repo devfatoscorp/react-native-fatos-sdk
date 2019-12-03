@@ -42,7 +42,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (BOOL) InitNavi;
 - (void) ReleaseNavi;
 
-- (void) routeExternal:(NSDictionary *)jsonDic strFeeOption:(NSString *)strFeeOption;
+- (void) routeExternal:(NSDictionary *)jsonDic strFeeOption:(NSString *)strFeeOption bRequest:(BOOL)bRequest;
 - (void) updateRouteParam:(NSDictionary *)jsonDic strFeeOption:(NSString *)strFeeOption;
 - (void) ReRoute;
 - (void) Route:(NSString *)startLat startLon:(NSString *)startLon goalLat:(NSString *)goalLat goalLon:(NSString *)goalLon strFeeOption:(NSString *)strFeeOption;

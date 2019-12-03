@@ -94,7 +94,6 @@ RCT_EXPORT_METHOD(Route:(NSString *)startLat startLon:(NSString *)startLon
       
       [module Route:startLat startLon:startLon goalLat:goalLat goalLon:goalLon strFeeOption:[NSString stringWithUTF8String:strFeeOption.c_str()]];
     }
-    
   });
 }
 
@@ -123,7 +122,7 @@ RCT_EXPORT_METHOD(RouteViapoints:(NSString *)strJson)
                                                                        options:NSJSONReadingMutableContainers
                                                                          error:&error];
         
-      [module routeExternal:jsonDictionary strFeeOption:[NSString stringWithUTF8String:strFeeOption.c_str()]];
+      [module routeExternal:jsonDictionary strFeeOption:[NSString stringWithUTF8String:strFeeOption.c_str()] bRequest:YES];
        
     }
     
@@ -155,7 +154,7 @@ RCT_EXPORT_METHOD(UpdateRouteParam:(NSString *)strJson)
                                                                        options:NSJSONReadingMutableContainers
                                                                          error:&error];
         
-      [module updateRouteParam:jsonDictionary strFeeOption:[NSString stringWithUTF8String:strFeeOption.c_str()]];
+       [module routeExternal:jsonDictionary strFeeOption:[NSString stringWithUTF8String:strFeeOption.c_str()] bRequest:NO];
        
     }
     

@@ -175,6 +175,7 @@ public class FatosNaviBridgeModule extends ReactContextBaseJavaModule {
             String endPosName = jsonObject.optString("endPosName","");
             String goalLat = jsonObject.getString("endY");
             String goalLon = jsonObject.getString("endX");
+            JSONArray route_option = jsonObject.optJSONArray("route_option");
 
             int nServiceType = NativeNavi.nativeClientSiteToServer(m_gApp.getRoutePathInfo().m_nServiceType, false);
 
@@ -187,9 +188,19 @@ public class FatosNaviBridgeModule extends ReactContextBaseJavaModule {
 
             int nSearchOption = 0;
 
-            for(int i = 0; i < MAX_ROUTE_OPTION; ++i)
+            if(route_option != null)
             {
-                nSearchOption = nSearchOption | m_arRouteOption[i];
+                for(int i = 0; i < route_option.length(); ++i)
+                {
+                    nSearchOption = nSearchOption | route_option.optInt(i,0);
+                }
+            }
+            else
+            {
+                for(int i = 0; i < MAX_ROUTE_OPTION; ++i)
+                {
+                    nSearchOption = nSearchOption | m_arRouteOption[i];
+                }
             }
 
             param.searchOption = nSearchOption;
