@@ -27,6 +27,7 @@ NS_ASSUME_NONNULL_BEGIN
   
 };
 
+- (void) componentWillUnmount;
 - (void) viewSizeUpdate;
 - (void) panGesture:(UIPanGestureRecognizer *)gestureRecognizer inView:(UIView*)view;
 - (void) setViewMode:(NSNumber *)mode;

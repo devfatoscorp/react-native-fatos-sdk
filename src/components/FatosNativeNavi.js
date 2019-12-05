@@ -142,6 +142,23 @@ export default class FatosNativeNavi {
   }
 
   /**
+   * 검색
+   * @param json string
+   * ex) var param = {
+      kwd: this.state.searchText,
+      cx: 126.987262,
+      cy: 37.565069,
+      minx: 126.332598,
+      maxx: 126.586176,
+      miny: 37.401292,
+      maxy: 37.54674,
+    };
+   */
+  SearchParam(strParam) {
+    this.nativeAPI.SearchParam(strParam);
+  }
+
+  /**
    * 선택된 경로로 주행 시작
    * @param int
    */
@@ -193,7 +210,7 @@ export default class FatosNativeNavi {
 
   /**
    * 권한 확득 여부
-   * @returns {string : 0 미획득, 1 획}
+   * @returns {string : 0 미획득, 1 획득}
    */
   addListener_GetIsPermission(cb) {
     this.nativeAPI.GetIsPermission((error, result) => {
@@ -284,6 +301,18 @@ export default class FatosNativeNavi {
     this.nativeEmt.addListener('ViaCompleteListener', cb);
   }
 
+  /**
+   * 현재 gps 정보
+   * @returns {json object}
+   */
 
-
+  addListener_GetCurrentPosition(cb) {
+    this.nativeAPI.GetCurrentPosition((error, result) => {
+      if (error) {
+        console.error(error);
+      } else {
+        cb(result);
+      }
+    });
+  }
 }

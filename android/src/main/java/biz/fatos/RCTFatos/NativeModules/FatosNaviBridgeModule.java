@@ -2,6 +2,7 @@ package biz.fatos.RCTFatos.NativeModules;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
+import android.location.Location;
 import android.os.Build;
 import android.util.Log;
 
@@ -446,8 +447,6 @@ public class FatosNaviBridgeModule extends ReactContextBaseJavaModule {
             @Override
             public void run() {
 
-                HideIndicatorListener();
-
                 JSONObject obj = new JSONObject();
 
                 try {
@@ -463,6 +462,8 @@ public class FatosNaviBridgeModule extends ReactContextBaseJavaModule {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
+
+                HideIndicatorListener();
             }
         });
 
@@ -478,8 +479,6 @@ public class FatosNaviBridgeModule extends ReactContextBaseJavaModule {
         Thread th = new Thread(new Runnable() {
             @Override
             public void run() {
-
-                HideIndicatorListener();
 
                 JSONObject obj = new JSONObject();
 
@@ -498,6 +497,27 @@ public class FatosNaviBridgeModule extends ReactContextBaseJavaModule {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
+
+                HideIndicatorListener();
+            }
+        });
+
+        th.start();
+    }
+
+
+    @ReactMethod
+    public void SearchParam(final String strParam) {
+
+        ShowIndicatorListener();
+
+        Thread th = new Thread(new Runnable() {
+            @Override
+            public void run() {
+
+                String strResult = NaviInterface.Search(strParam, true);
+                SearchResultListener(strResult);
+                HideIndicatorListener();
             }
         });
 
@@ -573,6 +593,42 @@ public class FatosNaviBridgeModule extends ReactContextBaseJavaModule {
         }
 
         callback.invoke(null, strResult);
+    }
+
+    @ReactMethod
+    public void GetLastLocation(Callback callback)
+    {
+        int x = AMapPositionManager.m_nWSaveLonX;
+        int y = AMapPositionManager.m_nWSaveLatY;
+
+        double[] lonlat = new double[2];
+        lonlat[0] = 0;
+        lonlat[1] = 0;
+
+        if(x > 0 && y > 0) {
+            NativeNavi.nativeConvWorldtoWGS84(x, y, lonlat);
+        }
+
+        String strResult = "";
+
+        JSONObject object = new JSONObject();
+        try {
+            object.put("xlon", lonlat[0]);
+            object.put("ylat", lonlat[1]);
+            strResult = object.toString();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        callback.invoke(null, strResult);
+    }
+
+    @ReactMethod
+    public void GetCurrentPosition(Callback callback)
+    {
+        Location location = m_gApp.getLastLocationEvent();
+        WritableMap writableMap = FatosNaviBridgeModule.locationToMap(location);
+        callback.invoke(null, writableMap);
     }
 
     public void UpdateRGListener(String strJson) {
@@ -680,5 +736,25 @@ public class FatosNaviBridgeModule extends ReactContextBaseJavaModule {
     private void sendEvent(ReactContext reactContext, String eventName, Object content) {
         mContext.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)
                 .emit(eventName, content);
+    }
+
+    public static WritableMap locationToMap(Location location) {
+        WritableMap map = Arguments.createMap();
+        WritableMap coords = Arguments.createMap();
+
+        coords.putDouble("latitude", location.getLatitude());
+        coords.putDouble("longitude", location.getLongitude());
+        coords.putDouble("altitude", location.getAltitude());
+        coords.putDouble("accuracy", location.getAccuracy());
+        coords.putDouble("heading", location.getBearing());
+        coords.putDouble("speed", location.getSpeed());
+        map.putMap("coords", coords);
+        map.putDouble("timestamp", location.getTime());
+
+        if (Build.VERSION.SDK_INT >= 18) {
+            map.putBoolean("mocked", location.isFromMockProvider());
+        }
+
+        return map;
     }
 }

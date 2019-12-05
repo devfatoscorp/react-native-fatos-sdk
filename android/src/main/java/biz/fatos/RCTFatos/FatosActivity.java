@@ -297,13 +297,45 @@ public class FatosActivity extends ReactActivity implements NaviCallback.OnRoute
 
     @Override
     public void onStop() {
+
         super.onStop();
     }
 
     @Override
     protected void onPause() {
+
         super.onPause();
+
+        // 스마트 시티 유저일떄 백그라운드 gps off
+        if(m_gApp.getRoutePathInfo().m_nServiceType == FatosBuildConfig.FATOS_SITE_IS_SmartCityIch_User)
+        {
+            if (gpsServiceIntent != null) {
+                stopService(gpsServiceIntent);
+                gpsServiceIntent = null;
+
+                Log.d("simsimsim","onPause gpsServiceIntent");
+            }
+        }
     }
+
+
+    @Override
+    protected void onResume() {
+
+        super.onResume();
+
+        // 스마트 시티 유저일떄 포그라운드 일떄 gps on
+        if(m_gApp.getRoutePathInfo().m_nServiceType == FatosBuildConfig.FATOS_SITE_IS_SmartCityIch_User)
+        {
+            if (gpsServiceIntent == null) {
+                gpsServiceIntent = new Intent(m_Context, GPSService.class);
+                startService(gpsServiceIntent);
+                Log.d("simsimsim","onResume gpsServiceIntent");
+            }
+        }
+    }
+
+
 
     public void hardwareBackPress() {
 

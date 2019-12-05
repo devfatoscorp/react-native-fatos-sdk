@@ -70,6 +70,31 @@ public class FatosMapViewBridgeModule extends ReactContextBaseJavaModule {
         _FatosMapViewBridgeModule = this;
         mContext = reactContext;
         m_gApp = (ANaviApplication) reactContext.getApplicationContext();
+
+
+        Log.d("simsimsim", "FatosMapViewBridgeModule");
+    }
+
+    @ReactMethod
+    public void componentDidMount() {
+
+        FatosMapViewManager mapViewManager = FatosMapViewManager.GetInstance();
+
+        if(mapViewManager != null)
+        {
+
+        }
+    }
+
+    @ReactMethod
+    public void componentWillUnmount() {
+
+        FatosMapViewManager mapViewManager = FatosMapViewManager.GetInstance();
+
+        if(mapViewManager != null)
+        {
+            mapViewManager.componentWillUnmount();
+        }
     }
 
     @ReactMethod

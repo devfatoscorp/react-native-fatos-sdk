@@ -47,6 +47,32 @@ RCT_EXPORT_MODULE()
 }
 
 // js -> Native
+RCT_EXPORT_METHOD(componentDidMount)
+{
+  dispatch_async(dispatch_get_main_queue(), ^{
+    
+      FatosMapView *fatosMapView = [FatosMapView sharedMapView];
+           
+       if(fatosMapView != nil)
+       {
+           
+       }
+  });
+}
+
+RCT_EXPORT_METHOD(componentWillUnmount)
+{
+  dispatch_async(dispatch_get_main_queue(), ^{
+    
+      FatosMapView *fatosMapView = [FatosMapView sharedMapView];
+      
+      if(fatosMapView != nil)
+      {
+          [fatosMapView componentWillUnmount];
+      }
+  });
+}
+
 RCT_EXPORT_METHOD(setListener:(NSString *)value)
 {
   dispatch_async(dispatch_get_main_queue(), ^{

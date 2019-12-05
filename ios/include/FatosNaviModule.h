@@ -62,6 +62,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void) SetLanguage:(int)index;
 - (NSString *)RequestTmapSearchService:(NSString *)keywordName;
 - (NSString *)RequestFtsSearchService:(NSString *)keywordName option:(int)option;
+- (NSString *)RequestFtsSearchService:(NSString *)strParam;
 - (void) SpeakUtterance:(NSString *)strSpeech;
 - (NSString *)GetVersion;
 - (void) SetAutoCurrentPos:(bool)val;

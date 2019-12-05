@@ -1,8 +1,10 @@
 package biz.fatos.RCTFatos;
 
+import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 
@@ -37,6 +39,7 @@ public class FatosMapViewManager extends SimpleViewManager<View> implements  Fat
     private static int mn_MapMoveCurrentTimer = 0;
     private boolean mbln_MapMoveCurrentEvent = false;
     private boolean mbln_AutoCurrentPos = false;
+    private ThemedReactContext m_Context = null;
 
     FatosMainMapView.TouchInfo mTouchInfo = null;
 
@@ -102,7 +105,7 @@ public class FatosMapViewManager extends SimpleViewManager<View> implements  Fat
                     NativeNavi.nativeMapGetPosWGS84(ANaviApplication.m_MapHandle, x, y);
                     String strLocation = NaviInterface.GeoCode(x[0], y[0]);
 
-                    if(strLocation == null || strLocation.isEmpty())
+                    if(strLocation == null || TextUtils.isEmpty(strLocation))
                     {
                         Message newMsg = handler.obtainMessage(LOCATION_UPDATE);
                         handler.sendMessageDelayed(newMsg, 1000);
@@ -126,7 +129,9 @@ public class FatosMapViewManager extends SimpleViewManager<View> implements  Fat
     @Override
     protected View createViewInstance(@Nonnull ThemedReactContext reactContext) {
 
-        mFatosMainMapView = new FatosMainMapView(reactContext);
+        Log.d("simsimsim", "FatosMapView createViewInstance");
+        m_Context = reactContext;
+        mFatosMainMapView = new FatosMainMapView(m_Context);
         mFatosMainMapView.setOnFatosMapStateUpdateListenerr(this);
         mFatosMainMapView.setOnFatosMapListener(this);
 
@@ -136,6 +141,29 @@ public class FatosMapViewManager extends SimpleViewManager<View> implements  Fat
 
         _FatosMapViewManager = this;
         return mFatosMainMapView;
+    }
+
+
+    public void componentDidMount()
+    {
+        if(mFatosMainMapView == null)
+        {
+            mFatosMainMapView = new FatosMainMapView(m_Context);
+            mFatosMainMapView.setOnFatosMapStateUpdateListenerr(this);
+            mFatosMainMapView.setOnFatosMapListener(this);
+            addEventEmitters(m_Context,mFatosMainMapView);
+            Log.d("simsimsim", "FatosMapView componentDidMount");
+        }
+    }
+
+    public void componentWillUnmount() {
+
+        if(mFatosMainMapView != null)
+        {
+            mFatosMainMapView.onDestroy();
+            mFatosMainMapView = null;
+            Log.d("simsimsim", "FatosMapView componentWillUnmount");
+        }
     }
 
     private void setEnvironmentMapSetting()

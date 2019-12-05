@@ -39,6 +39,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (int)getlon;
 - (void)saveUserDefaultsLocation;
 - (void)onSimulGps:(BOOL)val;
+- (NSDictionary<NSString *, id> *)getLastLocationEvent;
 
 
 @end
