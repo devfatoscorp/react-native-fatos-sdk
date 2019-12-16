@@ -739,6 +739,10 @@ public class FatosNaviBridgeModule extends ReactContextBaseJavaModule {
     }
 
     public static WritableMap locationToMap(Location location) {
+
+        if(location == null)
+            return null;
+
         WritableMap map = Arguments.createMap();
         WritableMap coords = Arguments.createMap();
 

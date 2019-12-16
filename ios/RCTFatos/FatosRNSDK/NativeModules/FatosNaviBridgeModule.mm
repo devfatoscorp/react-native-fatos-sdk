@@ -467,13 +467,15 @@ RCT_EXPORT_METHOD(GetLastLocation:(RCTResponseSenderBlock)callback)
 
 RCT_EXPORT_METHOD(GetCurrentPosition:(RCTResponseSenderBlock)callback)
 {
-    GPSService *gpsService = [FatosAppDelegate sharedAppDelegate].gpsService;
-    
-    if(gpsService)
-    {
-        NSDictionary *lastLocationEvent = gpsService.getLastLocationEvent;
-        callback(@[[NSNull null], lastLocationEvent]);
-    }
+    dispatch_async(dispatch_get_main_queue(), ^{
+        GPSService *gpsService = [FatosAppDelegate sharedAppDelegate].gpsService;
+        
+        if(gpsService)
+        {
+            NSDictionary *lastLocationEvent = [gpsService getLastLocationEvent];
+            callback(@[[NSNull null], lastLocationEvent]);
+        }
+    });
 }
 
 /** ios -> js **/
