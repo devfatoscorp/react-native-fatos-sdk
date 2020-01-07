@@ -45,13 +45,13 @@ import biz.fatossdk.service.GPSService;
 public class FatosActivity extends ReactActivity implements NaviCallback.OnRouteListener {
     public static final String TAG = "AMAP";
     public static final String FATOS_PACKAGENAME = "biz.fatos.anavi";
-    private ANaviApplication m_gApp;
+    protected ANaviApplication m_gApp;
     private Context m_Context;
-    private Intent gpsServiceIntent = null;
+    protected Intent gpsServiceIntent = null;
 
     private NaviMassgeHandler m_NaviHandler = null;
     private NaviCallback m_NaviCallback = null;
-    private int m_iEngineInit = 0;
+    protected int m_iEngineInit = 0;
 
     private final long FINSH_INTERVAL_TIME = 2000;
     private long backPressedTime = 0;
@@ -184,6 +184,8 @@ public class FatosActivity extends ReactActivity implements NaviCallback.OnRoute
         strings.put("string_yes", getResources().getString(R.string.string_yes));
         strings.put("FATOS_PACKAGENAME", FATOS_PACKAGENAME);
         strings.put("engine_init_failed_localdb", getResources().getString(R.string.engine_init_failed_localdb));
+        strings.put("engine_init_failed_auth", "Authentication failed");
+
 
         String strIMEI = AMapUtil.getDeviceIMEI(m_Context);
         ReactManager.sharedObject().Init(this, m_Context, m_gApp, strings, sdk_key, -1, strIMEI);
@@ -282,6 +284,7 @@ public class FatosActivity extends ReactActivity implements NaviCallback.OnRoute
                 }
 
                 module.UpdateRGListener(strJson);
+
             }
         }
     }

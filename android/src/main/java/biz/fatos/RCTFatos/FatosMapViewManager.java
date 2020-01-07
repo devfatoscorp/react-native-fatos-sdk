@@ -146,14 +146,14 @@ public class FatosMapViewManager extends SimpleViewManager<View> implements  Fat
 
     public void componentDidMount()
     {
-        if(mFatosMainMapView == null)
-        {
-            mFatosMainMapView = new FatosMainMapView(m_Context);
-            mFatosMainMapView.setOnFatosMapStateUpdateListenerr(this);
-            mFatosMainMapView.setOnFatosMapListener(this);
-            addEventEmitters(m_Context,mFatosMainMapView);
-            Log.d("simsimsim", "FatosMapView componentDidMount");
-        }
+//        if(mFatosMainMapView == null)
+//        {
+//            mFatosMainMapView = new FatosMainMapView(m_Context);
+//            mFatosMainMapView.setOnFatosMapStateUpdateListenerr(this);
+//            mFatosMainMapView.setOnFatosMapListener(this);
+//            addEventEmitters(m_Context,mFatosMainMapView);
+//            Log.d("simsimsim", "FatosMapView componentDidMount");
+//        }
     }
 
     public void componentWillUnmount() {
@@ -376,7 +376,9 @@ public class FatosMapViewManager extends SimpleViewManager<View> implements  Fat
 
             fPreAutoScaleLevel = fLevel;
 
-            mFatosMainMapView.onMapLevelInOut(fLevel, fTilt);
+            if(mFatosMainMapView != null) {
+                mFatosMainMapView.onMapLevelInOut(fLevel, fTilt);
+            }
 
         }
     }
