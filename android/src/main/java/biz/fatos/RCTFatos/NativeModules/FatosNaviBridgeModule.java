@@ -631,6 +631,14 @@ public class FatosNaviBridgeModule extends ReactContextBaseJavaModule {
         callback.invoke(null, writableMap);
     }
 
+
+    @ReactMethod
+    public void GetGeoCodeString(double lon, double lat, Callback callback)
+    {
+        String strResult = NativeNavi.nativeGetGeoCodeString(lon,lat);
+        callback.invoke(null, strResult);
+    }
+
     public void UpdateRGListener(String strJson) {
 
         if(isListener) {

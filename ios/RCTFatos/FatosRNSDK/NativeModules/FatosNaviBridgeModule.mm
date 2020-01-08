@@ -478,6 +478,19 @@ RCT_EXPORT_METHOD(GetCurrentPosition:(RCTResponseSenderBlock)callback)
     });
 }
 
+RCT_EXPORT_METHOD(GetGeoCodeString:(double)lon lat:(double)lat callback:(RCTResponseSenderBlock)callback)
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        FatosNaviModule *module = [FatosAppDelegate sharedAppDelegate].fatosNaviModule;
+        
+        if(module)
+        {
+            NSString *strResult = [module GetGeoCodeString:lon lat:lat];
+            callback(@[[NSNull null], strResult]);
+        }
+    });
+}
+
 /** ios -> js **/
 
 - (void) UpdateRGListener:(NSString *)strJson

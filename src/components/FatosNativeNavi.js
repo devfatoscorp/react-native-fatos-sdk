@@ -315,4 +315,19 @@ export default class FatosNativeNavi {
       }
     });
   }
+
+  /**
+   * GetGeoCodeString
+   * @returns String
+   */
+
+  addListener_GetGeoCodeString(lon, lat, cb) {
+    this.nativeAPI.GetGeoCodeString(lon, lat, (error, result) => {
+      if (error) {
+        console.error(error);
+      } else {
+        cb(result);
+      }
+    });
+  }
 }
