@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
   
 }
 
-- (NSString*) getLibPath;
+- (NSString*) getLibraryPath;
 - (NSString*) getDocumentsPath;
 - (NSString*) getLibCachePath;
 - (NSString*) getGPSLogPath;
