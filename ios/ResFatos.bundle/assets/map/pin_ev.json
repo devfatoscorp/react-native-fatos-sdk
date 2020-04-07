@@ -1,0 +1,176 @@
+{"frames": [
+
+{
+	"filename": "1.png",
+	"frame": {"x":0,"y":0,"w":68,"h":64}
+},
+{
+	"filename": "2.png",
+	"frame": {"x":68,"y":0,"w":68,"h":64}
+},
+{
+	"filename": "3.png",
+	"frame": {"x":136,"y":0,"w":68,"h":64}
+},
+{
+	"filename": "4.png",
+	"frame": {"x":204,"y":0,"w":68,"h":64}
+},
+{
+	"filename": "5.png",
+	"frame": {"x":272,"y":0,"w":68,"h":64}
+},
+{
+	"filename": "6.png",
+	"frame": {"x":340,"y":0,"w":68,"h":64}
+},
+{
+	"filename": "7.png",
+	"frame": {"x":408,"y":0,"w":68,"h":64}
+},
+{
+	"filename": "8.png",
+	"frame": {"x":0,"y":64,"w":68,"h":64}
+},
+{
+	"filename": "9.png",
+	"frame": {"x":68,"y":64,"w":68,"h":64}
+},
+{
+	"filename": "10.png",
+	"frame": {"x":136,"y":64,"w":68,"h":64}
+},
+{
+	"filename": "11.png",
+	"frame": {"x":204,"y":64,"w":68,"h":64}
+},
+{
+	"filename": "12.png",
+	"frame": {"x":272,"y":64,"w":68,"h":64}
+},
+{
+	"filename": "13.png",
+	"frame": {"x":340,"y":64,"w":68,"h":64}
+},
+{
+	"filename": "14.png",
+	"frame": {"x":408,"y":64,"w":68,"h":64}
+},
+{
+	"filename": "15.png",
+	"frame": {"x":0,"y":128,"w":68,"h":64}
+},
+{
+	"filename": "16.png",
+	"frame": {"x":68,"y":128,"w":68,"h":64}
+},
+{
+	"filename": "17.png",
+	"frame": {"x":136,"y":128,"w":68,"h":64}
+},
+{
+	"filename": "18.png",
+	"frame": {"x":204,"y":128,"w":68,"h":64}
+},
+{
+	"filename": "19.png",
+	"frame": {"x":272,"y":128,"w":68,"h":64}
+},
+{
+	"filename": "20.png",
+	"frame": {"x":340,"y":128,"w":68,"h":64}
+},
+{
+	"filename": "21.png",
+	"frame": {"x":408,"y":128,"w":68,"h":64}
+},
+{
+	"filename": "22.png",
+	"frame": {"x":0,"y":192,"w":68,"h":64}
+},
+{
+	"filename": "23.png",
+	"frame": {"x":68,"y":192,"w":68,"h":64}
+},
+{
+	"filename": "24.png",
+	"frame": {"x":136,"y":192,"w":68,"h":64}
+},
+{
+	"filename": "25.png",
+	"frame": {"x":204,"y":192,"w":68,"h":64}
+},
+{
+	"filename": "26.png",
+	"frame": {"x":272,"y":192,"w":68,"h":64}
+},
+{
+	"filename": "27.png",
+	"frame": {"x":340,"y":192,"w":68,"h":64}
+},
+{
+	"filename": "28.png",
+	"frame": {"x":408,"y":192,"w":68,"h":64}
+},
+{
+	"filename": "29.png",
+	"frame": {"x":0,"y":256,"w":68,"h":64}
+},
+{
+	"filename": "30.png",
+	"frame": {"x":68,"y":256,"w":68,"h":64}
+},
+{
+	"filename": "31.png",
+	"frame": {"x":136,"y":256,"w":68,"h":64}
+},
+{
+	"filename": "32.png",
+	"frame": {"x":204,"y":256,"w":68,"h":64}
+},
+{
+	"filename": "btn_icon_ev_car_red.png",
+	"frame": {"x":272,"y":256,"w":42,"h":42}
+},
+{
+	"filename": "btn_icon_ev_car_space.png",
+	"frame": {"x":314,"y":256,"w":42,"h":42}
+},
+{
+	"filename": "btn_icon_ev_car_yellow.png",
+	"frame": {"x":356,"y":256,"w":42,"h":42}
+},
+{
+	"filename": "ev_check_bg.png",
+	"frame": {"x":398,"y":256,"w":68,"h":64}
+},
+{
+	"filename": "ev_close_bg.png",
+	"frame": {"x":0,"y":320,"w":68,"h":64}
+},
+{
+	"filename": "ev_comm_bg.png",
+	"frame": {"x":68,"y":320,"w":68,"h":64}
+},
+{
+	"filename": "ev_dis_bg.png",
+	"frame": {"x":136,"y":320,"w":68,"h":64}
+},
+{
+	"filename": "ev_impossible_bg.png",
+	"frame": {"x":204,"y":320,"w":68,"h":64}
+},
+{
+	"filename": "ev_possible_bg.png",
+	"frame": {"x":272,"y":320,"w":68,"h":64}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "ev_logo.png",
+	"format": "RGBA8888",
+	"size": {"w":476,"h":384},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:cfd723dbc7a75f391ac9523e1fe8f08a:2b34b5f4326a82c514394a18b519e67d:63ecfc084749e94bfff42188f3ae54b1$"
+}
+}

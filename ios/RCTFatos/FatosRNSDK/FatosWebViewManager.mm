@@ -10,6 +10,7 @@
 #import "FatosNaviBridgeModule.h"
 #import <FatosBuildConfig.h>
 #import <FatosNaviModule.h>
+#import <FatosUtil.h>
 
 static NSString *strAutologKey = @"autolog";
 static NSString *strFleetUrl = @"http://example";

@@ -10,6 +10,7 @@
 #import "FatosAppDelegate.h"
 #import <FatosNaviModule.h>
 #import <FatosMapView.h>
+#import <FatosUtil.h>
 
 @implementation FatosMapViewBridgeModule
 

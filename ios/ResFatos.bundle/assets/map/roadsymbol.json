@@ -1,0 +1,201 @@
+{"frames": [
+
+{
+	"filename": "고속도로1_1type.png",
+	"frame": {"x":240,"y":320,"w":144,"h":160},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":144,"h":160},
+	"sourceSize": {"w":144,"h":160},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "고속도로1_2type.png",
+	"frame": {"x":495,"y":160,"w":181,"h":160},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":181,"h":160},
+	"sourceSize": {"w":181,"h":160},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "고속도로1_3type.png",
+	"frame": {"x":233,"y":160,"w":262,"h":160},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":262,"h":160},
+	"sourceSize": {"w":262,"h":160},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "고속도로2_1type.png",
+	"frame": {"x":676,"y":160,"w":113,"h":160},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":113,"h":160},
+	"sourceSize": {"w":113,"h":160},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "고속도로2_2type.png",
+	"frame": {"x":789,"y":160,"w":142,"h":160},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":142,"h":160},
+	"sourceSize": {"w":142,"h":160},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "고속도로2_3type.png",
+	"frame": {"x":542,"y":320,"w":219,"h":160},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":219,"h":160},
+	"sourceSize": {"w":219,"h":160},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "고속도로3_1type.png",
+	"frame": {"x":761,"y":320,"w":133,"h":160},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":133,"h":160},
+	"sourceSize": {"w":133,"h":160},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "고속도로3_2type.png",
+	"frame": {"x":384,"y":320,"w":158,"h":160},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":158,"h":160},
+	"sourceSize": {"w":158,"h":160},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "고속도로3_3type.png",
+	"frame": {"x":0,"y":320,"w":240,"h":160},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":240,"h":160},
+	"sourceSize": {"w":240,"h":160},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "고속화도로_1type.png",
+	"frame": {"x":794,"y":80,"w":116,"h":80},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":116,"h":80},
+	"sourceSize": {"w":116,"h":80},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "고속화도로_2type.png",
+	"frame": {"x":663,"y":80,"w":131,"h":80},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":131,"h":80},
+	"sourceSize": {"w":131,"h":80},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "고속화도로_3type.png",
+	"frame": {"x":0,"y":0,"w":191,"h":80},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":191,"h":80},
+	"sourceSize": {"w":191,"h":80},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "국도_1type.png",
+	"frame": {"x":424,"y":0,"w":130,"h":80},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":130,"h":80},
+	"sourceSize": {"w":130,"h":80},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "국도_2type.png",
+	"frame": {"x":554,"y":0,"w":144,"h":80},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":144,"h":80},
+	"sourceSize": {"w":144,"h":80},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "국도_3type.png",
+	"frame": {"x":191,"y":0,"w":233,"h":80},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":233,"h":80},
+	"sourceSize": {"w":233,"h":80},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "일반국도_1type.png",
+	"frame": {"x":698,"y":0,"w":130,"h":80},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":130,"h":80},
+	"sourceSize": {"w":130,"h":80},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "일반국도_2type.png",
+	"frame": {"x":0,"y":80,"w":144,"h":80},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":144,"h":80},
+	"sourceSize": {"w":144,"h":80},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "일반국도_3type.png",
+	"frame": {"x":288,"y":80,"w":245,"h":80},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":245,"h":80},
+	"sourceSize": {"w":245,"h":80},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "지방도_1type.png",
+	"frame": {"x":533,"y":80,"w":130,"h":80},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":130,"h":80},
+	"sourceSize": {"w":130,"h":80},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "지방도_2type.png",
+	"frame": {"x":144,"y":80,"w":144,"h":80},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":144,"h":80},
+	"sourceSize": {"w":144,"h":80},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "지방도_3type.png",
+	"frame": {"x":0,"y":160,"w":233,"h":80},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":233,"h":80},
+	"sourceSize": {"w":233,"h":80},
+	"pivot": {"x":0.5,"y":0.5}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "roadsymbol.png",
+	"format": "RGBA8888",
+	"size": {"w":931,"h":480},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:52f83a03c18a487d9dcf62a004b8a0ad:b2dbf89a98038ea30844e685f6c50255:64d99d2320bb029f0ac37b6662acbd75$"
+}
+}

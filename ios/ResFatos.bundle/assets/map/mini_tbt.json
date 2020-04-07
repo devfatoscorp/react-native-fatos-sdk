@@ -1,0 +1,256 @@
+{"frames": [
+
+{
+	"filename": "center.png",
+	"frame": {"x":242,"y":684,"w":6,"h":88}
+},
+{
+	"filename": "left_point.png",
+	"frame": {"x":282,"y":684,"w":90,"h":88}
+},
+{
+	"filename": "left_round.png",
+	"frame": {"x":248,"y":684,"w":34,"h":88}
+},
+{
+	"filename": "list_01_straight.png",
+	"frame": {"x":380,"y":456,"w":76,"h":76}
+},
+{
+	"filename": "list_02_turn_left.png",
+	"frame": {"x":228,"y":456,"w":76,"h":76}
+},
+{
+	"filename": "list_03_turn_right.png",
+	"frame": {"x":304,"y":456,"w":76,"h":76}
+},
+{
+	"filename": "list_04_turn_slight_left.png",
+	"frame": {"x":76,"y":456,"w":76,"h":76}
+},
+{
+	"filename": "list_05_turn_slight_right.png",
+	"frame": {"x":380,"y":380,"w":76,"h":76}
+},
+{
+	"filename": "list_06_turn_sharp_left.png",
+	"frame": {"x":380,"y":304,"w":76,"h":76}
+},
+{
+	"filename": "list_07_turn_sharp_right.png",
+	"frame": {"x":76,"y":380,"w":76,"h":76}
+},
+{
+	"filename": "list_08_ramp_left.png",
+	"frame": {"x":304,"y":380,"w":76,"h":76}
+},
+{
+	"filename": "list_09_ramp_right.png",
+	"frame": {"x":152,"y":380,"w":76,"h":76}
+},
+{
+	"filename": "list_10_fork_left.png",
+	"frame": {"x":0,"y":532,"w":76,"h":76}
+},
+{
+	"filename": "list_11_fork_right.png",
+	"frame": {"x":0,"y":380,"w":76,"h":76}
+},
+{
+	"filename": "list_12_keep_left.png",
+	"frame": {"x":76,"y":532,"w":76,"h":76}
+},
+{
+	"filename": "list_13_keep_right.png",
+	"frame": {"x":152,"y":608,"w":76,"h":76}
+},
+{
+	"filename": "list_14_uturn_left.png",
+	"frame": {"x":304,"y":608,"w":76,"h":76}
+},
+{
+	"filename": "list_15_uturn_right.png",
+	"frame": {"x":380,"y":608,"w":76,"h":76}
+},
+{
+	"filename": "list_16_pturn_left.png",
+	"frame": {"x":76,"y":684,"w":76,"h":76}
+},
+{
+	"filename": "list_17_pturn_right.png",
+	"frame": {"x":0,"y":684,"w":76,"h":76}
+},
+{
+	"filename": "list_18_roundabout_left.png",
+	"frame": {"x":228,"y":608,"w":76,"h":76}
+},
+{
+	"filename": "list_19_roundabout_right.png",
+	"frame": {"x":152,"y":532,"w":76,"h":76}
+},
+{
+	"filename": "list_20_merge.png",
+	"frame": {"x":76,"y":608,"w":76,"h":76}
+},
+{
+	"filename": "list_21_1st_highway_in.png",
+	"frame": {"x":228,"y":532,"w":76,"h":76}
+},
+{
+	"filename": "list_22_1st_highway_exit.png",
+	"frame": {"x":0,"y":608,"w":76,"h":76}
+},
+{
+	"filename": "list_23_1st_highway_in_left.png",
+	"frame": {"x":304,"y":532,"w":76,"h":76}
+},
+{
+	"filename": "list_24_1st_highway_exit_left.png",
+	"frame": {"x":380,"y":532,"w":76,"h":76}
+},
+{
+	"filename": "list_25_1st_highway_in_right.png",
+	"frame": {"x":228,"y":380,"w":76,"h":76}
+},
+{
+	"filename": "list_26_1st_highway_exit_right.png",
+	"frame": {"x":304,"y":304,"w":76,"h":76}
+},
+{
+	"filename": "list_27_2nd_highway_in.png",
+	"frame": {"x":76,"y":76,"w":76,"h":76}
+},
+{
+	"filename": "list_28_2nd_highway_exit.png",
+	"frame": {"x":0,"y":456,"w":76,"h":76}
+},
+{
+	"filename": "list_29_2nd_highway_in_left.png",
+	"frame": {"x":0,"y":152,"w":76,"h":76}
+},
+{
+	"filename": "list_30_2nd_highway_exit_left.png",
+	"frame": {"x":304,"y":76,"w":76,"h":76}
+},
+{
+	"filename": "list_31_2nd_highway_in_right.png",
+	"frame": {"x":380,"y":76,"w":76,"h":76}
+},
+{
+	"filename": "list_32_2nd_highway_exit_right.png",
+	"frame": {"x":152,"y":76,"w":76,"h":76}
+},
+{
+	"filename": "list_33_tunnel.png",
+	"frame": {"x":0,"y":76,"w":76,"h":76}
+},
+{
+	"filename": "list_34_overpass1.png",
+	"frame": {"x":0,"y":0,"w":76,"h":76}
+},
+{
+	"filename": "list_35_overpass2.png",
+	"frame": {"x":152,"y":0,"w":76,"h":76}
+},
+{
+	"filename": "list_36_overpass_left.png",
+	"frame": {"x":380,"y":0,"w":76,"h":76}
+},
+{
+	"filename": "list_37_overpass_right.png",
+	"frame": {"x":228,"y":0,"w":76,"h":76}
+},
+{
+	"filename": "list_38_underpass.png",
+	"frame": {"x":304,"y":0,"w":76,"h":76}
+},
+{
+	"filename": "list_39_underpass_left.png",
+	"frame": {"x":76,"y":152,"w":76,"h":76}
+},
+{
+	"filename": "list_40_underpass_right.png",
+	"frame": {"x":228,"y":152,"w":76,"h":76}
+},
+{
+	"filename": "list_41_left_underpass.png",
+	"frame": {"x":228,"y":228,"w":76,"h":76}
+},
+{
+	"filename": "list_42_right_underpass.png",
+	"frame": {"x":304,"y":228,"w":76,"h":76}
+},
+{
+	"filename": "list_43_tollgate.png",
+	"frame": {"x":0,"y":304,"w":76,"h":76}
+},
+{
+	"filename": "list_44_ferry_train.png",
+	"frame": {"x":228,"y":304,"w":76,"h":76}
+},
+{
+	"filename": "list_45_ferry.png",
+	"frame": {"x":76,"y":304,"w":76,"h":76}
+},
+{
+	"filename": "list_46_left_overpass.png",
+	"frame": {"x":152,"y":304,"w":76,"h":76}
+},
+{
+	"filename": "list_47_right_overpass.png",
+	"frame": {"x":380,"y":228,"w":76,"h":76}
+},
+{
+	"filename": "list_48_service_area.png",
+	"frame": {"x":152,"y":228,"w":76,"h":76}
+},
+{
+	"filename": "list_49_start.png",
+	"frame": {"x":152,"y":152,"w":76,"h":76}
+},
+{
+	"filename": "list_50_goal.png",
+	"frame": {"x":304,"y":152,"w":76,"h":76}
+},
+{
+	"filename": "list_51_via1.png",
+	"frame": {"x":76,"y":228,"w":76,"h":76}
+},
+{
+	"filename": "list_52_via2.png",
+	"frame": {"x":380,"y":152,"w":76,"h":76}
+},
+{
+	"filename": "list_53_via3.png",
+	"frame": {"x":0,"y":228,"w":76,"h":76}
+},
+{
+	"filename": "list_54_restarea.png",
+	"frame": {"x":76,"y":0,"w":76,"h":76}
+},
+{
+	"filename": "list_55_1st_highway_ic.png",
+	"frame": {"x":228,"y":76,"w":76,"h":76}
+},
+{
+	"filename": "list_55_1st_highway_jc.png",
+	"frame": {"x":152,"y":456,"w":76,"h":76}
+},
+{
+	"filename": "right_point.png",
+	"frame": {"x":152,"y":684,"w":90,"h":88}
+},
+{
+	"filename": "right_round.png",
+	"frame": {"x":372,"y":684,"w":34,"h":88}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "mini_tbt.png",
+	"format": "RGBA8888",
+	"size": {"w":456,"h":772},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:2245abc3a6a59b8195fae3151687bc47:7272d2e1026449ccf10540619546714e:b4a6ff96e49222eb92d964d2efd1a729$"
+}
+}

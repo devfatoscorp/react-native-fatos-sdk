@@ -1,0 +1,52 @@
+{"frames": [
+
+{
+	"filename": "map_tooltip_c.png",
+	"frame": {"x":2,"y":94,"w":200,"h":90},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":200,"h":90},
+	"sourceSize": {"w":200,"h":90}
+},
+{
+	"filename": "map_tooltip_ll.png",
+	"frame": {"x":30,"y":2,"w":26,"h":90},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":26,"h":90},
+	"sourceSize": {"w":26,"h":90}
+},
+{
+	"filename": "map_tooltip_lr.png",
+	"frame": {"x":114,"y":2,"w":54,"h":90},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":54,"h":90},
+	"sourceSize": {"w":54,"h":90}
+},
+{
+	"filename": "map_tooltip_rl.png",
+	"frame": {"x":58,"y":2,"w":54,"h":90},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":54,"h":90},
+	"sourceSize": {"w":54,"h":90}
+},
+{
+	"filename": "map_tooltip_rr.png",
+	"frame": {"x":2,"y":2,"w":26,"h":90},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":26,"h":90},
+	"sourceSize": {"w":26,"h":90}
+}],
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "map_tooltip.png",
+	"format": "RGBA8888",
+	"size": {"w":204,"h":186},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:debecd067e361ff0b940dd54c945dc84:b50be450044c4b988d8964fa5a9f62f4:597273d03dc9c44ef7cb80d94491430d$"
+}
+}

@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#include <FatosUtil.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -19,7 +18,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (void) onRouteCancel;
 - (void) onRouteComplete;
 - (void) onRouteViaComplete:(NSString *)viaJson;
-- (BOOL) isIndicator;
 - (void) onMapAuto;
 - (void) onInitializeStatus:(int)status value:(NSString *)value;
 
@@ -31,6 +29,7 @@ NS_ASSUME_NONNULL_BEGIN
   bool mbln_MapMoveCurrentEvent;
 }
 - (id)initNaviModule:(NSString *)sdkKey;
+- (void) initFatosNaviEngine;
 
 - (void) OnUpdateRG:(BOOL)isSimulation;
 - (void) OnRouteResult:(int)itype ierr:(int)ierr pCtx:(void*)pCtx isLocal:(BOOL)isLocal;
@@ -43,12 +42,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (void) ReleaseNavi;
 
 - (void) routeExternal:(NSDictionary *)jsonDic strFeeOption:(NSString *)strFeeOption bRequest:(BOOL)bRequest;
-- (void) updateRouteParam:(NSDictionary *)jsonDic strFeeOption:(NSString *)strFeeOption;
 - (void) ReRoute;
 - (void) Route:(NSString *)startLat startLon:(NSString *)startLon goalLat:(NSString *)goalLat goalLon:(NSString *)goalLon strFeeOption:(NSString *)strFeeOption;
-- (void) RouteTest1;
-- (void) RouteTest2;
-- (void) RouteTest3;
 - (void) CancelRoute;
 - (void) StartSimulation:(int)index;
 - (void) StartRouteGuidance:(int)index;
@@ -70,11 +65,13 @@ NS_ASSUME_NONNULL_BEGIN
 - (void) StopDrawGpsLog;
 - (NSString *) GetErrorString:(int)err_code;
 - (NSString *) GetGeoCodeString:(double)lon lat:(double)lat;
+- (BOOL) IsRoute;
 + (void) SetSDIFilter:(int *)pcodes pbuses:(bool*)pbuses nArray:(int)nArray;
 + (void) OnMapMoveCurrentTimer;
 + (double) getCurrentLonX;
 + (double) getCurrentLatY;
 + (int) getClientSite;
++ (BOOL) IsInitNaviEngine;
 
 @property(strong, nonatomic) id<FatosNaviModuleDelegate> delegate;
 

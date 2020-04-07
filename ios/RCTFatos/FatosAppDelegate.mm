@@ -112,11 +112,8 @@
     self.fatosNaviModule = [[FatosNaviModule alloc] initNaviModule:sdk_key];
     self.fatosNaviModule.delegate = self;
 
-    [self.fatosNaviModule InitFolder];
-    [self.fatosNaviModule InitServiceURL];
-    [self.fatosNaviModule InitResource];
-    [self.fatosNaviModule InitNavi];
-
+    [self.fatosNaviModule initFatosNaviEngine];
+    
     [FatosEnvBridgeModule setEnvironmentSDIInfo];
     
     if(blnGpsService == YES)

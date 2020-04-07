@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -24,6 +25,11 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSMutableDictionary *) getJsonDictionary:(NSString *)jsonString;
 + (NSString *)getStringValue:(NSObject *)value;
 + (void) setKeepScreenOn:(BOOL)value;
++ (NSBundle *) getResourcebundle;
++ (NSString *) getResourceLocalizedString:(nullable NSString *)key comment:(nullable NSString *)comment;
++ (UIImage *) getResourceImage:(nullable NSString *)path filename:(nullable NSString *)filename;
++ (UIImage *) resizeImage:(nullable UIImage *)image imageSize:(CGSize)size;
++ (UIColor *) getUIColor:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue alpha:(CGFloat)alpha;
 
 @end
 

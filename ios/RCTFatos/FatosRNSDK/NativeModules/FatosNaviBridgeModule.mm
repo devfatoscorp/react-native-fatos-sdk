@@ -156,52 +156,7 @@ RCT_EXPORT_METHOD(UpdateRouteParam:(NSString *)strJson)
                                                                              error:&error];
             
             [module routeExternal:jsonDictionary strFeeOption:[NSString stringWithUTF8String:strFeeOption.c_str()] bRequest:NO];
-            
         }
-        
-    });
-}
-
-
-RCT_EXPORT_METHOD(RouteTest1)
-{
-    dispatch_async(dispatch_get_main_queue(), ^{
-        
-        FatosNaviModule *module = [FatosAppDelegate sharedAppDelegate].fatosNaviModule;
-        
-        if(module)
-        {
-            [module RouteTest1];
-        }
-        
-    });
-}
-
-RCT_EXPORT_METHOD(RouteTest2)
-{
-    dispatch_async(dispatch_get_main_queue(), ^{
-        
-        FatosNaviModule *module = [FatosAppDelegate sharedAppDelegate].fatosNaviModule;
-        
-        if(module)
-        {
-            [module RouteTest2];
-        }
-        
-    });
-}
-
-RCT_EXPORT_METHOD(RouteTest3)
-{
-    dispatch_async(dispatch_get_main_queue(), ^{
-        
-        FatosNaviModule *module = [FatosAppDelegate sharedAppDelegate].fatosNaviModule;
-        
-        if(module)
-        {
-            [module RouteTest3];
-        }
-        
     });
 }
 
