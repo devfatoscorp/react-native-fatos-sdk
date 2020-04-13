@@ -27,8 +27,13 @@
 
 This is "react native fatos sdk". For more details example, please check the project in the example folder.
 This is multi platform map SDK based on react native. The function of the SDK are largely composed of map, search, and route planning. The map function can control the map layer setting and the map operation function. As you type your search terms and navigation the route, the summary information will appear on the map.
-To use "react-native-fatos-sdk", you must request a SDK key and then apply that key to the source. When you request an SDK key, send and email to 'dev@fatoscorp.com' with the subject "Request the SDK key". We will send it after confirmation.
+To use "react-native-fatos-sdk", you must request a SDK key and then apply that key to the source. When you want an SDK key,  please go to the <http://console.fatos.biz> and request SDK key after sign up.
+  
+__If you are OneMap user, kindly request to  <http://onemap-console.fatos.biz>__
 
+Please let me know if you have any technical problem using our SDK 
+contact :  <dev@fatoscorp.com>
+<br>
 
 ## Development environment
 
