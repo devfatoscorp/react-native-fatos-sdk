@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
-import { createStackNavigator, createAppContainer } from "react-navigation";
-
+import { createAppContainer } from "react-navigation";
+import { createStackNavigator } from "react-navigation-stack";
 console.disableYellowBox = true;
 
 import mian from "./src/component/Fatos/FatosMainView";
@@ -22,7 +22,7 @@ const App = createStackNavigator(
     VersionInfo: { screen: versionInfo },
     CountrySelectView: { screen: countrySelectView },
     CategoryView: { screen: categoryView },
-    LabView: { screen: labView },
+    LabView: { screen: labView }
   },
   { initialRouteName: "Main", headerMode: "none" }
 );

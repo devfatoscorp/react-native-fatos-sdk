@@ -11,7 +11,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-  return [super application:application didFinishLaunchingWithOptions:launchOptions];
+  BOOL ret = [super application:application didFinishLaunchingWithOptions:launchOptions];
+  [super setLaunchScreen];
+  [super initFatosNaviEngine:YES];
+  return ret;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

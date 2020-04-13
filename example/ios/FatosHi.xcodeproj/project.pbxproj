@@ -12,13 +12,21 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		3FBC269DB7AB8CE6A3022A52 /* libPods-FatosHi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B3892C7CC33DD11F3A5AA8E1 /* libPods-FatosHi.a */; };
-		841AD2132306AAE6003CA062 /* assets in Resources */ = {isa = PBXBuildFile; fileRef = 841AD2122306AAE6003CA062 /* assets */; };
+		8400C93F24448358001D4154 /* ResFatos.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8400C93E24448358001D4154 /* ResFatos.bundle */; };
+		8400C941244483C5001D4154 /* assets in Resources */ = {isa = PBXBuildFile; fileRef = 8400C940244483C4001D4154 /* assets */; };
 		841AD2662306AEEE003CA062 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 841AD2642306AEEE003CA062 /* Localizable.strings */; };
 		841AD2C22306BD7A003CA062 /* hi_splash.png in Resources */ = {isa = PBXBuildFile; fileRef = 841AD2A12306BD7A003CA062 /* hi_splash.png */; };
 		8483EAD5231675380001846E /* libRCTFatos.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8483EAD42316751F0001846E /* libRCTFatos.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		8400C92A24448224001D4154 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C65362D923069FD2004C2656 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 50B5347C9A6E93B7D4CFC3673BA6FB7E;
+			remoteInfo = RNScreens;
+		};
 		84837AC5234B1C4800932D49 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C65362D923069FD2004C2656 /* Pods.xcodeproj */;
@@ -264,7 +272,8 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = FatosHi/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = FatosHi/main.m; sourceTree = "<group>"; };
 		5770EE2EFFFD648A57960388 /* Pods-FatosHi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FatosHi.release.xcconfig"; path = "Target Support Files/Pods-FatosHi/Pods-FatosHi.release.xcconfig"; sourceTree = "<group>"; };
-		841AD2122306AAE6003CA062 /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = assets; sourceTree = "<group>"; };
+		8400C93E24448358001D4154 /* ResFatos.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ResFatos.bundle; path = ../../ios/ResFatos.bundle; sourceTree = "<group>"; };
+		8400C940244483C4001D4154 /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = assets; sourceTree = "<group>"; };
 		841AD2652306AEEE003CA062 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = assets/values/en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		841AD2672306AEF7003CA062 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = assets/values/ko.lproj/Localizable.strings; sourceTree = "<group>"; };
 		841AD2682306AF0F003CA062 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = assets/values/vi.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -345,8 +354,9 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				8400C940244483C4001D4154 /* assets */,
+				8400C93E24448358001D4154 /* ResFatos.bundle */,
 				841AD2A12306BD7A003CA062 /* hi_splash.png */,
-				841AD2122306AAE6003CA062 /* assets */,
 				13B07FAE1A68108700A75B9A /* FatosHi */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* FatosHiTests */,
@@ -416,6 +426,7 @@
 				C653632A23069FD3004C2656 /* libRNGestureHandler.a */,
 				C653632C23069FD3004C2656 /* libRNI18n.a */,
 				C653632E23069FD3004C2656 /* libRNReanimated.a */,
+				8400C92B24448224001D4154 /* libRNScreens.a */,
 				C653633023069FD3004C2656 /* libSDWebImage.a */,
 				C6CCEE23230BD1C2004FE700 /* libSDWebImageWebPCoder.a */,
 				84837ACE234B1C4800932D49 /* libYoga.a */,
@@ -494,6 +505,13 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		8400C92B24448224001D4154 /* libRNScreens.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNScreens.a;
+			remoteRef = 8400C92A24448224001D4154 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		84837AC6234B1C4800932D49 /* libFBReactNativeSpec.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -732,11 +750,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8400C941244483C5001D4154 /* assets in Resources */,
 				841AD2C22306BD7A003CA062 /* hi_splash.png in Resources */,
-				841AD2132306AAE6003CA062 /* assets in Resources */,
 				841AD2662306AEEE003CA062 /* Localizable.strings in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
+				8400C93F24448358001D4154 /* ResFatos.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
