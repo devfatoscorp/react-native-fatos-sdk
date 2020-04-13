@@ -94,6 +94,14 @@ rm -rf "${HOME}/Library/Caches/CocoaPods"
 rm -rf "pwd/Pods/"
 pod update
 ```
+Add ResFatos.bundle to Copy Bundle Resoures in ios folder
+<p align="center" >
+  <kbd>
+    <img src="https://github.com/devfatoscorp/react-native-fatos-sdk/raw/master/assets/img4.png" title="Scroll Demo" float="left">
+  </kbd>
+</p>
+
+
 Enter commands in order 
 ***
 **4. How to set up a terminal project execution command**
