@@ -72,6 +72,12 @@ NS_ASSUME_NONNULL_BEGIN
 + (double) getCurrentLatY;
 + (int) getClientSite;
 + (BOOL) IsInitNaviEngine;
++ (void) setStartFlagYX:(double)y x:(double)x;
++ (void) setGoalYX:(double)y strX:(double)x;
++ (double) getSelectStartFlagLonX;
++ (double) getSelectStartFlagLatY;
++ (double) getDestLonX;
++ (double) getDestLatY;
 
 @property(strong, nonatomic) id<FatosNaviModuleDelegate> delegate;
 
