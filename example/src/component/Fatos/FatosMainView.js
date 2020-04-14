@@ -105,7 +105,6 @@ export default class FatosMainView extends Component {
       this.MapLongTouchListener(data)
     );
 
-    // 네이티브로 리액트 쪽으로 호출이 가능하다는 셋팅을 해준다
     this.native.setListener("1");
 
     this.bottomViewRef = React.createRef();
@@ -124,8 +123,6 @@ export default class FatosMainView extends Component {
 
     this.isCreateRef = false;
 
-    // fleetDriver 변수로 fleet 인지 hi인지 구분
-    // 테스트용
     this.fleetDriver = false;
 
     if (this.fleetDriver == true) {
@@ -147,12 +144,9 @@ export default class FatosMainView extends Component {
   }
 
   componentDidMount() {
-    // 1초 마다 한번식 업데이트 함수 호출
     setInterval(() => {
       this.update();
     }, 1000);
-
-    // android FatosEnvBridgeModule 모둘이 생성 안될경우가 있다 정확한 타이밍에 값을 가저오도록 수정 필요함
 
     setTimeout(() => {
       FatosEnvManager.GetInstance();
@@ -166,7 +160,6 @@ export default class FatosMainView extends Component {
       });
     }, 5000);
 
-    // 키보드 올라올때
     Keyboard.addListener("keyboardWillShow", () => {
       FatosUIManager.GetInstance().setKeyboardShow(true);
     });
@@ -175,7 +168,6 @@ export default class FatosMainView extends Component {
       FatosUIManager.GetInstance().setKeyboardShow(true);
     });
 
-    // 키보드 내려갈때
     Keyboard.addListener("keyboardWillHide", () => {
       FatosUIManager.GetInstance().setKeyboardShow(false);
     });
@@ -202,7 +194,6 @@ export default class FatosMainView extends Component {
     if (nextAppState === "background" || nextAppState === "inactive") {
       // Background
 
-      // 검색 창 이벤트 타이머 취소 시켜준다
       if (this.searchViewTimeout !== null) {
         clearTimeout(this.searchViewTimeout);
         this.searchViewTimeout = null;
@@ -211,7 +202,6 @@ export default class FatosMainView extends Component {
       // Foreground
     }
 
-    // 상태 바뀌면 다시 랜더링 시켜주자
     this.setState({ appState: nextAppState });
   };
 
@@ -220,12 +210,10 @@ export default class FatosMainView extends Component {
   }
 
   handleBackPress() {
-    // 로딩중일때
     if (this.state.indicatorVisible === true) {
       return true;
     }
 
-    // 검색 리스트
     if (FatosUIManager.GetInstance().getSearchListView() !== null) {
       if (
         FatosUIManager.GetInstance()
@@ -239,7 +227,6 @@ export default class FatosMainView extends Component {
       }
     }
 
-    // 경로 요약 화면
     if (FatosUIManager.GetInstance().isSummaryViewVisible() === true) {
       if (FatosUIManager.GetInstance().getSummarySearchView() !== null) {
         FatosUIManager.GetInstance()
@@ -261,8 +248,6 @@ export default class FatosMainView extends Component {
     if (this.state.appState === "active") {
       if (this.state.permissionComplete == true) {
         try {
-          // this.setState({ rgData : JSON.parse(data) });
-
           this.rgData = JSON.parse(data);
 
           FatosUIManager.GetInstance().setDriveMode(this.rgData.DriveMode);
@@ -278,8 +263,6 @@ export default class FatosMainView extends Component {
           this.RGViewRef.current.setRgData(this.rgData);
           this.hiPassViewRef.current.setRgData(this.rgData);
         } catch (error) {
-          // 에러시 코드
-          console.log("simsimsim UpdateRGListener error: " + error);
           this.rgData = null;
         }
       }
@@ -307,16 +290,11 @@ export default class FatosMainView extends Component {
   }
 
   setSearchData(data) {
-    // console.log("simsimsim setSearchData data: " + data);
-
     if (this.state.summaryData === null) {
-      // 경로 요약 리스트 말고 일반 리스트
       this.searchListViewRef.current.setSearchData(data);
     } else {
-      // 경로 요약 리스트
       this.summarySearchListViewRef.current.setSearchData(data);
 
-      // 검색화면 UI 갱신
       if (this.summarySearchListViewRef.current.getStartData() != null) {
         var data = this.summarySearchListViewRef.current.getStartData();
         this.summarySearchViewRef.current.setSearchStartText(data.name);
@@ -329,36 +307,7 @@ export default class FatosMainView extends Component {
     }
   }
 
-  MapLongTouchListener(data) {
-    // var window = Dimensions.get("window");
-    // var scale = window.scale;
-    // var realwidth = window.width * scale;
-    // var realheight = window.height * scale;
-    //
-    // var x = data.x;
-    // var y = data.y;
-    //
-    // var fCenterX = x / realwidth;
-    // var fCenterY = (realheight - y) / realheight;
-    //
-    // var native = NativeModules.FatosMapViewBridgeModule;
-    //
-    // native.GetPosWorldFromScreen(fCenterX, fCenterY, (error, result) => {
-    //   if (error) {
-    //     console.error(error);
-    //   } else {
-    //     console.log("simsimsim result : " + result);
-    //     var data = JSON.parse(result);
-    //
-    //     var posx = data.x;
-    //     var posy = data.y;
-    //     console.log("simsimsim posx : " + posx);
-    //     console.log("simsimsim posy : " + posy);
-    //
-    //     this.onPosWorldToRoute(posx, posy);
-    //   }
-    // });
-  }
+  MapLongTouchListener(data) {}
 
   onPosWorldToRoute(x, y) {
     var native = NativeModules.FatosMapViewBridgeModule;
@@ -372,8 +321,6 @@ export default class FatosMainView extends Component {
 
         var xlon = data.xlon;
         var ylat = data.ylat;
-        console.log("simsimsim xlon : " + xlon);
-        console.log("simsimsim ylat : " + ylat);
 
         var navi = NativeModules.FatosNaviBridgeModule;
         navi.Route("0", "0", ylat.toString(), xlon.toString());
@@ -389,10 +336,7 @@ export default class FatosMainView extends Component {
     this.native.SpeakUtterance(msg);
   }
 
-  InitializeStatusListener(data) {
-    console.log("simsimsim InitializeStatusListener status : " + data.status);
-    console.log("simsimsim InitializeStatusListener value : " + data.value);
-  }
+  InitializeStatusListener(data) {}
 
   ShowIndicatorListener() {
     this.setState({ indicatorVisible: true });
@@ -410,15 +354,15 @@ export default class FatosMainView extends Component {
     this.setState({ webViewVisible: false });
   }
 
-  RouteResultListener(typeRoute) {
+  RouteResultListener(data) {
     if (this.fleetDriver === false) {
-      var nTypeRoute = Number(typeRoute);
+      var nTypeRoute = Number(data.type);
+      var nError = Number(data.error);
+      var strMsg = data.msg;
 
       if (COMMON.eTypeRoute.eTYPE_ROUTE_DEFAULT == nTypeRoute) {
-        // 초기재탐색일 경우에만
         this.showRouteSummary();
       } else if (COMMON.eTypeRoute.eTYPE_ROUTE_REROUTE == nTypeRoute) {
-        // 주기적 재탐색 토스트
         var msg = FatosLanguageManager.GetInstance().getCodeName(
           "reroute_status"
         );
@@ -428,21 +372,14 @@ export default class FatosMainView extends Component {
   }
 
   showRouteSummary() {
-    // 경로 요약 정보 get
     this.native.GetRouteSummaryJson((error, result) => {
       if (error) {
-        console.log("simsimsim summaryData error : " + error);
         console.error(error);
       } else {
-        console.log("simsimsim summaryData : " + result);
-
         if (FatosUtil.isStringEmpty(result) === true) {
-          // 경로 요약 데이터가 없을때
-          console.log("simsimsim summaryData 1");
           return;
         }
 
-        console.log("simsimsim summaryData 2");
         this.setState({ summaryData: JSON.parse(result) });
 
         var blnViewMode = true;
@@ -484,7 +421,6 @@ export default class FatosMainView extends Component {
         const screenWidth = Math.round(Dimensions.get("window").width);
         const screenHeight = Math.round(Dimensions.get("window").height);
 
-        // 아래 위 여백 계산안 값
         var margin = 420;
         var xScale = 0.6;
         var yScale =
@@ -492,7 +428,6 @@ export default class FatosMainView extends Component {
         var hCenter = 0.5;
         var vCenter = 0.5;
 
-        // 경로 요약 mapSetting
         var mapViewBridgeModule = NativeModules.FatosMapViewBridgeModule;
         mapViewBridgeModule.SummaryMapSetting(
           lineColor,
@@ -504,7 +439,6 @@ export default class FatosMainView extends Component {
         );
 
         if (this.state.summaryData != null) {
-          // 검색화면 UI 갱신
           if (this.summarySearchListViewRef.current.getStartData() != null) {
             var data = this.summarySearchListViewRef.current.getStartData();
             this.summarySearchViewRef.current.setSearchStartText(data.name);
@@ -518,7 +452,6 @@ export default class FatosMainView extends Component {
 
         this.routeSummaryViewRef.current.setSummaryData(this.state.summaryData);
 
-        // 이전 선택된 인덱스 셋팅
         var index = FatosUIManager.GetInstance().getSelectRouteLine();
         var mapViewBridgeModule = NativeModules.FatosMapViewBridgeModule;
         mapViewBridgeModule.SelectRouteLine(index);
@@ -531,7 +464,6 @@ export default class FatosMainView extends Component {
     if (this.fleetDriver == false) {
       this.setState({ summaryData: null });
 
-      // 경로 요약전 이전 맵 셋팅으로 변경
       var mapViewBridgeModule = NativeModules.FatosMapViewBridgeModule;
       mapViewBridgeModule.DefaultMapSetting();
 
@@ -540,7 +472,6 @@ export default class FatosMainView extends Component {
       } else {
         FatosUIManager.GetInstance().showDefaultView();
 
-        // 시뮬레이션 버튼 hide
         this.bottomViewRef.current.hideSimulatedDrivingView();
       }
 
@@ -558,13 +489,9 @@ export default class FatosMainView extends Component {
 
   handleStartShouldSetResponder(evt) {
     // TouchBegin
-    // 키보드 내리기
+
     Keyboard.dismiss();
-
-    // 메뉴ui 숨기기
     this.bottomViewRef.current.showMenu(false);
-
-    // 검색창 show/hide
     this.onSearchViewVisible();
 
     return true;
@@ -589,18 +516,13 @@ export default class FatosMainView extends Component {
 
     this.searchViewTimeout = setTimeout(() => {
       if (FatosUIManager.GetInstance().iskeyboardShow() === true) {
-        // 키보드가 올라 왔을떄
         return;
       } else {
-        // 키보드가 내려 갔을떄
-
         if (this.searchListViewRef.current.getIsData() === true) {
-          // 검색리스트가 있을떄
           return;
         }
       }
 
-      // 검색중일떄
       if (this.state.indicatorVisible === true) {
         return;
       }
@@ -610,7 +532,6 @@ export default class FatosMainView extends Component {
     }, COMMON.SEARCH_VIEW_HIDE_TIME);
   }
 
-  // 화면 갱신 함수
   onRefreshRender() {
     var refresh = true;
 
@@ -679,7 +600,7 @@ export default class FatosMainView extends Component {
           clearSummaryData={this.clearSummaryData.bind(this)}
         />
       );
-      // fleetDriver 분기 처리
+
       if (this.fleetDriver == true) {
         if (this.state.webViewVisible == true) {
           webView = <FatosWebView />;
@@ -752,9 +673,6 @@ export default class FatosMainView extends Component {
         {summarySearchView}
         {summarySearchListView}
         {webView}
-
-        {/*<PopupWindow />*/}
-
         {indicator}
       </View>
     );
