@@ -220,7 +220,6 @@ export default class FatosUIManager {
   onSearchClose() {
     if(this.searchListView !== null)
     {
-      console.log("simsimsim onSearchClose");
       this.searchListView.clearSearchData();
     }
   }

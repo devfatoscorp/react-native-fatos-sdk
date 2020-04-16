@@ -1,11 +1,8 @@
 import I18n, { getLanguages } from "react-native-i18n";
 import COMMON from "../common/common";
 
-// Enable fallbacks if you want `en-US`
-// and `en-GB` to fallback to `en`
 I18n.fallbacks = true;
 
-// Available languages
 I18n.translations = {
   ko: require("../translations/ko"),
   en: require("../translations/en")
@@ -35,6 +32,7 @@ export default class FatosLanguageManager {
   }
 
   setLanguage(index) {
+
     if (this.mLanguageIndex !== index) {
       I18n.locale = LANGUAGE_TYPE[index];
       this.mLanguageIndex = index;

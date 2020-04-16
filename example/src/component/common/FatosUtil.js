@@ -1,4 +1,6 @@
-import { Image } from "react-native";
+import {
+  Image
+} from "react-native";
 import FatosLanguageManager from "../Manager/FatosLanguageManager";
 
 const FatosUtil = {
@@ -129,7 +131,7 @@ const FatosUtil = {
     var args = arguments,
       string = args[0],
       i = 1;
-    return string.replace(/%((%)|s|d)/g, function(m) {
+    return string.replace(/%((%)|s|d)/g, function (m) {
       // m is the matched format, e.g. %s, %d
       var val = null;
       if (m[2]) {

@@ -77,7 +77,6 @@ export default class FatosNavigationView extends Component {
     };
     var native = NativeModules.FatosEnvBridgeModule;
 
-    // 경로선 색상 셋팅
     native.GetPathLineColor((error, result) => {
       if (error) {
         console.error(error);
@@ -86,10 +85,9 @@ export default class FatosNavigationView extends Component {
       }
     });
 
-    // 경로탐색 옵션 셋팅
     native.GetNavigationOptions((error, result) => {
       if (error) {
-        console.error(error);
+        // console.error(error);
       } else {
         var arr = JSON.parse(result);
 
@@ -105,7 +103,6 @@ export default class FatosNavigationView extends Component {
       }
     });
 
-    // 지도색상 셋팅
     native.GetMapColor((error, result) => {
       if (error) {
         console.error(error);
@@ -114,7 +111,6 @@ export default class FatosNavigationView extends Component {
       }
     });
 
-    // 스마트 드라이브 셋팅
     native.GetSmartDrivingMode((error, result) => {
       if (error) {
         console.error(error);
@@ -123,7 +119,6 @@ export default class FatosNavigationView extends Component {
       }
     });
 
-    // 카메라 셋팅
     native.GetCamreaOptions((error, result) => {
       if (error) {
         console.error(error);
@@ -142,7 +137,6 @@ export default class FatosNavigationView extends Component {
       }
     });
 
-    // 주의 운행 구간 셋팅
     native.GetOperationState((error, result) => {
       if (error) {
         console.error(error);
@@ -161,7 +155,6 @@ export default class FatosNavigationView extends Component {
       }
     });
 
-    // 시설 셋팅
     native.GetFacility((error, result) => {
       if (error) {
         console.error(error);
@@ -179,7 +172,6 @@ export default class FatosNavigationView extends Component {
       }
     });
 
-    // 안내음성 셋팅
     native.GetGuidevoice((error, result) => {
       if (error) {
         console.error(error);
@@ -188,7 +180,6 @@ export default class FatosNavigationView extends Component {
       }
     });
 
-    // 주기적 재탐색 셋팅
     native.GetRediscover((error, result) => {
       if (error) {
         console.error(error);
@@ -197,7 +188,6 @@ export default class FatosNavigationView extends Component {
       }
     });
 
-    // 경유지 방향성 셋팅
     native.GetWayPoint((error, result) => {
       if (error) {
         console.error(error);
@@ -206,7 +196,6 @@ export default class FatosNavigationView extends Component {
       }
     });
 
-    // 하이패스 셋팅
     native.GetHiPass((error, result) => {
       if (error) {
         console.error(error);
@@ -215,7 +204,6 @@ export default class FatosNavigationView extends Component {
       }
     });
 
-    // 차종 셋팅
     native.GetCarType((error, result) => {
       if (error) {
         console.error(error);
@@ -224,7 +212,6 @@ export default class FatosNavigationView extends Component {
       }
     });
 
-    // 유종 셋팅
     native.GetFuel((error, result) => {
       if (error) {
         console.error(error);
@@ -233,7 +220,6 @@ export default class FatosNavigationView extends Component {
       }
     });
 
-    // 운전석위치 셋팅
     native.GetSeatPosition((error, result) => {
       if (error) {
         console.error(error);
@@ -242,7 +228,6 @@ export default class FatosNavigationView extends Component {
       }
     });
 
-    // 카바타 셋팅
     native.GetCarvata((error, result) => {
       if (error) {
         console.error(error);
@@ -251,7 +236,6 @@ export default class FatosNavigationView extends Component {
       }
     });
 
-    // DEM
     native.GetDem((error, result) => {
       if (error) {
         console.error(error);
@@ -1506,6 +1490,7 @@ export default class FatosNavigationView extends Component {
     var varvatga = this.state.carvata;
     var smart = this.state.smart === true ? "On" : "Off";
     var hiPass = this.state.hiPass === true ? "On" : "Off";
+    var dem = this.state.dem === true ? "On" : "Off";
 
     var strMapthemes = languageManager.getCodeName("map_themes");
     var strRouteColor = languageManager.getCodeName("route_color");
@@ -1588,7 +1573,20 @@ export default class FatosNavigationView extends Component {
               <Text style={styles.tabViewItemText1}>{">"}</Text>
             </View>
           </TouchableOpacity>
-
+          <TouchableOpacity
+            style={styles.tabViewItem}
+            activeOpacity={0.7}
+            onPress={() => {
+              this.setDem();
+            }}
+          >
+            <View style={styles.tabViewItemLeft}>
+              <Text style={styles.tabViewItemText1}>{"DEM"}</Text>
+            </View>
+            <View style={styles.tabViewItemRight}>
+              <Text style={styles.tabViewItemText1}>{dem}</Text>
+            </View>
+          </TouchableOpacity>
           <TouchableOpacity
             style={styles.tabViewItem}
             activeOpacity={0.7}

@@ -88,16 +88,14 @@ export default class FatosBottomView extends Component {
   }
 
   componentDidMount() {
-    // 현재 시간 갱신
     setInterval(() => {
       var date = new Date();
-      var hours = date.getHours(); //Current Hours
-      var min = date.getMinutes(); //Current Minutes
+      var hours = date.getHours();
+      var min = date.getMinutes();
       var str = "";
 
       var strCurTime;
 
-      //목적지 도착 예정 시간을 만들어 준다
       if (this.rgData != null) {
         if (FatosUtil.checkData(this.rgData.RemainTime)) {
           strCurTime = this.rgData.RemainTime;
@@ -555,7 +553,6 @@ export default class FatosBottomView extends Component {
     var rescanButton = null;
 
     if (this.state.menuViewShow === true) {
-      // 플릿 하이 메뉴 분기 처리
       if (this.props.fleetDriver === true) {
         menuView = this.getFleetDriverMenuView();
       } else {
@@ -674,17 +671,13 @@ export default class FatosBottomView extends Component {
       // 현재 위치일때
       if (this.rgData != null) {
         if (FatosUtil.checkData(this.rgData.LocationText)) {
-          // 위치 정보가 넘어오지 않을떄는 이전 위치정보를 보여준다
           if (this.rgData.LocationText !== "") {
             location = this.rgData.LocationText;
           }
         }
       }
     } else if (this.state.touchMoveMode === "1") {
-      // 움직일때
     } else if (this.state.touchMoveMode === "2") {
-      // 움직임이 엄췃을떄
-      // 터치 모드일떄 좌표 기준 행정동명 갱신
       if (this.state.posWorldLocation !== "") {
         location = this.state.posWorldLocation;
       }

@@ -105,6 +105,10 @@ export default class FatosMainView extends Component {
       this.MapLongTouchListener(data)
     );
 
+    this.mapViewEmitter.addListener("MapReadyListener", data =>
+      this.MapReadyListener()
+    );
+
     this.native.setListener("1");
 
     this.bottomViewRef = React.createRef();
@@ -148,18 +152,6 @@ export default class FatosMainView extends Component {
       this.update();
     }, 1000);
 
-    setTimeout(() => {
-      FatosEnvManager.GetInstance();
-      NativeModules.FatosEnvBridgeModule.GetLanguage((error, result) => {
-        if (error) {
-          console.error(error);
-        } else {
-          this.languageManager.setLanguage(result);
-          this.setState({ languageIndex: result });
-        }
-      });
-    }, 5000);
-
     Keyboard.addListener("keyboardWillShow", () => {
       FatosUIManager.GetInstance().setKeyboardShow(true);
     });
@@ -183,6 +175,22 @@ export default class FatosMainView extends Component {
 
     AppState.addEventListener("change", this.handleAppStateChange);
   }
+
+  MapReadyListener() {
+    NativeModules.FatosMapViewBridgeModule.setViewMode(0);
+
+    FatosEnvManager.GetInstance();
+    NativeModules.FatosEnvBridgeModule.GetLanguage((error, result) => {
+      if (error) {
+        console.error(error);
+      } else {
+        this.languageManager.setLanguage(result);
+        this.setState({ languageIndex: result });
+      }
+    });
+  }
+
+  UpdatePickerInfoListener(json) {}
 
   componentWillUnmount() {
     this.languageManager.removeCallback(this.constructor.name);
@@ -316,7 +324,6 @@ export default class FatosMainView extends Component {
       if (error) {
         console.error(error);
       } else {
-        console.log("simsimsim result : " + result);
         var data = JSON.parse(result);
 
         var xlon = data.xlon;
@@ -489,7 +496,6 @@ export default class FatosMainView extends Component {
 
   handleStartShouldSetResponder(evt) {
     // TouchBegin
-
     Keyboard.dismiss();
     this.bottomViewRef.current.showMenu(false);
     this.onSearchViewVisible();
@@ -625,7 +631,6 @@ export default class FatosMainView extends Component {
       }
     }
 
-    // UIManager view Ref set
     FatosUIManager.GetInstance().setBottomView(this.bottomViewRef.current);
     FatosUIManager.GetInstance().setSearchListView(
       this.searchListViewRef.current

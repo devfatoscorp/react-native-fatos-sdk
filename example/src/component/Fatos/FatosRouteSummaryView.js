@@ -23,19 +23,16 @@ import COMMON from "../common/common";
 import FatosLanguageManager from "../Manager/FatosLanguageManager";
 import FatosUIManager from "../Manager/FatosUIManager";
 
-// 추천
 const recommImg = [
   require("../../../res/drawable/tab_btn_icon_recomm_n.png"),
   require("../../../res/drawable/tab_btn_icon_recomm_s.png")
 ];
 
-// 일반
 const generalImg = [
   require("../../../res/drawable/tab_btn_icon_general_n.png"),
   require("../../../res/drawable/tab_btn_icon_general_s.png")
 ];
 
-// 무료
 const freeImg = [
   require("../../../res/drawable/tab_btn_icon_free_n.png"),
   require("../../../res/drawable/tab_btn_icon_free_s.png"),
@@ -62,13 +59,11 @@ const summaryPageColor = [
   COMMON.SMMMARY_PAGE_COLOR_3.RGBA
 ];
 
-// 모의주행
 const simImg = [
   require("../../../res/drawable/btn_sim_n.png"),
   require("../../../res/drawable/btn_sim_s.png")
 ];
 
-// 안내시작
 const goImg = [
   require("../../../res/drawable/btn_go_ani_n_1.png"),
   require("../../../res/drawable/btn_go_ani_s.png")
@@ -164,7 +159,6 @@ export default class FatosRouteSummaryView extends React.Component {
   }
 
   onPressSimulation(index) {
-    console.log("simsimsim onPressSimulation : " + index);
     this.native.StartSimulation(index);
     this.props.bottomViewRef.current.showSimulatedDrivingView();
 
@@ -183,7 +177,6 @@ export default class FatosRouteSummaryView extends React.Component {
 
     this.props.clearSummaryData(true);
 
-    // 안내시작 하면 0으로 초기화
     FatosUIManager.GetInstance().setSelectRouteLine(0);
   }
 
@@ -426,7 +419,6 @@ export default class FatosRouteSummaryView extends React.Component {
               this.onPressStart(selectIndex);
             }}
           >
-            {/*<FastImage style={ pageStyles.ImageStyle } source={ goImg[0] } />*/}
             <ImageSequence
               style={pageStyles.ImageStyle2}
               images={images}

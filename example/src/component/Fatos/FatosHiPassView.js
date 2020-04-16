@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View } from "react-native";
 import React, { Component } from "react";
 import FatosUtil from "../common/FatosUtil";
-import FastImage from 'react-native-fast-image';
+import FastImage from "react-native-fast-image";
 
 export default class FatosHiPassView extends Component {
   state = {
@@ -33,7 +33,6 @@ export default class FatosHiPassView extends Component {
       this.setVisible(false);
       return;
     }
-    // this.setVisible(FatosUIManager.GetInstance().isDrivingViewVisible());
 
     var hipassInfo = this.state.hipassInfo;
     if (
@@ -139,5 +138,5 @@ const styles = StyleSheet.create({
     fontSize: 20,
     paddingLeft: 10,
     paddingRight: 10
-  },
+  }
 });

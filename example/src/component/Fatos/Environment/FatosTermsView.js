@@ -21,12 +21,6 @@ export default class FatosTermsView extends Component {
   constructor(props) {
     super(props);
     this.preloadImages();
-
-    // 국가별 예외처리 할것
-    // if(m_gApp.getAppSettingInfo().m_nDefaultLanguage == 0)
-    //     m_WebView.loadUrl("file:///android_asset/setting_maphi/termsofuse_fatos.html");
-    // else
-    //     m_WebView.loadUrl("file:///android_asset/setting_maphi/termsofuse_fatos_eng.html");
   }
 
   preloadImages() {

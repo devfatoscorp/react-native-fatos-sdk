@@ -66,7 +66,6 @@ export default class FatosCategoryView extends Component {
   }
 
   onCountrySelect(index) {
-    // 국가 변경 처리할것
     this.onPressBack();
   }
 

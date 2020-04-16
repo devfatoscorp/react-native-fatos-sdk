@@ -36,7 +36,7 @@ export default class FatosSearchListView extends React.Component {
       "search_error"
     );
 
-    if (!searchData || 0 === searchData.length) {
+    if (!searchData || searchData.length === 0) {
       FatosUIManager.GetInstance().showToast(message);
       return;
     }
@@ -50,6 +50,7 @@ export default class FatosSearchListView extends React.Component {
       var pgno = node.pgno;
       var cnt = node.cnt;
       var data = [];
+
       var items = node.items;
 
       if (items) {
@@ -69,7 +70,7 @@ export default class FatosSearchListView extends React.Component {
           var posy = items[i].posy;
           var entx = items[i].entx;
           var enty = items[i].enty;
-          var dist = items[i].id;
+          var dist = items[i].dist;
 
           var fullAddName;
 
@@ -84,8 +85,8 @@ export default class FatosSearchListView extends React.Component {
             name: name,
             fullAddName: fullAddName,
             key: i,
-            frontLat: posy.toString(),
-            frontLon: posx.toString()
+            frontLat: enty.toString(),
+            frontLon: entx.toString()
           });
         }
       }

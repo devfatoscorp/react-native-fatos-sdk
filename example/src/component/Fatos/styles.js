@@ -8,10 +8,6 @@ module.exports = StyleSheet.create({
   zoomContainer: {
     flexDirection: "column",
     width: 50
-    // borderTopLeftRadius: 25,
-    // borderTopRightRadius: 25,
-    // borderBottomLeftRadius: 25,
-    // borderBottomRightRadius: 25,
   },
 
   firstTbTContainer: {

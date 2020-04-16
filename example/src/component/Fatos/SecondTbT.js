@@ -158,7 +158,6 @@ export default class SecondTbT extends React.Component {
     var nType = this.state.type;
     var strDist = this.state.dist;
 
-    // 운전석위치 셋팅
     if (FatosEnvManager.GetInstance().getSeatPosition() === 1 && nType === 14) {
       nType = 15;
     }
@@ -166,7 +165,7 @@ export default class SecondTbT extends React.Component {
     return (
       <View style={styles.container}>
         <ImageBackground style={styles.secondTbtContainer}>
-          <FastImage style={styles.ImageStyle} source={nType} />
+          <FastImage style={styles.ImageStyle} source={ImageDrawable[nType]} />
           <Text style={styles.secondTbtRemainDist}>{strDist}</Text>
         </ImageBackground>
       </View>

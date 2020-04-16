@@ -100,7 +100,6 @@ export default class FatosSummarySearchView extends React.Component {
     }
 
     this.native.Search(this.state.searchStartText);
-    // this.setState( {searchStartText : ''} );
     this.props.summarySearchListView.current.setStartFlag(true);
   }
 
@@ -114,7 +113,6 @@ export default class FatosSummarySearchView extends React.Component {
     }
 
     this.native.Search(this.state.searchEndText);
-    // this.setState( {searchEndText : ''} );
     this.props.summarySearchListView.current.setGoalFlag(true);
   }
 

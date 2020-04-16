@@ -120,9 +120,6 @@ export default class FatosSearchView extends React.Component {
   }
 
   render() {
-    // 화면 터치시 searchViewVisible 변수 값으로 show/hide 컨트롤
-    // 터치시 show 7초뒤 hide
-    // 현위치 이고 gps 속도가 10 이상 이면 숨김
 
     if (this.state.visible === false) {
       return null;
@@ -130,8 +127,6 @@ export default class FatosSearchView extends React.Component {
 
     if (FatosUIManager.GetInstance().isSearchViewVisible() === false)
       return null;
-
-    // touchMoveMode == '0' 이면 현위치
 
     if (this.state.touchMoveMode !== "0") {
       this.rgData = this.props.rgData;

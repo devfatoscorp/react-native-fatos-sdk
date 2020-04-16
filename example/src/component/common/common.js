@@ -1,4 +1,9 @@
 export default {
+  eTestFlag: {
+    USER_LINE_TEST: false,
+    MARKER_TEST: false
+  },
+
   // RGBA 는 react용 컬러 포맷
 
   SMMMARY_PAGE_COLOR_1: {

@@ -7,244 +7,244 @@ import { TouchableWithoutFeedback } from "../PopupWindow";
 import FatosUIManager from "../Manager/FatosUIManager";
 
 const Drawables = [
-  ["laneguid_1_0", require("../../../res/drawable/laneguid_1_0.png")], //유턴 비활성화
-  ["laneguid_1_1", require("../../../res/drawable/laneguid_1_1.png")], //유턴 활성화
-  ["laneguid_2_0", require("../../../res/drawable/laneguid_2_0.png")], //좌회전 비활성화
-  ["laneguid_2_1", require("../../../res/drawable/laneguid_2_1.png")], //좌회전 활성화
-  ["laneguid_12_00", require("../../../res/drawable/laneguid_12_00.png")], //좌회전+유턴 : 비활성화
-  ["laneguid_12_01", require("../../../res/drawable/laneguid_12_01.png")], //좌회전+유턴 : 유턴 활성화
-  ["laneguid_12_10", require("../../../res/drawable/laneguid_12_10.png")], //좌회전+유턴 : 좌회전 활성화
-  ["laneguid_12_11", require("../../../res/drawable/laneguid_12_11.png")], //좌회전+유턴 : 활성화
-  ["laneguid_3_0", require("../../../res/drawable/laneguid_3_0.png")], //10시 방향 좌회전 비활성화
-  ["laneguid_3_1", require("../../../res/drawable/laneguid_3_1.png")], //10시 방향 좌회전 활성화
-  ["laneguid_13_00", require("../../../res/drawable/laneguid_13_00.png")], //10시 방향 좌회전 + 유턴 : 비활성화
-  ["laneguid_13_01", require("../../../res/drawable/laneguid_13_01.png")], //10시 방향 좌회전 + 유턴 : 유턴 활성화
-  ["laneguid_13_10", require("../../../res/drawable/laneguid_13_10.png")], //10시 방향 좌회전 + 유턴 : 10시 방향 좌회전 활성화
-  ["laneguid_13_11", require("../../../res/drawable/laneguid_13_11.png")], //10시 방향 좌회전 + 유턴 : 활성화
-  ["laneguid_23_00", require("../../../res/drawable/laneguid_23_00.png")], //10시 방향 좌회전 + 좌회전 : 비활성화
-  ["laneguid_23_01", require("../../../res/drawable/laneguid_23_01.png")], //10시 방향 좌회전 + 좌회전 : 좌회전 활성화
-  ["laneguid_23_10", require("../../../res/drawable/laneguid_23_10.png")], //10시 방향 좌회전 + 좌회전 : 10시 방향 좌회전 활성화
-  ["laneguid_23_11", require("../../../res/drawable/laneguid_23_11.png")], //10시 방향 좌회전 + 좌회전 : 활성화
-  ["laneguid_123_000", require("../../../res/drawable/laneguid_123_000.png")], //10시 방향 좌회전 + 좌회전 + 유턴 : 비활성화
-  ["laneguid_123_001", require("../../../res/drawable/laneguid_123_001.png")], //10시 방향 좌회전 + 좌회전 + 유턴 : 유턴 활성화
-  ["laneguid_123_010", require("../../../res/drawable/laneguid_123_010.png")], //10시 방향 좌회전 + 좌회전 + 유턴 : 좌회전 활성화
-  ["laneguid_123_100", require("../../../res/drawable/laneguid_123_100.png")], //10시 방향 좌회전 + 좌회전 + 유턴 : 10시 방향 좌회전 활성화
-  ["laneguid_123_111", require("../../../res/drawable/laneguid_123_111.png")], //10시 방향 좌회전 + 좌회전 + 유턴 : 활성화
-  ["laneguid_4_0", require("../../../res/drawable/laneguid_4_0.png")], //직진 비활성화
-  ["laneguid_4_1", require("../../../res/drawable/laneguid_4_1.png")], //직진 활성화
-  ["laneguid_14_00", require("../../../res/drawable/laneguid_14_00.png")], //직진 + 유턴 비활성화
-  ["laneguid_14_01", require("../../../res/drawable/laneguid_14_01.png")], //직진 + 유턴 : 유턴 활성화
-  ["laneguid_14_10", require("../../../res/drawable/laneguid_14_10.png")], //직진 + 유턴 : 직진 활성화
-  ["laneguid_14_11", require("../../../res/drawable/laneguid_14_11.png")], //직진 + 유턴 활성화
-  ["laneguid_24_00", require("../../../res/drawable/laneguid_24_00.png")], //직진 + 좌회전 비활성화
-  ["laneguid_24_01", require("../../../res/drawable/laneguid_24_01.png")], //직진 + 좌회전 : 좌회전 활성화
-  ["laneguid_24_10", require("../../../res/drawable/laneguid_24_10.png")], //직진 + 좌회전 : 직진 활성화
-  ["laneguid_24_11", require("../../../res/drawable/laneguid_24_11.png")], //직진 + 좌회전 활성화
-  ["laneguid_124_000", require("../../../res/drawable/laneguid_124_000.png")], //직진 + 유턴 + 좌회전  비활성화
-  ["laneguid_124_001", require("../../../res/drawable/laneguid_124_001.png")], //직진 + 유턴 + 좌회전 : 유턴 활성화
-  ["laneguid_124_010", require("../../../res/drawable/laneguid_124_010.png")], //직진 + 유턴 + 좌회전 : 좌회전 활성화
-  ["laneguid_124_100", require("../../../res/drawable/laneguid_124_100.png")], //직진 + 유턴 + 좌회전 : 직진 활성화
-  ["laneguid_124_111", require("../../../res/drawable/laneguid_124_111.png")], //직진 + 유턴 + 좌회전 활성화
-  ["laneguid_34_00", require("../../../res/drawable/laneguid_34_00.png")], //직진 + 10시방향 좌회전 : 비활성화
-  ["laneguid_34_01", require("../../../res/drawable/laneguid_34_01.png")], //직진 + 10시방향 좌회전 : 10시 방향 좌회전 활성화
-  ["laneguid_34_10", require("../../../res/drawable/laneguid_34_10.png")], //직진 + 10시방향 좌회전 : 직진 활성화
-  ["laneguid_34_11", require("../../../res/drawable/laneguid_34_11.png")], //직진 + 10시방향 좌회전 : 활성화
-  ["laneguid_134_000", require("../../../res/drawable/laneguid_134_000.png")], //직진 + 10시방향 좌회전 + 유턴 : 비활성화
-  ["laneguid_134_001", require("../../../res/drawable/laneguid_134_001.png")], //직진 + 10시방향 좌회전 + 유턴 : 유턴 활성화
-  ["laneguid_134_010", require("../../../res/drawable/laneguid_134_010.png")], //직진 + 10시방향 좌회전 + 유턴 : 10시방향 좌회전 활성화
-  ["laneguid_134_100", require("../../../res/drawable/laneguid_134_100.png")], //직진 + 10시방향 좌회전 + 유턴 : 직진 활성화
-  ["laneguid_134_111", require("../../../res/drawable/laneguid_134_111.png")], //직진 + 10시방향 좌회전 + 유턴 : 활성화
-  ["laneguid_234_000", require("../../../res/drawable/laneguid_234_000.png")], //직진 + 10시방향 좌회전 + 좌회전 비활성화
-  ["laneguid_234_001", require("../../../res/drawable/laneguid_234_001.png")], //직진 + 10시방향 좌회전 + 좌회전 : 좌회전 활성화
-  ["laneguid_234_010", require("../../../res/drawable/laneguid_234_010.png")], //직진 + 10시방향 좌회전 + 좌회전 : 10시방향 좌회전 활성화
-  ["laneguid_234_100", require("../../../res/drawable/laneguid_234_100.png")], //직진 + 10시방향 좌회전 + 좌회전 : 직진 활성화
-  ["laneguid_234_111", require("../../../res/drawable/laneguid_234_111.png")], //직진 + 10시방향 좌회전 + 좌회전 활성화
+  ["laneguid_1_0", require("../../../res/drawable/laneguid_1_0.png")],
+  ["laneguid_1_1", require("../../../res/drawable/laneguid_1_1.png")],
+  ["laneguid_2_0", require("../../../res/drawable/laneguid_2_0.png")],
+  ["laneguid_2_1", require("../../../res/drawable/laneguid_2_1.png")],
+  ["laneguid_12_00", require("../../../res/drawable/laneguid_12_00.png")],
+  ["laneguid_12_01", require("../../../res/drawable/laneguid_12_01.png")],
+  ["laneguid_12_10", require("../../../res/drawable/laneguid_12_10.png")],
+  ["laneguid_12_11", require("../../../res/drawable/laneguid_12_11.png")],
+  ["laneguid_3_0", require("../../../res/drawable/laneguid_3_0.png")],
+  ["laneguid_3_1", require("../../../res/drawable/laneguid_3_1.png")],
+  ["laneguid_13_00", require("../../../res/drawable/laneguid_13_00.png")],
+  ["laneguid_13_01", require("../../../res/drawable/laneguid_13_01.png")],
+  ["laneguid_13_10", require("../../../res/drawable/laneguid_13_10.png")],
+  ["laneguid_13_11", require("../../../res/drawable/laneguid_13_11.png")],
+  ["laneguid_23_00", require("../../../res/drawable/laneguid_23_00.png")],
+  ["laneguid_23_01", require("../../../res/drawable/laneguid_23_01.png")],
+  ["laneguid_23_10", require("../../../res/drawable/laneguid_23_10.png")],
+  ["laneguid_23_11", require("../../../res/drawable/laneguid_23_11.png")],
+  ["laneguid_123_000", require("../../../res/drawable/laneguid_123_000.png")],
+  ["laneguid_123_001", require("../../../res/drawable/laneguid_123_001.png")],
+  ["laneguid_123_010", require("../../../res/drawable/laneguid_123_010.png")],
+  ["laneguid_123_100", require("../../../res/drawable/laneguid_123_100.png")],
+  ["laneguid_123_111", require("../../../res/drawable/laneguid_123_111.png")],
+  ["laneguid_4_0", require("../../../res/drawable/laneguid_4_0.png")],
+  ["laneguid_4_1", require("../../../res/drawable/laneguid_4_1.png")],
+  ["laneguid_14_00", require("../../../res/drawable/laneguid_14_00.png")],
+  ["laneguid_14_01", require("../../../res/drawable/laneguid_14_01.png")],
+  ["laneguid_14_10", require("../../../res/drawable/laneguid_14_10.png")],
+  ["laneguid_14_11", require("../../../res/drawable/laneguid_14_11.png")],
+  ["laneguid_24_00", require("../../../res/drawable/laneguid_24_00.png")],
+  ["laneguid_24_01", require("../../../res/drawable/laneguid_24_01.png")],
+  ["laneguid_24_10", require("../../../res/drawable/laneguid_24_10.png")],
+  ["laneguid_24_11", require("../../../res/drawable/laneguid_24_11.png")],
+  ["laneguid_124_000", require("../../../res/drawable/laneguid_124_000.png")],
+  ["laneguid_124_001", require("../../../res/drawable/laneguid_124_001.png")],
+  ["laneguid_124_010", require("../../../res/drawable/laneguid_124_010.png")],
+  ["laneguid_124_100", require("../../../res/drawable/laneguid_124_100.png")],
+  ["laneguid_124_111", require("../../../res/drawable/laneguid_124_111.png")],
+  ["laneguid_34_00", require("../../../res/drawable/laneguid_34_00.png")],
+  ["laneguid_34_01", require("../../../res/drawable/laneguid_34_01.png")],
+  ["laneguid_34_10", require("../../../res/drawable/laneguid_34_10.png")],
+  ["laneguid_34_11", require("../../../res/drawable/laneguid_34_11.png")],
+  ["laneguid_134_000", require("../../../res/drawable/laneguid_134_000.png")],
+  ["laneguid_134_001", require("../../../res/drawable/laneguid_134_001.png")],
+  ["laneguid_134_010", require("../../../res/drawable/laneguid_134_010.png")],
+  ["laneguid_134_100", require("../../../res/drawable/laneguid_134_100.png")],
+  ["laneguid_134_111", require("../../../res/drawable/laneguid_134_111.png")],
+  ["laneguid_234_000", require("../../../res/drawable/laneguid_234_000.png")],
+  ["laneguid_234_001", require("../../../res/drawable/laneguid_234_001.png")],
+  ["laneguid_234_010", require("../../../res/drawable/laneguid_234_010.png")],
+  ["laneguid_234_100", require("../../../res/drawable/laneguid_234_100.png")],
+  ["laneguid_234_111", require("../../../res/drawable/laneguid_234_111.png")],
   [
     "laneguid_1234_0000",
     require("../../../res/drawable/laneguid_1234_0000.png")
-  ], //직진 + 10시방향 좌회전 + 좌회전 + 유턴 비활성화
+  ],
   [
     "laneguid_1234_0001",
     require("../../../res/drawable/laneguid_1234_0001.png")
-  ], //직진 + 10시방향 좌회전 + 좌회전 + 유턴  : 유턴 활성화
+  ],
   [
     "laneguid_1234_0010",
     require("../../../res/drawable/laneguid_1234_0010.png")
-  ], //직진 + 10시방향 좌회전 + 좌회전 + 유턴  : 좌회전 활성화
+  ],
   [
     "laneguid_1234_0100",
     require("../../../res/drawable/laneguid_1234_0100.png")
-  ], //직진 + 10시방향 좌회전 + 좌회전 + 유턴  : 10시방향 좌회전 활성화
+  ],
   [
     "laneguid_1234_1000",
     require("../../../res/drawable/laneguid_1234_1000.png")
-  ], //직진 + 10시방향 좌회전 + 좌회전 + 유턴  : 직진 활성화
+  ],
   [
     "laneguid_1234_1111",
     require("../../../res/drawable/laneguid_1234_1111.png")
-  ], //직진 + 10시방향 좌회전 + 좌회전 + 유턴 활성화
-  ["laneguid_5_0", require("../../../res/drawable/laneguid_5_0.png")], //2시방향 우회전 비활성화
-  ["laneguid_5_1", require("../../../res/drawable/laneguid_5_1.png")], //2시방향 우회전 활성화
-  ["laneguid_15_00", require("../../../res/drawable/laneguid_15_00.png")], //2시방향 우회전 + 유턴 비활성화
-  ["laneguid_15_01", require("../../../res/drawable/laneguid_15_01.png")], //2시방향 우회전 + 유턴 : 유턴 활성화
-  ["laneguid_15_10", require("../../../res/drawable/laneguid_15_10.png")], //2시방향 우회전 + 유턴 : 2시방향 우회전 활성화
-  ["laneguid_15_11", require("../../../res/drawable/laneguid_15_11.png")], //2시방향 우회전 + 유턴 활성화
-  ["laneguid_25_00", require("../../../res/drawable/laneguid_25_00.png")], //2시방향 우회전 + 좌회전 비활성화
-  ["laneguid_25_01", require("../../../res/drawable/laneguid_25_01.png")], //2시방향 우회전 + 좌회전 : 좌회전 활성화
-  ["laneguid_25_10", require("../../../res/drawable/laneguid_25_10.png")], //2시방향 우회전 + 좌회전 : 2시방향 우회전 활성화
-  ["laneguid_25_11", require("../../../res/drawable/laneguid_25_11.png")], //2시방향 우회전 + 좌회전 활성화
-  ["laneguid_35_00", require("../../../res/drawable/laneguid_35_00.png")], //2시방향 우회전 + 10시방향 좌회전 비활성화
-  ["laneguid_35_01", require("../../../res/drawable/laneguid_35_01.png")], //2시방향 우회전 + 10시방향 좌회전 : 10시방향 좌회전 활성화
-  ["laneguid_35_10", require("../../../res/drawable/laneguid_35_10.png")], //2시방향 우회전 + 10시방향 좌회전 : 2시방향 우회전 활성화
-  ["laneguid_35_11", require("../../../res/drawable/laneguid_35_11.png")], //2시방향 우회전 + 10시방향 좌회전 활성화
-  ["laneguid_235_000", require("../../../res/drawable/laneguid_235_000.png")], //2시방향 우회전 + 10시방향 좌회전 + 좌회전 비활성화
-  ["laneguid_235_001", require("../../../res/drawable/laneguid_235_001.png")], //2시방향 우회전 + 10시방향 좌회전 + 좌회전 : 좌회전  활성화
-  ["laneguid_235_010", require("../../../res/drawable/laneguid_235_010.png")], //2시방향 우회전 + 10시방향 좌회전 + 좌회전 : 10시방향 좌회전  활성화
-  ["laneguid_235_100", require("../../../res/drawable/laneguid_235_100.png")], //2시방향 우회전 + 10시방향 좌회전 + 좌회전 : 2시방향 좌회전 활성화
-  ["laneguid_235_111", require("../../../res/drawable/laneguid_235_111.png")], //2시방향 우회전 + 10시방향 좌회전 + 좌회전 활성화
-  ["laneguid_45_00", require("../../../res/drawable/laneguid_45_00.png")], //2시 방향 우회전 + 직진 비활성화
-  ["laneguid_45_01", require("../../../res/drawable/laneguid_45_01.png")], //2시 방향 우회전 + 직진 : 직진 활성화
-  ["laneguid_45_10", require("../../../res/drawable/laneguid_45_10.png")], //2시 방향 우회전 + 직진 : 2시 방향 우회전 활성화
-  ["laneguid_45_11", require("../../../res/drawable/laneguid_45_11.png")], //2시 방향 우회전 + 직진 활성화
-  ["laneguid_145_000", require("../../../res/drawable/laneguid_145_000.png")], //2시 방향 우회전 + 직진 + 유턴 비활성화
-  ["laneguid_145_001", require("../../../res/drawable/laneguid_145_001.png")], //2시 방향 우회전 + 직진 + 유턴 : 유턴 활성화
-  ["laneguid_145_010", require("../../../res/drawable/laneguid_145_010.png")], //2시 방향 우회전 + 직진 + 유턴 : 직진 활성화
-  ["laneguid_145_100", require("../../../res/drawable/laneguid_145_100.png")], //2시 방향 우회전 + 직진 + 유턴 : 2시 방향 우회전 활성화
-  ["laneguid_145_111", require("../../../res/drawable/laneguid_145_111.png")], //2시 방향 우회전 + 직진 + 유턴 활성화
-  ["laneguid_245_000", require("../../../res/drawable/laneguid_245_000.png")], //2시 방향 우회전 + 직진 + 좌회전 비활성화
-  ["laneguid_245_001", require("../../../res/drawable/laneguid_245_001.png")], //2시 방향 우회전 + 직진 + 좌회전 : 좌회전 활성화
-  ["laneguid_245_010", require("../../../res/drawable/laneguid_245_010.png")], //2시 방향 우회전 + 직진 + 좌회전 : 직진 활성화
-  ["laneguid_245_100", require("../../../res/drawable/laneguid_245_100.png")], //2시 방향 우회전 + 직진 + 좌회전 : 2시 방향 우회전 활성화
-  ["laneguid_245_111", require("../../../res/drawable/laneguid_245_111.png")], //2시 방향 우회전 + 직진 + 좌회전 활성화
-  ["laneguid_6_0", require("../../../res/drawable/laneguid_6_0.png")], //우회전 비활성화
-  ["laneguid_6_1", require("../../../res/drawable/laneguid_6_1.png")], //우회전 활성화
-  ["laneguid_16_00", require("../../../res/drawable/laneguid_16_00.png")], //우회전 + 유턴 비활성화
-  ["laneguid_16_01", require("../../../res/drawable/laneguid_16_01.png")], //우회전 + 유턴 : 유턴 활성화
-  ["laneguid_16_10", require("../../../res/drawable/laneguid_16_10.png")], //우회전 + 유턴 : 우회전 활성화
-  ["laneguid_16_11", require("../../../res/drawable/laneguid_16_11.png")], //우회전 + 유턴 활성화
-  ["laneguid_26_00", require("../../../res/drawable/laneguid_26_00.png")], //우회전 + 좌회전 비활성화
-  ["laneguid_26_01", require("../../../res/drawable/laneguid_26_01.png")], //우회전 + 좌회전 : 좌회전 활성화
-  ["laneguid_26_10", require("../../../res/drawable/laneguid_26_10.png")], //우회전 + 좌회전 : 우회전 활성화
-  ["laneguid_26_11", require("../../../res/drawable/laneguid_26_11.png")], //우회전 + 좌회전 활성화
-  ["laneguid_36_00", require("../../../res/drawable/laneguid_36_00.png")], //우회전 + 10시방향 좌회전 비활성화
-  ["laneguid_36_01", require("../../../res/drawable/laneguid_36_01.png")], //우회전 + 10시방향 좌회전 : 10시방향 좌회전 활성화
-  ["laneguid_36_10", require("../../../res/drawable/laneguid_36_10.png")], //우회전 + 10시방향 좌회전 : 우회전 활성화
-  ["laneguid_36_11", require("../../../res/drawable/laneguid_36_11.png")], //우회전 + 10시방향 좌회전 활성화
-  ["laneguid_46_00", require("../../../res/drawable/laneguid_46_00.png")], //우회전 + 직진 비활성화
-  ["laneguid_46_01", require("../../../res/drawable/laneguid_46_01.png")], //우회전 + 직진 : 직진 활성화
-  ["laneguid_46_10", require("../../../res/drawable/laneguid_46_10.png")], //우회전 + 직진 : 우회전 활성화
-  ["laneguid_46_11", require("../../../res/drawable/laneguid_46_11.png")], //우회전 + 직진 활성화
+  ],
+  ["laneguid_5_0", require("../../../res/drawable/laneguid_5_0.png")],
+  ["laneguid_5_1", require("../../../res/drawable/laneguid_5_1.png")],
+  ["laneguid_15_00", require("../../../res/drawable/laneguid_15_00.png")],
+  ["laneguid_15_01", require("../../../res/drawable/laneguid_15_01.png")],
+  ["laneguid_15_10", require("../../../res/drawable/laneguid_15_10.png")],
+  ["laneguid_15_11", require("../../../res/drawable/laneguid_15_11.png")],
+  ["laneguid_25_00", require("../../../res/drawable/laneguid_25_00.png")],
+  ["laneguid_25_01", require("../../../res/drawable/laneguid_25_01.png")],
+  ["laneguid_25_10", require("../../../res/drawable/laneguid_25_10.png")],
+  ["laneguid_25_11", require("../../../res/drawable/laneguid_25_11.png")],
+  ["laneguid_35_00", require("../../../res/drawable/laneguid_35_00.png")],
+  ["laneguid_35_01", require("../../../res/drawable/laneguid_35_01.png")],
+  ["laneguid_35_10", require("../../../res/drawable/laneguid_35_10.png")],
+  ["laneguid_35_11", require("../../../res/drawable/laneguid_35_11.png")],
+  ["laneguid_235_000", require("../../../res/drawable/laneguid_235_000.png")],
+  ["laneguid_235_001", require("../../../res/drawable/laneguid_235_001.png")],
+  ["laneguid_235_010", require("../../../res/drawable/laneguid_235_010.png")],
+  ["laneguid_235_100", require("../../../res/drawable/laneguid_235_100.png")],
+  ["laneguid_235_111", require("../../../res/drawable/laneguid_235_111.png")],
+  ["laneguid_45_00", require("../../../res/drawable/laneguid_45_00.png")],
+  ["laneguid_45_01", require("../../../res/drawable/laneguid_45_01.png")],
+  ["laneguid_45_10", require("../../../res/drawable/laneguid_45_10.png")],
+  ["laneguid_45_11", require("../../../res/drawable/laneguid_45_11.png")],
+  ["laneguid_145_000", require("../../../res/drawable/laneguid_145_000.png")],
+  ["laneguid_145_001", require("../../../res/drawable/laneguid_145_001.png")],
+  ["laneguid_145_010", require("../../../res/drawable/laneguid_145_010.png")],
+  ["laneguid_145_100", require("../../../res/drawable/laneguid_145_100.png")],
+  ["laneguid_145_111", require("../../../res/drawable/laneguid_145_111.png")],
+  ["laneguid_245_000", require("../../../res/drawable/laneguid_245_000.png")],
+  ["laneguid_245_001", require("../../../res/drawable/laneguid_245_001.png")],
+  ["laneguid_245_010", require("../../../res/drawable/laneguid_245_010.png")],
+  ["laneguid_245_100", require("../../../res/drawable/laneguid_245_100.png")],
+  ["laneguid_245_111", require("../../../res/drawable/laneguid_245_111.png")],
+  ["laneguid_6_0", require("../../../res/drawable/laneguid_6_0.png")],
+  ["laneguid_6_1", require("../../../res/drawable/laneguid_6_1.png")],
+  ["laneguid_16_00", require("../../../res/drawable/laneguid_16_00.png")],
+  ["laneguid_16_01", require("../../../res/drawable/laneguid_16_01.png")],
+  ["laneguid_16_10", require("../../../res/drawable/laneguid_16_10.png")],
+  ["laneguid_16_11", require("../../../res/drawable/laneguid_16_11.png")],
+  ["laneguid_26_00", require("../../../res/drawable/laneguid_26_00.png")],
+  ["laneguid_26_01", require("../../../res/drawable/laneguid_26_01.png")],
+  ["laneguid_26_10", require("../../../res/drawable/laneguid_26_10.png")],
+  ["laneguid_26_11", require("../../../res/drawable/laneguid_26_11.png")],
+  ["laneguid_36_00", require("../../../res/drawable/laneguid_36_00.png")],
+  ["laneguid_36_01", require("../../../res/drawable/laneguid_36_01.png")],
+  ["laneguid_36_10", require("../../../res/drawable/laneguid_36_10.png")],
+  ["laneguid_36_11", require("../../../res/drawable/laneguid_36_11.png")],
+  ["laneguid_46_00", require("../../../res/drawable/laneguid_46_00.png")],
+  ["laneguid_46_01", require("../../../res/drawable/laneguid_46_01.png")],
+  ["laneguid_46_10", require("../../../res/drawable/laneguid_46_10.png")],
+  ["laneguid_46_11", require("../../../res/drawable/laneguid_46_11.png")],
   [
     "laneguid_1236_0000",
     require("../../../res/drawable/laneguid_1236_0000.png")
-  ], //우회전 + 10시방향 좌회전 + 좌회전 + 유턴 비활성화
+  ],
   [
     "laneguid_1236_0001",
     require("../../../res/drawable/laneguid_1236_0001.png")
-  ], //우회전 + 10시방향 좌회전 + 좌회전 + 유턴 : 유턴 활성화
+  ],
   [
     "laneguid_1236_0010",
     require("../../../res/drawable/laneguid_1236_0010.png")
-  ], //우회전 + 10시방향 좌회전 + 좌회전 + 유턴 : 좌회전 활성화
+  ],
   [
     "laneguid_1236_0100",
     require("../../../res/drawable/laneguid_1236_0100.png")
-  ], //우회전 + 10시방향 좌회전 + 좌회전 + 유턴 : 10시방향 좌회전 활성화
+  ],
   [
     "laneguid_1236_1000",
     require("../../../res/drawable/laneguid_1236_1000.png")
-  ], //우회전 + 10시방향 좌회전 + 좌회전 + 유턴 : 우회전 활성화
+  ],
   [
     "laneguid_1236_1111",
     require("../../../res/drawable/laneguid_1236_1111.png")
-  ], //우회전 + 10시방향 좌회전 + 좌회전 + 유턴 활성화
-  ["laneguid_146_000", require("../../../res/drawable/laneguid_146_000.png")], //우회전 + 직진 + 유턴  비활성화
-  ["laneguid_146_001", require("../../../res/drawable/laneguid_146_001.png")], //우회전 + 직진 + 유턴 : 유턴 활성화
-  ["laneguid_146_010", require("../../../res/drawable/laneguid_146_010.png")], //우회전 + 직진 + 유턴 : 직진 활성화
-  ["laneguid_146_100", require("../../../res/drawable/laneguid_146_100.png")], //우회전 + 직진 + 유턴 : 우회전 활성화
-  ["laneguid_146_111", require("../../../res/drawable/laneguid_146_111.png")], //우회전 + 직진 + 유턴 활성화
-  ["laneguid_246_000", require("../../../res/drawable/laneguid_246_000.png")], //우회전 + 직진 + 좌회전  비활성화
-  ["laneguid_246_001", require("../../../res/drawable/laneguid_246_001.png")], //우회전 + 직진 + 좌회전 : 좌회전 활성화
-  ["laneguid_246_010", require("../../../res/drawable/laneguid_246_010.png")], //우회전 + 직진 + 좌회전 : 직진 활성화
-  ["laneguid_246_100", require("../../../res/drawable/laneguid_246_100.png")], //우회전 + 직진 + 좌회전 : 우회전 활성화
-  ["laneguid_246_111", require("../../../res/drawable/laneguid_246_111.png")], //우회전 + 직진 + 좌회전 활성화
+  ],
+  ["laneguid_146_000", require("../../../res/drawable/laneguid_146_000.png")],
+  ["laneguid_146_001", require("../../../res/drawable/laneguid_146_001.png")],
+  ["laneguid_146_010", require("../../../res/drawable/laneguid_146_010.png")],
+  ["laneguid_146_100", require("../../../res/drawable/laneguid_146_100.png")],
+  ["laneguid_146_111", require("../../../res/drawable/laneguid_146_111.png")],
+  ["laneguid_246_000", require("../../../res/drawable/laneguid_246_000.png")],
+  ["laneguid_246_001", require("../../../res/drawable/laneguid_246_001.png")],
+  ["laneguid_246_010", require("../../../res/drawable/laneguid_246_010.png")],
+  ["laneguid_246_100", require("../../../res/drawable/laneguid_246_100.png")],
+  ["laneguid_246_111", require("../../../res/drawable/laneguid_246_111.png")],
   [
     "laneguid_1246_0000",
     require("../../../res/drawable/laneguid_1246_0000.png")
-  ], //우회전 + 직진 + 좌회전 + 유턴  비활성화
+  ],
   [
     "laneguid_1246_0001",
     require("../../../res/drawable/laneguid_1246_0001.png")
-  ], //우회전 + 직진 + 좌회전 + 유턴 : 유턴 활성화
+  ],
   [
     "laneguid_1246_0010",
     require("../../../res/drawable/laneguid_1246_0010.png")
-  ], //우회전 + 직진 + 좌회전 + 유턴 : 좌회전 활성화
+  ],
   [
     "laneguid_1246_0100",
     require("../../../res/drawable/laneguid_1246_0100.png")
-  ], //우회전 + 직진 + 좌회전 + 유턴 : 직진 활성화
+  ],
   [
     "laneguid_1246_1000",
     require("../../../res/drawable/laneguid_1246_1000.png")
-  ], //우회전 + 직진 + 좌회전 + 유턴 : 우회전 활성화
+  ],
   [
     "laneguid_1246_1111",
     require("../../../res/drawable/laneguid_1246_1111.png")
-  ], //우회전 + 직진 + 좌회전 + 유턴 활성화
-  ["laneguid_346_000", require("../../../res/drawable/laneguid_346_000.png")], //우회전 + 직진 + 10시방향 좌회전  비활성화
-  ["laneguid_346_001", require("../../../res/drawable/laneguid_346_001.png")], //우회전 + 직진 + 10시방향 좌회전 : 10시방향 좌회전 활성화
-  ["laneguid_346_010", require("../../../res/drawable/laneguid_346_010.png")], //우회전 + 직진 + 10시방향 좌회전 : 직진 활성화
-  ["laneguid_346_100", require("../../../res/drawable/laneguid_346_100.png")], //우회전 + 직진 + 10시방향 좌회전 : 우회전 활성화
-  ["laneguid_346_111", require("../../../res/drawable/laneguid_346_111.png")], //우회전 + 직진 + 10시방향 좌회전 활성화
-  ["laneguid_56_00", require("../../../res/drawable/laneguid_56_00.png")], //우회전 + 2시 방향 우회전 비활성화
-  ["laneguid_56_01", require("../../../res/drawable/laneguid_56_01.png")], //우회전 + 2시 방향 우회전 : 2시 방향 우회전 활성화
-  ["laneguid_56_10", require("../../../res/drawable/laneguid_56_10.png")], //우회전 + 2시 방향 우회전 : 우회전 활성화
-  ["laneguid_56_11", require("../../../res/drawable/laneguid_56_11.png")], //우회전 + 2시 방향 우회전 활성화
-  ["laneguid_156_000", require("../../../res/drawable/laneguid_156_000.png")], //우회전 + 2시 방향 우회전 + 유턴  비활성화
-  ["laneguid_156_001", require("../../../res/drawable/laneguid_156_001.png")], //우회전 + 2시 방향 우회전 + 유턴 : 유턴 활성화
-  ["laneguid_156_010", require("../../../res/drawable/laneguid_156_010.png")], //우회전 + 2시 방향 우회전 + 유턴 : 2시 방향 우회전 활성화
-  ["laneguid_156_100", require("../../../res/drawable/laneguid_156_100.png")], //우회전 + 2시 방향 우회전 + 유턴 : 우회전 활성화
-  ["laneguid_156_111", require("../../../res/drawable/laneguid_156_111.png")], //우회전 + 2시 방향 우회전 + 유턴 활성화
-  ["laneguid_256_000", require("../../../res/drawable/laneguid_256_000.png")], //우회전 + 2시 방향 우회전 + 좌회전  비활성화
-  ["laneguid_256_001", require("../../../res/drawable/laneguid_256_001.png")], //우회전 + 2시 방향 우회전 + 좌회전 : 좌회전 활성화
-  ["laneguid_256_010", require("../../../res/drawable/laneguid_256_010.png")], //우회전 + 2시 방향 우회전 + 좌회전 : 2시 방향 우회전 활성화
-  ["laneguid_256_100", require("../../../res/drawable/laneguid_256_100.png")], //우회전 + 2시 방향 우회전 + 좌회전 : 우회전 활성화
-  ["laneguid_256_111", require("../../../res/drawable/laneguid_256_111.png")], //우회전 + 2시 방향 우회전 + 좌회전 활성화
-  ["laneguid_356_000", require("../../../res/drawable/laneguid_356_000.png")], //우회전 + 2시 방향 우회전 + 10시방향 좌회전  비활성화
-  ["laneguid_356_001", require("../../../res/drawable/laneguid_356_001.png")], //우회전 + 2시 방향 우회전 + 10시방향 좌회전 : 10시방향 좌회전 활성화
-  ["laneguid_356_010", require("../../../res/drawable/laneguid_356_010.png")], //우회전 + 2시 방향 우회전 + 10시방향 좌회전 : 2시 방향 우회전 활성화
-  ["laneguid_356_100", require("../../../res/drawable/laneguid_356_100.png")], //우회전 + 2시 방향 우회전 + 10시방향 좌회전 : 우회전 활성화
-  ["laneguid_356_111", require("../../../res/drawable/laneguid_356_111.png")], //우회전 + 2시 방향 우회전 + 10시방향 좌회전 활성화
-  ["laneguid_456_000", require("../../../res/drawable/laneguid_456_000.png")], //우회전 + 2시 방향 우회전 + 직진  비활성화
-  ["laneguid_456_001", require("../../../res/drawable/laneguid_456_001.png")], //우회전 + 2시 방향 우회전 + 직진 : 직진 활성화
-  ["laneguid_456_010", require("../../../res/drawable/laneguid_456_010.png")], //우회전 + 2시 방향 우회전 + 직진 : 2시 방향 우회전 활성화
-  ["laneguid_456_100", require("../../../res/drawable/laneguid_456_100.png")], //우회전 + 2시 방향 우회전 + 직진 : 우회전 활성화
-  ["laneguid_456_111", require("../../../res/drawable/laneguid_456_111.png")], //우회전 + 2시 방향 우회전 + 직진 활성화
+  ],
+  ["laneguid_346_000", require("../../../res/drawable/laneguid_346_000.png")],
+  ["laneguid_346_001", require("../../../res/drawable/laneguid_346_001.png")],
+  ["laneguid_346_010", require("../../../res/drawable/laneguid_346_010.png")],
+  ["laneguid_346_100", require("../../../res/drawable/laneguid_346_100.png")],
+  ["laneguid_346_111", require("../../../res/drawable/laneguid_346_111.png")],
+  ["laneguid_56_00", require("../../../res/drawable/laneguid_56_00.png")],
+  ["laneguid_56_01", require("../../../res/drawable/laneguid_56_01.png")],
+  ["laneguid_56_10", require("../../../res/drawable/laneguid_56_10.png")],
+  ["laneguid_56_11", require("../../../res/drawable/laneguid_56_11.png")],
+  ["laneguid_156_000", require("../../../res/drawable/laneguid_156_000.png")],
+  ["laneguid_156_001", require("../../../res/drawable/laneguid_156_001.png")],
+  ["laneguid_156_010", require("../../../res/drawable/laneguid_156_010.png")],
+  ["laneguid_156_100", require("../../../res/drawable/laneguid_156_100.png")],
+  ["laneguid_156_111", require("../../../res/drawable/laneguid_156_111.png")],
+  ["laneguid_256_000", require("../../../res/drawable/laneguid_256_000.png")],
+  ["laneguid_256_001", require("../../../res/drawable/laneguid_256_001.png")],
+  ["laneguid_256_010", require("../../../res/drawable/laneguid_256_010.png")],
+  ["laneguid_256_100", require("../../../res/drawable/laneguid_256_100.png")],
+  ["laneguid_256_111", require("../../../res/drawable/laneguid_256_111.png")],
+  ["laneguid_356_000", require("../../../res/drawable/laneguid_356_000.png")],
+  ["laneguid_356_001", require("../../../res/drawable/laneguid_356_001.png")],
+  ["laneguid_356_010", require("../../../res/drawable/laneguid_356_010.png")],
+  ["laneguid_356_100", require("../../../res/drawable/laneguid_356_100.png")],
+  ["laneguid_356_111", require("../../../res/drawable/laneguid_356_111.png")],
+  ["laneguid_456_000", require("../../../res/drawable/laneguid_456_000.png")],
+  ["laneguid_456_001", require("../../../res/drawable/laneguid_456_001.png")],
+  ["laneguid_456_010", require("../../../res/drawable/laneguid_456_010.png")],
+  ["laneguid_456_100", require("../../../res/drawable/laneguid_456_100.png")],
+  ["laneguid_456_111", require("../../../res/drawable/laneguid_456_111.png")],
   [
     "laneguid_2456_0000",
     require("../../../res/drawable/laneguid_2456_0000.png")
-  ], //우회전 + 2시 방향 우회전 + 직진 + 좌회전  비활성화
+  ],
   [
     "laneguid_2456_0001",
     require("../../../res/drawable/laneguid_2456_0001.png")
-  ], //우회전 + 2시 방향 우회전 + 직진 + 좌회전 : 좌회전 활성화
+  ],
   [
     "laneguid_2456_0010",
     require("../../../res/drawable/laneguid_2456_0010.png")
-  ], //우회전 + 2시 방향 우회전 + 직진 + 좌회전 : 직진 활성화
+  ],
   [
     "laneguid_2456_0100",
     require("../../../res/drawable/laneguid_2456_0100.png")
-  ], //우회전 + 2시 방향 우회전 + 직진 + 좌회전 : 2시 방향 우회전 활성화
+  ],
   [
     "laneguid_2456_1000",
     require("../../../res/drawable/laneguid_2456_1000.png")
-  ], //우회전 + 2시 방향 우회전 + 직진 + 좌회전 : 우회전 활성화
+  ],
   [
     "laneguid_2456_1111",
     require("../../../res/drawable/laneguid_2456_1111.png")
-  ], //우회전 + 2시 방향 우회전 + 직진 + 좌회전 활성화
+  ],
   ["under_a", require("../../../res/drawable/under_a.png")],
   ["high_a", require("../../../res/drawable/high_a.png")],
   ["under_b", require("../../../res/drawable/under_b.png")],
@@ -322,13 +322,6 @@ export default class FatosLaneView extends Component {
       var view = null;
 
       if (FatosUtil.isStringEmpty(coverDrawable) === false) {
-        // var img = this.getCoverDrawable(coverDrawable);
-        //
-        // if(img != null)
-        // {
-        //     view = <FastImage style={ styles.laneImage } source={ img } key={index}/>;
-        // }
-
         view = this.getCoverlaneImage(drawable, coverDrawable, index);
       } else if (FatosUtil.isStringEmpty(drawable) === false) {
         var img = this.getDrawable(drawable);

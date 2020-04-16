@@ -17,8 +17,6 @@ import FastImage from "react-native-fast-image";
 import FatosUIManager from "../Manager/FatosUIManager";
 import FatosUtil from "../common/FatosUtil";
 
-// 기본 셋팅값 상수 정의
-
 const MAP_VIEW_MODE_BIRD = 0;
 const MAP_VIEW_MODE_NORTHUP = 1;
 const MAP_VIEW_MODE_HEADING = 2;
@@ -32,14 +30,13 @@ const DEFAULT_MAP_VIEW_MODE = MAP_VIEW_MODE_BIRD;
 const DEFAULT_MAP_AERIAL_MODE = MAPMODE_AIR_ON_BUILDING_OFF;
 const DEFAULT_MAP_LEVEL = 17;
 
-// 외국언어 빌드
 const buildVietnam = false;
 
-const BASEMAP_LAYER_AEROPHOTO = "5"; // 항공 사진
+const BASEMAP_LAYER_AEROPHOTO = "5";
 const BASEMAP_LAYER_BUILDING = "8";
-const BASEMAP_LAYER_POI = "9"; // 주기
-const BASEMAP_LAYER_ROAD = "6"; // 도로
-const BASEMAP_LAYER_SATELLITE = "4"; // 위성 이미지
+const BASEMAP_LAYER_POI = "9"; 
+const BASEMAP_LAYER_ROAD = "6"; 
+const BASEMAP_LAYER_SATELLITE = "4"; 
 
 const compass_bg = [
   require("../../../res/drawable/compass_bg.png"),
@@ -51,8 +48,6 @@ const compass = [
   require("../../../res/drawable/compass_north.png"),
   require("../../../res/drawable/compass_h_01.png")
 ];
-
-//nor -> road -> on -> off 순서
 
 const aero = [
   require("../../../res/drawable/map_air_road_on.png"),
@@ -338,7 +333,6 @@ export default class FatosRGView extends Component {
       viewmode_img = compass[2];
     }
 
-    //항공모드 이미지 조건
     var aero_img;
 
     if (this.curMapAerialMode === MAPMODE_AIR_ON_BUILDING_ON) {
@@ -448,10 +442,8 @@ export default class FatosRGView extends Component {
 const zoomContainer = require("./styles").zoomContainer;
 
 const styles = StyleSheet.create({
-  //flex가 없으면 wrap-content 처럼 보임
+
   container: {
-    //position을 absoulte로 주면 각 컴포넌트의  zIndex 값에 따라 표출 순서가 정의 된다.
-    //zIndex가 높은 순서대로 전면에 그려짐
     position: "absolute",
     top: "30%",
     right: 10,
@@ -461,9 +453,6 @@ const styles = StyleSheet.create({
 
   zoomContainer: {
     ...zoomContainer
-    //뷰에 직접 style을 적용하기보다, import하는 스타일을 한번 거치면 style을 override 할 수 있다.
-    //zoomContainer에 height이 50으로 적용되어있지만 여기서 다시 선언하면 해당 사이즈가 적용됨
-    //height : 1000,
   },
 
   ImageStyle: {

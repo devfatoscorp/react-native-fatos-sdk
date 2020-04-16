@@ -13,13 +13,11 @@ export default class PopupWindow extends Component {
     }, 3000);
   }
   render() {
-    console.log("render " + this.state.show);
     return this.state.show ? (
       <View style={StyleSheet.absoluteFill}>
         <View style={styles.container}>
           <TouchableWithoutFeedback
             onPress={() => {
-              console.log("on click");
               this.setState(
                 {
                   show: false

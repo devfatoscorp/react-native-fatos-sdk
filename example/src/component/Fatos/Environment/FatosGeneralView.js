@@ -41,8 +41,6 @@ export default class FatosGeneralView extends Component {
         this.goCountrySelectView();
         break;
       case 1:
-        // 버튼 반응 없도록 주석처리
-        // this.goCategoryView();
         break;
       case 2:
         this.goTerms();
@@ -86,6 +84,10 @@ export default class FatosGeneralView extends Component {
     this.setState({ simulGps: val });
     var native = NativeModules.FatosEnvBridgeModule;
     native.SetSimulGps(val);
+  }
+
+  showSimulGps() {
+    this.props.navigation.navigate("LabView");
   }
 
   render() {
@@ -174,7 +176,7 @@ export default class FatosGeneralView extends Component {
           style={styles.tabViewItem}
           activeOpacity={0.7}
           onLongPress={() => {
-
+            this.showSimulGps();
           }}
         >
           <View style={styles.tabViewItemLeft}>

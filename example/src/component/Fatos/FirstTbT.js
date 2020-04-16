@@ -189,9 +189,7 @@ const firstTbtRemainDist = require("./styles").FirstTbtRemainDist;
 
 const styles = StyleSheet.create({
   container: {
-    // alignItems: 'center',
     justifyContent: "flex-start",
-    // tbt top 위치 보정
     marginTop: 40,
     marginLeft: 10,
     marginRight: 10
