@@ -7,18 +7,18 @@ import {
   NativeModules,
   NativeEventEmitter,
   ImageBackground,
-  TouchableOpacity
+  TouchableOpacity,
 } from "react-native";
 
 import FastImage from "react-native-fast-image";
 import FatosUtil from "../common/FatosUtil";
 import FatosLanguageManager from "../Manager/FatosLanguageManager";
 
-const SDI_TYPE_1 = 1; // 속도 : 중앙 , 거리 표출
-const SDI_TYPE_2 = 2; // 속도 : 상단 , 거리 표출
-const SDI_TYPE_3 = 3; // 속도 : 상단, 구간단속종료 , 거리 표출
-const SDI_TYPE_4 = 4; // 속도 : x , 거리 표출
-const SDI_TYPE_5 = 5; // 속도 : x , 거리 표출 안함
+const SDI_TYPE_1 = 1;
+const SDI_TYPE_2 = 2;
+const SDI_TYPE_3 = 3;
+const SDI_TYPE_4 = 4;
+const SDI_TYPE_5 = 5;
 
 const SDI_ATTR_LIST = [
   SDI_TYPE_1,
@@ -64,7 +64,7 @@ const SDI_ATTR_LIST = [
 
   SDI_TYPE_1,
   SDI_TYPE_1,
-  SDI_TYPE_1
+  SDI_TYPE_1,
 ];
 
 const SDI_IMG_LIST = [
@@ -108,12 +108,12 @@ const SDI_IMG_LIST = [
   require("../../../res/drawable/c_37_pnd.png"),
   require("../../../res/drawable/c_38_pnd.png"),
   require("../../../res/drawable/c_39_pnd.png"),
-  require("../../../res/drawable/c_40_pnd.png")
+  require("../../../res/drawable/c_40_pnd.png"),
 ];
 
 export default class FatosSDIView extends React.Component {
   state = {
-    visible: false
+    visible: false,
   };
 
   constructor(props) {
@@ -127,8 +127,8 @@ export default class FatosSDIView extends React.Component {
   }
 
   preloadImages() {
-    const uris = SDI_IMG_LIST.map(image => ({
-      uri: Image.resolveAssetSource(image).uri
+    const uris = SDI_IMG_LIST.map((image) => ({
+      uri: Image.resolveAssetSource(image).uri,
     }));
 
     FastImage.preload(uris);
@@ -143,14 +143,9 @@ export default class FatosSDIView extends React.Component {
   }
 
   getCrackdownView(nMaxSpeed, nAverageSpeed, time) {
-    var sdiImg = this.getCameraSpeedTextView(
-      nMaxSpeed,
-      styles.CameraSpeedText3
-    );
+    var sdiImg = this.getCameraSpeedTextView(nMaxSpeed, styles.CameraSpeedText3);
 
-    var average_speed = FatosLanguageManager.GetInstance().getCodeName(
-      "average_speed"
-    );
+    var average_speed = FatosLanguageManager.GetInstance().getCodeName("average_speed");
 
     return (
       <View style={styles.ImageWidthStyle}>
@@ -243,32 +238,22 @@ export default class FatosSDIView extends React.Component {
             break;
           }
 
-          if (
-            FatosUtil.checkData(sdi.SectionDist) &&
-            Number(sdi.SectionDist) === 0
-          ) {
+          if (FatosUtil.checkData(sdi.SectionDist) && Number(sdi.SectionDist) === 0) {
             isRender = false;
             break;
           }
 
           var sdiStyle = styles.ImageStyle;
 
-          // sdi 가로가 큰타입 이미지 예외처리
           if (sdi.Type === 5) {
             sdiStyle = styles.ImageWidthStyle;
             this.m_sdiTotalSpeed += nCurSpeed;
             this.m_sdiCount++;
-            this.m_sdiAVGSpeed = Math.floor(
-              this.m_sdiTotalSpeed / this.m_sdiCount
-            );
-
-            //시간 = 거리/속도
+            this.m_sdiAVGSpeed = Math.floor(this.m_sdiTotalSpeed / this.m_sdiCount);
 
             if (this.m_sdiCount == 1) {
               var fDistSection = (sdi.MaxSpeed * 1000) / 3600;
-              this.m_sdiTimeResult = Math.floor(
-                sdi.SectionDist / fDistSection + 1
-              );
+              this.m_sdiTimeResult = Math.floor(sdi.SectionDist / fDistSection + 1);
             }
 
             this.m_sdiTimeResult -= 1;
@@ -296,41 +281,23 @@ export default class FatosSDIView extends React.Component {
                   if (nSDIType == 39) {
                     sdiBackgroundImg = SDI_IMG_LIST[Number(nSDIType)];
                     var msg = FatosUtil.sprintf("%sm", Number(strHeight) / 10);
-                    sdiImg = this.getCameraSpeedTextView(
-                      msg,
-                      styles.CameraSpeedText1
-                    );
+                    sdiImg = this.getCameraSpeedTextView(msg, styles.CameraSpeedText1);
 
-                    sectionDistView = this.getSectionDistView(
-                      sdi.Type,
-                      sdi.RemainDist
-                    );
+                    sectionDistView = this.getSectionDistView(sdi.Type, sdi.RemainDist);
                   } else if (nSDIType == 40) {
                     sdiBackgroundImg = SDI_IMG_LIST[Number(nSDIType)];
 
                     var msg = FatosUtil.sprintf("%st", Number(strWeight) / 10);
-                    sdiImg = this.getCameraSpeedTextView(
-                      msg,
-                      styles.CameraSpeedText4
-                    );
-                    sectionDistView = this.getSectionDistView(
-                      sdi.Type,
-                      sdi.RemainDist
-                    );
+                    sdiImg = this.getCameraSpeedTextView(msg, styles.CameraSpeedText4);
+                    sectionDistView = this.getSectionDistView(sdi.Type, sdi.RemainDist);
                   }
                 } else {
                   sdiBackgroundImg = SDI_IMG_LIST[Number(nSDIType)];
-                  sdiImg = this.getCameraSpeedTextView(
-                    sdi.MaxSpeed,
-                    styles.CameraSpeedText1
-                  );
+                  sdiImg = this.getCameraSpeedTextView(sdi.MaxSpeed, styles.CameraSpeedText1);
                   if (nCurSpeed > sdi.MaxSpeed && sdi.SectionDist < 600) {
                   }
 
-                  sectionDistView = this.getSectionDistView(
-                    sdi.Type,
-                    sdi.RemainDist
-                  );
+                  sectionDistView = this.getSectionDistView(sdi.Type, sdi.RemainDist);
                 }
               }
               break;
@@ -338,18 +305,12 @@ export default class FatosSDIView extends React.Component {
             case SDI_TYPE_2:
               {
                 sdiBackgroundImg = SDI_IMG_LIST[Number(nSDIType)];
-                sdiImg = this.getCameraSpeedTextView(
-                  sdi.MaxSpeed,
-                  styles.CameraSpeedText2
-                );
+                sdiImg = this.getCameraSpeedTextView(sdi.MaxSpeed, styles.CameraSpeedText2);
 
                 if (nCurSpeed > sdi.MaxSpeed && sdi.SectionDist < 600) {
                 }
 
-                sectionDistView = this.getSectionDistView(
-                  sdi.Type,
-                  sdi.RemainDist
-                );
+                sectionDistView = this.getSectionDistView(sdi.Type, sdi.RemainDist);
               }
               break;
 
@@ -368,39 +329,25 @@ export default class FatosSDIView extends React.Component {
                   seconds = Math.floor(this.m_sdiTimeResult % 60);
                 }
 
-                var strRemainTime =
-                  minutes + ":" + FatosUtil.leadingZeros(seconds, 2);
+                var strRemainTime = minutes + ":" + FatosUtil.leadingZeros(seconds, 2);
 
-                crackdown = this.getCrackdownView(
-                  sdi.MaxSpeed,
-                  this.m_sdiAVGSpeed,
-                  strRemainTime
-                );
+                crackdown = this.getCrackdownView(sdi.MaxSpeed, this.m_sdiAVGSpeed, strRemainTime);
 
-                sectionDistView = this.getSectionDistView(
-                  sdi.Type,
-                  sdi.RemainDist
-                );
+                sectionDistView = this.getSectionDistView(sdi.Type, sdi.RemainDist);
               }
               break;
 
             case SDI_TYPE_4:
               {
                 sdiBackgroundImg = SDI_IMG_LIST[Number(nSDIType)];
-                sectionDistView = this.getSectionDistView(
-                  sdi.Type,
-                  sdi.RemainDist
-                );
+                sectionDistView = this.getSectionDistView(sdi.Type, sdi.RemainDist);
               }
               break;
 
             case SDI_TYPE_5:
               {
                 sdiBackgroundImg = SDI_IMG_LIST[Number(nSDIType)];
-                sectionDistView = this.getSectionDistView(
-                  sdi.Type,
-                  sdi.RemainDist
-                );
+                sectionDistView = this.getSectionDistView(sdi.Type, sdi.RemainDist);
               }
               break;
           }
@@ -435,7 +382,7 @@ const styles = StyleSheet.create({
     left: 15,
     flexDirection: "column",
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
   },
 
   layout_ando_traffic: {
@@ -447,7 +394,7 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 50,
     borderBottomRightRadius: 50,
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
   },
 
   layout_ando_movecamera: {
@@ -459,7 +406,7 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 50,
     borderBottomRightRadius: 50,
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
   },
 
   layout_ando_round: {
@@ -471,7 +418,7 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 50,
     borderBottomRightRadius: 50,
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
   },
 
   ImageWidthStyle: {
@@ -479,46 +426,46 @@ const styles = StyleSheet.create({
     width: 160,
     flexDirection: "row",
     alignItems: "flex-start",
-    justifyContent: "flex-start"
+    justifyContent: "flex-start",
   },
 
   crackdownStyle1: {
     flex: 1,
     flexDirection: "row",
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
   },
 
   crackdownStyle2: {
     flex: 1,
     flexDirection: "column",
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
   },
 
   ImageStyle: {
     height: 100,
     width: 100,
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
   },
 
   Text: {
     color: "white",
-    fontSize: 20
+    fontSize: 20,
   },
 
   CameraSpeedText1: {
     color: "black",
     fontWeight: "bold",
-    fontSize: 30
+    fontSize: 30,
   },
 
   CameraSpeedText2: {
     color: "black",
     fontWeight: "bold",
     fontSize: 25,
-    marginBottom: 15
+    marginBottom: 15,
   },
 
   CameraSpeedText3: {
@@ -526,14 +473,14 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 25,
     marginTop: 27,
-    marginLeft: 27
+    marginLeft: 27,
   },
 
   CameraSpeedText4: {
     color: "black",
     fontWeight: "bold",
     fontSize: 25,
-    marginTop: 25
+    marginTop: 25,
   },
 
   crackdowText1: {
@@ -542,7 +489,7 @@ const styles = StyleSheet.create({
     fontSize: 15,
     paddingTop: 20,
     paddingLeft: 5,
-    height: 35
+    height: 35,
   },
 
   crackdowText2: {
@@ -551,13 +498,13 @@ const styles = StyleSheet.create({
     fontSize: 20,
     paddingTop: 1,
     paddingLeft: 5,
-    height: 30
+    height: 30,
   },
 
   crackdowText3: {
     color: "white",
     fontSize: 15,
     height: 25,
-    paddingLeft: 5
-  }
+    paddingLeft: 5,
+  },
 });

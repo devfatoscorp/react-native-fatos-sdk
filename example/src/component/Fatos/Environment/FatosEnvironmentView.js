@@ -6,7 +6,7 @@ import {
   View,
   Image,
   Dimensions,
-  BackHandler
+  BackHandler,
 } from "react-native";
 
 import FastImage from "react-native-fast-image";
@@ -15,7 +15,7 @@ import {
   TabBar,
   SceneMap,
   NavigationState,
-  SceneRendererProps
+  SceneRendererProps,
 } from "react-native-tab-view";
 
 import GeneralView from "./FatosGeneralView";
@@ -33,9 +33,9 @@ export default class FatosEnvironmentView extends Component {
     index: 0,
     routes: [
       { key: "general", title: this.strGeneral },
-      { key: "navigation", title: this.strNavigation }
+      { key: "navigation", title: this.strNavigation },
     ],
-    languageIndex: 0
+    languageIndex: 0,
   };
 
   renderScene = ({ route }) => {
@@ -54,10 +54,7 @@ export default class FatosEnvironmentView extends Component {
     this.preloadImages();
 
     this.languageManager = FatosLanguageManager.GetInstance();
-    this.languageManager.addCalback(
-      this.changeLanguage.bind(this),
-      this.constructor.name
-    );
+    this.languageManager.addCalback(this.changeLanguage.bind(this), this.constructor.name);
   }
 
   componentDidMount() {
@@ -83,19 +80,19 @@ export default class FatosEnvironmentView extends Component {
       routes: [
         {
           key: "general",
-          title: FatosLanguageManager.GetInstance().getCodeName("general")
+          title: FatosLanguageManager.GetInstance().getCodeName("general"),
         },
         {
           key: "navigation",
-          title: FatosLanguageManager.GetInstance().getCodeName("navigation")
-        }
-      ]
+          title: FatosLanguageManager.GetInstance().getCodeName("navigation"),
+        },
+      ],
     });
   }
 
   preloadImages() {
-    var uris = backImg.map(image => ({
-      uri: Image.resolveAssetSource(image).uri
+    var uris = backImg.map((image) => ({
+      uri: Image.resolveAssetSource(image).uri,
     }));
 
     FastImage.preload(uris);
@@ -105,9 +102,7 @@ export default class FatosEnvironmentView extends Component {
     this.props.navigation.goBack();
   }
 
-  renderLabel = ({ route }) => (
-    <Text style={styles.tabText}>{route.title}</Text>
-  );
+  renderLabel = ({ route }) => <Text style={styles.tabText}>{route.title}</Text>;
 
   renderTabBar = (props: SceneRendererProps & { navigationState: State }) => {
     return (
@@ -142,10 +137,10 @@ export default class FatosEnvironmentView extends Component {
           navigationState={this.state}
           renderTabBar={this.renderTabBar}
           renderScene={this.renderScene}
-          onIndexChange={index => this.setState({ index })}
+          onIndexChange={(index) => this.setState({ index })}
           initialLayout={{
             width: Dimensions.get("window").width,
-            height: Dimensions.get("window").height
+            height: Dimensions.get("window").height,
           }}
         />
       </View>
@@ -157,7 +152,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: "column",
-    backgroundColor: "white"
+    backgroundColor: "white",
   },
 
   header: {
@@ -165,43 +160,43 @@ const styles = StyleSheet.create({
     height: 50,
     alignItems: "center",
     flexDirection: "row",
-    justifyContent: "flex-start"
+    justifyContent: "flex-start",
   },
 
   ImageStyle: {
     width: 40,
-    height: 40
+    height: 40,
   },
 
   text: {
     paddingLeft: 5,
     color: "black",
-    fontSize: 20
+    fontSize: 20,
   },
 
   tabText: {
     paddingLeft: 5,
     color: "black",
-    fontSize: 16
+    fontSize: 16,
   },
 
   tabView: {
-    flex: 1
+    flex: 1,
   },
 
   tabbar: {
     backgroundColor: "white",
     borderBottomColor: "rgba(196, 196, 196, 1.0)",
-    borderBottomWidth: 1
+    borderBottomWidth: 1,
   },
 
   indicator: {
-    backgroundColor: "rgba(74, 155, 138, 1.0)"
+    backgroundColor: "rgba(74, 155, 138, 1.0)",
   },
 
   labelStyle: {
     color: "black",
-    fontSize: 15
+    fontSize: 15,
   },
 
   tabViewItem: {
@@ -211,6 +206,6 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     alignItems: "center",
     flexDirection: "row",
-    justifyContent: "flex-start"
-  }
+    justifyContent: "flex-start",
+  },
 });

@@ -6,7 +6,7 @@ import {
   StyleSheet,
   NativeModules,
   NativeEventEmitter,
-  ImageBackground
+  ImageBackground,
 } from "react-native";
 
 import FastImage from "react-native-fast-image";
@@ -68,7 +68,7 @@ const ImageDrawable = [
   require("../../../res/drawable/tbt_52_via2_pnd.png"),
   require("../../../res/drawable/tbt_53_via3_pnd.png"),
   require("../../../res/drawable/tbt_54_restarea_pnd.png"),
-  require("../../../res/drawable/tbt_55_via_pnd.png")
+  require("../../../res/drawable/tbt_55_via_pnd.png"),
 ];
 
 export default class FirstTbT extends React.Component {
@@ -77,7 +77,7 @@ export default class FirstTbT extends React.Component {
     type: -1,
     dist: "",
     text: "",
-    visible: true
+    visible: true,
   };
 
   constructor(props) {
@@ -87,8 +87,8 @@ export default class FirstTbT extends React.Component {
   }
 
   preloadImages() {
-    const uris = ImageDrawable.map(image => ({
-      uri: Image.resolveAssetSource(image).uri
+    const uris = ImageDrawable.map((image) => ({
+      uri: Image.resolveAssetSource(image).uri,
     }));
 
     FastImage.preload(uris);
@@ -96,10 +96,7 @@ export default class FirstTbT extends React.Component {
 
   isShow() {
     if (this.rgData !== null) {
-      if (
-        this.rgData.FirstTbTShow !== null ||
-        this.rgData.FirstTbTShow !== "undefined"
-      ) {
+      if (this.rgData.FirstTbTShow !== null || this.rgData.FirstTbTShow !== "undefined") {
         return this.rgData.FirstTbTShow;
       }
     }
@@ -164,7 +161,6 @@ export default class FirstTbT extends React.Component {
     var strDist = this.state.dist;
     var strText = this.state.text;
 
-    // 운전석위치 셋팅
     if (FatosEnvManager.GetInstance().getSeatPosition() === 1 && nType === 14) {
       nType = 15;
     }
@@ -189,38 +185,40 @@ const firstTbtRemainDist = require("./styles").FirstTbtRemainDist;
 
 const styles = StyleSheet.create({
   container: {
+    // alignItems: 'center',
     justifyContent: "flex-start",
+    // tbt top 위치 보정
     marginTop: 40,
     marginLeft: 10,
-    marginRight: 10
+    marginRight: 10,
   },
 
   firstTbtContainer: {
-    ...firstTbtContainer
+    ...firstTbtContainer,
   },
 
   buttonContainer: {
     flexDirection: "row",
     alignItems: "flex-end",
-    justifyContent: "flex-start"
+    justifyContent: "flex-start",
   },
 
   box: {
     width: "90%",
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
   },
 
   ImageStyle: {
     height: 60,
-    width: 60
+    width: 60,
   },
 
   FirstTbtComment: {
-    ...firstTbtComment
+    ...firstTbtComment,
   },
 
   FirstTbtRemainDist: {
-    ...firstTbtRemainDist
-  }
+    ...firstTbtRemainDist,
+  },
 });

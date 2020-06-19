@@ -3,6 +3,7 @@ package biz.fatos.RCTFatos.NativeModules;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.os.Build;
 import android.util.Log;
 
 import com.facebook.react.bridge.Callback;
@@ -464,8 +465,19 @@ public class FatosEnvBridgeModule extends ReactContextBaseJavaModule {
     @ReactMethod
     public void GetUUID(Callback callback) {
 
-        String str = AMapUtil.getDeviceIMEI(m_Context);;
-        callback.invoke(null, str);
+        String strUUID = NativeNavi.nativeSdkKey2Encode(AMapUtil.getwidevineID(m_Context));
+        StringBuffer stringBuffer = new StringBuffer(strUUID);
+
+        if(strUUID.length() > 16){
+            stringBuffer.insert(8, "-");
+            stringBuffer.insert(stringBuffer.length() - 8, "-");
+        }else if(strUUID.length() > 8){
+            stringBuffer.insert(8, "-");
+        }
+
+        strUUID = stringBuffer.toString();
+
+        callback.invoke(null, strUUID);
     }
 
     @ReactMethod

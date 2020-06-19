@@ -1,12 +1,5 @@
 import React from "react";
-import {
-  Image,
-  Text,
-  View,
-  StyleSheet,
-  ImageBackground,
-  NativeModules
-} from "react-native";
+import { Image, Text, View, StyleSheet, ImageBackground, NativeModules } from "react-native";
 
 const ImageDrawable = [
   require("../../../res/drawable/list_01_straight_pnd.png"),
@@ -63,7 +56,7 @@ const ImageDrawable = [
   require("../../../res/drawable/list_52_via2_pnd.png"),
   require("../../../res/drawable/list_53_via3_pnd.png"),
   require("../../../res/drawable/list_54_restarea_pnd.png"),
-  require("../../../res/drawable/list_55_via_pnd.png")
+  require("../../../res/drawable/list_55_via_pnd.png"),
 ];
 
 import FastImage from "react-native-fast-image";
@@ -76,7 +69,7 @@ export default class SecondTbT extends React.Component {
     seatPosition: 0,
     type: 0,
     dist: "",
-    visible: false
+    visible: false,
   };
 
   constructor(props) {
@@ -88,8 +81,8 @@ export default class SecondTbT extends React.Component {
   }
 
   preloadImages() {
-    const uris = ImageDrawable.map(image => ({
-      uri: Image.resolveAssetSource(image).uri
+    const uris = ImageDrawable.map((image) => ({
+      uri: Image.resolveAssetSource(image).uri,
     }));
 
     FastImage.preload(uris);
@@ -97,10 +90,7 @@ export default class SecondTbT extends React.Component {
 
   isShow() {
     if (this.rgData != null) {
-      if (
-        this.rgData.SecondTbTShow !== null ||
-        this.rgData.SecondTbTShow !== "undefined"
-      ) {
+      if (this.rgData.SecondTbTShow !== null || this.rgData.SecondTbTShow !== "undefined") {
         return this.rgData.SecondTbTShow;
       }
     }
@@ -181,19 +171,19 @@ const styles = StyleSheet.create({
     justifyContent: "flex-start",
     marginTop: 3,
     marginLeft: 10,
-    marginRight: 10
+    marginRight: 10,
   },
 
   ImageStyle: {
     height: 40,
-    width: 40
+    width: 40,
   },
 
   secondTbtContainer: {
-    ...secondTbTContainer
+    ...secondTbTContainer,
   },
 
   secondTbtRemainDist: {
-    ...secondTbTRemainDist
-  }
+    ...secondTbTRemainDist,
+  },
 });

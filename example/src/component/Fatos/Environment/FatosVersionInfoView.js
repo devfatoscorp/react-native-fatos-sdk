@@ -39,10 +39,7 @@ export default class FatosVersionInfoView extends Component {
         var listEtc = versionJson.listEtc;
 
         for (var i = 0; listEtc.length; ++i) {
-          if (
-            listEtc[i].strName.indexOf("SDI") != -1 ||
-            listEtc[i].strName.indexOf("sdi") != -1
-          ) {
+          if (listEtc[i].strName.indexOf("SDI") != -1 || listEtc[i].strName.indexOf("sdi") != -1) {
             if (listEtc[i].nCurDate !== 0) {
               this.safedrivingdata = listEtc[i].nCurDate;
             }
@@ -57,8 +54,8 @@ export default class FatosVersionInfoView extends Component {
   }
 
   preloadImages() {
-    var uris = backImg.map(image => ({
-      uri: Image.resolveAssetSource(image).uri
+    var uris = backImg.map((image) => ({
+      uri: Image.resolveAssetSource(image).uri,
     }));
 
     FastImage.preload(uris);
@@ -203,7 +200,7 @@ const styles = StyleSheet.create({
   generalView: {
     flex: 1,
     flexDirection: "column",
-    backgroundColor: "white"
+    backgroundColor: "white",
   },
 
   header: {
@@ -211,18 +208,18 @@ const styles = StyleSheet.create({
     height: 50,
     alignItems: "center",
     flexDirection: "row",
-    justifyContent: "flex-start"
+    justifyContent: "flex-start",
   },
 
   text: {
     paddingLeft: 5,
     color: "black",
-    fontSize: 20
+    fontSize: 20,
   },
 
   ImageStyle: {
     width: 40,
-    height: 40
+    height: 40,
   },
 
   tabViewItem: {
@@ -232,7 +229,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     alignItems: "center",
     flexDirection: "row",
-    justifyContent: "flex-start"
+    justifyContent: "flex-start",
   },
 
   tabViewItemLeft: {
@@ -241,7 +238,7 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "flex-start"
+    justifyContent: "flex-start",
   },
 
   tabViewItemLeft2: {
@@ -250,7 +247,7 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "flex-start"
+    justifyContent: "flex-start",
   },
 
   tabViewItemRight1: {
@@ -259,7 +256,7 @@ const styles = StyleSheet.create({
     paddingRight: 10,
     flexDirection: "row",
     justifyContent: "flex-end",
-    alignItems: "center"
+    alignItems: "center",
   },
 
   tabViewItemRight2: {
@@ -268,11 +265,11 @@ const styles = StyleSheet.create({
     paddingRight: 10,
     flexDirection: "row",
     justifyContent: "flex-end",
-    alignItems: "center"
+    alignItems: "center",
   },
 
   tabViewItemText1: {
     color: "rgba(0, 0, 0, 1.0)",
-    fontSize: 20
-  }
+    fontSize: 20,
+  },
 });

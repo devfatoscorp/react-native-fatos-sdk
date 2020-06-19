@@ -6,7 +6,7 @@ import FastImage from "react-native-fast-image";
 export default class FatosHiPassView extends Component {
   state = {
     visible: true,
-    hipassInfo: null
+    hipassInfo: null,
   };
 
   constructor(props) {
@@ -35,11 +35,7 @@ export default class FatosHiPassView extends Component {
     }
 
     var hipassInfo = this.state.hipassInfo;
-    if (
-      hipassInfo.HiLaneCnt > 0 &&
-      hipassInfo.RemainDist < 1000 &&
-      hipassInfo.RemainDist > 0
-    ) {
+    if (hipassInfo.HiLaneCnt > 0 && hipassInfo.RemainDist < 1000 && hipassInfo.RemainDist > 0) {
       this.setVisible(true);
       return;
     }
@@ -78,7 +74,7 @@ export default class FatosHiPassView extends Component {
         this.m_bBeforeComma = true;
       }
     }
-    return hipassList.map(data => {
+    return hipassList.map((data) => {
       return data;
     });
   }
@@ -119,7 +115,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "flex-end",
     width: "100%",
-    bottom: 100
+    bottom: 100,
   },
 
   hipassView: {
@@ -129,7 +125,7 @@ const styles = StyleSheet.create({
     height: 40,
     backgroundColor: "rgba(83, 166, 218, 0.8)",
     paddingLeft: 10,
-    paddingRight: 10
+    paddingRight: 10,
   },
 
   text: {
@@ -137,6 +133,6 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontSize: 20,
     paddingLeft: 10,
-    paddingRight: 10
-  }
+    paddingRight: 10,
+  },
 });

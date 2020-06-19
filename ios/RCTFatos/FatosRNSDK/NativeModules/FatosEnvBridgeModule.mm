@@ -14,6 +14,7 @@
 #import <GPSService.h>
 #import "../../FatosSDK/FatosRootView.h"
 #import "../../FatosSDK/FatoseSettingManager.h"
+#import <FatosUtil.h>
 
 @implementation FatosEnvBridgeModule
 
@@ -481,7 +482,7 @@ RCT_EXPORT_METHOD(GetDem:(RCTResponseSenderBlock)callback)
 
 RCT_EXPORT_METHOD(GetUUID:(RCTResponseSenderBlock)callback)
 {
-  NSString *strResult = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
+  NSString *strResult = [FatosUtil getUUID];
   callback(@[[NSNull null], strResult]);
 }
 

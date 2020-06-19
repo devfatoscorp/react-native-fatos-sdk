@@ -7,14 +7,13 @@ export default class FatosUIManager {
   eViewMode = {
     eDefaultView: 0,
     eDrivingView: 1,
-    eSummaryView: 2
+    eSummaryView: 2,
   };
 
   mViewVisibleList = [true, false, false];
 
   mDriveMode = 0;
 
-  // ui 에서 사용되는 view
   bottomView = null;
   searchListView = null;
   summarySearchListView = null;
@@ -31,16 +30,12 @@ export default class FatosUIManager {
   Dialog = null;
   toast = null;
 
-  // 키보드 상태
   keyboardShow = false;
 
-  // 검색 화면 Visible;
   searchViewVisible;
 
-  // 화면 갱신 함수 포인터
   refreshRenderRef = null;
 
-  // 선택된 경로
   selectRouteLine = 0;
 
   static GetInstance() {
@@ -218,8 +213,7 @@ export default class FatosUIManager {
   /* event */
 
   onSearchClose() {
-    if(this.searchListView !== null)
-    {
+    if (this.searchListView !== null) {
       this.searchListView.clearSearchData();
     }
   }
@@ -273,7 +267,7 @@ export default class FatosUIManager {
       onHidden: () => {
         this.toast.destroy();
         this.toast = null;
-      }
+      },
     });
   }
 }

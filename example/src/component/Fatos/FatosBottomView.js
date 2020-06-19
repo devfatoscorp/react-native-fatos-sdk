@@ -7,7 +7,7 @@ import {
   StyleSheet,
   TouchableOpacity,
   NativeModules,
-  NativeEventEmitter
+  NativeEventEmitter,
 } from "react-native";
 
 import FastImage from "react-native-fast-image";
@@ -35,13 +35,13 @@ const triangleImg = [require("../../../res/drawable/info_cion_triangle.png")];
 
 const driveControlImg = [
   require("../../../res/drawable/drive_sim_day_stop_n.png"),
-  require("../../../res/drawable/drive_sim_day_play_n.png")
+  require("../../../res/drawable/drive_sim_day_play_n.png"),
 ];
 
 const driveSpeedImg = [
   require("../../../res/drawable/drive_sim_day_1x_n.png"),
   require("../../../res/drawable/drive_sim_day_2x_n.png"),
-  require("../../../res/drawable/drive_sim_day_4x_n.png")
+  require("../../../res/drawable/drive_sim_day_4x_n.png"),
 ];
 
 const driveCloseImg = require("../../../res/drawable/drive_sim_day_close_n.png");
@@ -59,7 +59,7 @@ export default class FatosBottomView extends Component {
     isTime: false,
     posWorldLocation: "",
     touchMoveMode: "0",
-    visible: false
+    visible: false,
   };
 
   constructor(props) {
@@ -69,15 +69,13 @@ export default class FatosBottomView extends Component {
 
     this.native = NativeModules.FatosNaviBridgeModule;
 
-    this.mapViewEmitter = new NativeEventEmitter(
-      NativeModules.FatosMapViewBridgeModule
-    );
+    this.mapViewEmitter = new NativeEventEmitter(NativeModules.FatosMapViewBridgeModule);
 
-    this.mapViewEmitter.addListener("PosWorldLocationUpdateListener", data =>
+    this.mapViewEmitter.addListener("PosWorldLocationUpdateListener", (data) =>
       this.setState({ posWorldLocation: data })
     );
 
-    this.mapViewEmitter.addListener("TouchMoveModeListener", data =>
+    this.mapViewEmitter.addListener("TouchMoveModeListener", (data) =>
       this.setState({ touchMoveMode: data })
     );
 
@@ -90,8 +88,8 @@ export default class FatosBottomView extends Component {
   componentDidMount() {
     setInterval(() => {
       var date = new Date();
-      var hours = date.getHours();
-      var min = date.getMinutes();
+      var hours = date.getHours(); //Current Hours
+      var min = date.getMinutes(); //Current Minutes
       var str = "";
 
       var strCurTime;
@@ -118,45 +116,42 @@ export default class FatosBottomView extends Component {
       }
 
       this.setState({
-        strCurTime:
-          FatosUtil.leadingZeros(hours, 2) +
-          ":" +
-          FatosUtil.leadingZeros(min, 2)
+        strCurTime: FatosUtil.leadingZeros(hours, 2) + ":" + FatosUtil.leadingZeros(min, 2),
       });
 
       this.setState({
-        strAmFm: str
+        strAmFm: str,
       });
     }, 1000);
   }
 
   preloadImages() {
-    var uris = menuImg.map(image => ({
-      uri: Image.resolveAssetSource(image).uri
+    var uris = menuImg.map((image) => ({
+      uri: Image.resolveAssetSource(image).uri,
     }));
 
     FastImage.preload(uris);
 
-    uris = rescanImg.map(image => ({
-      uri: Image.resolveAssetSource(image).uri
+    uris = rescanImg.map((image) => ({
+      uri: Image.resolveAssetSource(image).uri,
     }));
 
     FastImage.preload(uris);
 
-    uris = triangleImg.map(image => ({
-      uri: Image.resolveAssetSource(image).uri
+    uris = triangleImg.map((image) => ({
+      uri: Image.resolveAssetSource(image).uri,
     }));
 
     FastImage.preload(uris);
 
-    uris = driveControlImg.map(image => ({
-      uri: Image.resolveAssetSource(image).uri
+    uris = driveControlImg.map((image) => ({
+      uri: Image.resolveAssetSource(image).uri,
     }));
 
     FastImage.preload(uris);
 
-    uris = driveSpeedImg.map(image => ({
-      uri: Image.resolveAssetSource(image).uri
+    uris = driveSpeedImg.map((image) => ({
+      uri: Image.resolveAssetSource(image).uri,
     }));
 
     FastImage.preload(uris);
@@ -166,7 +161,7 @@ export default class FatosBottomView extends Component {
     setTimeout(() => {
       if (this.state.menuViewShow == true) {
         this.setState({
-          menuViewShow: false
+          menuViewShow: false,
         });
       }
     }, 10000);
@@ -253,7 +248,7 @@ export default class FatosBottomView extends Component {
 
   onDrivingTime() {
     this.setState({
-      isTime: !this.state.isTime
+      isTime: !this.state.isTime,
     });
   }
 
@@ -553,6 +548,7 @@ export default class FatosBottomView extends Component {
     var rescanButton = null;
 
     if (this.state.menuViewShow === true) {
+      // 플릿 하이 메뉴 분기 처리
       if (this.props.fleetDriver === true) {
         menuView = this.getFleetDriverMenuView();
       } else {
@@ -597,10 +593,7 @@ export default class FatosBottomView extends Component {
                 this.onDriveClose();
               }}
             >
-              <FastImage
-                style={styles.driveSimulatedItem}
-                source={driveCloseImg}
-              />
+              <FastImage style={styles.driveSimulatedItem} source={driveCloseImg} />
             </TouchableOpacity>
           </View>
         );
@@ -668,7 +661,6 @@ export default class FatosBottomView extends Component {
     var location = this.preLocation;
 
     if (this.state.touchMoveMode === "0") {
-      // 현재 위치일때
       if (this.rgData != null) {
         if (FatosUtil.checkData(this.rgData.LocationText)) {
           if (this.rgData.LocationText !== "") {
@@ -737,12 +729,12 @@ export default class FatosBottomView extends Component {
 }
 
 var bottomView = {
-  height: 50
+  height: 50,
 };
 
 var drivingInfoView = {
   width: 180,
-  height: 35
+  height: 35,
 };
 
 const styles = StyleSheet.create({
@@ -750,7 +742,7 @@ const styles = StyleSheet.create({
     position: "absolute",
     width: "100%",
     height: bottomView.height,
-    bottom: 0
+    bottom: 0,
   },
 
   bottomView: {
@@ -758,33 +750,33 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     backgroundColor: "white",
     borderTopWidth: 2,
-    borderTopColor: "gray"
+    borderTopColor: "gray",
   },
 
   ImageStyle: {
     height: bottomView.height,
-    width: bottomView.height
+    width: bottomView.height,
   },
 
   ImageStyle2: {
     height: 12 * 0.8,
     width: 18 * 0.8,
-    paddingBottom: 5
+    paddingBottom: 5,
   },
 
   text: {
     color: "black",
-    fontSize: 25
+    fontSize: 25,
   },
 
   menu: {
     flexDirection: "row",
-    justifyContent: "flex-start"
+    justifyContent: "flex-start",
   },
 
   rescan: {
     flexDirection: "row",
-    justifyContent: "flex-end"
+    justifyContent: "flex-end",
   },
 
   TextView: {
@@ -792,7 +784,7 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "100%",
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
   },
 
   menuView: {
@@ -800,7 +792,7 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     position: "absolute",
     bottom: bottomView.height,
-    marginLeft: 5
+    marginLeft: 5,
   },
 
   menuItem: {
@@ -812,13 +804,13 @@ const styles = StyleSheet.create({
     borderRadius: 2,
     justifyContent: "center",
     alignItems: "center",
-    marginBottom: 5
+    marginBottom: 5,
   },
 
   menuText: {
     color: "white",
     fontSize: 14,
-    textAlign: "center"
+    textAlign: "center",
   },
 
   drivingInfoView: {
@@ -833,14 +825,14 @@ const styles = StyleSheet.create({
     borderTopColor: "gray",
     borderLeftWidth: 2,
     borderLeftColor: "gray",
-    borderTopLeftRadius: 10
+    borderTopLeftRadius: 10,
   },
 
   drivingTimeInfoView: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    flexDirection: "row"
+    flexDirection: "row",
   },
 
   drivingKmInfoView: {
@@ -848,39 +840,39 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     paddingLeft: 5,
-    paddingRight: 5
+    paddingRight: 5,
   },
 
   divisionView: {
-    margin: 5
+    margin: 5,
   },
 
   division: {
     flex: 1,
     backgroundColor: "black",
     width: 1,
-    height: "100%"
+    height: "100%",
   },
 
   drivingTimeInfoText1: {
     color: "black",
     fontSize: 13,
     paddingLeft: 10,
-    paddingRight: 5
+    paddingRight: 5,
   },
 
   drivingTimeInfoText2: {
     color: "black",
     fontSize: 13,
     paddingLeft: 5,
-    paddingRight: 5
+    paddingRight: 5,
   },
 
   drivingTimeInfoText3: {
     color: "black",
     fontSize: 13,
     paddingLeft: 5,
-    paddingRight: 5
+    paddingRight: 5,
   },
 
   driveSimulatedView: {
@@ -896,13 +888,13 @@ const styles = StyleSheet.create({
     right: 0,
     justifyContent: "center",
     alignItems: "center",
-    bottom: bottomView.height + drivingInfoView.height + 10
+    bottom: bottomView.height + drivingInfoView.height + 10,
   },
 
   driveSimulatedItem: {
     width: 45,
     height: 45,
     marginLeft: 2.5,
-    marginRight: 2.5
-  }
+    marginRight: 2.5,
+  },
 });

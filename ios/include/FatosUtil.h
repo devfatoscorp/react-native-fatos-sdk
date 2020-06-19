@@ -30,7 +30,10 @@ NS_ASSUME_NONNULL_BEGIN
 + (UIImage *) getResourceImage:(nullable NSString *)path filename:(nullable NSString *)filename;
 + (UIImage *) resizeImage:(nullable UIImage *)image imageSize:(CGSize)size;
 + (UIColor *) getUIColor:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue alpha:(CGFloat)alpha;
-
++ (NSString *) getHashID;
++ (NSString *) getUUID;
++ (NSString *) base64Encode:(NSString *)str;
++ (NSString *) SHA1Hash:(NSString *)str;
 @end
 
 NS_ASSUME_NONNULL_END

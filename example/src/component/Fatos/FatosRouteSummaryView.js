@@ -12,7 +12,7 @@ import {
   NativeEventEmitter,
   TouchableOpacity,
   Platform,
-  Dimensions
+  Dimensions,
 } from "react-native";
 
 import FastImage from "react-native-fast-image";
@@ -25,18 +25,18 @@ import FatosUIManager from "../Manager/FatosUIManager";
 
 const recommImg = [
   require("../../../res/drawable/tab_btn_icon_recomm_n.png"),
-  require("../../../res/drawable/tab_btn_icon_recomm_s.png")
+  require("../../../res/drawable/tab_btn_icon_recomm_s.png"),
 ];
 
 const generalImg = [
   require("../../../res/drawable/tab_btn_icon_general_n.png"),
-  require("../../../res/drawable/tab_btn_icon_general_s.png")
+  require("../../../res/drawable/tab_btn_icon_general_s.png"),
 ];
 
 const freeImg = [
   require("../../../res/drawable/tab_btn_icon_free_n.png"),
   require("../../../res/drawable/tab_btn_icon_free_s.png"),
-  require("../../../res/drawable/s_info_icon_charge_sel.png")
+  require("../../../res/drawable/s_info_icon_charge_sel.png"),
 ];
 
 const imgList = [recommImg, generalImg, freeImg];
@@ -48,7 +48,7 @@ const summaryColor = [
   COMMON.SMMMARY_COLOR_4.RGBA,
   COMMON.SMMMARY_COLOR_5.RGBA,
   COMMON.SMMMARY_COLOR_6.RGBA,
-  COMMON.SMMMARY_COLOR_7.RGBA
+  COMMON.SMMMARY_COLOR_7.RGBA,
 ];
 
 const defaultColor = "rgba(255, 255, 255, 0.9)";
@@ -56,17 +56,19 @@ const defaultColor = "rgba(255, 255, 255, 0.9)";
 const summaryPageColor = [
   COMMON.SMMMARY_PAGE_COLOR_1.RGBA,
   COMMON.SMMMARY_PAGE_COLOR_2.RGBA,
-  COMMON.SMMMARY_PAGE_COLOR_3.RGBA
+  COMMON.SMMMARY_PAGE_COLOR_3.RGBA,
 ];
 
+// 모의주행
 const simImg = [
   require("../../../res/drawable/btn_sim_n.png"),
-  require("../../../res/drawable/btn_sim_s.png")
+  require("../../../res/drawable/btn_sim_s.png"),
 ];
 
+// 안내시작
 const goImg = [
   require("../../../res/drawable/btn_go_ani_n_1.png"),
-  require("../../../res/drawable/btn_go_ani_s.png")
+  require("../../../res/drawable/btn_go_ani_s.png"),
 ];
 
 const images = [
@@ -74,14 +76,14 @@ const images = [
   require("../../../res/drawable/btn_go_ani_n_2.png"),
   require("../../../res/drawable/btn_go_ani_n_3.png"),
   require("../../../res/drawable/btn_go_ani_n_4.png"),
-  require("../../../res/drawable/btn_go_ani_n_5.png")
+  require("../../../res/drawable/btn_go_ani_n_5.png"),
 ];
 
 export default class FatosRouteSummaryView extends React.Component {
   state = {
     selectIndex: 0,
     summaryData: null,
-    visible: false
+    visible: false,
   };
 
   constructor(props) {
@@ -97,38 +99,38 @@ export default class FatosRouteSummaryView extends React.Component {
   }
 
   preloadImages() {
-    var uris = recommImg.map(image => ({
-      uri: Image.resolveAssetSource(image).uri
+    var uris = recommImg.map((image) => ({
+      uri: Image.resolveAssetSource(image).uri,
     }));
 
     FastImage.preload(uris);
 
-    uris = generalImg.map(image => ({
-      uri: Image.resolveAssetSource(image).uri
+    uris = generalImg.map((image) => ({
+      uri: Image.resolveAssetSource(image).uri,
     }));
 
     FastImage.preload(uris);
 
-    uris = freeImg.map(image => ({
-      uri: Image.resolveAssetSource(image).uri
+    uris = freeImg.map((image) => ({
+      uri: Image.resolveAssetSource(image).uri,
     }));
 
     FastImage.preload(uris);
 
-    uris = simImg.map(image => ({
-      uri: Image.resolveAssetSource(image).uri
+    uris = simImg.map((image) => ({
+      uri: Image.resolveAssetSource(image).uri,
     }));
 
     FastImage.preload(uris);
 
-    uris = goImg.map(image => ({
-      uri: Image.resolveAssetSource(image).uri
+    uris = goImg.map((image) => ({
+      uri: Image.resolveAssetSource(image).uri,
     }));
 
     FastImage.preload(uris);
 
-    uris = images.map(image => ({
-      uri: Image.resolveAssetSource(image).uri
+    uris = images.map((image) => ({
+      uri: Image.resolveAssetSource(image).uri,
     }));
 
     FastImage.preload(uris);
@@ -194,14 +196,14 @@ export default class FatosRouteSummaryView extends React.Component {
         Text: {
           color: summaryColor[index],
           fontSize: 15,
-          paddingTop: 5
+          paddingTop: 5,
         },
 
         selectViwe: {
           backgroundColor: summaryColor[index],
           height: 3,
-          width: 30
-        }
+          width: 30,
+        },
       });
 
       img = imgList[index][1];
@@ -210,14 +212,14 @@ export default class FatosRouteSummaryView extends React.Component {
         Text: {
           color: "gray",
           fontSize: 15,
-          paddingTop: 5
+          paddingTop: 5,
         },
 
         selectViwe: {
           backgroundColor: defaultColor,
           height: 3,
-          width: 30
-        }
+          width: 30,
+        },
       });
 
       img = imgList[index][0];
@@ -226,7 +228,7 @@ export default class FatosRouteSummaryView extends React.Component {
     var summaryString = [
       this.languageManager.getCodeName("recommend"),
       this.languageManager.getCodeName("general"),
-      this.languageManager.getCodeName("free")
+      this.languageManager.getCodeName("free"),
     ];
 
     var item = (
@@ -276,89 +278,89 @@ export default class FatosRouteSummaryView extends React.Component {
         flex: 1,
         backgroundColor: summaryPageColor[index],
         borderRadius: 5,
-        flexDirection: "row"
+        flexDirection: "row",
       },
 
       contentsView: {
         flex: 3,
-        flexDirection: "column"
+        flexDirection: "column",
       },
 
       content1: {
         flex: 1,
         alignItems: "flex-start",
-        justifyContent: "center"
+        justifyContent: "center",
       },
 
       content2: {
         flex: 1,
         alignItems: "center",
         justifyContent: "center",
-        flexDirection: "row"
+        flexDirection: "row",
       },
 
       content3: {
         flex: 1,
         alignItems: "flex-start",
-        justifyContent: "center"
+        justifyContent: "center",
       },
 
       content4: {
         flex: 1,
         alignItems: "flex-start",
         justifyContent: "center",
-        flexDirection: "row"
+        flexDirection: "row",
       },
 
       button: {
         flex: 1,
         alignItems: "center",
-        justifyContent: "center"
+        justifyContent: "center",
       },
 
       ImageStyle: {
         height: 55,
-        width: 55
+        width: 55,
       },
 
       ImageStyle2: {
         height: 65,
-        width: 55
+        width: 55,
       },
 
       Text: {
         color: "white",
         fontSize: 12,
         position: "absolute",
-        bottom: 5
+        bottom: 5,
       },
 
       time: {
         color: "white",
         fontSize: 17,
         paddingLeft: 10,
-        paddingTop: 10
+        paddingTop: 10,
       },
 
       length: {
         color: "white",
         fontSize: 12,
         paddingLeft: 10,
-        paddingBottom: 5
+        paddingBottom: 5,
       },
 
       fee: {
         color: "white",
         fontSize: 12,
         paddingLeft: 3,
-        paddingBottom: 5
+        paddingBottom: 5,
       },
 
       feeImg: {
         marginTop: 1,
         height: 12,
-        width: 12
-      }
+        width: 12,
+      },
     });
 
     var freeView = null;
@@ -399,9 +401,7 @@ export default class FatosRouteSummaryView extends React.Component {
       <View style={pageStyles.page} key={key}>
         <View style={pageStyles.contentsView}>
           <View style={pageStyles.content1}>
-            <Text style={pageStyles.time}>
-              {FatosUtil.getTimeStringSeconds(Time)}
-            </Text>
+            <Text style={pageStyles.time}>{FatosUtil.getTimeStringSeconds(Time)}</Text>
           </View>
           <View style={pageStyles.content2}>
             <View style={pageStyles.content3}>
@@ -419,6 +419,7 @@ export default class FatosRouteSummaryView extends React.Component {
               this.onPressStart(selectIndex);
             }}
           >
+            {/*<FastImage style={ pageStyles.ImageStyle } source={ goImg[0] } />*/}
             <ImageSequence
               style={pageStyles.ImageStyle2}
               images={images}
@@ -436,7 +437,7 @@ export default class FatosRouteSummaryView extends React.Component {
 
   getPageList() {
     var index = 0;
-    return this.state.summaryData.contexts.map(data => {
+    return this.state.summaryData.contexts.map((data) => {
       var page = this.getPage(index, data);
       ++index;
       return page;
@@ -445,7 +446,7 @@ export default class FatosRouteSummaryView extends React.Component {
 
   getSummaryItemList() {
     var index = 0;
-    return this.state.summaryData.contexts.map(data => {
+    return this.state.summaryData.contexts.map((data) => {
       var item = this.getSummaryItem(index, data);
       ++index;
       return item;
@@ -496,9 +497,7 @@ export default class FatosRouteSummaryView extends React.Component {
       return null;
     }
 
-    var summaryView = (
-      <View style={styles.summaryView}>{this.getSummaryItemList()}</View>
-    );
+    var summaryView = <View style={styles.summaryView}>{this.getSummaryItemList()}</View>;
 
     var pages = (
       <View style={styles.pageView}>
@@ -526,14 +525,14 @@ const styles = StyleSheet.create({
   container: {
     position: "absolute",
     width: "100%",
-    bottom: 0
+    bottom: 0,
   },
 
   summaryView: {
     width: "100%",
     height: 70,
     flexDirection: "row",
-    backgroundColor: defaultColor
+    backgroundColor: defaultColor,
   },
 
   pageView: {
@@ -543,43 +542,43 @@ const styles = StyleSheet.create({
     paddingRight: 10,
     height: 70,
     flexDirection: "row",
-    bottom: 80
+    bottom: 80,
   },
 
   ImageStyle: {
     height: 30,
-    width: 30
+    width: 30,
   },
 
   summaryButton: {
     flex: 1,
     alignItems: "center",
-    justifyContent: "flex-start"
+    justifyContent: "flex-start",
   },
 
   summaryItem: {
     flex: 1,
     flexDirection: "column",
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
   },
 
   Text: {
     color: "gray",
     fontSize: 15,
-    paddingTop: 5
+    paddingTop: 5,
   },
 
   selectViweContainer: {
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "flex-start",
-    height: 13
+    height: 13,
   },
 
   selectViwe: {
     backgroundColor: "rgba(255, 0, 255, 0.9)",
     height: 3,
-    width: 30
-  }
+    width: 30,
+  },
 });

@@ -10,7 +10,7 @@ import {
   NativeModules,
   TouchableWithoutFeedback,
   NativeEventEmitter,
-  TouchableOpacity
+  TouchableOpacity,
 } from "react-native";
 
 import FastImage from "react-native-fast-image";
@@ -34,26 +34,26 @@ const buildVietnam = false;
 
 const BASEMAP_LAYER_AEROPHOTO = "5";
 const BASEMAP_LAYER_BUILDING = "8";
-const BASEMAP_LAYER_POI = "9"; 
-const BASEMAP_LAYER_ROAD = "6"; 
-const BASEMAP_LAYER_SATELLITE = "4"; 
+const BASEMAP_LAYER_POI = "9";
+const BASEMAP_LAYER_ROAD = "6";
+const BASEMAP_LAYER_SATELLITE = "4";
 
 const compass_bg = [
   require("../../../res/drawable/compass_bg.png"),
-  require("../../../res/drawable/compass_bg_birdview.png")
+  require("../../../res/drawable/compass_bg_birdview.png"),
 ];
 
 const compass = [
   require("../../../res/drawable/d_compass_b_01.png"),
   require("../../../res/drawable/compass_north.png"),
-  require("../../../res/drawable/compass_h_01.png")
+  require("../../../res/drawable/compass_h_01.png"),
 ];
 
 const aero = [
   require("../../../res/drawable/map_air_road_on.png"),
   require("../../../res/drawable/map_nor.png"),
   require("../../../res/drawable/map_air_off.png"),
-  require("../../../res/drawable/map_air_on.png")
+  require("../../../res/drawable/map_air_on.png"),
 ];
 
 const currpos = [require("../../../res/drawable/curpos_2_5_1.png")];
@@ -61,7 +61,7 @@ const currpos = [require("../../../res/drawable/curpos_2_5_1.png")];
 const zoomDown = [
   require("../../../res/drawable/d_zoom_down_nor.png"),
   require("../../../res/drawable/d_zoom_down_dis.png"),
-  require("../../../res/drawable/d_zoom_down_sel.png")
+  require("../../../res/drawable/d_zoom_down_sel.png"),
 ];
 
 const zoomLevel = [require("../../../res/drawable/d_zoom_level_bg.png")];
@@ -69,7 +69,7 @@ const zoomLevel = [require("../../../res/drawable/d_zoom_level_bg.png")];
 const zoomUp = [
   require("../../../res/drawable/d_zoom_up_nor.png"),
   require("../../../res/drawable/d_zoom_up_dis.png"),
-  require("../../../res/drawable/d_zoom_up_sel.png")
+  require("../../../res/drawable/d_zoom_up_sel.png"),
 ];
 
 const zoomIntervalTime = 100;
@@ -80,7 +80,7 @@ export default class FatosRGView extends Component {
     mapAerialMode: this.curMapAerialMode,
     maplevel: this.curMapLevel,
     TouchState: 0,
-    visible: false
+    visible: false,
   };
 
   constructor(props) {
@@ -93,7 +93,7 @@ export default class FatosRGView extends Component {
     this.curMapAerialMode = DEFAULT_MAP_AERIAL_MODE;
     this.curMapLevel = DEFAULT_MAP_LEVEL;
 
-    this.nativesEmitter.addListener("MapLevelUpdateListener", data =>
+    this.nativesEmitter.addListener("MapLevelUpdateListener", (data) =>
       this.setState({ maplevel: data })
     );
 
@@ -107,44 +107,44 @@ export default class FatosRGView extends Component {
   }
 
   preloadImages() {
-    var uris = compass_bg.map(image => ({
-      uri: Image.resolveAssetSource(image).uri
+    var uris = compass_bg.map((image) => ({
+      uri: Image.resolveAssetSource(image).uri,
     }));
 
     FastImage.preload(uris);
 
-    uris = compass.map(image => ({
-      uri: Image.resolveAssetSource(image).uri
+    uris = compass.map((image) => ({
+      uri: Image.resolveAssetSource(image).uri,
     }));
 
     FastImage.preload(uris);
 
-    uris = aero.map(image => ({
-      uri: Image.resolveAssetSource(image).uri
+    uris = aero.map((image) => ({
+      uri: Image.resolveAssetSource(image).uri,
     }));
 
     FastImage.preload(uris);
 
-    uris = currpos.map(image => ({
-      uri: Image.resolveAssetSource(image).uri
+    uris = currpos.map((image) => ({
+      uri: Image.resolveAssetSource(image).uri,
     }));
 
     FastImage.preload(uris);
 
-    uris = zoomDown.map(image => ({
-      uri: Image.resolveAssetSource(image).uri
+    uris = zoomDown.map((image) => ({
+      uri: Image.resolveAssetSource(image).uri,
     }));
 
     FastImage.preload(uris);
 
-    uris = zoomLevel.map(image => ({
-      uri: Image.resolveAssetSource(image).uri
+    uris = zoomLevel.map((image) => ({
+      uri: Image.resolveAssetSource(image).uri,
     }));
 
     FastImage.preload(uris);
 
-    uris = zoomUp.map(image => ({
-      uri: Image.resolveAssetSource(image).uri
+    uris = zoomUp.map((image) => ({
+      uri: Image.resolveAssetSource(image).uri,
     }));
 
     FastImage.preload(uris);
@@ -197,7 +197,7 @@ export default class FatosRGView extends Component {
       1: BASEMAP_LAYER_BUILDING,
       2: BASEMAP_LAYER_POI,
       3: BASEMAP_LAYER_ROAD,
-      4: BASEMAP_LAYER_SATELLITE
+      4: BASEMAP_LAYER_SATELLITE,
     };
 
     if (mode === MAPMODE_AIR_ON_BUILDING_ON) {
@@ -208,7 +208,7 @@ export default class FatosRGView extends Component {
         1: "false",
         2: blnbuildVietnam,
         3: "true",
-        4: option_5
+        4: option_5,
       };
     } else if (mode === MAPMODE_AIR_ON_BUILDING_OFF) {
       var option_5 = "false";
@@ -218,7 +218,7 @@ export default class FatosRGView extends Component {
         1: "true",
         2: blnbuildVietnam,
         3: "true",
-        4: option_5
+        4: option_5,
       };
     } else if (mode === MAPMODE_AIR_OFF_BUILDING_ON) {
       var option_5 = "true";
@@ -228,7 +228,7 @@ export default class FatosRGView extends Component {
         1: "false",
         2: blnbuildVietnam,
         3: "false",
-        4: option_5
+        4: option_5,
       };
     } else if (mode === MAPMODE_AIR_ROAD_ON_BUILDING_OFF) {
       var option_5 = "true";
@@ -238,7 +238,7 @@ export default class FatosRGView extends Component {
         1: "true",
         2: blnbuildVietnam,
         3: "true",
-        4: option_5
+        4: option_5,
       };
     }
 
@@ -318,7 +318,6 @@ export default class FatosRGView extends Component {
       return null;
     }
 
-    // 뷰모드 이미지 조건
     var viewmode_bg;
     var viewmode_img;
 
@@ -384,10 +383,7 @@ export default class FatosRGView extends Component {
               this.onPressAirlineMode();
             }}
           >
-            <FastImage
-              source={compass_bg[0]}
-              style={styles.TextBackgroundStyle2}
-            >
+            <FastImage source={compass_bg[0]} style={styles.TextBackgroundStyle2}>
               <FastImage style={styles.ImageStyle} source={aero_img} />
             </FastImage>
           </TouchableOpacity>
@@ -409,11 +405,7 @@ export default class FatosRGView extends Component {
             <FastImage style={styles.ImageStyle} source={zoomUp[0]} />
           </TouchableOpacity>
 
-          <FastImage
-            activeOpacity={0.7}
-            source={zoomLevel[0]}
-            style={styles.TextBackgroundStyle3}
-          >
+          <FastImage activeOpacity={0.7} source={zoomLevel[0]} style={styles.TextBackgroundStyle3}>
             <Text style={styles.TextStyle}>{this.state.maplevel}</Text>
           </FastImage>
 
@@ -442,41 +434,40 @@ export default class FatosRGView extends Component {
 const zoomContainer = require("./styles").zoomContainer;
 
 const styles = StyleSheet.create({
-
   container: {
     position: "absolute",
     top: "30%",
     right: 10,
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
   },
 
   zoomContainer: {
-    ...zoomContainer
+    ...zoomContainer,
   },
 
   ImageStyle: {
     height: 50,
-    width: 50
+    width: 50,
   },
 
   TextBackgroundStyle: {
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
   },
 
   TextBackgroundStyle2: {
     alignItems: "center",
     justifyContent: "center",
     marginTop: 2.5,
-    marginBottom: 2.5
+    marginBottom: 2.5,
   },
 
   TextBackgroundStyle3: {
     alignItems: "center",
     justifyContent: "center",
     left: 1.5,
-    width: 48.5
+    width: 48.5,
   },
 
   TextStyle: {
@@ -487,6 +478,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     textAlign: "center",
     textAlignVertical: "center",
-    fontSize: 20
-  }
+    fontSize: 20,
+  },
 });

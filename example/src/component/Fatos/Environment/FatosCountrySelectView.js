@@ -9,7 +9,7 @@ import {
   FlatList,
   NativeModules,
   NativeEventEmitter,
-  Alert
+  Alert,
 } from "react-native";
 
 import COMMON from "../../common/common";
@@ -20,7 +20,7 @@ import Toast from "react-native-root-toast";
 
 const Images = [
   require("../../../../res/drawable/btn_1_4_1.png"),
-  require("../../../../res/drawable/icon_check.png")
+  require("../../../../res/drawable/icon_check.png"),
 ];
 
 export default class FatosCountrySelectView extends Component {
@@ -30,7 +30,7 @@ export default class FatosCountrySelectView extends Component {
 
     this.state = {
       data: [],
-      language: 0
+      language: 0,
     };
 
     this.languageManager = FatosLanguageManager.GetInstance();
@@ -70,18 +70,18 @@ export default class FatosCountrySelectView extends Component {
       data.push({
         name: COMMON.wecountry_names[i],
         index: i,
-        checkView: language == i ? checkView : null
+        checkView: language == i ? checkView : null,
       });
     }
 
     this.setState({
-      data: data
+      data: data,
     });
   }
 
   preloadImages() {
-    var uris = Images.map(image => ({
-      uri: Image.resolveAssetSource(image).uri
+    var uris = Images.map((image) => ({
+      uri: Image.resolveAssetSource(image).uri,
     }));
 
     FastImage.preload(uris);
@@ -126,7 +126,7 @@ export default class FatosCountrySelectView extends Component {
       onHidden: () => {
         this.toast.destroy();
         this.toast = null;
-      }
+      },
     });
   }
 
@@ -136,10 +136,7 @@ export default class FatosCountrySelectView extends Component {
     Alert.alert(
       "Select Country",
       msg,
-      [
-        { text: "NO" },
-        { text: "YES", onPress: () => this.onCountrySelect(index) }
-      ],
+      [{ text: "NO" }, { text: "YES", onPress: () => this.onCountrySelect(index) }],
       { cancelable: false }
     );
   }
@@ -178,7 +175,7 @@ export default class FatosCountrySelectView extends Component {
                 </View>
               </TouchableWithoutFeedback>
             )}
-            keyExtractor={item => item.index.toString()}
+            keyExtractor={(item) => item.index.toString()}
           />
         </View>
       </View>
@@ -190,7 +187,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: "column",
-    backgroundColor: "white"
+    backgroundColor: "white",
   },
 
   header: {
@@ -198,34 +195,34 @@ const styles = StyleSheet.create({
     height: 50,
     alignItems: "center",
     flexDirection: "row",
-    justifyContent: "flex-start"
+    justifyContent: "flex-start",
   },
 
   text: {
     paddingLeft: 5,
     color: "black",
-    fontSize: 20
+    fontSize: 20,
   },
 
   ImageStyle: {
     width: 40,
-    height: 40
+    height: 40,
   },
 
   checkView: {
     flex: 1,
     flexDirection: "row",
     justifyContent: "flex-end",
-    marginRight: 15
+    marginRight: 15,
   },
 
   check: {
     width: 30,
-    height: 30
+    height: 30,
   },
 
   listview: {
-    flex: 1
+    flex: 1,
   },
 
   listViewItem: {
@@ -237,12 +234,12 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "white",
     borderBottomColor: "gray",
-    borderBottomWidth: 1
+    borderBottomWidth: 1,
   },
 
   listViewItemText: {
     flex: 1,
     color: "black",
-    fontSize: 22
-  }
+    fontSize: 22,
+  },
 });

@@ -59,30 +59,12 @@ const Drawables = [
   ["laneguid_234_010", require("../../../res/drawable/laneguid_234_010.png")],
   ["laneguid_234_100", require("../../../res/drawable/laneguid_234_100.png")],
   ["laneguid_234_111", require("../../../res/drawable/laneguid_234_111.png")],
-  [
-    "laneguid_1234_0000",
-    require("../../../res/drawable/laneguid_1234_0000.png")
-  ],
-  [
-    "laneguid_1234_0001",
-    require("../../../res/drawable/laneguid_1234_0001.png")
-  ],
-  [
-    "laneguid_1234_0010",
-    require("../../../res/drawable/laneguid_1234_0010.png")
-  ],
-  [
-    "laneguid_1234_0100",
-    require("../../../res/drawable/laneguid_1234_0100.png")
-  ],
-  [
-    "laneguid_1234_1000",
-    require("../../../res/drawable/laneguid_1234_1000.png")
-  ],
-  [
-    "laneguid_1234_1111",
-    require("../../../res/drawable/laneguid_1234_1111.png")
-  ],
+  ["laneguid_1234_0000", require("../../../res/drawable/laneguid_1234_0000.png")],
+  ["laneguid_1234_0001", require("../../../res/drawable/laneguid_1234_0001.png")],
+  ["laneguid_1234_0010", require("../../../res/drawable/laneguid_1234_0010.png")],
+  ["laneguid_1234_0100", require("../../../res/drawable/laneguid_1234_0100.png")],
+  ["laneguid_1234_1000", require("../../../res/drawable/laneguid_1234_1000.png")],
+  ["laneguid_1234_1111", require("../../../res/drawable/laneguid_1234_1111.png")],
   ["laneguid_5_0", require("../../../res/drawable/laneguid_5_0.png")],
   ["laneguid_5_1", require("../../../res/drawable/laneguid_5_1.png")],
   ["laneguid_15_00", require("../../../res/drawable/laneguid_15_00.png")],
@@ -134,30 +116,12 @@ const Drawables = [
   ["laneguid_46_01", require("../../../res/drawable/laneguid_46_01.png")],
   ["laneguid_46_10", require("../../../res/drawable/laneguid_46_10.png")],
   ["laneguid_46_11", require("../../../res/drawable/laneguid_46_11.png")],
-  [
-    "laneguid_1236_0000",
-    require("../../../res/drawable/laneguid_1236_0000.png")
-  ],
-  [
-    "laneguid_1236_0001",
-    require("../../../res/drawable/laneguid_1236_0001.png")
-  ],
-  [
-    "laneguid_1236_0010",
-    require("../../../res/drawable/laneguid_1236_0010.png")
-  ],
-  [
-    "laneguid_1236_0100",
-    require("../../../res/drawable/laneguid_1236_0100.png")
-  ],
-  [
-    "laneguid_1236_1000",
-    require("../../../res/drawable/laneguid_1236_1000.png")
-  ],
-  [
-    "laneguid_1236_1111",
-    require("../../../res/drawable/laneguid_1236_1111.png")
-  ],
+  ["laneguid_1236_0000", require("../../../res/drawable/laneguid_1236_0000.png")],
+  ["laneguid_1236_0001", require("../../../res/drawable/laneguid_1236_0001.png")],
+  ["laneguid_1236_0010", require("../../../res/drawable/laneguid_1236_0010.png")],
+  ["laneguid_1236_0100", require("../../../res/drawable/laneguid_1236_0100.png")],
+  ["laneguid_1236_1000", require("../../../res/drawable/laneguid_1236_1000.png")],
+  ["laneguid_1236_1111", require("../../../res/drawable/laneguid_1236_1111.png")],
   ["laneguid_146_000", require("../../../res/drawable/laneguid_146_000.png")],
   ["laneguid_146_001", require("../../../res/drawable/laneguid_146_001.png")],
   ["laneguid_146_010", require("../../../res/drawable/laneguid_146_010.png")],
@@ -168,30 +132,12 @@ const Drawables = [
   ["laneguid_246_010", require("../../../res/drawable/laneguid_246_010.png")],
   ["laneguid_246_100", require("../../../res/drawable/laneguid_246_100.png")],
   ["laneguid_246_111", require("../../../res/drawable/laneguid_246_111.png")],
-  [
-    "laneguid_1246_0000",
-    require("../../../res/drawable/laneguid_1246_0000.png")
-  ],
-  [
-    "laneguid_1246_0001",
-    require("../../../res/drawable/laneguid_1246_0001.png")
-  ],
-  [
-    "laneguid_1246_0010",
-    require("../../../res/drawable/laneguid_1246_0010.png")
-  ],
-  [
-    "laneguid_1246_0100",
-    require("../../../res/drawable/laneguid_1246_0100.png")
-  ],
-  [
-    "laneguid_1246_1000",
-    require("../../../res/drawable/laneguid_1246_1000.png")
-  ],
-  [
-    "laneguid_1246_1111",
-    require("../../../res/drawable/laneguid_1246_1111.png")
-  ],
+  ["laneguid_1246_0000", require("../../../res/drawable/laneguid_1246_0000.png")],
+  ["laneguid_1246_0001", require("../../../res/drawable/laneguid_1246_0001.png")],
+  ["laneguid_1246_0010", require("../../../res/drawable/laneguid_1246_0010.png")],
+  ["laneguid_1246_0100", require("../../../res/drawable/laneguid_1246_0100.png")],
+  ["laneguid_1246_1000", require("../../../res/drawable/laneguid_1246_1000.png")],
+  ["laneguid_1246_1111", require("../../../res/drawable/laneguid_1246_1111.png")],
   ["laneguid_346_000", require("../../../res/drawable/laneguid_346_000.png")],
   ["laneguid_346_001", require("../../../res/drawable/laneguid_346_001.png")],
   ["laneguid_346_010", require("../../../res/drawable/laneguid_346_010.png")],
@@ -221,46 +167,28 @@ const Drawables = [
   ["laneguid_456_010", require("../../../res/drawable/laneguid_456_010.png")],
   ["laneguid_456_100", require("../../../res/drawable/laneguid_456_100.png")],
   ["laneguid_456_111", require("../../../res/drawable/laneguid_456_111.png")],
-  [
-    "laneguid_2456_0000",
-    require("../../../res/drawable/laneguid_2456_0000.png")
-  ],
-  [
-    "laneguid_2456_0001",
-    require("../../../res/drawable/laneguid_2456_0001.png")
-  ],
-  [
-    "laneguid_2456_0010",
-    require("../../../res/drawable/laneguid_2456_0010.png")
-  ],
-  [
-    "laneguid_2456_0100",
-    require("../../../res/drawable/laneguid_2456_0100.png")
-  ],
-  [
-    "laneguid_2456_1000",
-    require("../../../res/drawable/laneguid_2456_1000.png")
-  ],
-  [
-    "laneguid_2456_1111",
-    require("../../../res/drawable/laneguid_2456_1111.png")
-  ],
+  ["laneguid_2456_0000", require("../../../res/drawable/laneguid_2456_0000.png")],
+  ["laneguid_2456_0001", require("../../../res/drawable/laneguid_2456_0001.png")],
+  ["laneguid_2456_0010", require("../../../res/drawable/laneguid_2456_0010.png")],
+  ["laneguid_2456_0100", require("../../../res/drawable/laneguid_2456_0100.png")],
+  ["laneguid_2456_1000", require("../../../res/drawable/laneguid_2456_1000.png")],
+  ["laneguid_2456_1111", require("../../../res/drawable/laneguid_2456_1111.png")],
   ["under_a", require("../../../res/drawable/under_a.png")],
   ["high_a", require("../../../res/drawable/high_a.png")],
   ["under_b", require("../../../res/drawable/under_b.png")],
   ["high_b", require("../../../res/drawable/high_b.png")],
-  ["bus_b", require("../../../res/drawable/bus_b.png")]
+  ["bus_b", require("../../../res/drawable/bus_b.png")],
 ];
 
 const CoverDrawables = [
   ["pocket_a", require("../../../res/drawable/pocket_a.png")],
-  ["pocket_b", require("../../../res/drawable/pocket_b.png")]
+  ["pocket_b", require("../../../res/drawable/pocket_b.png")],
 ];
 
 export default class FatosLaneView extends Component {
   state = {
     visible: true,
-    laneInfo: null
+    laneInfo: null,
   };
 
   constructor(props) {
@@ -273,14 +201,14 @@ export default class FatosLaneView extends Component {
   componentDidMount() {}
 
   preloadImages() {
-    var uris = Drawables.map(image => ({
-      uri: Image.resolveAssetSource(image[1]).uri
+    var uris = Drawables.map((image) => ({
+      uri: Image.resolveAssetSource(image[1]).uri,
     }));
 
     FastImage.preload(uris);
 
-    uris = CoverDrawables.map(image => ({
-      uri: Image.resolveAssetSource(image[1]).uri
+    uris = CoverDrawables.map((image) => ({
+      uri: Image.resolveAssetSource(image[1]).uri,
     }));
 
     FastImage.preload(uris);
@@ -316,7 +244,7 @@ export default class FatosLaneView extends Component {
 
   getlaneImageList(list) {
     var index = 0;
-    return list.map(data => {
+    return list.map((data) => {
       var drawable = data.Drawable;
       var coverDrawable = data.CoverDrawable;
       var view = null;
@@ -327,9 +255,7 @@ export default class FatosLaneView extends Component {
         var img = this.getDrawable(drawable);
 
         if (img != null) {
-          view = (
-            <FastImage style={styles.laneImage} source={img} key={index} />
-          );
+          view = <FastImage style={styles.laneImage} source={img} key={index} />;
         }
       }
 
@@ -426,7 +352,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "flex-end",
     width: "100%",
-    bottom: 100
+    bottom: 100,
   },
 
   laneView: {
@@ -436,24 +362,24 @@ const styles = StyleSheet.create({
     height: 40,
     backgroundColor: "rgba(54, 58, 68, 0.9)",
     paddingLeft: 10,
-    paddingRight: 10
+    paddingRight: 10,
   },
 
   text: {
     color: "rgba(143, 197, 220, 1.0)",
     textAlign: "center",
     fontSize: 20,
-    paddingLeft: 5
+    paddingLeft: 5,
   },
 
   laneImage: {
     width: 30,
-    height: 30
+    height: 30,
   },
 
   coverlaneImage: {
     width: 30,
-    height: 30
+    height: 30,
   },
 
   coverlaneImage1: {
@@ -461,7 +387,7 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     width: 30,
-    height: 30
+    height: 30,
   },
 
   coverlaneImage2: {
@@ -469,6 +395,6 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     width: 30,
-    height: 30
-  }
+    height: 30,
+  },
 });

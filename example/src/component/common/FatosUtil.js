@@ -1,6 +1,4 @@
-import {
-  Image
-} from "react-native";
+import { Image } from "react-native";
 import FatosLanguageManager from "../Manager/FatosLanguageManager";
 
 const FatosUtil = {
@@ -66,13 +64,7 @@ const FatosUtil = {
   },
 
   isStringEmpty(str) {
-    if (
-      str == "" ||
-      str == null ||
-      str == undefined ||
-      str == 0 ||
-      str == NaN
-    ) {
+    if (str == "" || str == null || str == undefined || str == 0 || str == NaN) {
       return true;
     }
 
@@ -81,10 +73,10 @@ const FatosUtil = {
 
   loadImages(images) {
     return Promise.all(
-      Object.keys(images).map(i => {
+      Object.keys(images).map((i) => {
         let img = {
           ...Image.resolveAssetSource(images[i]),
-          cache: "force-cache"
+          cache: "force-cache",
         };
         return Image.prefetch(img);
       })
@@ -131,7 +123,7 @@ const FatosUtil = {
     var args = arguments,
       string = args[0],
       i = 1;
-    return string.replace(/%((%)|s|d)/g, function (m) {
+    return string.replace(/%((%)|s|d)/g, function(m) {
       // m is the matched format, e.g. %s, %d
       var val = null;
       if (m[2]) {
@@ -151,7 +143,7 @@ const FatosUtil = {
       }
       return val;
     });
-  }
+  },
 };
 
 export default FatosUtil;

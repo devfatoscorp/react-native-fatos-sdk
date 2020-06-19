@@ -7,7 +7,7 @@ import {
   Keyboard,
   TouchableWithoutFeedback,
   Text,
-  View
+  View,
 } from "react-native";
 
 var FatosMapViewNative = requireNativeComponent("FatosMapView", FatosMapView);
@@ -24,8 +24,8 @@ class FatosMapView extends Component {
 
 const styles = StyleSheet.create({
   mapViewStyle: {
-    ...StyleSheet.absoluteFill
-  }
+    ...StyleSheet.absoluteFill,
+  },
 });
 
 module.exports = FatosMapView;

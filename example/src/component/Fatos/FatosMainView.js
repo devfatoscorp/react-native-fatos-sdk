@@ -7,7 +7,7 @@ import {
   Dimensions,
   Keyboard,
   BackHandler,
-  AppState
+  AppState,
 } from "react-native";
 import React, { Component, findNodeHandle } from "react";
 
@@ -45,7 +45,7 @@ export default class FatosMainView extends Component {
     languageIndex: 0,
     searchViewVisible: false,
     render: true,
-    appState: AppState.currentState
+    appState: AppState.currentState,
   };
 
   constructor(props) {
@@ -53,62 +53,41 @@ export default class FatosMainView extends Component {
 
     this.rgData = null;
     this.native = NativeModules.FatosNaviBridgeModule;
-    this.naviEmitter = new NativeEventEmitter(
-      NativeModules.FatosNaviBridgeModule
-    );
+    this.naviEmitter = new NativeEventEmitter(NativeModules.FatosNaviBridgeModule);
 
-    this.naviEmitter.addListener("UpdateRGListener", data =>
-      this.UpdateRGListener(data)
-    );
+    this.naviEmitter.addListener("UpdateRGListener", (data) => this.UpdateRGListener(data));
 
-    this.naviEmitter.addListener("ShowIndicatorListener", data =>
-      this.ShowIndicatorListener()
-    );
+    this.naviEmitter.addListener("ShowIndicatorListener", (data) => this.ShowIndicatorListener());
 
-    this.naviEmitter.addListener("HideIndicatorListener", data =>
-      this.HideIndicatorListener()
-    );
+    this.naviEmitter.addListener("HideIndicatorListener", (data) => this.HideIndicatorListener());
 
-    this.naviEmitter.addListener("ShowWebViewListener", data =>
-      this.ShowWebViewListener()
-    );
+    this.naviEmitter.addListener("ShowWebViewListener", (data) => this.ShowWebViewListener());
 
-    this.naviEmitter.addListener("HideWebViewListener", data =>
-      this.HideWebViewListener()
-    );
+    this.naviEmitter.addListener("HideWebViewListener", (data) => this.HideWebViewListener());
 
-    this.naviEmitter.addListener("PermissionCompleteListener", data =>
+    this.naviEmitter.addListener("PermissionCompleteListener", (data) =>
       this.onPermissionComplete()
     );
 
-    this.naviEmitter.addListener("RouteResultListener", data =>
-      this.RouteResultListener(data)
-    );
+    this.naviEmitter.addListener("RouteResultListener", (data) => this.RouteResultListener(data));
 
-    this.naviEmitter.addListener("SearchResultListener", data =>
-      this.setSearchData(data)
-    );
+    this.naviEmitter.addListener("SearchResultListener", (data) => this.setSearchData(data));
 
-    this.naviEmitter.addListener("RouteCompleteListener", data =>
-      this.RouteCompleteListener()
-    );
+    this.naviEmitter.addListener("RouteCompleteListener", (data) => this.RouteCompleteListener());
 
-    this.naviEmitter.addListener("InitializeStatusListener", data =>
+    this.naviEmitter.addListener("InitializeStatusListener", (data) =>
       this.InitializeStatusListener(data)
     );
 
-    this.mapViewEmitter = new NativeEventEmitter(
-      NativeModules.FatosMapViewBridgeModule
-    );
+    this.mapViewEmitter = new NativeEventEmitter(NativeModules.FatosMapViewBridgeModule);
 
-    this.mapViewEmitter.addListener("MapLongTouchListener", data =>
+    this.mapViewEmitter.addListener("MapLongTouchListener", (data) =>
       this.MapLongTouchListener(data)
     );
 
-    this.mapViewEmitter.addListener("MapReadyListener", data =>
-      this.MapReadyListener()
-    );
+    this.mapViewEmitter.addListener("MapReadyListener", (data) => this.MapReadyListener());
 
+    // 네이티브로 리액트 쪽으로 호출이 가능하다는 셋팅을 해준다
     this.native.setListener("1");
 
     this.bottomViewRef = React.createRef();
@@ -134,15 +113,10 @@ export default class FatosMainView extends Component {
     }
 
     FatosUIManager.GetInstance().showDefaultView();
-    FatosUIManager.GetInstance().setRefreshRenderRef(
-      this.onRefreshRender.bind(this)
-    );
+    FatosUIManager.GetInstance().setRefreshRenderRef(this.onRefreshRender.bind(this));
 
     this.languageManager = FatosLanguageManager.GetInstance();
-    this.languageManager.addCalback(
-      this.changeLanguage.bind(this),
-      this.constructor.name
-    );
+    this.languageManager.addCalback(this.changeLanguage.bind(this), this.constructor.name);
 
     this.searchViewTimeout = null;
   }
@@ -177,8 +151,10 @@ export default class FatosMainView extends Component {
   }
 
   MapReadyListener() {
+    //초기 버드 뷰로 셋팅
     NativeModules.FatosMapViewBridgeModule.setViewMode(0);
 
+    //기본 언어 셋팅
     FatosEnvManager.GetInstance();
     NativeModules.FatosEnvBridgeModule.GetLanguage((error, result) => {
       if (error) {
@@ -188,6 +164,35 @@ export default class FatosMainView extends Component {
         this.setState({ languageIndex: result });
       }
     });
+
+    if (COMMON.eTestFlag.USER_LINE_TEST == true) {
+      var strJson =
+        '{"polygon":[{"color":[241,65,45,255],"points":[126.50842,37.52799, 126.50806,37.527855,126.506714,37.527206,126.50643,37.527065,126.50664,37.526855,126.50667,37.526817,126.506966,37.526497,126.50708,37.526367,126.50723,37.526237,126.50824,37.52543,126.51007,37.523968,126.51032,37.523773]}]}';
+      NativeModules.FatosMapViewBridgeModule.SetUserLine(strJson);
+    }
+
+    if (COMMON.eTestFlag.MARKER_TEST == true) {
+      NativeModules.FatosMapViewBridgeModule.InitMarkerImage(
+        "marker_bus_station.json",
+        "marker_bus_station.png"
+      );
+
+      var strJson = {
+        key: 1000,
+        pos: [126.987414, 37.56339],
+        name: "테스트",
+        imgname: "marker_station.png",
+        visible: "true",
+      };
+
+      NativeModules.FatosMapViewBridgeModule.AddMarker(JSON.stringify(strJson));
+
+      this.nativeEmt = new NativeEventEmitter(NativeModules.FatosMapViewBridgeModule);
+      this.nativeEmt.addListener(
+        "UpdatePickerInfoListener",
+        this.UpdatePickerInfoListener.bind(this)
+      );
+    }
   }
 
   UpdatePickerInfoListener(json) {}
@@ -198,16 +203,13 @@ export default class FatosMainView extends Component {
     AppState.removeEventListener("change", this.handleAppStateChange);
   }
 
-  handleAppStateChange = nextAppState => {
+  handleAppStateChange = (nextAppState) => {
     if (nextAppState === "background" || nextAppState === "inactive") {
-      // Background
-
       if (this.searchViewTimeout !== null) {
         clearTimeout(this.searchViewTimeout);
         this.searchViewTimeout = null;
       }
     } else {
-      // Foreground
     }
 
     this.setState({ appState: nextAppState });
@@ -222,6 +224,7 @@ export default class FatosMainView extends Component {
       return true;
     }
 
+    // 검색 리스트
     if (FatosUIManager.GetInstance().getSearchListView() !== null) {
       if (
         FatosUIManager.GetInstance()
@@ -235,6 +238,7 @@ export default class FatosMainView extends Component {
       }
     }
 
+    // 경로 요약 화면
     if (FatosUIManager.GetInstance().isSummaryViewVisible() === true) {
       if (FatosUIManager.GetInstance().getSummarySearchView() !== null) {
         FatosUIManager.GetInstance()
@@ -336,9 +340,7 @@ export default class FatosMainView extends Component {
   }
 
   RouteCompleteListener() {
-    var msg = FatosLanguageManager.GetInstance().getCodeName(
-      "arrived_destination"
-    );
+    var msg = FatosLanguageManager.GetInstance().getCodeName("arrived_destination");
     FatosUIManager.GetInstance().showToast(msg);
     this.native.SpeakUtterance(msg);
   }
@@ -368,17 +370,18 @@ export default class FatosMainView extends Component {
       var strMsg = data.msg;
 
       if (COMMON.eTypeRoute.eTYPE_ROUTE_DEFAULT == nTypeRoute) {
+        // 초기재탐색일 경우에만
         this.showRouteSummary();
       } else if (COMMON.eTypeRoute.eTYPE_ROUTE_REROUTE == nTypeRoute) {
-        var msg = FatosLanguageManager.GetInstance().getCodeName(
-          "reroute_status"
-        );
+        // 주기적 재탐색 토스트
+        var msg = FatosLanguageManager.GetInstance().getCodeName("reroute_status");
         FatosUIManager.GetInstance().showToast(msg);
       }
     }
   }
 
   showRouteSummary() {
+    // 경로 요약 정보 get
     this.native.GetRouteSummaryJson((error, result) => {
       if (error) {
         console.error(error);
@@ -422,7 +425,7 @@ export default class FatosMainView extends Component {
             "," +
             COMMON.SMMMARY_COLOR_3.B +
             "," +
-            COMMON.SMMMARY_COLOR_3.A
+            COMMON.SMMMARY_COLOR_3.A,
         };
 
         const screenWidth = Math.round(Dimensions.get("window").width);
@@ -430,11 +433,11 @@ export default class FatosMainView extends Component {
 
         var margin = 420;
         var xScale = 0.6;
-        var yScale =
-          1.0 - (screenHeight - (screenHeight - margin)) / screenHeight;
+        var yScale = 1.0 - (screenHeight - (screenHeight - margin)) / screenHeight;
         var hCenter = 0.5;
         var vCenter = 0.5;
 
+        // 경로 요약 mapSetting
         var mapViewBridgeModule = NativeModules.FatosMapViewBridgeModule;
         mapViewBridgeModule.SummaryMapSetting(
           lineColor,
@@ -495,21 +498,18 @@ export default class FatosMainView extends Component {
   }
 
   handleStartShouldSetResponder(evt) {
-    // TouchBegin
     Keyboard.dismiss();
+
     this.bottomViewRef.current.showMenu(false);
+
     this.onSearchViewVisible();
 
     return true;
   }
 
-  handleMoveShouldSetResponder(evt) {
-    // TouchMoved
-  }
+  handleMoveShouldSetResponder(evt) {}
 
-  handleResponderRelease(evt) {
-    // TouchEnded
-  }
+  handleResponderRelease(evt) {}
 
   onSearchViewVisible() {
     FatosUIManager.GetInstance().setSearchViewVisible(true);
@@ -632,24 +632,14 @@ export default class FatosMainView extends Component {
     }
 
     FatosUIManager.GetInstance().setBottomView(this.bottomViewRef.current);
-    FatosUIManager.GetInstance().setSearchListView(
-      this.searchListViewRef.current
-    );
-    FatosUIManager.GetInstance().setSummarySearchListView(
-      this.searchListViewRef.current
-    );
-    FatosUIManager.GetInstance().setSummarySearchView(
-      this.summarySearchViewRef.current
-    );
+    FatosUIManager.GetInstance().setSearchListView(this.searchListViewRef.current);
+    FatosUIManager.GetInstance().setSummarySearchListView(this.searchListViewRef.current);
+    FatosUIManager.GetInstance().setSummarySearchView(this.summarySearchViewRef.current);
     FatosUIManager.GetInstance().setFirstTbTView(this.firstTbTViewRef.current);
-    FatosUIManager.GetInstance().setSecondTbTView(
-      this.secondTbTViewRef.current
-    );
+    FatosUIManager.GetInstance().setSecondTbTView(this.secondTbTViewRef.current);
     FatosUIManager.GetInstance().setSDIView(this.SDIViewRef.current);
     FatosUIManager.GetInstance().setSearchView(this.searchViewRef.current);
-    FatosUIManager.GetInstance().setRouteSummaryView(
-      this.routeSummaryViewRef.current
-    );
+    FatosUIManager.GetInstance().setRouteSummaryView(this.routeSummaryViewRef.current);
     FatosUIManager.GetInstance().setLaneView(this.laneViewRef.current);
     FatosUIManager.GetInstance().setHipassView(this.hiPassViewRef.current);
     FatosUIManager.GetInstance().setRGView(this.RGViewRef.current);
@@ -657,11 +647,9 @@ export default class FatosMainView extends Component {
     return (
       <View
         style={styles.container}
-        onStartShouldSetResponder={evt =>
-          this.handleStartShouldSetResponder(evt)
-        }
-        onMoveShouldSetResponder={evt => this.handleMoveShouldSetResponder(evt)}
-        onResponderRelease={evt => this.handleResponderRelease(evt)}
+        onStartShouldSetResponder={(evt) => this.handleStartShouldSetResponder(evt)}
+        onMoveShouldSetResponder={(evt) => this.handleMoveShouldSetResponder(evt)}
+        onResponderRelease={(evt) => this.handleResponderRelease(evt)}
       >
         {mapView}
         {firstTbTView}
@@ -678,6 +666,9 @@ export default class FatosMainView extends Component {
         {summarySearchView}
         {summarySearchListView}
         {webView}
+
+        {/*<PopupWindow />*/}
+
         {indicator}
       </View>
     );
@@ -687,6 +678,6 @@ export default class FatosMainView extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    position: "relative"
-  }
+    position: "relative",
+  },
 });

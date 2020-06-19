@@ -1,11 +1,5 @@
 import React, { Component } from "react";
-import {
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-  NativeModules
-} from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View, NativeModules } from "react-native";
 
 import FatosLanguageManager from "../../Manager/FatosLanguageManager";
 import FatosEnvManager from "../../Manager/FatosEnvManager";
@@ -15,7 +9,7 @@ export default class FatosGeneralView extends Component {
   state = {
     uuid: "",
     languageIndex: 0,
-    simulGps: false
+    simulGps: false,
   };
 
   constructor(props) {
@@ -23,10 +17,7 @@ export default class FatosGeneralView extends Component {
 
     this.languageManager = FatosLanguageManager.GetInstance();
     this.state.languageIndex = this.languageManager.getLanguageIndex();
-    this.languageManager.addCalback(
-      this.changeLanguage.bind(this),
-      this.constructor.name
-    );
+    this.languageManager.addCalback(this.changeLanguage.bind(this), this.constructor.name);
 
     this.state.uuid = FatosEnvManager.GetInstance().getUUID();
   }
@@ -41,6 +32,7 @@ export default class FatosGeneralView extends Component {
         this.goCountrySelectView();
         break;
       case 1:
+        // this.goCategoryView();
         break;
       case 2:
         this.goTerms();
@@ -195,7 +187,7 @@ const styles = StyleSheet.create({
   generalView: {
     flex: 1,
     flexDirection: "column",
-    backgroundColor: "white"
+    backgroundColor: "white",
   },
 
   tabViewItem: {
@@ -205,7 +197,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     alignItems: "center",
     flexDirection: "row",
-    justifyContent: "flex-start"
+    justifyContent: "flex-start",
   },
 
   tabViewItemLeft: {
@@ -214,7 +206,7 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "flex-start"
+    justifyContent: "flex-start",
   },
 
   tabViewItemRight: {
@@ -223,7 +215,7 @@ const styles = StyleSheet.create({
     paddingRight: 10,
     flexDirection: "row",
     justifyContent: "flex-end",
-    alignItems: "center"
+    alignItems: "center",
   },
 
   tabViewItemRight2: {
@@ -232,22 +224,22 @@ const styles = StyleSheet.create({
     paddingRight: 10,
     flexDirection: "row",
     justifyContent: "flex-end",
-    alignItems: "center"
+    alignItems: "center",
   },
 
   tabViewItemText1: {
     color: "black",
-    fontSize: 20
+    fontSize: 20,
   },
 
   tabViewItemText2: {
     color: "rgba(196, 196, 196, 1.0)",
-    fontSize: 20
+    fontSize: 20,
   },
 
   tabViewItemText3: {
     color: "rgba(196, 196, 196, 1.0)",
-    fontSize: 16
+    fontSize: 16,
   },
 
   optionView2: {
@@ -259,6 +251,6 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     marginRight: 10,
     marginTop: 15,
-    marginBottom: 15
-  }
+    marginBottom: 15,
+  },
 });

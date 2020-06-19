@@ -6,14 +6,10 @@ import {
   View,
   NativeModules,
   ScrollView,
-  Image
+  Image,
 } from "react-native";
 
-import {
-  TabNavigator,
-  StackNavigator,
-  NavigationActions
-} from "react-navigation";
+import { TabNavigator, StackNavigator, NavigationActions } from "react-navigation";
 
 import Dialog, { DialogTitle, SlideAnimation } from "react-native-popup-dialog";
 
@@ -29,14 +25,14 @@ const routeImg = [
   require("../../../../res/drawable/m_s_setting_map_route_01.png"),
   require("../../../../res/drawable/m_s_setting_map_route_02.png"),
   require("../../../../res/drawable/m_s_setting_map_route_03.png"),
-  require("../../../../res/drawable/m_s_setting_map_route_04.png")
+  require("../../../../res/drawable/m_s_setting_map_route_04.png"),
 ];
 
 const carvataImg = [
   require("../../../../res/drawable/m_s_setting_map_car_01.png"),
   require("../../../../res/drawable/m_s_setting_map_car_02.png"),
   require("../../../../res/drawable/m_s_setting_map_car_03.png"),
-  require("../../../../res/drawable/m_s_setting_map_car_04.png")
+  require("../../../../res/drawable/m_s_setting_map_car_04.png"),
 ];
 
 export default class FatosNavigationView extends Component {
@@ -73,7 +69,7 @@ export default class FatosNavigationView extends Component {
       seatPosition: 0,
       carvataDialogShow: false,
       carvata: 0,
-      dem: false
+      dem: false,
     };
     var native = NativeModules.FatosEnvBridgeModule;
 
@@ -87,7 +83,7 @@ export default class FatosNavigationView extends Component {
 
     native.GetNavigationOptions((error, result) => {
       if (error) {
-        // console.error(error);
+        console.error(error);
       } else {
         var arr = JSON.parse(result);
 
@@ -246,12 +242,12 @@ export default class FatosNavigationView extends Component {
   }
 
   preloadImages() {
-    var uris = routeImg.map(image => ({
-      uri: Image.resolveAssetSource(image).uri
+    var uris = routeImg.map((image) => ({
+      uri: Image.resolveAssetSource(image).uri,
     }));
 
-    uris = carvataImg.map(image => ({
-      uri: Image.resolveAssetSource(image).uri
+    uris = carvataImg.map((image) => ({
+      uri: Image.resolveAssetSource(image).uri,
     }));
   }
 
@@ -587,9 +583,7 @@ export default class FatosNavigationView extends Component {
     var languageManager = FatosLanguageManager.GetInstance();
 
     var strRecommended = languageManager.getCodeName("recommended");
-    var strExpresswayPriority = languageManager.getCodeName(
-      "expressway_priority"
-    );
+    var strExpresswayPriority = languageManager.getCodeName("expressway_priority");
     var strFreeroodfirst = languageManager.getCodeName("freerood_first");
     var strAvoidTollroads = languageManager.getCodeName("avoid_toll_roads");
     var strShortestRoute = languageManager.getCodeName("shortest_route");
@@ -598,11 +592,7 @@ export default class FatosNavigationView extends Component {
       <View style={styles.optionView1}>
         <View style={styles.optionCol}>
           <TouchableOpacity
-            style={
-              this.state.routeOption[0] == true
-                ? styles.optionItem1
-                : styles.optionItem2
-            }
+            style={this.state.routeOption[0] == true ? styles.optionItem1 : styles.optionItem2}
             activeOpacity={0.7}
             onPress={() => {
               this.onPressRouteOption(0);
@@ -611,11 +601,7 @@ export default class FatosNavigationView extends Component {
             <Text style={styles.optionText}>{strRecommended}</Text>
           </TouchableOpacity>
           <TouchableOpacity
-            style={
-              this.state.routeOption[1] == true
-                ? styles.optionItem1
-                : styles.optionItem2
-            }
+            style={this.state.routeOption[1] == true ? styles.optionItem1 : styles.optionItem2}
             activeOpacity={0.7}
             onPress={() => {
               this.onPressRouteOption(1);
@@ -624,11 +610,7 @@ export default class FatosNavigationView extends Component {
             <Text style={styles.optionText}>{strExpresswayPriority}</Text>
           </TouchableOpacity>
           <TouchableOpacity
-            style={
-              this.state.routeOption[2] == true
-                ? styles.optionItem1
-                : styles.optionItem2
-            }
+            style={this.state.routeOption[2] == true ? styles.optionItem1 : styles.optionItem2}
             activeOpacity={0.7}
             onPress={() => {
               this.onPressRouteOption(2);
@@ -639,11 +621,7 @@ export default class FatosNavigationView extends Component {
         </View>
         <View style={styles.optionCol}>
           <TouchableOpacity
-            style={
-              this.state.routeOption[3] == true
-                ? styles.optionItem1
-                : styles.optionItem2
-            }
+            style={this.state.routeOption[3] == true ? styles.optionItem1 : styles.optionItem2}
             activeOpacity={0.7}
             onPress={() => {
               this.onPressRouteOption(3);
@@ -652,11 +630,7 @@ export default class FatosNavigationView extends Component {
             <Text style={styles.optionText}>{strAvoidTollroads}</Text>
           </TouchableOpacity>
           <TouchableOpacity
-            style={
-              this.state.routeOption[4] == true
-                ? styles.optionItem1
-                : styles.optionItem2
-            }
+            style={this.state.routeOption[4] == true ? styles.optionItem1 : styles.optionItem2}
             activeOpacity={0.7}
             onPress={() => {
               this.onPressRouteOption(4);
@@ -708,7 +682,7 @@ export default class FatosNavigationView extends Component {
     const options = [
       { label: strOption1, value: 0 },
       { label: strOption2, value: 1 },
-      { label: strOption3, value: 2 }
+      { label: strOption3, value: 2 },
     ];
 
     var dialogContent = (
@@ -720,7 +694,7 @@ export default class FatosNavigationView extends Component {
           selectedColor={"rgba(255, 255, 255, 1.0)"}
           buttonColor={"rgba(92, 184, 182, 1.0)"}
           borderColor={"rgba(92, 184, 182, 1.0)"}
-          onPress={value => this.onPressMapColor(value)}
+          onPress={(value) => this.onPressMapColor(value)}
         />
       </View>
     );
@@ -769,11 +743,7 @@ export default class FatosNavigationView extends Component {
       <View style={styles.optionView1}>
         <View style={styles.optionCol}>
           <TouchableOpacity
-            style={
-              this.state.cameraOption[0] == true
-                ? styles.optionItem1
-                : styles.optionItem2
-            }
+            style={this.state.cameraOption[0] == true ? styles.optionItem1 : styles.optionItem2}
             activeOpacity={0.7}
             onPress={() => {
               this.onPressCameraOption(0);
@@ -782,11 +752,7 @@ export default class FatosNavigationView extends Component {
             <Text style={styles.optionText}>{strFixedCam}</Text>
           </TouchableOpacity>
           <TouchableOpacity
-            style={
-              this.state.cameraOption[1] == true
-                ? styles.optionItem1
-                : styles.optionItem2
-            }
+            style={this.state.cameraOption[1] == true ? styles.optionItem1 : styles.optionItem2}
             activeOpacity={0.7}
             onPress={() => {
               this.onPressCameraOption(1);
@@ -795,11 +761,7 @@ export default class FatosNavigationView extends Component {
             <Text style={styles.optionText}>{strMobileCam}</Text>
           </TouchableOpacity>
           <TouchableOpacity
-            style={
-              this.state.cameraOption[2] == true
-                ? styles.optionItem1
-                : styles.optionItem2
-            }
+            style={this.state.cameraOption[2] == true ? styles.optionItem1 : styles.optionItem2}
             activeOpacity={0.7}
             onPress={() => {
               this.onPressCameraOption(2);
@@ -810,11 +772,7 @@ export default class FatosNavigationView extends Component {
         </View>
         <View style={styles.optionCol}>
           <TouchableOpacity
-            style={
-              this.state.cameraOption[3] == true
-                ? styles.optionItem1
-                : styles.optionItem2
-            }
+            style={this.state.cameraOption[3] == true ? styles.optionItem1 : styles.optionItem2}
             activeOpacity={0.7}
             onPress={() => {
               this.onPressCameraOption(3);
@@ -823,11 +781,7 @@ export default class FatosNavigationView extends Component {
             <Text style={styles.optionText}>{strIntervention}</Text>
           </TouchableOpacity>
           <TouchableOpacity
-            style={
-              this.state.cameraOption[4] == true
-                ? styles.optionItem1
-                : styles.optionItem2
-            }
+            style={this.state.cameraOption[4] == true ? styles.optionItem1 : styles.optionItem2}
             activeOpacity={0.7}
             onPress={() => {
               this.onPressCameraOption(4);
@@ -836,11 +790,7 @@ export default class FatosNavigationView extends Component {
             <Text style={styles.optionText}>{strPaking}</Text>
           </TouchableOpacity>
           <TouchableOpacity
-            style={
-              this.state.cameraOption[5] == true
-                ? styles.optionItem1
-                : styles.optionItem2
-            }
+            style={this.state.cameraOption[5] == true ? styles.optionItem1 : styles.optionItem2}
             activeOpacity={0.7}
             onPress={() => {
               this.onPressCameraOption(5);
@@ -893,11 +843,7 @@ export default class FatosNavigationView extends Component {
       <View style={styles.optionView2}>
         <View style={styles.optionCol}>
           <TouchableOpacity
-            style={
-              this.state.operationState[0] == true
-                ? styles.optionItem1
-                : styles.optionItem2
-            }
+            style={this.state.operationState[0] == true ? styles.optionItem1 : styles.optionItem2}
             activeOpacity={0.7}
             onPress={() => {
               this.onPressOperationState(0);
@@ -906,11 +852,7 @@ export default class FatosNavigationView extends Component {
             <Text style={styles.optionText}>{strSharpCurve}</Text>
           </TouchableOpacity>
           <TouchableOpacity
-            style={
-              this.state.operationState[1] == true
-                ? styles.optionItem1
-                : styles.optionItem2
-            }
+            style={this.state.operationState[1] == true ? styles.optionItem1 : styles.optionItem2}
             activeOpacity={0.7}
             onPress={() => {
               this.onPressOperationState(1);
@@ -919,11 +861,7 @@ export default class FatosNavigationView extends Component {
             <Text style={styles.optionText}>{strChild}</Text>
           </TouchableOpacity>
           <TouchableOpacity
-            style={
-              this.state.operationState[2] == true
-                ? styles.optionItem1
-                : styles.optionItem2
-            }
+            style={this.state.operationState[2] == true ? styles.optionItem1 : styles.optionItem2}
             activeOpacity={0.7}
             onPress={() => {
               this.onPressOperationState(2);
@@ -973,11 +911,7 @@ export default class FatosNavigationView extends Component {
       <View style={styles.optionView2}>
         <View style={styles.optionCol}>
           <TouchableOpacity
-            style={
-              this.state.facility[0] == true
-                ? styles.optionItem1
-                : styles.optionItem2
-            }
+            style={this.state.facility[0] == true ? styles.optionItem1 : styles.optionItem2}
             activeOpacity={0.7}
             onPress={() => {
               this.onPressFacility(0);
@@ -1025,10 +959,7 @@ export default class FatosNavigationView extends Component {
     var strOption1 = languageManager.getCodeName("detail_guide");
     var strOption2 = languageManager.getCodeName("simple_guide");
 
-    const options = [
-      { label: strOption1, value: 0 },
-      { label: strOption2, value: 1 }
-    ];
+    const options = [{ label: strOption1, value: 0 }, { label: strOption2, value: 1 }];
 
     var dialogContent = (
       <View style={styles.optionView2}>
@@ -1039,7 +970,7 @@ export default class FatosNavigationView extends Component {
           selectedColor={"rgba(255, 255, 255, 1.0)"}
           buttonColor={"rgba(92, 184, 182, 1.0)"}
           borderColor={"rgba(92, 184, 182, 1.0)"}
-          onPress={value => this.onPressGuidevoice(value)}
+          onPress={(value) => this.onPressGuidevoice(value)}
         />
       </View>
     );
@@ -1080,10 +1011,7 @@ export default class FatosNavigationView extends Component {
     var strOption1 = languageManager.getCodeName("on");
     var strOption2 = languageManager.getCodeName("off");
 
-    const options = [
-      { label: strOption1, value: 0 },
-      { label: strOption2, value: 1 }
-    ];
+    const options = [{ label: strOption1, value: 0 }, { label: strOption2, value: 1 }];
 
     var dialogContent = (
       <View style={styles.optionView2}>
@@ -1094,7 +1022,7 @@ export default class FatosNavigationView extends Component {
           selectedColor={"rgba(255, 255, 255, 1.0)"}
           buttonColor={"rgba(92, 184, 182, 1.0)"}
           borderColor={"rgba(92, 184, 182, 1.0)"}
-          onPress={value => this.onPressRediscover(value)}
+          onPress={(value) => this.onPressRediscover(value)}
         />
       </View>
     );
@@ -1135,10 +1063,7 @@ export default class FatosNavigationView extends Component {
     var strOption1 = "5" + strMin;
     var strOption2 = "10" + strMin;
 
-    const options = [
-      { label: strOption1, value: 0 },
-      { label: strOption2, value: 1 }
-    ];
+    const options = [{ label: strOption1, value: 0 }, { label: strOption2, value: 1 }];
 
     var dialogContent = (
       <View style={styles.optionView2}>
@@ -1149,7 +1074,7 @@ export default class FatosNavigationView extends Component {
           selectedColor={"rgba(255, 255, 255, 1.0)"}
           buttonColor={"rgba(92, 184, 182, 1.0)"}
           borderColor={"rgba(92, 184, 182, 1.0)"}
-          onPress={value => this.onPressWayPoint(value)}
+          onPress={(value) => this.onPressWayPoint(value)}
         />
       </View>
     );
@@ -1377,10 +1302,7 @@ export default class FatosNavigationView extends Component {
     var strLeft = languageManager.getCodeName("left");
     var strRight = languageManager.getCodeName("right");
 
-    const options = [
-      { label: strLeft, value: 0 },
-      { label: strRight, value: 1 }
-    ];
+    const options = [{ label: strLeft, value: 0 }, { label: strRight, value: 1 }];
 
     var dialogContent = (
       <View style={styles.optionView2}>
@@ -1391,7 +1313,7 @@ export default class FatosNavigationView extends Component {
           selectedColor={"rgba(255, 255, 255, 1.0)"}
           buttonColor={"rgba(92, 184, 182, 1.0)"}
           borderColor={"rgba(92, 184, 182, 1.0)"}
-          onPress={value => this.onPressSeatPosition(value)}
+          onPress={(value) => this.onPressSeatPosition(value)}
         />
       </View>
     );
@@ -1522,10 +1444,7 @@ export default class FatosNavigationView extends Component {
               <Text style={styles.tabViewItemText1}>{strRouteColor}</Text>
             </View>
             <View style={styles.tabViewItemRight}>
-              <FastImage
-                style={styles.routeImageStyle}
-                source={routeImg[pathLineColor]}
-              />
+              <FastImage style={styles.routeImageStyle} source={routeImg[pathLineColor]} />
             </View>
           </TouchableOpacity>
           <TouchableOpacity
@@ -1539,10 +1458,7 @@ export default class FatosNavigationView extends Component {
               <Text style={styles.tabViewItemText1}>{strCarIconStyle}</Text>
             </View>
             <View style={styles.tabViewItemRight}>
-              <FastImage
-                style={styles.carvataImageStyle}
-                source={carvataImg[varvatga]}
-              />
+              <FastImage style={styles.carvataImageStyle} source={carvataImg[varvatga]} />
             </View>
           </TouchableOpacity>
           <TouchableOpacity
@@ -1765,7 +1681,7 @@ const styles = StyleSheet.create({
   navigationView: {
     flex: 1,
     flexDirection: "column",
-    backgroundColor: "white"
+    backgroundColor: "white",
   },
 
   tabViewItem: {
@@ -1775,7 +1691,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     alignItems: "center",
     flexDirection: "row",
-    justifyContent: "flex-start"
+    justifyContent: "flex-start",
   },
 
   tabViewItemLeft: {
@@ -1784,7 +1700,7 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "flex-start"
+    justifyContent: "flex-start",
   },
 
   tabViewItemLeft2: {
@@ -1793,13 +1709,13 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "flex-start"
+    justifyContent: "flex-start",
   },
 
   routeColor: {
     width: 80,
     height: 10,
-    backgroundColor: "rgba(255, 0, 0, 1.0)"
+    backgroundColor: "rgba(255, 0, 0, 1.0)",
   },
 
   tabViewItemRight: {
@@ -1808,17 +1724,17 @@ const styles = StyleSheet.create({
     paddingRight: 10,
     flexDirection: "row",
     justifyContent: "flex-end",
-    alignItems: "center"
+    alignItems: "center",
   },
 
   tabViewItemText1: {
     color: "black",
-    fontSize: 20
+    fontSize: 20,
   },
 
   tabViewItemText2: {
     color: "rgba(196, 196, 196, 1.0)",
-    fontSize: 20
+    fontSize: 20,
   },
 
   optionView1: {
@@ -1830,7 +1746,7 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     marginRight: 10,
     marginTop: 15,
-    marginBottom: 15
+    marginBottom: 15,
   },
 
   optionView2: {
@@ -1842,14 +1758,14 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     marginRight: 10,
     marginTop: 15,
-    marginBottom: 15
+    marginBottom: 15,
   },
 
   optionCol: {
     flexDirection: "row",
     flex: 1,
     height: 20,
-    backgroundColor: "rgba(208, 208, 208, 1.0)"
+    backgroundColor: "rgba(208, 208, 208, 1.0)",
   },
 
   optionItem1: {
@@ -1857,7 +1773,7 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(92, 184, 182, 1.0)",
     justifyContent: "center",
     alignItems: "center",
-    margin: 1
+    margin: 1,
   },
 
   optionItem2: {
@@ -1865,22 +1781,22 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(208, 208, 208, 1.0)",
     justifyContent: "center",
     alignItems: "center",
-    margin: 1
+    margin: 1,
   },
 
   optionText: {
     color: "white",
     fontSize: 12,
-    textAlign: "center"
+    textAlign: "center",
   },
 
   routeImageStyle: {
     width: 25,
-    height: 25
+    height: 25,
   },
 
   carvataImageStyle: {
     width: 25,
-    height: 25
-  }
+    height: 25,
+  },
 });

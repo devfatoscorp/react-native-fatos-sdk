@@ -6,7 +6,7 @@ import {
   View,
   Image,
   Dimensions,
-  Platform
+  Platform,
 } from "react-native";
 
 import { WebView } from "react-native-webview";
@@ -23,8 +23,8 @@ export default class FatosCopyRightView extends Component {
   }
 
   preloadImages() {
-    var uris = backImg.map(image => ({
-      uri: Image.resolveAssetSource(image).uri
+    var uris = backImg.map((image) => ({
+      uri: Image.resolveAssetSource(image).uri,
     }));
 
     FastImage.preload(uris);
@@ -48,7 +48,7 @@ export default class FatosCopyRightView extends Component {
           source={{
             uri: isAndroid
               ? "file:///android_asset/html/copyright_fatos.html"
-              : "./assets/html/copyright_fatos.html"
+              : "./assets/html/copyright_fatos.html",
           }}
         />
       );
@@ -62,7 +62,7 @@ export default class FatosCopyRightView extends Component {
           source={{
             uri: isAndroid
               ? "file:///android_asset/html/copyright_fatos_eng.html"
-              : "./assets/html/copyright_fatos_eng.html"
+              : "./assets/html/copyright_fatos_eng.html",
           }}
         />
       );
@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: "column",
-    backgroundColor: "white"
+    backgroundColor: "white",
   },
 
   header: {
@@ -108,21 +108,21 @@ const styles = StyleSheet.create({
     height: 50,
     alignItems: "center",
     flexDirection: "row",
-    justifyContent: "flex-start"
+    justifyContent: "flex-start",
   },
 
   ImageStyle: {
     width: 40,
-    height: 40
+    height: 40,
   },
 
   text: {
     paddingLeft: 5,
     color: "black",
-    fontSize: 20
+    fontSize: 20,
   },
 
   webView: {
-    flex: 1
-  }
+    flex: 1,
+  },
 });

@@ -7,7 +7,7 @@ import {
   NativeEventEmitter,
   Image,
   TouchableOpacity,
-  Platform
+  Platform,
 } from "react-native";
 
 import FatosUtil from "../common/FatosUtil";
@@ -21,7 +21,7 @@ const images = [require("../../../res/drawable/btn_close_n.png")];
 export default class FatosSearchView extends React.Component {
   state = {
     visible: true,
-    touchMoveMode: "0"
+    touchMoveMode: "0",
   };
 
   constructor(props) {
@@ -35,11 +35,9 @@ export default class FatosSearchView extends React.Component {
     this.handleChangeText = this.handleChangeText.bind(this);
     this.searchSubmit = this.searchSubmit.bind(this);
 
-    this.nativesEmitter = new NativeEventEmitter(
-      NativeModules.FatosMapViewBridgeModule
-    );
+    this.nativesEmitter = new NativeEventEmitter(NativeModules.FatosMapViewBridgeModule);
 
-    this.nativesEmitter.addListener("TouchMoveModeListener", data =>
+    this.nativesEmitter.addListener("TouchMoveModeListener", (data) =>
       this.setState({ touchMoveMode: data })
     );
 
@@ -47,8 +45,8 @@ export default class FatosSearchView extends React.Component {
   }
 
   preloadImages() {
-    var uris = images.map(image => ({
-      uri: Image.resolveAssetSource(image).uri
+    var uris = images.map((image) => ({
+      uri: Image.resolveAssetSource(image).uri,
     }));
 
     FastImage.preload(uris);
@@ -120,13 +118,13 @@ export default class FatosSearchView extends React.Component {
   }
 
   render() {
-
     if (this.state.visible === false) {
       return null;
     }
 
-    if (FatosUIManager.GetInstance().isSearchViewVisible() === false)
-      return null;
+    if (FatosUIManager.GetInstance().isSearchViewVisible() === false) return null;
+
+    // touchMoveMode == '0' 이면 현위치
 
     if (this.state.touchMoveMode !== "0") {
       this.rgData = this.props.rgData;
@@ -167,7 +165,7 @@ const styles = StyleSheet.create({
     position: "absolute",
     flexDirection: "row",
     width: "100%",
-    top: 40
+    top: 40,
   },
 
   backbutton: {
@@ -182,7 +180,7 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: 5,
     borderColor: "gray",
     borderWidth: 1,
-    marginRight: 10
+    marginRight: 10,
   },
 
   searchview: {
@@ -197,7 +195,7 @@ const styles = StyleSheet.create({
     borderColor: "gray",
     borderWidth: 1,
     marginLeft: 10,
-    marginRight: 10
+    marginRight: 10,
   },
 
   input: {
@@ -205,11 +203,11 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     height: 50,
     fontWeight: "bold",
-    fontSize: 20
+    fontSize: 20,
   },
 
   buttonClose: {
     width: 18,
-    height: 18
-  }
+    height: 18,
+  },
 });

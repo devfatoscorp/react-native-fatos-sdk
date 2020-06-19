@@ -6,7 +6,7 @@ import FatosUIManager from "../Manager/FatosUIManager";
 export default class SpeedoMeter extends React.Component {
   state = {
     speed: 0,
-    visible: false
+    visible: false,
   };
 
   constructor(props) {
@@ -36,7 +36,7 @@ export default class SpeedoMeter extends React.Component {
   }
 
   setVisible(val) {
-      this.setState({ visible: val });
+    this.setState({ visible: val });
   }
 
   render() {
@@ -65,7 +65,7 @@ export default class SpeedoMeter extends React.Component {
 
 var SpeedoMeterView = {
   width: 110,
-  height: 60
+  height: 60,
 };
 
 const styles = StyleSheet.create({
@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
     height: SpeedoMeterView.height,
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
   },
 
   textL: {
@@ -91,7 +91,7 @@ const styles = StyleSheet.create({
     fontWeight: "400",
     textShadowColor: "#ffffff",
     textShadowOffset: { width: -2, height: 0.1 },
-    textShadowRadius: 1
+    textShadowRadius: 1,
   },
   textLT: {
     textAlign: "center",
@@ -104,7 +104,7 @@ const styles = StyleSheet.create({
     fontWeight: "400",
     textShadowColor: "#ffffff",
     textShadowOffset: { width: -2, height: -1 },
-    textShadowRadius: 1
+    textShadowRadius: 1,
   },
   textT: {
     textAlign: "center",
@@ -117,7 +117,7 @@ const styles = StyleSheet.create({
     fontWeight: "400",
     textShadowColor: "#ffffff",
     textShadowOffset: { width: 0.1, height: -2 },
-    textShadowRadius: 1
+    textShadowRadius: 1,
   },
   textTR: {
     textAlign: "center",
@@ -130,7 +130,7 @@ const styles = StyleSheet.create({
     fontWeight: "400",
     textShadowColor: "#ffffff",
     textShadowOffset: { width: 2, height: -2 },
-    textShadowRadius: 1
+    textShadowRadius: 1,
   },
   textR: {
     textAlign: "center",
@@ -143,7 +143,7 @@ const styles = StyleSheet.create({
     fontWeight: "400",
     textShadowColor: "#ffffff",
     textShadowOffset: { width: 2, height: 0.1 },
-    textShadowRadius: 1
+    textShadowRadius: 1,
   },
   textRB: {
     textAlign: "center",
@@ -156,7 +156,7 @@ const styles = StyleSheet.create({
     fontWeight: "400",
     textShadowColor: "#ffffff",
     textShadowOffset: { width: 2, height: 2 },
-    textShadowRadius: 1
+    textShadowRadius: 1,
   },
   textB: {
     textAlign: "center",
@@ -169,7 +169,7 @@ const styles = StyleSheet.create({
     fontWeight: "400",
     textShadowColor: "#ffffff",
     textShadowOffset: { width: 0.1, height: 2 },
-    textShadowRadius: 1
+    textShadowRadius: 1,
   },
   textLB: {
     textAlign: "center",
@@ -182,6 +182,6 @@ const styles = StyleSheet.create({
     fontWeight: "400",
     textShadowColor: "#ffffff",
     textShadowOffset: { width: -2, height: 2 },
-    textShadowRadius: 1
-  }
+    textShadowRadius: 1,
+  },
 });

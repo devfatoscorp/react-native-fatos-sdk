@@ -6,7 +6,7 @@ import {
   TouchableWithoutFeedback,
   FlatList,
   NativeModules,
-  NativeEventEmitter
+  NativeEventEmitter,
 } from "react-native";
 
 import FatosUtil from "../common/FatosUtil";
@@ -23,7 +23,7 @@ export default class FatosSearchListView extends React.Component {
     seed: 1,
     error: null,
     refreshing: false,
-    visible: false
+    visible: false,
   };
 
   constructor(props) {
@@ -32,9 +32,7 @@ export default class FatosSearchListView extends React.Component {
   }
 
   setSearchData(searchData) {
-    var message = FatosLanguageManager.GetInstance().getCodeName(
-      "search_error"
-    );
+    var message = FatosLanguageManager.GetInstance().getCodeName("search_error");
 
     if (!searchData || searchData.length === 0) {
       FatosUIManager.GetInstance().showToast(message);
@@ -80,13 +78,28 @@ export default class FatosSearchListView extends React.Component {
             fullAddName = addr2;
           }
 
+          var frontLat;
+          var frontLon;
+
+          if (FatosUtil.isStringEmpty(entx) === true) {
+            frontLon = posx.toString();
+          } else {
+            frontLon = entx.toString();
+          }
+
+          if (FatosUtil.isStringEmpty(enty) === true) {
+            frontLat = posy.toString();
+          } else {
+            frontLat = enty.toString();
+          }
+
           data.push({
             id: id,
             name: name,
             fullAddName: fullAddName,
             key: i,
-            frontLat: enty.toString(),
-            frontLon: entx.toString()
+            frontLat: frontLat,
+            frontLon: frontLon,
           });
         }
       }
@@ -95,7 +108,7 @@ export default class FatosSearchListView extends React.Component {
         totalCount: 0,
         count: 0,
         page: pgno,
-        data: data
+        data: data,
       });
     }
   }
@@ -164,7 +177,7 @@ export default class FatosSearchListView extends React.Component {
                 </View>
               </TouchableWithoutFeedback>
             )}
-            keyExtractor={item => item.key.toString()}
+            keyExtractor={(item) => item.key.toString()}
           />
         </View>
       </View>
@@ -180,13 +193,13 @@ const styles = StyleSheet.create({
     height: "100%",
     top: 100,
     // top 100 + 하단ui height = 195
-    paddingBottom: 195
+    paddingBottom: 195,
   },
 
   listContainer: {
     flex: 1,
     marginLeft: 10,
-    marginRight: 10
+    marginRight: 10,
   },
 
   flatview: {
@@ -202,15 +215,15 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: 5,
     borderColor: "gray",
     borderWidth: 1,
-    padding: 5
+    padding: 5,
   },
   name: {
     color: "black",
     fontSize: 18,
-    marginBottom: 3
+    marginBottom: 3,
   },
   address: {
     color: "brown",
-    fontSize: 15
-  }
+    fontSize: 15,
+  },
 });

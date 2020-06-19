@@ -13,7 +13,7 @@ import {
   TouchableOpacity,
   Platform,
   Dimensions,
-  TextInput
+  TextInput,
 } from "react-native";
 
 import FastImage from "react-native-fast-image";
@@ -27,14 +27,14 @@ const images = [
   require("../../../res/drawable/summary_icon_middle.png"),
   require("../../../res/drawable/summary_icon_destination.png"),
   require("../../../res/drawable/btn_close_n.png"),
-  require("../../../res/drawable/btn_change_n.png")
+  require("../../../res/drawable/btn_change_n.png"),
 ];
 
 export default class FatosSummarySearchView extends React.Component {
   state = {
     searchStartText: "",
     searchEndText: "",
-    visible: false
+    visible: false,
   };
 
   constructor(props) {
@@ -54,8 +54,8 @@ export default class FatosSummarySearchView extends React.Component {
   }
 
   preloadImages() {
-    var uris = images.map(image => ({
-      uri: Image.resolveAssetSource(image).uri
+    var uris = images.map((image) => ({
+      uri: Image.resolveAssetSource(image).uri,
     }));
 
     FastImage.preload(uris);
@@ -100,6 +100,7 @@ export default class FatosSummarySearchView extends React.Component {
     }
 
     this.native.Search(this.state.searchStartText);
+    // this.setState( {searchStartText : ''} );
     this.props.summarySearchListView.current.setStartFlag(true);
   }
 
@@ -113,6 +114,7 @@ export default class FatosSummarySearchView extends React.Component {
     }
 
     this.native.Search(this.state.searchEndText);
+
     this.props.summarySearchListView.current.setGoalFlag(true);
   }
 
@@ -194,7 +196,7 @@ const styles = StyleSheet.create({
   container: {
     position: "absolute",
     width: "100%",
-    top: 40
+    top: 40,
   },
 
   summarySearchView: {
@@ -209,7 +211,7 @@ const styles = StyleSheet.create({
     borderColor: "rgba(219, 221, 210, 1.0)",
     borderWidth: 1,
     marginLeft: 10,
-    marginRight: 10
+    marginRight: 10,
   },
 
   iconView: {
@@ -217,37 +219,37 @@ const styles = StyleSheet.create({
     width: 30,
     height: 85,
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
   },
 
   icon1: {
     width: 12,
-    height: 12
+    height: 12,
   },
 
   icon2: {
     width: 3,
     height: 3,
     marginTop: 7,
-    marginBottom: 3
+    marginBottom: 3,
   },
 
   icon3: {
     width: 3,
     height: 3,
     marginTop: 3,
-    marginBottom: 7
+    marginBottom: 7,
   },
 
   icon4: {
     width: 12,
-    height: 13
+    height: 13,
   },
 
   searchView: {
     flex: 1,
     flexDirection: "column",
-    justifyContent: "center"
+    justifyContent: "center",
   },
 
   inputStart: {
@@ -266,7 +268,7 @@ const styles = StyleSheet.create({
     fontSize: 12,
     marginBottom: 2,
     marginLeft: 3,
-    marginRight: 3
+    marginRight: 3,
   },
 
   inputEnd: {
@@ -285,7 +287,7 @@ const styles = StyleSheet.create({
     fontSize: 12,
     marginTop: 2,
     marginLeft: 3,
-    marginRight: 3
+    marginRight: 3,
   },
 
   buttonView: {
@@ -293,18 +295,18 @@ const styles = StyleSheet.create({
     width: 30,
     height: 85,
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
   },
 
   buttonClose: {
     width: 15,
     height: 15,
-    marginBottom: 13
+    marginBottom: 13,
   },
 
   buttonChange: {
     width: 15,
     height: 15,
-    marginTop: 13
-  }
+    marginTop: 13,
+  },
 });

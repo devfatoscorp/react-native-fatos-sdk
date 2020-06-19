@@ -9,14 +9,14 @@ import {
   FlatList,
   NativeModules,
   NativeEventEmitter,
-  Alert
+  Alert,
 } from "react-native";
 
 import COMMON from "../../common/common";
 import FastImage from "react-native-fast-image";
 const Images = [
   require("../../../../res/drawable/btn_1_4_1.png"),
-  require("../../../../res/drawable/icon_check.png")
+  require("../../../../res/drawable/icon_check.png"),
 ];
 
 export default class FatosCategoryView extends Component {
@@ -25,7 +25,7 @@ export default class FatosCategoryView extends Component {
     this.preloadImages();
 
     this.state = {
-      data: []
+      data: [],
     };
   }
 
@@ -44,18 +44,18 @@ export default class FatosCategoryView extends Component {
       data.push({
         name: COMMON.wecountry_names[i],
         index: i,
-        checkView: checkView
+        checkView: checkView,
       });
     }
 
     this.setState({
-      data: data
+      data: data,
     });
   }
 
   preloadImages() {
-    var uris = Images.map(image => ({
-      uri: Image.resolveAssetSource(image).uri
+    var uris = Images.map((image) => ({
+      uri: Image.resolveAssetSource(image).uri,
     }));
 
     FastImage.preload(uris);
@@ -66,6 +66,7 @@ export default class FatosCategoryView extends Component {
   }
 
   onCountrySelect(index) {
+    // 국가 변경 처리할것
     this.onPressBack();
   }
 
@@ -73,10 +74,7 @@ export default class FatosCategoryView extends Component {
     Alert.alert(
       "Select Country",
       "국가 설정을 변경하시겠습니까?",
-      [
-        { text: "NO" },
-        { text: "YES", onPress: () => this.onCountrySelect(index) }
-      ],
+      [{ text: "NO" }, { text: "YES", onPress: () => this.onCountrySelect(index) }],
       { cancelable: false }
     );
   }
@@ -113,7 +111,7 @@ export default class FatosCategoryView extends Component {
                 </View>
               </TouchableWithoutFeedback>
             )}
-            keyExtractor={item => item.index.toString()}
+            keyExtractor={(item) => item.index.toString()}
           />
         </View>
         ;
@@ -126,7 +124,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: "column",
-    backgroundColor: "white"
+    backgroundColor: "white",
   },
 
   header: {
@@ -134,35 +132,35 @@ const styles = StyleSheet.create({
     height: 50,
     alignItems: "center",
     flexDirection: "row",
-    justifyContent: "flex-start"
+    justifyContent: "flex-start",
   },
 
   text: {
     paddingLeft: 5,
     color: "black",
-    fontSize: 20
+    fontSize: 20,
   },
 
   ImageStyle: {
     width: 40,
-    height: 40
+    height: 40,
   },
 
   checkView: {
     flex: 1,
     flexDirection: "row",
     justifyContent: "flex-end",
-    marginRight: 15
+    marginRight: 15,
   },
 
   check: {
     width: 30,
-    height: 30
+    height: 30,
   },
 
   listview: {
     flex: 1,
-    backgroundColor: "rgba(232, 232, 232, 1.0)"
+    backgroundColor: "rgba(232, 232, 232, 1.0)",
   },
 
   listViewItem: {
@@ -182,12 +180,12 @@ const styles = StyleSheet.create({
     marginTop: 1,
     marginLeft: 1,
     marginRight: 1,
-    marginBottom: 3
+    marginBottom: 3,
   },
 
   listViewItemText: {
     flex: 1,
     color: "black",
-    fontSize: 22
-  }
+    fontSize: 22,
+  },
 });
