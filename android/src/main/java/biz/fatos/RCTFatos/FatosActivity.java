@@ -510,24 +510,24 @@ public class FatosActivity extends ReactActivity implements NaviCallback.OnRoute
 
         if(NativeNavi.nativeIsSimulationMode())
         {
-            strMessage = getResources().getString(biz.fatossdk.anavi.R.string.string_routesimul_exit);
+            strMessage = getResources().getString(biz.fatossdk.R.string.string_routesimul_exit);
         }
         else
         {
-            strMessage = getResources().getString(biz.fatossdk.anavi.R.string.string_routeguidance_exit);
+            strMessage = getResources().getString(biz.fatossdk.R.string.string_routeguidance_exit);
         }
 
         new AlertDialog.Builder(this)
                 .setTitle(/*getString(R.string.app_name)*/ "")
                 .setMessage(strMessage)
-                .setPositiveButton(getResources().getString(biz.fatossdk.anavi.R.string.string_no), new DialogInterface.OnClickListener() {
+                .setPositiveButton(getResources().getString(biz.fatossdk.R.string.string_no), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
 
                         dialogInterface.dismiss();;
                     }
                 })
-                .setNegativeButton(getResources().getString(biz.fatossdk.anavi.R.string.string_yes), new DialogInterface.OnClickListener() {
+                .setNegativeButton(getResources().getString(biz.fatossdk.R.string.string_yes), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         updateRouteCancel(true);

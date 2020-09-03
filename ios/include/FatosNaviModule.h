@@ -66,6 +66,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSString *) GetErrorString:(int)err_code;
 - (NSString *) GetGeoCodeString:(double)lon lat:(double)lat;
 - (BOOL) IsRoute;
+- (void) SetSendTrackerData:(bool)val;
 + (void) SetSDIFilter:(int *)pcodes pbuses:(bool*)pbuses nArray:(int)nArray;
 + (void) OnMapMoveCurrentTimer;
 + (double) getCurrentLonX;

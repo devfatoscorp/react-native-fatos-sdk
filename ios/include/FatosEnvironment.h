@@ -152,6 +152,9 @@ namespace sdk {
 // Draw GPS Point
 - (void)setDrawGpsPoint:(bool)var;
 - (bool)getDrawGpsPoint;
+// Draw SDI Line
+- (void)setDrawSDILine:(bool)var;
+- (bool)getDrawSDILine;
 // Auto Current Pos
 - (void)setAutoCurrentPos:(bool)var;
 - (bool)getAutoCurrentPos;

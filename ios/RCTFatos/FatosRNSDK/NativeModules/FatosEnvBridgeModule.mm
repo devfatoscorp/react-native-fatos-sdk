@@ -322,6 +322,21 @@ RCT_EXPORT_METHOD(SetDrawGpsPoint:(BOOL) value)
     });
 }
 
+RCT_EXPORT_METHOD(SetSendTrackerData:(BOOL) value)
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        bool val = value == YES ? true : false;
+       
+        FatosNaviModule *fatosNaviModule = [FatosAppDelegate sharedAppDelegate].fatosNaviModule;
+        
+        if(fatosNaviModule != nil)
+        {
+            [fatosNaviModule SetSendTrackerData:val];
+        }
+    });
+}
+
 RCT_EXPORT_METHOD(SetAutoCurrentPos:(BOOL) value)
 {
     dispatch_async(dispatch_get_main_queue(), ^{
@@ -335,6 +350,23 @@ RCT_EXPORT_METHOD(SetAutoCurrentPos:(BOOL) value)
         if(fatosNaviModule != nil)
         {
             [fatosNaviModule SetAutoCurrentPos:val];
+        }
+    });
+}
+
+RCT_EXPORT_METHOD(SetDrawSDILine:(BOOL) value)
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        bool val = value == YES ? true : false;
+        [[FatosEnvironment sharedObject] setDrawSDILine:val];
+        [[FatosEnvironment sharedObject] saveEnvironment];
+        
+        FatosMapView *mapview = [FatosMapView sharedMapView];
+        
+        if(mapview != nil)
+        {
+            [mapview SetDrawSDILine:val];
         }
     });
 }
@@ -542,6 +574,13 @@ RCT_EXPORT_METHOD(GetVersionCode:(RCTResponseSenderBlock)callback)
 RCT_EXPORT_METHOD(GetAutoCurrentPos:(RCTResponseSenderBlock)callback)
 {
     bool val = [[FatosEnvironment sharedObject] getAutoCurrentPos];
+    NSString *strResult = val == true ? @"true" : @"false";
+    callback(@[[NSNull null], strResult]);
+}
+
+RCT_EXPORT_METHOD(GetDrawSDILine:(RCTResponseSenderBlock)callback)
+{
+    bool val = [[FatosEnvironment sharedObject] getDrawSDILine];
     NSString *strResult = val == true ? @"true" : @"false";
     callback(@[[NSNull null], strResult]);
 }

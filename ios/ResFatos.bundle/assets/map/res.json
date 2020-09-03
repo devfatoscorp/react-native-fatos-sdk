@@ -9,11 +9,12 @@
   {"Name":"MapCenter","Major":1, "Minor":0},
   {"Name":"TBTFont","Major":1, "Minor":0},
   {"Name":"EV","Major":1, "Minor":6},
-  {"Name":"SDI","Major":1, "Minor":8},
+  {"Name":"SDI","Major":1, "Minor":11},
   {"Name":"SAN","Major":1, "Minor":2},
-  {"Name":"Symbol","Major":1, "Minor":27},
+  {"Name":"SymbolDay","Major":1, "Minor":34},
+  {"Name":"SymbolNight","Major":1, "Minor":34},
   {"Name":"FireFighting","Major":1, "Minor":3},
-  {"Name":"RoadSymbol","Major":1, "Minor":4},
+  {"Name":"RoadSymbol","Major":1, "Minor":12},
   {"Name":"Logisall","Major":1, "Minor":0},
   {"Name":"MiniTBT", "Major":1, "Minor":0}
 ]

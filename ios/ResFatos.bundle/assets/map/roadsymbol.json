@@ -1,201 +1,300 @@
 {"frames": [
 
 {
+	"filename": "asianhighway_1type.png",
+	"frame": {"x":0,"y":0,"w":180,"h":120},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":180,"h":120},
+	"sourceSize": {"w":180,"h":120}
+},
+{
+	"filename": "asianhighway_2type.png",
+	"frame": {"x":180,"y":0,"w":216,"h":120},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":216,"h":120},
+	"sourceSize": {"w":216,"h":120}
+},
+{
+	"filename": "asianhighway_3type.png",
+	"frame": {"x":396,"y":0,"w":252,"h":120},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":252,"h":120},
+	"sourceSize": {"w":252,"h":120}
+},
+{
+	"filename": "asianhighway_4type.png",
+	"frame": {"x":648,"y":0,"w":288,"h":120},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":288,"h":120},
+	"sourceSize": {"w":288,"h":120}
+},
+{
+	"filename": "asianhighway_5type.png",
+	"frame": {"x":0,"y":120,"w":324,"h":120},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":324,"h":120},
+	"sourceSize": {"w":324,"h":120}
+},
+{
+	"filename": "asianhighway_6type.png",
+	"frame": {"x":324,"y":120,"w":384,"h":120},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":384,"h":120},
+	"sourceSize": {"w":384,"h":120}
+},
+{
+	"filename": "asianhighway_7type.png",
+	"frame": {"x":0,"y":240,"w":408,"h":120},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":408,"h":120},
+	"sourceSize": {"w":408,"h":120}
+},
+{
+	"filename": "asianhighway_8type.png",
+	"frame": {"x":408,"y":240,"w":456,"h":120},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":456,"h":120},
+	"sourceSize": {"w":456,"h":120}
+},
+{
+	"filename": "blue_1type.png",
+	"frame": {"x":0,"y":360,"w":120,"h":220},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":120,"h":220},
+	"sourceSize": {"w":120,"h":220}
+},
+{
+	"filename": "green_1type.png",
+	"frame": {"x":120,"y":360,"w":120,"h":220},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":120,"h":220},
+	"sourceSize": {"w":120,"h":220}
+},
+{
+	"filename": "pentagon_1type.png",
+	"frame": {"x":240,"y":360,"w":120,"h":120},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":120,"h":120},
+	"sourceSize": {"w":120,"h":120}
+},
+{
+	"filename": "white_1type.png",
+	"frame": {"x":360,"y":360,"w":120,"h":220},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":120,"h":220},
+	"sourceSize": {"w":120,"h":220}
+},
+{
+	"filename": "white_2type.png",
+	"frame": {"x":480,"y":360,"w":120,"h":220},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":120,"h":220},
+	"sourceSize": {"w":120,"h":220}
+},
+{
+	"filename": "white_3type.png",
+	"frame": {"x":600,"y":360,"w":170,"h":164},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":170,"h":164},
+	"sourceSize": {"w":170,"h":164}
+},
+{
+	"filename": "white_4type.png",
+	"frame": {"x":770,"y":360,"w":190,"h":164},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":190,"h":164},
+	"sourceSize": {"w":190,"h":164}
+},
+{
 	"filename": "고속도로1_1type.png",
-	"frame": {"x":240,"y":320,"w":144,"h":160},
+	"frame": {"x":0,"y":580,"w":144,"h":160},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":144,"h":160},
-	"sourceSize": {"w":144,"h":160},
-	"pivot": {"x":0.5,"y":0.5}
+	"sourceSize": {"w":144,"h":160}
 },
 {
 	"filename": "고속도로1_2type.png",
-	"frame": {"x":495,"y":160,"w":181,"h":160},
+	"frame": {"x":144,"y":580,"w":181,"h":160},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":181,"h":160},
-	"sourceSize": {"w":181,"h":160},
-	"pivot": {"x":0.5,"y":0.5}
+	"sourceSize": {"w":181,"h":160}
 },
 {
 	"filename": "고속도로1_3type.png",
-	"frame": {"x":233,"y":160,"w":262,"h":160},
+	"frame": {"x":325,"y":580,"w":262,"h":160},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":262,"h":160},
-	"sourceSize": {"w":262,"h":160},
-	"pivot": {"x":0.5,"y":0.5}
+	"sourceSize": {"w":262,"h":160}
 },
 {
 	"filename": "고속도로2_1type.png",
-	"frame": {"x":676,"y":160,"w":113,"h":160},
+	"frame": {"x":587,"y":580,"w":113,"h":160},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":113,"h":160},
-	"sourceSize": {"w":113,"h":160},
-	"pivot": {"x":0.5,"y":0.5}
+	"sourceSize": {"w":113,"h":160}
 },
 {
 	"filename": "고속도로2_2type.png",
-	"frame": {"x":789,"y":160,"w":142,"h":160},
+	"frame": {"x":700,"y":580,"w":142,"h":160},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":142,"h":160},
-	"sourceSize": {"w":142,"h":160},
-	"pivot": {"x":0.5,"y":0.5}
+	"sourceSize": {"w":142,"h":160}
 },
 {
 	"filename": "고속도로2_3type.png",
-	"frame": {"x":542,"y":320,"w":219,"h":160},
+	"frame": {"x":0,"y":740,"w":219,"h":160},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":219,"h":160},
-	"sourceSize": {"w":219,"h":160},
-	"pivot": {"x":0.5,"y":0.5}
+	"sourceSize": {"w":219,"h":160}
 },
 {
 	"filename": "고속도로3_1type.png",
-	"frame": {"x":761,"y":320,"w":133,"h":160},
+	"frame": {"x":219,"y":740,"w":133,"h":160},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":133,"h":160},
-	"sourceSize": {"w":133,"h":160},
-	"pivot": {"x":0.5,"y":0.5}
+	"sourceSize": {"w":133,"h":160}
 },
 {
 	"filename": "고속도로3_2type.png",
-	"frame": {"x":384,"y":320,"w":158,"h":160},
+	"frame": {"x":352,"y":740,"w":158,"h":160},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":158,"h":160},
-	"sourceSize": {"w":158,"h":160},
-	"pivot": {"x":0.5,"y":0.5}
+	"sourceSize": {"w":158,"h":160}
 },
 {
 	"filename": "고속도로3_3type.png",
-	"frame": {"x":0,"y":320,"w":240,"h":160},
+	"frame": {"x":510,"y":740,"w":240,"h":160},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":240,"h":160},
-	"sourceSize": {"w":240,"h":160},
-	"pivot": {"x":0.5,"y":0.5}
+	"sourceSize": {"w":240,"h":160}
 },
 {
 	"filename": "고속화도로_1type.png",
-	"frame": {"x":794,"y":80,"w":116,"h":80},
+	"frame": {"x":750,"y":740,"w":116,"h":80},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":116,"h":80},
-	"sourceSize": {"w":116,"h":80},
-	"pivot": {"x":0.5,"y":0.5}
+	"sourceSize": {"w":116,"h":80}
 },
 {
 	"filename": "고속화도로_2type.png",
-	"frame": {"x":663,"y":80,"w":131,"h":80},
+	"frame": {"x":0,"y":900,"w":131,"h":80},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":131,"h":80},
-	"sourceSize": {"w":131,"h":80},
-	"pivot": {"x":0.5,"y":0.5}
+	"sourceSize": {"w":131,"h":80}
 },
 {
 	"filename": "고속화도로_3type.png",
-	"frame": {"x":0,"y":0,"w":191,"h":80},
+	"frame": {"x":131,"y":900,"w":191,"h":80},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":191,"h":80},
-	"sourceSize": {"w":191,"h":80},
-	"pivot": {"x":0.5,"y":0.5}
+	"sourceSize": {"w":191,"h":80}
 },
 {
 	"filename": "국도_1type.png",
-	"frame": {"x":424,"y":0,"w":130,"h":80},
+	"frame": {"x":322,"y":900,"w":130,"h":80},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":130,"h":80},
-	"sourceSize": {"w":130,"h":80},
-	"pivot": {"x":0.5,"y":0.5}
+	"sourceSize": {"w":130,"h":80}
 },
 {
 	"filename": "국도_2type.png",
-	"frame": {"x":554,"y":0,"w":144,"h":80},
+	"frame": {"x":452,"y":900,"w":144,"h":80},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":144,"h":80},
-	"sourceSize": {"w":144,"h":80},
-	"pivot": {"x":0.5,"y":0.5}
+	"sourceSize": {"w":144,"h":80}
 },
 {
 	"filename": "국도_3type.png",
-	"frame": {"x":191,"y":0,"w":233,"h":80},
+	"frame": {"x":596,"y":900,"w":233,"h":80},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":233,"h":80},
-	"sourceSize": {"w":233,"h":80},
-	"pivot": {"x":0.5,"y":0.5}
+	"sourceSize": {"w":233,"h":80}
 },
 {
 	"filename": "일반국도_1type.png",
-	"frame": {"x":698,"y":0,"w":130,"h":80},
+	"frame": {"x":829,"y":900,"w":130,"h":80},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":130,"h":80},
-	"sourceSize": {"w":130,"h":80},
-	"pivot": {"x":0.5,"y":0.5}
+	"sourceSize": {"w":130,"h":80}
 },
 {
 	"filename": "일반국도_2type.png",
-	"frame": {"x":0,"y":80,"w":144,"h":80},
+	"frame": {"x":0,"y":980,"w":144,"h":80},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":144,"h":80},
-	"sourceSize": {"w":144,"h":80},
-	"pivot": {"x":0.5,"y":0.5}
+	"sourceSize": {"w":144,"h":80}
 },
 {
 	"filename": "일반국도_3type.png",
-	"frame": {"x":288,"y":80,"w":245,"h":80},
+	"frame": {"x":144,"y":980,"w":245,"h":80},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":245,"h":80},
-	"sourceSize": {"w":245,"h":80},
-	"pivot": {"x":0.5,"y":0.5}
+	"sourceSize": {"w":245,"h":80}
 },
 {
 	"filename": "지방도_1type.png",
-	"frame": {"x":533,"y":80,"w":130,"h":80},
+	"frame": {"x":389,"y":980,"w":130,"h":80},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":130,"h":80},
-	"sourceSize": {"w":130,"h":80},
-	"pivot": {"x":0.5,"y":0.5}
+	"sourceSize": {"w":130,"h":80}
 },
 {
 	"filename": "지방도_2type.png",
-	"frame": {"x":144,"y":80,"w":144,"h":80},
+	"frame": {"x":519,"y":980,"w":144,"h":80},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":144,"h":80},
-	"sourceSize": {"w":144,"h":80},
-	"pivot": {"x":0.5,"y":0.5}
+	"sourceSize": {"w":144,"h":80}
 },
 {
 	"filename": "지방도_3type.png",
-	"frame": {"x":0,"y":160,"w":233,"h":80},
+	"frame": {"x":663,"y":980,"w":233,"h":80},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":233,"h":80},
-	"sourceSize": {"w":233,"h":80},
-	"pivot": {"x":0.5,"y":0.5}
+	"sourceSize": {"w":233,"h":80}
 }],
 "meta": {
-	"app": "http://www.codeandweb.com/texturepacker",
+	"app": "https://www.codeandweb.com/texturepacker",
 	"version": "1.0",
 	"image": "roadsymbol.png",
 	"format": "RGBA8888",
-	"size": {"w":931,"h":480},
+	"size": {"w":960,"h":1060},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:52f83a03c18a487d9dcf62a004b8a0ad:b2dbf89a98038ea30844e685f6c50255:64d99d2320bb029f0ac37b6662acbd75$"
+	"smartupdate": "$TexturePacker:SmartUpdate:cf728c252628ebdbe2c504710d6369c2:932bf43894512bbb035c168847cfd40d:64d99d2320bb029f0ac37b6662acbd75$"
 }
 }

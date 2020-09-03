@@ -335,6 +335,20 @@ public class FatosEnvBridgeModule extends ReactContextBaseJavaModule {
         }
     }
 
+    @ReactMethod
+    public void SetSendTrackerData(boolean value) {
+        NativeNavi.nativeSendTrackerData(value);
+    }
+
+    @ReactMethod
+    public void SetDrawSDILine(boolean value) {
+
+        FatosEnvironment.sharedObject().setDrawSDILine(value);
+        FatosEnvironment.sharedObject().saveEnvironment();
+
+        NativeNavi.nativeSetDrawSDILine(ANaviApplication.m_MapHandle, value);
+    }
+
     /** callback **/
     @ReactMethod
     public void GetLanguage(Callback callback) {
@@ -492,6 +506,14 @@ public class FatosEnvBridgeModule extends ReactContextBaseJavaModule {
     public void GetDrawGpsPoint(Callback callback) {
 
         Boolean val = FatosEnvironment.sharedObject().getDrawGpsPoint();
+        String str = val == true ? "true" : "false";
+        callback.invoke(null, str);
+    }
+
+    @ReactMethod
+    public void GetDrawSDILine(Callback callback) {
+
+        Boolean val = FatosEnvironment.sharedObject().getDrawSDILine();
         String str = val == true ? "true" : "false";
         callback.invoke(null, str);
     }
