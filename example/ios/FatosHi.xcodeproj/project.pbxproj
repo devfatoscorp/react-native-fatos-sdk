@@ -16,7 +16,7 @@
 		8400C941244483C5001D4154 /* assets in Resources */ = {isa = PBXBuildFile; fileRef = 8400C940244483C4001D4154 /* assets */; };
 		841AD2662306AEEE003CA062 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 841AD2642306AEEE003CA062 /* Localizable.strings */; };
 		841AD2C22306BD7A003CA062 /* hi_splash.png in Resources */ = {isa = PBXBuildFile; fileRef = 841AD2A12306BD7A003CA062 /* hi_splash.png */; };
-		8483EAD5231675380001846E /* libRCTFatos.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8483EAD42316751F0001846E /* libRCTFatos.a */; };
+		F1413B7F2536C23800CB0D7A /* libRCTFatos.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8483EAD42316751F0001846E /* libRCTFatos.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -285,6 +285,7 @@
 		DBF5B7104963E4B6FAE358BC /* Pods-FatosHi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FatosHi.debug.xcconfig"; path = "Target Support Files/Pods-FatosHi/Pods-FatosHi.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
+		F1413B7D2536C22E00CB0D7A /* libFatos.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libFatos.a; path = "../../../Fatos 2020-10-14 14-18-52/Products/usr/local/lib/libFatos.a"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -292,7 +293,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8483EAD5231675380001846E /* libRCTFatos.a in Frameworks */,
+				F1413B7F2536C23800CB0D7A /* libRCTFatos.a in Frameworks */,
 				3FBC269DB7AB8CE6A3022A52 /* libPods-FatosHi.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -335,6 +336,7 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F1413B7D2536C22E00CB0D7A /* libFatos.a */,
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
 				B3892C7CC33DD11F3A5AA8E1 /* libPods-FatosHi.a */,

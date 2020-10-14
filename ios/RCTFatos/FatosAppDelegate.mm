@@ -181,10 +181,11 @@
     
     if(status == kCLAuthorizationStatusDenied)
     {
-        NSString *strTitle = NSLocalizedString(@"location_status_denied_title", @"");
-        NSString *strMessage = NSLocalizedString(@"location_status_denied_message", @"");
-        NSString *strOk = NSLocalizedString(@"location_status_denied_ok", @"");
-        
+
+        NSString *strTitle = [FatosUtil getResourceLocalizedString:@"location_status_denied_title" comment:@""];
+        NSString *strMessage = [FatosUtil getResourceLocalizedString:@"location_status_denied_message" comment:@""];
+        NSString *strOk = [FatosUtil getResourceLocalizedString:@"location_status_denied_ok" comment:@""];
+
         UIAlertController * alert = [UIAlertController
                                      alertControllerWithTitle:strTitle
                                      message:strMessage
