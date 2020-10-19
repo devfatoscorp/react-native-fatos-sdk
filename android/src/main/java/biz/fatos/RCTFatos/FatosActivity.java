@@ -187,7 +187,8 @@ public class FatosActivity extends ReactActivity implements NaviCallback.OnRoute
         strings.put("engine_init_failed_auth", "Authentication failed");
 
 
-        String strIMEI = AMapUtil.getDeviceIMEI(m_Context);
+        // String strIMEI = AMapUtil.getDeviceIMEI(m_Context);
+        String strIMEI = NativeNavi.nativeSdkKey2Encode(AMapUtil.getwidevineID(m_Context));
         ReactManager.sharedObject().Init(this, m_Context, m_gApp, strings, sdk_key, -1, strIMEI);
 
         m_NaviHandler = new NaviMassgeHandler();

@@ -44,6 +44,7 @@
         android:roundIcon="@mipmap/ic_launcher"
         tools:replace="android:icon,android:largeHeap,android:allowBackup"
         android:hardwareAccelerated="true"
+        android:requestLegacyExternalStorage="true"
         android:theme="@style/AppTheme">
         <activity
             android:name=".MainActivity"
