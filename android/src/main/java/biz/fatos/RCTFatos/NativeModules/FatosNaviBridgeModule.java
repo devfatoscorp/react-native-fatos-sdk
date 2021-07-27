@@ -346,7 +346,6 @@ public class FatosNaviBridgeModule extends ReactContextBaseJavaModule {
 
         } catch (JSONException e) {
             e.printStackTrace();
-            Log.d("simsimsim", "JSONException : " + e);
         }
     }
 

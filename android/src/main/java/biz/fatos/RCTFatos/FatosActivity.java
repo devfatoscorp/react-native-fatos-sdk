@@ -316,8 +316,6 @@ public class FatosActivity extends ReactActivity implements NaviCallback.OnRoute
             if (gpsServiceIntent != null) {
                 stopService(gpsServiceIntent);
                 gpsServiceIntent = null;
-
-                Log.d("simsimsim","onPause gpsServiceIntent");
             }
         }
     }
@@ -334,7 +332,6 @@ public class FatosActivity extends ReactActivity implements NaviCallback.OnRoute
             if (gpsServiceIntent == null) {
                 gpsServiceIntent = new Intent(m_Context, GPSService.class);
                 startService(gpsServiceIntent);
-                Log.d("simsimsim","onResume gpsServiceIntent");
             }
         }
     }

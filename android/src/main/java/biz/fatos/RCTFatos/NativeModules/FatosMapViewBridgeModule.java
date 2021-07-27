@@ -70,9 +70,6 @@ public class FatosMapViewBridgeModule extends ReactContextBaseJavaModule {
         _FatosMapViewBridgeModule = this;
         mContext = reactContext;
         m_gApp = (ANaviApplication) reactContext.getApplicationContext();
-
-
-        Log.d("simsimsim", "FatosMapViewBridgeModule");
     }
 
     @ReactMethod
@@ -530,8 +527,6 @@ public class FatosMapViewBridgeModule extends ReactContextBaseJavaModule {
             object.put("hCenter", hCenter[0]);
             object.put("vCenter", vCenter[0]);
             strResult = object.toString();
-
-            Log.d("simsimsim", "strResult : " + strResult);
         } catch (JSONException e) {
             e.printStackTrace();
         }

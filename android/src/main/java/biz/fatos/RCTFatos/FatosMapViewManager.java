@@ -129,7 +129,6 @@ public class FatosMapViewManager extends SimpleViewManager<View> implements  Fat
     @Override
     protected View createViewInstance(@Nonnull ThemedReactContext reactContext) {
 
-        Log.d("simsimsim", "FatosMapView createViewInstance");
         m_Context = reactContext;
         mFatosMainMapView = new FatosMainMapView(m_Context);
         mFatosMainMapView.setOnFatosMapStateUpdateListenerr(this);
@@ -162,7 +161,6 @@ public class FatosMapViewManager extends SimpleViewManager<View> implements  Fat
         {
             mFatosMainMapView.onDestroy();
             mFatosMainMapView = null;
-            Log.d("simsimsim", "FatosMapView componentWillUnmount");
         }
     }
 
