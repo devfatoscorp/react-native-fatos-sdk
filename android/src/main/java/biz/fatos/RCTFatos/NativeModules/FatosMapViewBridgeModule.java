@@ -486,7 +486,7 @@ public class FatosMapViewBridgeModule extends ReactContextBaseJavaModule {
             object.put("y", nMapTouchScreen[1]);
             strResult = object.toString();
         } catch (JSONException e) {
-            e.printStackTrace();
+            // e.printStackTrace();
         }
 
         callback.invoke(null, strResult);
@@ -506,7 +506,7 @@ public class FatosMapViewBridgeModule extends ReactContextBaseJavaModule {
             object.put("ylat", lonlat[1]);
             strResult = object.toString();
         } catch (JSONException e) {
-            e.printStackTrace();
+            // e.printStackTrace();
         }
 
         callback.invoke(null, strResult);
@@ -528,7 +528,7 @@ public class FatosMapViewBridgeModule extends ReactContextBaseJavaModule {
             object.put("vCenter", vCenter[0]);
             strResult = object.toString();
         } catch (JSONException e) {
-            e.printStackTrace();
+            // e.printStackTrace();
         }
 
         callback.invoke(null, strResult);
@@ -559,7 +559,7 @@ public class FatosMapViewBridgeModule extends ReactContextBaseJavaModule {
             object.put("vCenter", shiftCenter[0]);
             strResult = object.toString();
         } catch (JSONException e) {
-            e.printStackTrace();
+            // e.printStackTrace();
         }
 
         callback.invoke(null, strResult);
@@ -581,7 +581,7 @@ public class FatosMapViewBridgeModule extends ReactContextBaseJavaModule {
             object.put("ylat", lonlat[1]);
             strResult = object.toString();
         } catch (JSONException e) {
-            e.printStackTrace();
+            // e.printStackTrace();
         }
 
         callback.invoke(null, strResult);
@@ -607,7 +607,7 @@ public class FatosMapViewBridgeModule extends ReactContextBaseJavaModule {
             object.put("level", nGoalLevel);
             strResult = object.toString();
         } catch (JSONException e) {
-            e.printStackTrace();
+            // e.printStackTrace();
         }
 
         callback.invoke(null, strResult);
@@ -647,7 +647,7 @@ public class FatosMapViewBridgeModule extends ReactContextBaseJavaModule {
             object.put("y", retCenter[1]);
             strResult = object.toString();
         } catch (JSONException e) {
-            e.printStackTrace();
+            // e.printStackTrace();
         }
 
         callback.invoke(null, strResult);
@@ -727,7 +727,7 @@ public class FatosMapViewBridgeModule extends ReactContextBaseJavaModule {
                 sendEvent(getReactApplicationContext(), "UpdatePickerInfoListener", eventData);
 
             } catch (JSONException e) {
-                e.printStackTrace();
+                // e.printStackTrace();
             }
         }
     }
@@ -762,7 +762,7 @@ public class FatosMapViewBridgeModule extends ReactContextBaseJavaModule {
         try {
             afd = mContext.getResources().getAssets().openFd("marker/" + strFileName);
         } catch (IOException e) {
-            e.printStackTrace();
+            // e.printStackTrace();
         }
 
         return afd;
@@ -789,7 +789,7 @@ public class FatosMapViewBridgeModule extends ReactContextBaseJavaModule {
             strJson = buf.toString();
 
         } catch (IOException e) {
-            e.printStackTrace();
+            // e.printStackTrace();
         }
 
         return strJson;

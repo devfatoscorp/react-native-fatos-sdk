@@ -538,7 +538,7 @@ public class FatosEnvBridgeModule extends ReactContextBaseJavaModule {
             pInfo = m_Context.getPackageManager().getPackageInfo(m_Context.getPackageName(), 0);
             versionName = pInfo.versionName;
         } catch (PackageManager.NameNotFoundException e) {
-            e.printStackTrace();
+            // e.printStackTrace();
         }
 
         callback.invoke(null, versionName);
@@ -554,7 +554,7 @@ public class FatosEnvBridgeModule extends ReactContextBaseJavaModule {
             pInfo = m_Context.getPackageManager().getPackageInfo(m_Context.getPackageName(), 0);
             versionCode = Integer.toString(pInfo.versionCode);
         } catch (PackageManager.NameNotFoundException e) {
-            e.printStackTrace();
+            // e.printStackTrace();
         }
 
         callback.invoke(null, versionCode);

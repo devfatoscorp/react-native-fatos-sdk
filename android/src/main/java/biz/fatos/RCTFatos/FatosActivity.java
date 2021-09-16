@@ -110,7 +110,7 @@ public class FatosActivity extends ReactActivity implements NaviCallback.OnRoute
                     }
 
                 } catch (IOException e) {
-                    e.printStackTrace();
+                    // e.printStackTrace();
                 }
             }
         }
@@ -130,7 +130,7 @@ public class FatosActivity extends ReactActivity implements NaviCallback.OnRoute
                 }
 
             } catch (IOException e) {
-                e.printStackTrace();
+                // e.printStackTrace();
             }
         }
     }
@@ -165,7 +165,7 @@ public class FatosActivity extends ReactActivity implements NaviCallback.OnRoute
                     }
 
                 } catch (IOException e) {
-                    e.printStackTrace();
+                    // e.printStackTrace();
                 }
             }
         }
@@ -272,7 +272,7 @@ public class FatosActivity extends ReactActivity implements NaviCallback.OnRoute
                         strJson = object.toString();
                     }
                     catch (JSONException e) {
-                        e.printStackTrace();
+                        // e.printStackTrace();
                     }
 
                     // 요약정보 일떄 예외처리

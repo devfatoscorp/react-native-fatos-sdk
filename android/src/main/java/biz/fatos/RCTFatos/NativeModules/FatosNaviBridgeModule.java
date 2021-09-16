@@ -134,7 +134,7 @@ public class FatosNaviBridgeModule extends ReactContextBaseJavaModule {
             routeExternal(jsonObject, true);
 
         } catch (JSONException e) {
-            e.printStackTrace();
+            // e.printStackTrace();
         }
     }
 
@@ -145,7 +145,7 @@ public class FatosNaviBridgeModule extends ReactContextBaseJavaModule {
             JSONObject jsonObject = new JSONObject(strJson);
             routeExternal(jsonObject, true);
         } catch (JSONException e) {
-            e.printStackTrace();
+            // e.printStackTrace();
         }
     }
 
@@ -156,7 +156,7 @@ public class FatosNaviBridgeModule extends ReactContextBaseJavaModule {
             JSONObject jsonObject = new JSONObject(strJson);
             routeExternal(jsonObject, false);
         } catch (JSONException e) {
-            e.printStackTrace();
+            // e.printStackTrace();
         }
     }
 
@@ -345,7 +345,7 @@ public class FatosNaviBridgeModule extends ReactContextBaseJavaModule {
             }
 
         } catch (JSONException e) {
-            e.printStackTrace();
+            // e.printStackTrace();
         }
     }
 
@@ -459,7 +459,7 @@ public class FatosNaviBridgeModule extends ReactContextBaseJavaModule {
                     SearchResultListener(strResult);
 
                 } catch (JSONException e) {
-                    e.printStackTrace();
+                    // e.printStackTrace();
                 }
 
                 HideIndicatorListener();
@@ -494,7 +494,7 @@ public class FatosNaviBridgeModule extends ReactContextBaseJavaModule {
                     SearchResultListener(strResult);
 
                 } catch (JSONException e) {
-                    e.printStackTrace();
+                    // e.printStackTrace();
                 }
 
                 HideIndicatorListener();
@@ -616,7 +616,7 @@ public class FatosNaviBridgeModule extends ReactContextBaseJavaModule {
             object.put("ylat", lonlat[1]);
             strResult = object.toString();
         } catch (JSONException e) {
-            e.printStackTrace();
+            // e.printStackTrace();
         }
 
         callback.invoke(null, strResult);

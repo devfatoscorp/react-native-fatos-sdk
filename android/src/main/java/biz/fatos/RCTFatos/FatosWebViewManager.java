@@ -183,7 +183,7 @@ public class FatosWebViewManager extends SimpleViewManager<View>
                         module.Route("0","0", Lat, Lon);
                     }
                     catch (JSONException e) {
-                        e.printStackTrace();
+                        // e.printStackTrace();
                     }
                 }
             }
