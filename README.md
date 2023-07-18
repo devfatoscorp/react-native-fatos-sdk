@@ -24,6 +24,7 @@
   <em>react-native-fatos-sdk example app.</em>
 </p>
 
+```Dear you all, your conbritations will change the world. as the FATOS Corp. company Stopped updating the maps, and Stopped updating the Apps as the Company failed to grow. I will ask the company about this. Thankyou``
 
 This is "react native fatos sdk". For more details example, please check the project in the example folder.
 This is multi platform map SDK based on react native. The function of the SDK are largely composed of map, search, and route planning. The map function can control the map layer setting and the map operation function. As you type your search terms and navigation the route, the summary information will appear on the map.
