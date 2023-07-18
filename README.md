@@ -1,7 +1,4 @@
-﻿
-
-
-
+>⚠️Dear you all, since this company is about to DIE, as the Company failed to grown as well. please conbrite this project for more functionallities.
 
 <div align="center">
 
